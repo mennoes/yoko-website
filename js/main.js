@@ -7,8 +7,11 @@ const CONFIG = window.YOKO_CONFIG || { mode: 'homepage', maxItems: 6 };
 
 // ===== HERO HEADLINE =====
 const heroHeadlines = [
+    'Je visuele redactie.',
     'Jij hebt een verhaal dat ertoe doet.<br>Wij weten hoe je dat laat zien.',
+    'Je visuele redactie.',
     'Wij brengen beweging in organisaties<br>die niet kunnen wachten tot<br>ze begrepen worden.',
+    'Je visuele redactie.',
     'Design en animatie voor organisaties<br>die begrepen willen worden.',
 ];
 

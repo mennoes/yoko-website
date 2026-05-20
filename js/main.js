@@ -22,7 +22,7 @@ function initHeroHeadline() {
     let current = 0;
     el.innerHTML = heroHeadlines[current];
 
-    setInterval(() => {
+    function next() {
         el.style.opacity = '0';
         el.style.transform = 'translateY(-8px)';
         setTimeout(() => {
@@ -35,8 +35,14 @@ function initHeroHeadline() {
                     el.style.transform = 'translateY(0)';
                 });
             });
+            // 'Je visuele redactie.' blijft 7 seconden, de rest 3.5
+            const isAnchor = heroHeadlines[current] === 'Je visuele redactie.';
+            setTimeout(next, isAnchor ? 7000 : 3500);
         }, 400);
-    }, 4000);
+    }
+
+    // Start na 7 seconden (eerste slide is de ankertekst)
+    setTimeout(next, 7000);
 }
 
 // ===== HERO VIDEO =====

@@ -78,6 +78,7 @@ a { color: inherit; }
    NAVIGATIE
    ===================================================== */
 .nav {
+    --nav-fade: 1;
     position: fixed;
     top: 0;
     left: 50%;
@@ -90,8 +91,9 @@ a { color: inherit; }
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: clamp(20px, 3vw, 56px);
-    background: var(--cream);
-    border-bottom: 1px solid rgba(32,32,32,0.07);
+    background: rgba(237,234,228, var(--nav-fade));
+    border-bottom: 1px solid rgba(32,32,32, calc(0.07 * var(--nav-fade)));
+    transition: background 0.1s ease, border-color 0.1s ease;
 }
 .nav__logo {
     display: block;
@@ -110,6 +112,8 @@ a { color: inherit; }
     line-height: 1.25;
     color: var(--dark);
     max-width: 600px;
+    opacity: var(--nav-fade);
+    transition: opacity 0.1s ease;
 }
 .nav__links { display: flex; gap: 28px; }
 .nav__links a {

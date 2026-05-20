@@ -193,17 +193,22 @@ function initScrollFade() {
     targets.forEach(el => observer.observe(el));
 }
 
-// ===== NAV: transparant bij donkere achtergrond =====
+// ===== NAV: achtergrond + tekst faden bij scrollen =====
 function initNavScroll() {
     const nav = document.getElementById('nav');
-    const hero = document.getElementById('home') || document.querySelector('.case-hero');
-    if (!nav || !hero) return;
+    if (!nav) return;
 
-    const obs = new IntersectionObserver(([e]) => {
-        nav.classList.toggle('is-past-hero', !e.isIntersecting);
-    }, { threshold: 0.05 });
+    function update() {
+        const scrolled = window.scrollY;
+        const fadeStart = 40;
+        const fadeEnd = 160;
+        const progress = Math.max(0, Math.min(1, (scrolled - fadeStart) / (fadeEnd - fadeStart)));
 
-    obs.observe(hero);
+        nav.style.setProperty('--nav-fade', 1 - progress);
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
 }
 
 // ===== BLOCK REVEAL (drie pijlers) =====

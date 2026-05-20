@@ -8,12 +8,32 @@ const CONFIG = window.YOKO_CONFIG || { mode: 'homepage', maxItems: 6 };
 // ===== HERO HEADLINE =====
 const heroHeadlines = [
     'Jij hebt een verhaal dat ertoe doet.<br>Wij weten hoe je dat laat zien.',
+    'Wij brengen beweging in organisaties<br>die niet kunnen wachten tot<br>ze begrepen worden.',
+    'Design en animatie voor organisaties<br>die begrepen willen worden.',
 ];
 
 function initHeroHeadline() {
     const el = document.querySelector('.site-intro__headline');
     if (!el) return;
-    el.innerHTML = heroHeadlines[Math.floor(Math.random() * heroHeadlines.length)];
+
+    let current = 0;
+    el.innerHTML = heroHeadlines[current];
+
+    setInterval(() => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(-8px)';
+        setTimeout(() => {
+            current = (current + 1) % heroHeadlines.length;
+            el.innerHTML = heroHeadlines[current];
+            el.style.transform = 'translateY(8px)';
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                });
+            });
+        }, 400);
+    }, 4000);
 }
 
 // ===== HERO VIDEO =====

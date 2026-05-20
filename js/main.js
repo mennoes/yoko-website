@@ -16,33 +16,7 @@ const heroHeadlines = [
 ];
 
 function initHeroHeadline() {
-    const el = document.querySelector('.site-intro__headline');
-    if (!el) return;
-
-    let current = 0;
-    el.innerHTML = heroHeadlines[current];
-
-    function next() {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(-8px)';
-        setTimeout(() => {
-            current = (current + 1) % heroHeadlines.length;
-            el.innerHTML = heroHeadlines[current];
-            el.style.transform = 'translateY(8px)';
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                });
-            });
-            // 'Je visuele redactie.' blijft 7 seconden, de rest 3.5
-            const isAnchor = heroHeadlines[current] === 'Je visuele redactie.';
-            setTimeout(next, isAnchor ? 7000 : 3500);
-        }, 400);
-    }
-
-    // Start na 7 seconden (eerste slide is de ankertekst)
-    setTimeout(next, 7000);
+    // Rotatie uitgeschakeld — teksten bewaard in heroHeadlines array
 }
 
 // ===== HERO VIDEO =====

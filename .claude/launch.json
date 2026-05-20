@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "studioyoko",
+      "runtimeExecutable": "/usr/bin/python3",
+      "runtimeArgs": ["-c", "import os; os.chdir('/Users/mennoes/Desktop/studioyoko-website'); from http.server import HTTPServer, SimpleHTTPRequestHandler; HTTPServer(('', 8080), SimpleHTTPRequestHandler).serve_forever()"],
+      "port": 8080,
+      "autoPort": false
+    }
+  ]
+}

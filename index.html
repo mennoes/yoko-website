@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Yoko — Animation Studio Amsterdam</title>
+    <meta name="description" content="Studio Yoko is een animatiestudio in Amsterdam. We maken uitlegvideo's, tv-programma's, commercials en social media content.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ===== NAVIGATIE ===== -->
+    <nav class="nav" id="nav">
+        <div class="nav__brand"><a href="index.html" class="nav__logo"><img src="assets/logo.svg" alt="Studio Yoko"></a><span class="nav__tagline">design en animatie studio</span></div>
+        <div class="nav__links">
+            <a href="work.html">work</a>
+            <a href="about.html">about</a>
+            <a href="#contact">contact</a>
+        </div>
+    </nav>
+
+    <!-- ===== INTRO TEKST ===== -->
+    <header class="site-intro" id="home">
+        <h1 class="site-intro__headline" id="hero-tagline">Je weet wat je wil vertellen,<br>wij weten hoe dat er uit moet zien.</h1>
+    </header>
+    <script>
+    (function() {
+        var taglines = [
+            'Je weet wat je wil vertellen,<br>wij weten hoe dat er uit moet zien.',
+            'Jij hebt een verhaal dat ertoe doet.<br>Wij weten hoe je dat laat zien.',
+            'Waar inhoud<br>visueel sterk, helder<br>en schaalbaar gemaakt wordt.'
+        ];
+        var idx = 0;
+        var el = document.getElementById('hero-tagline');
+        setInterval(function() {
+            el.style.opacity = '0';
+            setTimeout(function() {
+                idx = (idx + 1) % taglines.length;
+                el.innerHTML = taglines[idx];
+                el.style.opacity = '1';
+            }, 600);
+        }, 4500);
+    })();
+    </script>
+
+    <!-- ===== SHOWREEL ===== -->
+    <section class="reel">
+        <video class="reel__video" id="hero-video" autoplay muted loop playsinline></video>
+    </section>
+
+    <!-- ===== REEL SUBTEKST + ALINEA ===== -->
+    <div class="reel-sub">
+        <p class="reel-sub__text js-word-reveal">Jij hebt een verhaal dat ertoe doet, wij weten hoe dat eruit moet zien.<br>Samen maken we beeld dat werkt. Van eerste uiting tot branding dat houdbaar is.</p>
+        <div>
+            <p class="reel-sub__body">Veel organisaties weten wat ze willen zeggen maar niet hoe ze het moeten laten zien. Wij duiken in de inhoud, vertalen het naar beeld dat raak is en zorgen dat het consistent blijft werken. Van nieuwe branding, of gewoon een eerste uiting tot een heel systeem of workflow dat je team zelf kan gebruiken. Snel, inhoudelijk en altijd in samenwerking.</p>
+            <p class="reel-sub__for-label">Wij werken voor</p>
+            <div class="reel-sub__tags">
+                <span class="reel-sub__tag">Mediaredacties</span>
+                <span class="reel-sub__tag">Goede doelen &amp; NGO's</span>
+                <span class="reel-sub__tag">Wetenschap &amp; onderwijs</span>
+                <span class="reel-sub__tag">Maatschappelijk gedreven bedrijven</span>
+                <span class="reel-sub__tag">Scale-ups met een verhaal</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== WORK GRID — eerste 4 cases ===== -->
+    <section class="work" id="work">
+        <div class="work__header">
+            <h2 class="work__label">Selected work</h2>
+            <a href="work.html" class="cta-link work__all-link">All work <span class="cta-arrow">→</span></a>
+        </div>
+        <div class="work__grid" id="work-grid-top">
+            <!-- Geladen vanuit data/cases.json, eerste 4 -->
+        </div>
+    </section>
+
+    <!-- ===== DRIE PIJLERS ===== -->
+    <div class="reel-caption">
+        <p class="reel-caption__heading">Wat we concreet doen:</p>
+        <ol class="reel-timeline">
+            <li class="reel-timeline__item">
+                <div class="reel-timeline__header">
+                    <span class="reel-timeline__num">1</span>
+                    <span class="reel-timeline__label">Vorm</span>
+                </div>
+                <p class="reel-timeline__text">We ontwerpen een identiteit die past bij je merk en overal op werkt. Grafisch en in animatie.</p>
+            </li>
+            <li class="reel-timeline__item">
+                <div class="reel-timeline__header">
+                    <span class="reel-timeline__num">2</span>
+                    <span class="reel-timeline__label">Verhaal</span>
+                </div>
+                <p class="reel-timeline__text">Ingewikkelde materie, scherpe journalistiek, groot onderzoek of een goed idee. Wij duiken in de inhoud en vertalen het naar beeld.</p>
+            </li>
+            <li class="reel-timeline__item">
+                <div class="reel-timeline__header">
+                    <span class="reel-timeline__num">3</span>
+                    <span class="reel-timeline__label">Systeem</span>
+                </div>
+                <p class="reel-timeline__text">Veel content maken kost tijd dat je niet hebt. Wij bouwen systemen zodat dat wel kan.</p>
+            </li>
+        </ol>
+        <div class="reel-timeline__track" aria-hidden="true">
+            <div class="reel-timeline__track-fill" id="timeline-fill"></div>
+        </div>
+    </div>
+
+    <!-- ===== WORK GRID — resterende cases ===== -->
+    <section class="work work--cont">
+        <div class="work__grid" id="work-grid-bottom">
+            <!-- Geladen vanuit data/cases.json, overige -->
+        </div>
+    </section>
+
+    <!-- ===== ABOUT STRIP ===== -->
+    <section class="about" id="studio">
+        <div class="about__reel">
+            <div class="about__reel-placeholder">
+                <div class="play-btn">
+                    <svg width="16" height="22" viewBox="0 0 16 22" fill="none">
+                        <path d="M0 22L16 11L0 0V22Z" fill="#edeae4" opacity="0.8"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="about__content">
+            <p class="about__label">Studio</p>
+            <h2 class="about__title">Your story deserves our love for animation.</h2>
+            <p class="about__text">We make colorful, thoughtful and enriching commercials, TV idents, explainer videos and social media content for brands that want to be remembered.</p>
+            <a href="about.html" class="cta-link about__cta">
+                <span class="cta-arrow">→</span> About us
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="contact">
+        <div class="footer__contact">
+            <div class="footer__contact-inner">
+                <h2 class="footer__title">Let's talk.</h2>
+                <a href="mailto:hello@studioyoko.nl" class="cta-link footer__email">
+                    <span class="cta-arrow">→</span> hello@studioyoko.nl
+                </a>
+                <div class="footer__address-block">
+                    <address class="footer__address">
+                        Kattenburgerstraat 5<br>
+                        1018 JA Amsterdam
+                    </address>
+                    <div class="footer__divider"></div>
+                </div>
+                <p class="footer__legal">©2025 Studio Yoko BV&nbsp;&nbsp;·&nbsp;&nbsp;Privacy&nbsp;&nbsp;·&nbsp;&nbsp;Legal</p>
+            </div>
+            <div class="footer__logo-anim">
+                <!-- <img src="assets/images/logo-anim.gif" alt=""> -->
+            </div>
+        </div>
+        <div class="footer__team">
+            <h2 class="footer__team-title">Meet the team.</h2>
+            <div class="footer__team-photos"></div>
+        </div>
+    </footer>
+
+    <script src="data/cases.js"></script>
+    <script>window.YOKO_CONFIG = { mode: 'homepage', maxItems: 12 };</script>
+    <script src="js/main.js"></script>
+</body>
+</html>

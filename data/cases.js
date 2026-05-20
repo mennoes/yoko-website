@@ -1,0 +1,645 @@
+window.YOKO_CASES = {
+  "cases": [
+    {
+      "id": 3,
+      "slug": "universiteit-van-nederland",
+      "title": "Universiteit van Nederland",
+      "client": "Universiteit van Nederland",
+      "category": "Explainers",
+      "year": "2023",
+      "tags": [
+        "explainer",
+        "education",
+        "animation"
+      ],
+      "summary": "Vaste beeldpartner, huisstijlbewaker en mede-formatbedenker — elke dag opnieuw inhoud naar beeld vertalen voor het grootste wetenschapsplatform van Nederland.",
+      "description": "De Universiteit van Nederland brengt wetenschappelijke kennis naar een breed publiek via korte online colleges. Studio Yoko is niet alleen de animatiestudio — we zijn de vaste visuele partner van de redactie.\n\nDat betekent: branding bewaken, elke nieuwe hoogleraar hetzelfde sterke beeld geven, en dagelijks meedenken over hoe complexe inhoud er het best uitziet. We zitten aan tafel bij de redactie, denken mee over formats en houden de visuele lijn strak — ook als er honderd afleveringen voorbijkomen.\n\nVan huisstijlpolitie tot formatontwikkelaar: wij zorgen dat de UvN er altijd uitziet zoals ze bedoeld is.",
+      "thumbnail": "assets/cases/universiteit-van-nederland/thumb.jpg",
+      "video_preview": "assets/cases/universiteit-van-nederland/preview.mp4",
+      "accent_color": "#0A4A35",
+      "size": "large",
+      "featured": true,
+      "assets": [
+        {
+          "type": "video",
+          "src": "assets/cases/universiteit-van-nederland/main.mp4"
+        },
+        {
+          "type": "image",
+          "src": "assets/cases/universiteit-van-nederland/01.jpg",
+          "alt": ""
+        },
+        {
+          "type": "image",
+          "src": "assets/cases/universiteit-van-nederland/02.jpg",
+          "alt": ""
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "slug": "zin-in-morgen",
+      "href": "zin-in-morgen.html",
+      "title": "Zin in Morgen",
+      "client": "Zin in Morgen",
+      "category": "Brand & Systeem",
+      "year": "2024",
+      "tags": [
+        "brand strategie",
+        "naming",
+        "identity",
+        "templates",
+        "redactie"
+      ],
+      "summary": "Naam, merk, systeem — we begeleidden Zin van workshopsessies naar een complete visuele toolkit die hun redactie zelfstandig in de lucht houdt.",
+      "description": "Zin in Morgen had een nieuw verhaal nodig — van naam tot het systeem waarmee ze dat verhaal elke dag opnieuw kunnen vertellen.\n\nWe startten met workshopsessies om te ontdekken wie ze zijn en wat ze willen uitstralen. Daaruit rolde een nieuwe naam: Zin. Kleurrijk, direct en vol energie.\n\nVervolgens bouwden we de volledige visuele identiteit: huisstijl, typografie, kleur en een set templates waarmee de redactie zelfstandig content kan maken — zonder telkens bij een bureau aan te kloppen.\n\nHet resultaat: een complete overdracht naar de redactie, zodat Zin vandaag publiceert en morgen verder groeit.",
+      "thumbnail": "assets/cases/zin/thumb.jpg",
+      "video_preview": null,
+      "accent_color": "#1A2EE8",
+      "size": "small",
+      "featured": true,
+      "assets": [
+        {
+          "type": "image",
+          "src": "assets/cases/zin/thumb.jpg",
+          "alt": "Zin in Morgen merkidentiteit"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "slug": "rewind",
+      "href": "rewind.html",
+      "title": "Rewind",
+      "client": "HUMAN / Rewind",
+      "category": "Animatie & Strategie",
+      "year": "Doorlopend",
+      "tags": [
+        "animatie",
+        "social",
+        "journalistiek",
+        "strategie",
+        "NPO"
+      ],
+      "summary": "Wekelijks de meest complexe nieuwsthema's vertalen naar animaties die jongeren op TikTok en Instagram vasthoudt — als vaste visuele partner van hét journalistieke NPO-social kanaal.",
+      "description": "Voor Rewind (HUMAN) vertalen we elke week ingewikkelde journalistieke thema's naar begrijpelijke animaties voor TikTok, Instagram en YouTube. Van verkiezingen tot overconsumptie.",
+      "thumbnail": "assets/cases/rewind/rewind-compilatie01 1.jpg",
+      "video_preview": null,
+      "accent_color": "#1244B5",
+      "size": "small",
+      "featured": true,
+      "assets": [
+        {
+          "type": "image",
+          "src": "assets/cases/rewind/thumb.jpg",
+          "alt": "Rewind — Jouw tijdlijn in perspectief"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "slug": "greenpeace",
+      "href": "greenpeace.html",
+      "title": "Greenpeace",
+      "client": "Greenpeace",
+      "category": "Explainers",
+      "year": "2024",
+      "tags": [
+        "explainer",
+        "activism",
+        "environment"
+      ],
+      "summary": "Klimaatfeiten overtuigen niemand meer. Bewegend beeld dat de urgentie voelbaar maakt, doet dat wel. Wij maakten de explainer die mensen aanzet tot actie, niet tot wanhoop.",
+      "description": "Greenpeace vroeg Studio Yoko een explainer te maken die mensen aanzet tot actie. Geen saaie grafieken, maar urgente, kleurrijke animatie die de boodschap meteen raak is.\n\nWe kozen voor felle kleuren, snelle cuts en een directe tone of voice — passend bij de missie van Greenpeace.",
+      "thumbnail": "assets/cases/greenpeace/thumb.jpg",
+      "thumbnail_logo": "assets/cases/greenpeace/logo.svg",
+      "video_preview": "assets/cases/greenpeace/Tippingpoint_header.mp4",
+      "accent_color": "#00A650",
+      "size": "large",
+      "featured": true,
+      "assets": [
+        {
+          "type": "video",
+          "src": "assets/cases/greenpeace/main.mp4"
+        },
+        {
+          "type": "image",
+          "src": "assets/cases/greenpeace/01.jpg",
+          "alt": ""
+        }
+      ],
+      "autoplay_preview": true,
+      "video_start_time": 2.5
+    },
+    {
+      "id": 20,
+      "slug": "heyu",
+      "href": "heyu.html",
+      "title": "HEY U",
+      "client": "Universiteit van Nederland",
+      "category": "Format & Concept",
+      "year": "2024",
+      "tags": [
+        "format",
+        "concept",
+        "naming",
+        "youtube",
+        "brand"
+      ],
+      "summary": "Professoren die internetvragen beantwoorden. Van concept tot naam, kleur en thumbnailsysteem — wij bedachten het format dat wetenschap direct maakt.",
+      "description": "HEY U is een YouTube-format voor de Universiteit van Nederland waarbij professoren vragen uit het publiek beantwoorden — van Reddit, van kijkers, van het internet. Direct, mensvormig en zonder academische drempel.\n\nStudio Yoko bedacht het format, ontwikkelde de naam na een uitgebreid namingtraject, en bouwde de complete visuele identiteit: kleurenpalet, logomark, thumbnailsysteem en production design.",
+      "thumbnail": "assets/cases/heyu/bts-set.jpg",
+      "video_preview": null,
+      "accent_color": "#1B0757",
+      "size": "medium",
+      "featured": true,
+      "assets": [
+        {
+          "type": "image",
+          "src": "assets/cases/heyu/03-thumb-hond.png",
+          "alt": "HEY U thumbnail — Hond met hernia"
+        },
+        {
+          "type": "image",
+          "src": "assets/cases/heyu/01-colors.png",
+          "alt": "HEY U kleurenpalet"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "slug": "polarsteps",
+      "href": "polarsteps.html",
+      "title": "Polarsteps",
+      "client": "Polarsteps",
+      "category": "Brand & Systeem",
+      "year": "2023",
+      "tags": [
+        "design system",
+        "brand",
+        "banners",
+        "motion",
+        "social"
+      ],
+      "summary": "Van merkstrategie naar systeem. Wij ontwikkelden de visuele taal van Polarsteps — van design system tot banners en een epische brand identity film.",
+      "description": "Polarsteps is de populairste reisapp van Nederland. Studio Yoko ontwikkelde het complete design system: een visuele taal die consistent werkt in alle uitingen — van social banners tot de brandpage en een cinematische brand ident film.",
+      "thumbnail": "assets/cases/polarsteps/thumb.jpg",
+      "video_preview": null,
+      "accent_color": "#E8341A",
+      "size": "medium",
+      "featured": true,
+      "assets": [
+        {
+          "type": "image",
+          "src": "assets/cases/polarsteps/thumb.jpg",
+          "alt": "Polarsteps design system"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "slug": "reference-man",
+      "title": "Reference Man",
+      "client": "BNNVARA",
+      "category": "Explainers",
+      "year": "2023",
+      "tags": [
+        "explainer",
+        "broadcast",
+        "BNNVARA"
+      ],
+      "summary": "Structurele bias is onzichtbaar — totdat je het laat zien. Samen met de BNNVARA-redactie vertaalden we abstracte data naar beeld dat mensen eindelijk begrijpen.",
+      "description": "Reference Man onderzoekt hoe de 'standaard mens' in wetenschap en samenleving altijd een witte man van middelbare leeftijd is — en wat dat betekent voor iedereen die niet in dat plaatje past.\n\nStudio Yoko maakte de ondersteunende animaties: informerend, visueel sterk en toegankelijk.",
+      "thumbnail": "assets/cases/reference-man/thumb.jpg",
+      "video_preview": "assets/cases/reference-man/preview.mp4",
+      "accent_color": "#5D6169",
+      "size": "medium",
+      "featured": false,
+      "assets": [
+        {
+          "type": "image",
+          "src": "assets/cases/reference-man/01.jpg",
+          "alt": ""
+        },
+        {
+          "type": "video",
+          "src": "assets/cases/reference-man/main.mp4"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "argos-vpro",
+      "title": "Argos",
+      "client": "VPRO",
+      "category": "Brandmovies",
+      "year": "2023",
+      "tags": [
+        "brandmovie",
+        "ident",
+        "broadcast"
+      ],
+      "summary": "Argos maakt journalistiek die telt. Wij zorgden dat hun opening dat ook uitstraalt — zodat elke aflevering begint met de autoriteit die het verhaal verdient.",
+      "description": "Argos is het toonaangevende actualiteitenprogramma van VPRO. Studio Yoko maakte de visuele identiteit — een krachtige combinatie van journalistieke beeldtaal en animatie.\n\nDe stijl is editorial en serieus, maar nooit saai. We gebruikten papierstructuren, typografie en bewegend beeld om de journalistieke aard van het programma te vertalen naar animatie.",
+      "thumbnail": "assets/cases/argos-vpro/thumb.jpg",
+      "video_preview": "assets/cases/argos-vpro/preview.mp4",
+      "accent_color": "#8B7355",
+      "size": "medium",
+      "featured": true,
+      "assets": [
+        {
+          "type": "video",
+          "src": "assets/cases/argos-vpro/main.mp4"
+        },
+        {
+          "type": "image",
+          "src": "assets/cases/argos-vpro/01.jpg",
+          "alt": ""
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "slug": "nationale-milieucampagne",
+      "title": "Nationale Milieucampagne",
+      "client": "Nationale Milieucampagne",
+      "category": "Explainers",
+      "year": "2024",
+      "tags": [
+        "explainer",
+        "environment",
+        "campagne"
+      ],
+      "summary": "Complexe gedragsverandering uitleggen zonder mensen te betuttelen is een vak apart. Wij deden het in één animatie die breed ingezet kon worden.",
+      "description": "Voor de Nationale Milieucampagne maakte Studio Yoko een explainer over het thema tabletbus opladen — toegankelijk, helder en breed inzetbaar.\n\nDe animatie is ontworpen om complexe informatie snel begrijpelijk te maken voor een breed publiek.",
+      "thumbnail": "assets/cases/nationale-milieucampagne/thumb.jpg",
+      "video_preview": "assets/cases/nationale-milieucampagne/preview.mp4",
+      "accent_color": "#4A9B6F",
+      "size": "medium",
+      "featured": true,
+      "assets": [
+        {
+          "type": "video",
+          "src": "assets/cases/nationale-milieucampagne/main.mp4"
+        },
+        {
+          "type": "image",
+          "src": "assets/cases/nationale-milieucampagne/01.jpg",
+          "alt": ""
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "slug": "dokter-in-de-zaal",
+      "title": "Dokter in de Zaal",
+      "client": "RTL4",
+      "category": "Brandmovies",
+      "year": "2022",
+      "tags": [
+        "brandmovie",
+        "ident",
+        "broadcast",
+        "RTL"
+      ],
+      "summary": "Medische kennis toegankelijk maken voor iedereen — dat is precies wat Dokter in de Zaal doet. Wij zorgden dat de broadcast-identiteit dat gevoel versterkt, niet ondermijnt.",
+      "description": "Dokter in de Zaal is een populair RTL4-programma. Studio Yoko maakte de volledige broadcast-identiteit — van de opening title tot de bumpers en tussenschermen.\n\nDe animatiestijl combineert medische beeldtaal met een warme, toegankelijke sfeer die past bij het format.",
+      "thumbnail": "assets/cases/dokter-in-de-zaal/thumb.jpg",
+      "video_preview": "assets/cases/dokter-in-de-zaal/preview.mp4",
+      "accent_color": "#2B6CB0",
+      "size": "large",
+      "featured": true,
+      "assets": [
+        {
+          "type": "image",
+          "src": "assets/cases/dokter-in-de-zaal/01.jpg",
+          "alt": ""
+        },
+        {
+          "type": "video",
+          "src": "assets/cases/dokter-in-de-zaal/main.mp4"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "slug": "kinderen-voor-kinderen",
+      "title": "Kinderen voor Kinderen",
+      "client": "BNNVARA",
+      "category": "Motion branding",
+      "year": "2024",
+      "tags": [
+        "motion branding",
+        "broadcast",
+        "ident"
+      ],
+      "summary": "Hoe vertaal je de energie van 300 zingende kinderen naar animatie? Door het echt te laten voelen — kleurrijk, snel, eerlijk.",
+      "description": "Kinderen voor Kinderen is een van de meest geliefde kinderprogramma's van Nederland. Studio Yoko verzorgde de volledige animatie-identiteit voor het seizoen — van de intro tot de tussenstukjes.\n\nDe uitdaging was om een stijl te vinden die past bij de energie van de muziek en de beleving van kinderen: kleurrijk, snel, eerlijk. Samen met de redactie van BNNVARA ontwikkelden we een visuele taal die de show aanvult zonder te overheersen.\n\nHet resultaat is een volledig geanimeerde broadcast-identiteit die seizoen na seizoen terugkeert.",
+      "thumbnail": "assets/cases/kinderen-voor-kinderen/thumb.jpg",
+      "video_preview": "assets/cases/kinderen-voor-kinderen/preview.mp4",
+      "accent_color": "#F7B23B",
+      "size": "large",
+      "featured": false,
+      "assets": [
+        {
+          "type": "image",
+          "src": "assets/cases/kinderen-voor-kinderen/01.jpg",
+          "alt": ""
+        },
+        {
+          "type": "video",
+          "src": "assets/cases/kinderen-voor-kinderen/main.mp4"
+        },
+        {
+          "type": "image",
+          "src": "assets/cases/kinderen-voor-kinderen/02.jpg",
+          "alt": ""
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "jules-unlimited",
+      "title": "Jules Unlimited",
+      "client": "BNNVARA",
+      "category": "Brandmovies",
+      "year": "2023",
+      "tags": [
+        "brandmovie",
+        "ident",
+        "broadcast"
+      ],
+      "summary": "Een programma dat niemand kon omschrijven, had een opening nodig die precies dat deed. Cinematisch, donker en onmiskenbaar Jules.",
+      "description": "Jules Unlimited is een uniek documentaire-format van BNNVARA. Voor de nieuwe reeks maakte Studio Yoko de opening title sequence en visuele identiteit.\n\nDe visuele taal is donker, cinematisch en mysterieus — passend bij het rauwe karakter van de show. We combineerden live-action beelden met geanimeerde elementen om de wereld van Jules Unlimited tot leven te brengen.",
+      "thumbnail": "assets/cases/jules-unlimited/thumb.jpg",
+      "video_preview": "assets/cases/jules-unlimited/preview.mp4",
+      "accent_color": "#1A1A2E",
+      "size": "small",
+      "featured": false,
+      "assets": [
+        {
+          "type": "video",
+          "src": "assets/cases/jules-unlimited/main.mp4"
+        },
+        {
+          "type": "image",
+          "src": "assets/cases/jules-unlimited/01.jpg",
+          "alt": ""
+        },
+        {
+          "type": "image",
+          "src": "assets/cases/jules-unlimited/02.jpg",
+          "alt": ""
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "insify",
+      "title": "Insify",
+      "client": "Insify",
+      "category": "Motion branding",
+      "year": "2024",
+      "tags": [
+        "motion branding",
+        "campagne",
+        "social"
+      ],
+      "summary": "Verzekeringsmerken zien er allemaal hetzelfde uit — saai en betrouwbaar. Insify niet. We gaven ze beweging die zo fris is als hun product.",
+      "description": "Insify is een Nederlandse verzekeringsstartup die de markt op zijn kop wil zetten. Studio Yoko ontwikkelde de volledige motion branding en een sociale mediacampagne.\n\nDe visuele taal is energiek, groen en direct — precies zoals het merk zichzelf positioneert. We maakten alles van logo-animaties tot social ads.",
+      "thumbnail": "assets/cases/insify/thumb.jpg",
+      "video_preview": "assets/cases/insify/preview.mp4",
+      "accent_color": "#8DC63F",
+      "size": "medium",
+      "featured": false,
+      "assets": [
+        {
+          "type": "image",
+          "src": "assets/cases/insify/01.jpg",
+          "alt": ""
+        },
+        {
+          "type": "video",
+          "src": "assets/cases/insify/main.mp4"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "zomerschool-vrt",
+      "title": "Zomerschool",
+      "client": "VRT",
+      "category": "Brandmovies",
+      "year": "2023",
+      "tags": [
+        "brandmovie",
+        "ident",
+        "broadcast",
+        "kids"
+      ],
+      "summary": "Kinderen overtuigen dat leren in de zomer leuk is, is misschien wel de moeilijkste klus. Met de juiste animaties werkt het.",
+      "description": "Zomerschool is een zomers educatief programma van de Vlaamse publieke omroep VRT. Studio Yoko maakte de volledige animatie-identiteit: vrolijk, kleurrijk en direct aansprekend voor kinderen.\n\nWe ontwikkelden een cast van geanimeerde karakters die de presentatoren door het programma begeleiden.",
+      "thumbnail": "assets/cases/zomerschool-vrt/thumb.jpg",
+      "video_preview": "assets/cases/zomerschool-vrt/preview.mp4",
+      "accent_color": "#FF6B6B",
+      "size": "small",
+      "featured": false,
+      "assets": [
+        {
+          "type": "image",
+          "src": "assets/cases/zomerschool-vrt/01.jpg",
+          "alt": ""
+        },
+        {
+          "type": "video",
+          "src": "assets/cases/zomerschool-vrt/main.mp4"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "dikpijps",
+      "title": "Dikpijps",
+      "client": "Dikpijps",
+      "category": "Motion branding",
+      "year": "2023",
+      "tags": [
+        "motion branding",
+        "brand identity"
+      ],
+      "summary": "Een merk met maximale persoonlijkheid had een visuele taal nodig die net zo hard gaat. Die gaven we ze.",
+      "description": "Dikpijps is een merk met een eigen universum. Studio Yoko vertaalde die wereld naar bewegend beeld: een volledige motion identity met eigen kleur, typografie en energie.\n\nNeon, snel en ongekend direct — de animaties passen perfect bij het brutale karakter van het merk.",
+      "thumbnail": "assets/cases/dikpijps/thumb.jpg",
+      "video_preview": "assets/cases/dikpijps/preview.mp4",
+      "accent_color": "#D4FF00",
+      "size": "large",
+      "featured": false,
+      "assets": [
+        {
+          "type": "image",
+          "src": "assets/cases/dikpijps/01.jpg",
+          "alt": ""
+        },
+        {
+          "type": "video",
+          "src": "assets/cases/dikpijps/main.mp4"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "slug": "the-connection-bnnvara",
+      "title": "The Connection",
+      "client": "BNNVARA",
+      "category": "Brandmovies",
+      "year": "2022",
+      "tags": [
+        "brandmovie",
+        "ident",
+        "broadcast"
+      ],
+      "summary": "Menselijke verbinding is abstract. Wij maakten het voelbaar — in één opening van dertig seconden.",
+      "description": "The Connection is een meeslepend BNNVARA-programma over menselijke verbinding. Studio Yoko maakte de opening title sequence — een cinematisch kosmisch spektakel van spiralen, cirkels en licht.\n\nDe animaties zijn in After Effects gemaakt, met een combinatie van particle systems en 3D elementen om het gevoel van verbinding en eindeloosheid te verbeelden.",
+      "thumbnail": "assets/cases/the-connection/thumb.jpg",
+      "video_preview": "assets/cases/the-connection/preview.mp4",
+      "accent_color": "#6B35D9",
+      "size": "medium",
+      "featured": false,
+      "assets": [
+        {
+          "type": "video",
+          "src": "assets/cases/the-connection/main.mp4"
+        },
+        {
+          "type": "image",
+          "src": "assets/cases/the-connection/01.jpg",
+          "alt": ""
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "slug": "hay",
+      "title": "Hay",
+      "client": "Hay",
+      "category": "Motion branding",
+      "year": "2022",
+      "tags": [
+        "motion branding",
+        "design",
+        "furniture"
+      ],
+      "summary": "Hay beweegt niet veel — en dat is precies goed zo. We gaven ze animatie die net zo terughoudend en doordacht is als hun meubels.",
+      "description": "Hay is een Scandinavisch designmerk dat bekend staat om zijn heldere esthetiek en functioneel design. Studio Yoko maakte de motion branding: rustig, zelfverzekerd en minimalistisch.\n\nGroen. Wit. Beweging die je niet verstoort maar aanvult.",
+      "thumbnail": "assets/cases/hay/thumb.jpg",
+      "video_preview": "assets/cases/hay/preview.mp4",
+      "accent_color": "#2D5016",
+      "size": "small",
+      "featured": false,
+      "assets": [
+        {
+          "type": "image",
+          "src": "assets/cases/hay/01.jpg",
+          "alt": ""
+        },
+        {
+          "type": "video",
+          "src": "assets/cases/hay/main.mp4"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "slug": "nuut",
+      "title": "Nuut",
+      "client": "Nuut",
+      "category": "Explainers",
+      "year": "2024",
+      "tags": [
+        "explainer",
+        "brand",
+        "startup"
+      ],
+      "summary": "Een nieuw voedingsconcept dat mensen nog niet kennen, heeft één kans om te overtuigen. Wij zorgden dat die kans raak was.",
+      "description": "Nuut is een Nederlandse startup met een helder product en een directe boodschap. Studio Yoko maakte de explainer video: minty, fris en to-the-point.\n\nDe animatie combineert productdemonstration met merkidentiteit in één vloeiende video.",
+      "thumbnail": "assets/cases/nuut/thumb.jpg",
+      "video_preview": "assets/cases/nuut/preview.mp4",
+      "accent_color": "#7ECDC8",
+      "size": "small",
+      "featured": false,
+      "assets": [
+        {
+          "type": "image",
+          "src": "assets/cases/nuut/01.jpg",
+          "alt": ""
+        },
+        {
+          "type": "video",
+          "src": "assets/cases/nuut/main.mp4"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "slug": "knrm",
+      "title": "KNRM",
+      "client": "KNRM",
+      "category": "Motion branding",
+      "year": "2023",
+      "tags": [
+        "motion branding",
+        "non-profit",
+        "maritime"
+      ],
+      "summary": "De KNRM redt levens. Hun communicatie moest dat uitstralen — kracht, precisie en vertrouwen in bewegend beeld.",
+      "description": "De KNRM redt levens op zee. Studio Yoko maakte de motion branding die de kracht en betrouwbaarheid van de organisatie uitstraalt.\n\nNavy, sterk en direct — een identiteit die vertrouwen wekt.",
+      "thumbnail": "assets/cases/knrm/thumb.jpg",
+      "video_preview": "assets/cases/knrm/preview.mp4",
+      "accent_color": "#003F8A",
+      "size": "medium",
+      "featured": false,
+      "assets": [
+        {
+          "type": "image",
+          "src": "assets/cases/knrm/01.jpg",
+          "alt": ""
+        },
+        {
+          "type": "video",
+          "src": "assets/cases/knrm/main.mp4"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "slug": "winter-games",
+      "title": "Winter Games",
+      "client": "Winter Games",
+      "category": "Motion branding",
+      "year": "2023",
+      "tags": [
+        "motion branding",
+        "events",
+        "sports"
+      ],
+      "summary": "Sport heeft energie nodig voor de eerste fluit klinkt. Wij zetten de toon.",
+      "description": "Winter Games vroeg Studio Yoko om een bewegende merkidentiteit die energie, sport en spektakel uitstraalt.\n\nPaars, krachtig en vol beweging — de animaties zetten de toon voor een onvergetelijk evenement.",
+      "thumbnail": "assets/cases/winter-games/thumb.jpg",
+      "video_preview": "assets/cases/winter-games/preview.mp4",
+      "accent_color": "#5B3EC9",
+      "size": "small",
+      "featured": false,
+      "assets": [
+        {
+          "type": "image",
+          "src": "assets/cases/winter-games/01.jpg",
+          "alt": ""
+        },
+        {
+          "type": "video",
+          "src": "assets/cases/winter-games/main.mp4"
+        }
+      ]
+    }
+  ]
+};

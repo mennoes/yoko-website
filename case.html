@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Case — Studio Yoko</title>
+    <meta name="description" id="page-desc" content="">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page--case">
+
+    <!-- ===== NAVIGATIE ===== -->
+    <nav class="nav nav--dark" id="nav">
+        <div class="nav__brand"><a href="index.html" class="nav__logo"><img src="assets/logo.svg" alt="Studio Yoko"></a><span class="nav__tagline">design en animatie studio</span></div>
+        <div class="nav__links">
+            <a href="work.html">work</a>
+            <a href="about.html">about</a>
+            <a href="/#contact">contact</a>
+        </div>
+    </nav>
+
+    <!-- ===== CASE HERO ===== -->
+    <section class="case-hero" id="case-hero">
+        <div class="case-hero__media" id="case-hero-media"></div>
+        <div class="case-hero__overlay">
+            <div class="case-hero__meta">
+                <span class="case-hero__category" id="case-category"></span>
+            </div>
+            <h1 class="case-hero__title" id="case-title"></h1>
+        </div>
+    </section>
+
+    <!-- ===== CASE INFO ===== -->
+    <section class="case-info">
+        <div class="case-info__grid">
+            <div class="case-meta">
+                <div class="case-meta__item">
+                    <span class="case-meta__label">Client</span>
+                    <span class="case-meta__value" id="case-client"></span>
+                </div>
+                <div class="case-meta__item">
+                    <span class="case-meta__label">Category</span>
+                    <span class="case-meta__value" id="case-category-detail"></span>
+                </div>
+<div class="case-meta__item" id="case-tags-block">
+                    <span class="case-meta__label">Tags</span>
+                    <div class="case-tags" id="case-tags"></div>
+                </div>
+            </div>
+            <div class="case-description" id="case-description"></div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section class="case-gallery" id="case-gallery"></section>
+
+    <!-- ===== VOLGENDE CASE ===== -->
+    <section class="case-next" id="case-next">
+        <img class="case-next__bg" id="case-next-bg" src="" alt="" aria-hidden="true">
+        <a class="case-next__link" id="case-next-link" href="#">
+            <span class="case-next__label">Next project</span>
+            <h2 class="case-next__title" id="case-next-title"></h2>
+            <div class="case-next__arrow">→</div>
+        </a>
+    </section>
+
+    <!-- ===== FOOTER MINI ===== -->
+    <footer class="footer footer--mini">
+        <div class="footer__contact">
+            <div class="footer__contact-inner">
+                <h2 class="footer__title">Let's talk.</h2>
+                <a href="mailto:hello@studioyoko.nl" class="cta-link footer__email">
+                    <span class="cta-arrow">→</span> hello@studioyoko.nl
+                </a>
+                <div class="footer__address-block">
+                    <address class="footer__address">
+                        Kattenburgerstraat 5<br>
+                        1018 JA Amsterdam
+                    </address>
+                    <div class="footer__divider"></div>
+                </div>
+                <p class="footer__legal">©2025 Studio Yoko BV&nbsp;&nbsp;·&nbsp;&nbsp;Privacy&nbsp;&nbsp;·&nbsp;&nbsp;Legal</p>
+            </div>
+        </div>
+        <div class="footer__team">
+            <h2 class="footer__team-title">Meet the team.</h2>
+            <div class="footer__team-photos"></div>
+        </div>
+    </footer>
+
+    <script src="data/cases.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/case.js"></script>
+</body>
+</html>

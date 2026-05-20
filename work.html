@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work — Studio Yoko</title>
+    <meta name="description" content="Bekijk al het werk van Studio Yoko: explainers, broadcast, commercials en social media animaties.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page--work">
+
+    <!-- ===== NAVIGATIE ===== -->
+    <nav class="nav" id="nav">
+        <div class="nav__brand"><a href="index.html" class="nav__logo"><img src="assets/logo.svg" alt="Studio Yoko"></a><span class="nav__tagline">design en animatie studio</span></div>
+        <div class="nav__links">
+            <a href="work.html" class="nav__link--active">work</a>
+            <a href="about.html">about</a>
+            <a href="/#contact">contact</a>
+        </div>
+    </nav>
+
+    <!-- ===== WORK HEADER ===== -->
+    <header class="page-header">
+        <h1 class="page-header__title">Work</h1>
+
+        <!-- Categorie filters -->
+        <div class="filters" id="filters">
+            <button class="filter-btn filter-btn--active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="Motion branding">Motion branding</button>
+            <button class="filter-btn" data-filter="Brandmovies">Brandmovies</button>
+            <button class="filter-btn" data-filter="Explainers">Explainers</button>
+            <button class="filter-btn" data-filter="Campagnes">Campagnes</button>
+        </div>
+    </header>
+
+    <!-- ===== WORK GRID ===== -->
+    <main class="work work--page">
+        <div class="work__grid work__grid--all" id="work-grid">
+            <!-- Geladen vanuit data/cases.json -->
+        </div>
+    </main>
+
+    <!-- ===== FOOTER MINI ===== -->
+    <footer class="footer footer--mini" id="contact">
+        <div class="footer__contact">
+            <div class="footer__contact-inner">
+                <h2 class="footer__title">Contact us.</h2>
+                <a href="mailto:hello@studioyoko.nl" class="cta-link footer__email">
+                    <span class="cta-arrow">→</span> hello@studioyoko.nl
+                </a>
+                <div class="footer__address-block">
+                    <address class="footer__address">
+                        Kattenburgerstraat 5<br>
+                        1018 JA Amsterdam
+                    </address>
+                    <div class="footer__divider"></div>
+                </div>
+                <p class="footer__legal">Privacy&nbsp;&nbsp;|&nbsp;&nbsp;Legal&nbsp;&nbsp;|&nbsp;&nbsp;Colofon&nbsp;&nbsp;|&nbsp;&nbsp;©2025 Studio Yoko BV</p>
+            </div>
+        </div>
+        <div class="footer__team">
+            <h2 class="footer__team-title">Meet the team.</h2>
+            <div class="footer__team-photos">
+                <!-- <img src="assets/images/team-01.jpg" alt=""> -->
+            </div>
+        </div>
+    </footer>
+
+    <script src="data/cases.js"></script>
+    <script>window.YOKO_CONFIG = { mode: 'work', maxItems: 999 };</script>
+    <script src="js/main.js"></script>
+</body>
+</html>

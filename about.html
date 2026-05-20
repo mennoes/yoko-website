@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Studio Yoko</title>
+    <meta name="description" content="Studio Yoko is een animatie- en designstudio in Amsterdam. We maken werk dat ergens over gaat.">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .studio-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 var(--pad-x);
+        }
+
+        /* Intro: staande foto links, tekst rechts */
+        .studio-intro {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: clamp(40px, 6vw, 80px);
+            align-items: start;
+            padding-top: clamp(100px, 13vw, 180px);
+            padding-bottom: clamp(60px, 8vw, 100px);
+        }
+        .studio-intro__img {
+            position: relative;
+        }
+        .studio-intro__img img {
+            width: 100%;
+            display: block;
+            border-radius: 6px;
+            object-fit: cover;
+        }
+        .studio-intro__text {
+            padding-top: clamp(8px, 2vw, 32px);
+        }
+        .studio-intro__label {
+            font-size: clamp(11px, 0.9vw, 13px);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(32,32,32,0.4);
+            margin-bottom: 28px;
+        }
+        .studio-intro__headline {
+            font-size: clamp(26px, 3.5vw, 52px);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: var(--dark);
+            margin-bottom: clamp(28px, 3vw, 48px);
+        }
+        .studio-intro__body p {
+            font-size: clamp(16px, 1.4vw, 21px);
+            line-height: 1.6;
+            letter-spacing: -0.01em;
+            color: var(--dark);
+            margin-bottom: 1.2em;
+        }
+        .studio-intro__body p:last-child { margin-bottom: 0; }
+        .studio-intro__body p.muted {
+            color: rgba(32,32,32,0.5);
+        }
+
+        /* Onderste foto's — twee naast elkaar */
+        .studio-photos-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            padding-bottom: 5px;
+        }
+        .studio-photos-row img {
+            width: 100%;
+            height: clamp(220px, 28vw, 480px);
+            object-fit: cover;
+            display: block;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 700px) {
+            .studio-intro {
+                grid-template-columns: 1fr;
+            }
+            .studio-photos-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="page--studio">
+
+    <!-- ===== NAVIGATIE ===== -->
+    <nav class="nav" id="nav">
+        <div class="nav__brand"><a href="index.html" class="nav__logo"><img src="assets/logo.svg" alt="Studio Yoko"></a><span class="nav__tagline">design en animatie studio</span></div>
+        <div class="nav__links">
+            <a href="work.html">work</a>
+            <a href="about.html" class="nav__link--active">about</a>
+            <a href="index.html#contact">contact</a>
+        </div>
+    </nav>
+
+    <!-- ===== INTRO — foto links, tekst rechts ===== -->
+    <div class="studio-wrap">
+        <section class="studio-intro">
+            <div class="studio-intro__img">
+                <img src="assets/about-01.jpg" alt="Studio Yoko werkruimte Amsterdam">
+            </div>
+            <div class="studio-intro__text">
+                <p class="studio-intro__label">About</p>
+                <h1 class="studio-intro__headline">Design en animatie voor ideeën die het verdienen gezien te worden.</h1>
+                <div class="studio-intro__body">
+                    <p>We houden van werk dat ergens over gaat.<br>
+                    Ideeën die iets uitleggen. Verhalen die blijven hangen.</p>
+                    <p>We maken ze helder in beeld —<br>
+                    en bouwen het zo dat het blijft werken.</p>
+                    <p class="muted">Niet als losse productie,<br>
+                    maar als iets dat klopt, groeit en herhaald kan worden.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== ONDERSTE FOTO'S ===== -->
+    <section class="studio-photos-row">
+        <img src="assets/about-02.jpg" alt="Studio Yoko team aan het werk">
+        <img src="assets/about-03.jpg" alt="Studio Yoko studio ruimte">
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer footer--mini" id="contact">
+        <div class="footer__contact">
+            <div class="footer__contact-inner">
+                <h2 class="footer__title">Let's talk.</h2>
+                <a href="mailto:hello@studioyoko.nl" class="cta-link footer__email">
+                    <span class="cta-arrow">→</span> hello@studioyoko.nl
+                </a>
+                <div class="footer__address-block">
+                    <address class="footer__address">
+                        Kattenburgerstraat 5<br>
+                        1018 JA Amsterdam
+                    </address>
+                    <div class="footer__divider"></div>
+                </div>
+                <p class="footer__legal">©2025 Studio Yoko BV&nbsp;&nbsp;·&nbsp;&nbsp;Privacy&nbsp;&nbsp;·&nbsp;&nbsp;Legal</p>
+            </div>
+        </div>
+        <div class="footer__team">
+            <h2 class="footer__team-title">Meet the team.</h2>
+            <div class="footer__team-photos"></div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

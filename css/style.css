@@ -107,7 +107,8 @@ a { color: inherit; }
     display: block;
 }
 .nav__description {
-    font-size: clamp(20px, 2.8vw, 46px);
+    font-size: clamp(22px, 3.4vw, 56px);
+    white-space: nowrap;
     font-weight: 400;
     line-height: 1.25;
     color: var(--dark);
@@ -118,7 +119,7 @@ a { color: inherit; }
 .nav__links { display: flex; gap: 28px; }
 .nav__links a {
     font-family: var(--font);
-    font-size: clamp(15px, 1.1vw, 17px);
+    font-size: clamp(17px, 1.5vw, 24px);
     font-weight: 400;
     letter-spacing: -0.2px;
     color: var(--dark);

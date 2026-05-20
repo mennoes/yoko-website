@@ -107,7 +107,7 @@ a { color: inherit; }
     display: block;
 }
 .nav__description {
-    font-size: clamp(18px, 1.8vw, 28px);
+    font-size: clamp(22px, 2.4vw, 38px);
     font-weight: 400;
     line-height: 1;
     color: var(--dark);

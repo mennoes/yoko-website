@@ -112,6 +112,7 @@ a { color: inherit; }
     line-height: 1.25;
     color: var(--dark);
     max-width: 900px;
+    align-self: start;
     opacity: var(--nav-fade);
     transition: opacity 0.1s ease;
 }

@@ -28,8 +28,8 @@
     --cream:  #edeae4;
     --font:   'Aeonik', 'DM Sans', sans-serif;
 
-    --pad-x:  clamp(24px, 4.44vw, 64px);
-    --pad-x-wide: clamp(40px, 8vw, 140px);
+    --pad-x:  clamp(32px, 8vw, 160px);
+    --pad-x-wide: clamp(48px, 12vw, 240px);
     --grid-gap: 5px;
     --nav-pad: clamp(20px, 3vw, 40px);
 }

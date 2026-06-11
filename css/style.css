@@ -112,10 +112,10 @@ a { color: inherit; }
     transition: opacity 0.1s ease;
 }
 .nav__headline {
-    font-size: clamp(16px, 1.6vw, 24px);
-    font-weight: 400;
+    font-size: clamp(18px, 1.9vw, 28px);
+    font-weight: 700;
     line-height: 1.2;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.4px;
     color: var(--dark);
 }
 .nav__sub {

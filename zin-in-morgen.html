@@ -6,6 +6,189 @@
     <title>Zin in Morgen — Studio Yoko</title>
     <meta name="description" content="Van workshopsessies naar naam, merk en templates — Studio Yoko begeleidde Zin in Morgen van nul naar een complete visuele taal die de redactie zelfstandig in de lucht houdt.">
     <link rel="stylesheet" href="css/style.css?v=2">
+    <style>
+        /* ===== INTRO ===== */
+        .zin-intro {
+            background: var(--cream);
+            padding: clamp(48px, 6vw, 80px) var(--pad-x);
+            border-bottom: 1px solid rgba(32,32,32,0.08);
+        }
+        .zin-intro__summary {
+            font-size: clamp(18px, 2vw, 28px);
+            font-weight: 400;
+            line-height: 1.55;
+            letter-spacing: -0.3px;
+            color: var(--dark);
+            max-width: 780px;
+        }
+
+        /* ===== PROCESS SWIPE ===== */
+        .zin-process {
+            background: var(--dark);
+            padding: clamp(48px, 6vw, 80px) 0 clamp(48px, 6vw, 80px) var(--pad-x);
+            overflow: hidden;
+        }
+        .zin-process__label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(237,234,228,0.35);
+            margin-bottom: clamp(24px, 3vw, 40px);
+            padding-right: var(--pad-x);
+        }
+        .zin-process__track {
+            display: flex;
+            gap: clamp(16px, 2vw, 24px);
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding-right: var(--pad-x);
+        }
+        .zin-process__track::-webkit-scrollbar { display: none; }
+        .zin-process__step {
+            flex: 0 0 clamp(300px, 38vw, 520px);
+            scroll-snap-align: start;
+            background: rgba(237,234,228,0.05);
+            border: 1px solid rgba(237,234,228,0.08);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .zin-process__step-copy {
+            padding: clamp(28px, 3vw, 40px);
+            flex: 1;
+        }
+        .zin-process__num {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            color: rgba(237,234,228,0.3);
+            margin-bottom: 16px;
+        }
+        .zin-process__title {
+            font-size: clamp(22px, 2.5vw, 36px);
+            font-weight: 400;
+            letter-spacing: -0.8px;
+            line-height: 1.1;
+            color: var(--cream);
+            margin-bottom: clamp(12px, 1.5vw, 18px);
+        }
+        .zin-process__desc {
+            font-size: clamp(14px, 1.1vw, 16px);
+            line-height: 1.65;
+            color: rgba(237,234,228,0.55);
+        }
+        .zin-process__img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+        }
+        .zin-process__img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+        }
+        .zin-process__img--placeholder {
+            background: rgba(237,234,228,0.04);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .zin-process__img--placeholder span {
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(237,234,228,0.2);
+        }
+
+        /* ===== BENTO GRIDS ===== */
+        .zin-bento { overflow: hidden; }
+        .zin-bento--cream { background: var(--cream); }
+        .zin-bento--dark  { background: var(--dark); }
+        .zin-bento--flush { line-height: 0; }
+
+        .zin-bento__grid {
+            display: grid;
+            gap: 4px;
+        }
+
+        /* Logo + kleuren + gradients: 2-col */
+        .zin-bento__grid--logo {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            padding: 4px;
+        }
+        .zin-bento__cell--logo {
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(32px, 5vw, 64px);
+            min-height: clamp(240px, 30vw, 480px);
+        }
+        .zin-bento__cell--logo img { width: 100%; max-width: 320px; }
+        .zin-bento__cell--colors {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+        }
+        .zin-bento__cell--gradients {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+        }
+
+        /* Subbrands + type: wide left, small right */
+        .zin-bento__grid--brand {
+            grid-template-columns: 1.6fr 1fr;
+            padding: 4px;
+        }
+
+        /* Thumbs: full width */
+        .zin-bento__grid--thumbs { padding: 0; }
+        .zin-bento__cell--full img { width: 100%; display: block; }
+
+        /* Social */
+        .zin-bento__grid--social {
+            grid-template-columns: 1fr 1fr;
+            align-items: start;
+            padding: 4px;
+        }
+
+        /* Banners */
+        .zin-bento__grid--banners {
+            grid-template-columns: 1fr 1fr;
+            padding: 4px;
+        }
+
+        /* All cells: images fill */
+        .zin-bento__cell img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .zin-bento__cell--wide { grid-column: span 2; }
+        .zin-bento__cell--tall { align-self: stretch; }
+
+        @media (max-width: 640px) {
+            .zin-process__step { flex: 0 0 88vw; }
+            .zin-bento__grid--logo,
+            .zin-bento__grid--brand,
+            .zin-bento__grid--social,
+            .zin-bento__grid--banners { grid-template-columns: 1fr; }
+            .zin-bento__cell--logo { grid-row: auto; min-height: 200px; }
+            .zin-bento__cell--colors,
+            .zin-bento__cell--gradients { grid-column: auto; grid-row: auto; }
+            .zin-bento__cell--wide { grid-column: span 1; }
+        }
+    </style>
 </head>
 <body class="page--case">
 
@@ -32,107 +215,134 @@
         </div>
     </section>
 
-    <!-- ===== 1. CONTEXT ===== -->
-    <section class="cs cs--cream">
-        <div class="cs__intro">
-            <div class="cs__meta">
-                <p class="cs__summary">Naming, merkidentiteit en redactionele templates voor Zin in Morgen (KRO NCRV).</p>
-            </div>
-            <div>
-                <p class="cs__label js-fade">Context</p>
-                <h2 class="cs__headline js-fade">Van naamloze redactie naar een merk dat dagelijks publiceert.</h2>
-                <div class="cs__body js-fade">
-                    <p>KRO NCRV had een digitaal contentplatform dat dagelijks publiceert op YouTube, Instagram en Facebook — maar nog geen eigen gezicht. De redactie werkte hard, maar elke aflevering zag er net iets anders uit.</p>
+    <!-- ===== INTRO ===== -->
+    <section class="zin-intro">
+        <p class="zin-intro__summary">Naming, merkidentiteit en redactionele templates voor Zin in Morgen (KRO NCRV). Van naamloze redactie naar een merk dat dagelijks publiceert.</p>
+    </section>
+
+    <!-- ===== PROCESS SWIPE ===== -->
+    <section class="zin-process">
+        <div class="zin-process__label">Het proces</div>
+        <div class="zin-process__track">
+
+            <article class="zin-process__step">
+                <div class="zin-process__step-copy">
+                    <span class="zin-process__num">01</span>
+                    <h3 class="zin-process__title">Uitvraag</h3>
+                    <p class="zin-process__desc">Via vragen en voorbeelden legden we samen de voorkeur vast op een matrix. Zwaar of licht? Zingeving of ZIN? Het gesprek bracht meer op dan de antwoorden.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== 2. PROBLEEM ===== -->
-    <section class="cs cs--dark">
-        <p class="cs__label js-fade">Probleem</p>
-        <h2 class="cs__headline js-fade">Geen naam, geen systeem, geen herkenbaarheid.</h2>
-        <div class="cs__body js-fade">
-            <p>Zonder visuele taal was elk stuk content een vluchtige impressie. Niets bleef hangen, niets bouwde op. De redactie kon niet zelfstandig verder — voor elk nieuw format moesten ze terug naar een bureau.</p>
-        </div>
-    </section>
-
-    <!-- ===== 3. INZICHT ===== -->
-    <section class="cs cs--cream">
-        <p class="cs__label js-fade">Inzicht</p>
-        <h2 class="cs__headline js-fade">De redactie heeft geen bureau nodig. Ze hebben een systeem nodig.</h2>
-        <div class="cs__body js-fade">
-            <p>Een merk is pas sterk als het team het zelf kan bedienen. Niet alleen keuzes vastleggen — maar ze inbouwen in tools die de redactie dagelijks gebruiken.</p>
-        </div>
-        <div class="cs__img js-fade" style="margin-top: clamp(32px, 4vw, 56px);">
-            <img src="assets/cases/zin/01-logo.png" alt="Z!N logo — brandmark, wordmark en combinatielogo op wit" style="width:100%; display:block;">
-        </div>
-    </section>
-
-    <!-- ===== 4. OPLOSSING ===== -->
-    <section class="cs cs--dark">
-        <div class="cs__story cs__story--wide">
-            <div>
-                <p class="cs__label js-fade">Oplossing</p>
-                <h2 class="cs__headline js-fade">Z!N — drie letters, één uitroep.</h2>
-                <div class="cs__gap"></div>
-                <div class="cs__body js-fade">
-                    <p>Uit workshopsessies destilleerden we de kern: verhalen over betekenis, verbinding en het goede leven. De naam Z!N viel direct op zijn plek. Zin hebben. Ergens zin in vinden. En ja, ook gewoon: zin.</p>
-                    <p>Daarna de volledige identity: kleurenpalet met vier primaire gradients, typografie (PP Formula Condensed), subbrands per format, en templates in Figma en Premiere.</p>
+                <div class="zin-process__img zin-process__img--placeholder">
+                    <span>Sessie 1 — beeld volgt</span>
                 </div>
+            </article>
+
+            <article class="zin-process__step">
+                <div class="zin-process__step-copy">
+                    <span class="zin-process__num">02</span>
+                    <h3 class="zin-process__title">Richtingen</h3>
+                    <p class="zin-process__desc">Twee uitwerkingen dwongen een keuze. Niet alleen moodboards — ook concrete uitingen. Zo voel je welke kant het op gaat, niet alleen zie je het.</p>
+                </div>
+                <div class="zin-process__img zin-process__img--placeholder">
+                    <span>Sessie 2 — beeld volgt</span>
+                </div>
+            </article>
+
+            <article class="zin-process__step">
+                <div class="zin-process__step-copy">
+                    <span class="zin-process__num">03</span>
+                    <h3 class="zin-process__title">Uitwerking</h3>
+                    <p class="zin-process__desc">De gekozen richting werd concreet. Huisstijl, kleur, typografie en templates — vastgelegd in een systeem dat de redactie zelf kan bedienen.</p>
+                </div>
+                <div class="zin-process__img">
+                    <img src="assets/cases/zin/01-logo.png" alt="Z!N logo uitwerking">
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ===== BENTO GRID — UITINGEN ===== -->
+
+    <!-- Logo groot + kleuren -->
+    <section class="zin-bento zin-bento--dark">
+        <div class="zin-bento__grid zin-bento__grid--logo">
+            <div class="zin-bento__cell zin-bento__cell--logo">
+                <img src="assets/cases/zin/01-logo.png" alt="Z!N logo">
             </div>
-            <div class="cs__img js-fade">
-                <img src="assets/cases/zin/02-colors.png" alt="Z!N kleurenpalet — primary, secondary en base colors">
+            <div class="zin-bento__cell zin-bento__cell--colors">
+                <img src="assets/cases/zin/02-colors.png" alt="Z!N kleurenpalet">
+            </div>
+            <div class="zin-bento__cell zin-bento__cell--gradients">
+                <img src="assets/cases/zin/03-gradients.png" alt="Z!N gradients">
             </div>
         </div>
     </section>
 
-    <!-- ===== 5. UITWERKING ===== -->
-
-    <!-- Patronen en decor — full bleed -->
-    <section class="cs cs--dark cs--flush">
-        <img src="assets/cases/zin/10-patterns.png" alt="Z!N hugging background patterns" style="width:100%; display:block;">
-        <img src="assets/cases/zin/08-setting-decor.png" alt="Z!N setting en decor — hugging patterns als studioachtergrond" style="width:100%; display:block;">
+    <!-- Patronen full bleed -->
+    <section class="zin-bento zin-bento--flush">
+        <img src="assets/cases/zin/10-patterns.png" alt="Z!N patronen" style="width:100%; display:block;">
     </section>
 
-    <!-- Templates grid -->
-    <section class="cs cs--cream">
-        <p class="cs__label js-fade">Uitwerking</p>
-        <div class="cs__grid cs__grid--2 js-fade" style="margin-top: clamp(24px, 3vw, 40px);">
-            <div class="cs__img">
-                <img src="assets/cases/zin/06-reels.png" alt="Z!N short reel thumbnails voor Instagram">
+    <!-- Subbrands + typografie -->
+    <section class="zin-bento zin-bento--cream">
+        <div class="zin-bento__grid zin-bento__grid--brand">
+            <div class="zin-bento__cell zin-bento__cell--wide">
+                <img src="assets/cases/zin/04-subbrands.png" alt="Z!N subbrands">
             </div>
-            <div class="cs__img">
+            <div class="zin-bento__cell">
+                <img src="assets/cases/zin/05-typography.png" alt="Z!N typografie">
+            </div>
+        </div>
+    </section>
+
+    <!-- Thumbnails groot -->
+    <section class="zin-bento zin-bento--dark">
+        <div class="zin-bento__grid zin-bento__grid--thumbs">
+            <div class="zin-bento__cell zin-bento__cell--full">
                 <img src="assets/cases/zin/07-thumbs-yt.png" alt="Z!N YouTube thumbnails">
             </div>
         </div>
     </section>
 
-    <!-- Banners -->
-    <section class="cs cs--dark">
-        <div class="cs__grid cs__grid--2 js-fade">
-            <div class="cs__img">
-                <img src="assets/cases/zin/11-banner-yt.png" alt="Z!N YouTube kanaalheader">
+    <!-- Setting + reels -->
+    <section class="zin-bento zin-bento--flush">
+        <img src="assets/cases/zin/08-setting-decor.png" alt="Z!N setting en decor" style="width:100%; display:block;">
+    </section>
+
+    <!-- Reels + social posts -->
+    <section class="zin-bento zin-bento--cream">
+        <div class="zin-bento__grid zin-bento__grid--social">
+            <div class="zin-bento__cell">
+                <img src="assets/cases/zin/06-reels.png" alt="Z!N reels">
             </div>
-            <div class="cs__img">
-                <img src="assets/cases/zin/12-banner-fb.png" alt="Z!N Facebook omslagfoto">
+            <div class="zin-bento__cell zin-bento__cell--tall">
+                <img src="assets/cases/zin/09-social-posts.png" alt="Z!N social posts">
             </div>
-        </div>
-        <div class="cs__img js-fade" style="margin-top: clamp(4px, 0.75vw, 8px);">
-            <img src="assets/cases/zin/09-social-posts.png" alt="Z!N social posts in 4x5 formaat" style="width:100%; display:block;">
         </div>
     </section>
 
-    <!-- ===== 6. RESULTAAT ===== -->
+    <!-- Banners -->
+    <section class="zin-bento zin-bento--dark">
+        <div class="zin-bento__grid zin-bento__grid--banners">
+            <div class="zin-bento__cell">
+                <img src="assets/cases/zin/11-banner-yt.png" alt="Z!N YouTube banner">
+            </div>
+            <div class="zin-bento__cell">
+                <img src="assets/cases/zin/12-banner-fb.png" alt="Z!N Facebook banner">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RESULTAAT ===== -->
     <section class="cs cs--cream">
         <p class="cs__label js-fade">Resultaat</p>
         <h2 class="cs__headline js-fade">109K abonnees. Dagelijks live. Zelfstandig.</h2>
         <div class="cs__body js-fade">
-            <p>Het merk staat live. Z!N publiceert dagelijks op YouTube, Instagram en Facebook. De redactie maakt zelfstandig alle visuele content — van thumbnail tot banner. Wat ooit losse afleveringen waren, heeft nu een gezicht dat blijft.</p>
+            <p>Het merk staat live. Z!N publiceert dagelijks op YouTube, Instagram en Facebook. De redactie maakt zelfstandig alle visuele content — van thumbnail tot banner.</p>
         </div>
     </section>
 
-    <!-- ===== 7. TAKEAWAY ===== -->
+    <!-- ===== TAKEAWAY ===== -->
     <section class="cs cs--dark">
         <h2 class="cs__headline js-fade">"Een merk is pas klaar als de klant het zelf kan."</h2>
     </section>

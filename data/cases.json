@@ -34,6 +34,12 @@
           "src": "assets/cases/universiteit-van-nederland/02.jpg",
           "alt": ""
         }
+      ],
+      "related_projects": [
+        {
+          "label": "Format bedenken",
+          "slug": "heyu"
+        }
       ]
     },
     {

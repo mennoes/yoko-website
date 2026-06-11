@@ -911,6 +911,68 @@ a { color: inherit; }
 .gallery-item--third img,
 .gallery-item--third video { aspect-ratio: 1; }
 
+/* Related projects */
+.case-related {
+    padding: clamp(56px, 7vw, 96px) var(--pad-x);
+    background: var(--cream);
+    border-top: 1px solid rgba(32,32,32,0.08);
+}
+.case-related__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 640px;
+}
+.case-related__label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(32,32,32,0.4);
+    margin-bottom: 16px;
+}
+.case-related__card {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 2.5vw, 32px);
+    text-decoration: none;
+    color: var(--dark);
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(32,32,32,0.08);
+    transition: opacity 0.2s ease;
+}
+.case-related__card:hover { opacity: 0.65; }
+.case-related__thumb {
+    width: clamp(100px, 14vw, 180px);
+    aspect-ratio: 4/3;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 4px;
+}
+.case-related__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.case-related__info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+}
+.case-related__title {
+    font-size: clamp(22px, 2.8vw, 44px);
+    font-weight: 400;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+.case-related__arrow {
+    font-size: clamp(18px, 2vw, 28px);
+    margin-left: auto;
+    opacity: 0.4;
+}
+
 /* Volgende case */
 .case-next {
     position: relative;

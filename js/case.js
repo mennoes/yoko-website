@@ -112,6 +112,35 @@ async function initCasePage() {
         galleryEl.style.display = 'none';
     }
 
+    // ===== RELATED PROJECTS =====
+    if (c.related_projects?.length) {
+        const relatedEl = document.createElement('section');
+        relatedEl.className = 'case-related';
+        relatedEl.innerHTML = `
+            <div class="case-related__inner">
+                ${c.related_projects.map(rel => {
+                    const relCase = cases.find(x => x.slug === rel.slug);
+                    if (!relCase) return '';
+                    const href = relCase.href || `case.html?slug=${relCase.slug}`;
+                    const thumb = relCase.thumbnail || '';
+                    return `
+                    <div class="case-related__block">
+                        <p class="case-related__label">${rel.label}</p>
+                        <a class="case-related__card" href="${href}">
+                            <div class="case-related__thumb" style="background:${relCase.accent_color || '#2a2a2a'}">
+                                ${thumb ? `<img src="${thumb}" alt="${relCase.title}">` : ''}
+                            </div>
+                            <div class="case-related__info">
+                                <span class="case-related__title">${relCase.title}</span>
+                                <span class="case-related__arrow">→</span>
+                            </div>
+                        </a>
+                    </div>`;
+                }).join('')}
+            </div>`;
+        document.getElementById('case-gallery').insertAdjacentElement('afterend', relatedEl);
+    }
+
     // ===== VOLGENDE CASE =====
     const nextCase = cases[(caseIndex + 1) % cases.length];
     const nextLinkEl = document.getElementById('case-next-link');

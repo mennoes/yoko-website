@@ -34,6 +34,12 @@ window.YOKO_CASES = {
           "src": "assets/cases/universiteit-van-nederland/02.jpg",
           "alt": ""
         }
+      ],
+      "related_projects": [
+        {
+          "label": "Format bedenken",
+          "slug": "heyu"
+        }
       ]
     },
     {
@@ -83,7 +89,7 @@ window.YOKO_CASES = {
       ],
       "summary": "Wekelijks de meest complexe nieuwsthema's vertalen naar animaties die jongeren op TikTok en Instagram vasthoudt — als vaste visuele partner van hét journalistieke NPO-social kanaal.",
       "description": "Voor Rewind (HUMAN) vertalen we elke week ingewikkelde journalistieke thema's naar begrijpelijke animaties voor TikTok, Instagram en YouTube. Van verkiezingen tot overconsumptie.",
-      "thumbnail": "assets/cases/rewind/rewind-compilatie01 1.jpg",
+      "thumbnail": "assets/cases/rewind/screenshot-thumb.jpg",
       "video_preview": null,
       "accent_color": "#1244B5",
       "size": "small",
@@ -112,7 +118,6 @@ window.YOKO_CASES = {
       "summary": "Klimaatfeiten overtuigen niemand meer. Bewegend beeld dat de urgentie voelbaar maakt, doet dat wel. Wij maakten de explainer die mensen aanzet tot actie, niet tot wanhoop.",
       "description": "Greenpeace vroeg Studio Yoko een explainer te maken die mensen aanzet tot actie. Geen saaie grafieken, maar urgente, kleurrijke animatie die de boodschap meteen raak is.\n\nWe kozen voor felle kleuren, snelle cuts en een directe tone of voice — passend bij de missie van Greenpeace.",
       "thumbnail": "assets/cases/greenpeace/thumb.jpg",
-      "thumbnail_logo": "assets/cases/greenpeace/logo.svg",
       "video_preview": "assets/cases/greenpeace/Tippingpoint_header.mp4",
       "accent_color": "#00A650",
       "size": "large",

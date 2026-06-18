@@ -1384,25 +1384,16 @@ a { color: inherit; }
 .pillars__row--verhaal { grid-template-columns: 2fr 1fr; }
 
 .pillars__case-card { display: block; text-decoration: none; }
-.pillars__case-caption {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-top: 12px;
-    gap: 16px;
-}
-.pillars__case-caption__title {
-    font-size: clamp(14px, 1.2vw, 18px);
-    font-weight: 600;
+.pillars__case-summary {
+    font-size: clamp(15px, 1.3vw, 18px);
+    line-height: 1.5;
     color: var(--dark);
-    letter-spacing: -0.2px;
+    margin: 16px 0 6px;
+    max-width: 52ch;
 }
-.pillars__case-caption__cat {
-    font-size: 12px;
+.pillars__case-client {
+    font-size: 13px;
     color: rgba(50,44,36,0.45);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    white-space: nowrap;
 }
 
 /* About collage */

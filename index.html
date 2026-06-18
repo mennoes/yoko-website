@@ -32,7 +32,7 @@
     <!-- ===== REEL SUBTEKST + ALINEA ===== -->
     <div class="reel-sub">
         <div class="reel-sub__left">
-            <p class="reel-sub__text js-word-reveal">Wanneer inhoud en vorm samenkomt, ontstaat zinvol beeld. We maken vormgeving, animaties en slimme software tools die teams efficiënter laten werken. Wij zijn je visuele redactie.</p>
+            <p class="reel-sub__text js-word-reveal">Wanneer inhoud en vorm samenkomt, ontstaat zinvol beeld. We maken vormgeving en animaties. Wij zijn je visuele redactie.</p>
             <p class="reel-sub__body reel-sub__body--dark">Al jarenlang maken we dagelijks video's voor organisaties zoals de Universiteit van Nederland, Human, Omroep Zwart, Nieuwsuur en Greenpeace.</p>
         </div>
         <div class="reel-sub__right">
@@ -59,35 +59,38 @@
     </section>
 
     <!-- ===== DRIE PIJLERS ===== -->
-    <div class="reel-caption">
-        <p class="reel-caption__heading">Wat we concreet doen:</p>
-        <ol class="reel-timeline">
-            <li class="reel-timeline__item">
-                <div class="reel-timeline__header">
-                    <span class="reel-timeline__num">1</span>
-                    <span class="reel-timeline__label">Vorm</span>
-                </div>
-                <p class="reel-timeline__text">We ontwerpen een identiteit die past bij je merk en overal op werkt. Grafisch en in animatie.</p>
-            </li>
-            <li class="reel-timeline__item">
-                <div class="reel-timeline__header">
-                    <span class="reel-timeline__num">2</span>
-                    <span class="reel-timeline__label">Verhaal</span>
-                </div>
-                <p class="reel-timeline__text">Ingewikkelde materie, scherpe journalistiek, groot onderzoek of een goed idee. Wij duiken in de inhoud en vertalen het naar beeld.</p>
-            </li>
-            <li class="reel-timeline__item">
-                <div class="reel-timeline__header">
-                    <span class="reel-timeline__num">3</span>
-                    <span class="reel-timeline__label">Systeem</span>
-                </div>
-                <p class="reel-timeline__text">Veel content maken kost tijd dat je niet hebt. Wij bouwen systemen zodat dat wel kan.</p>
-            </li>
-        </ol>
-        <div class="reel-timeline__track" aria-hidden="true">
-            <div class="reel-timeline__track-fill" id="timeline-fill"></div>
+    <section class="pillars">
+
+        <!-- Vorm: tekst links, placeholder rechts -->
+        <div class="pillars__row js-fade">
+            <div>
+                <p class="pillars__label">Vorm</p>
+                <p class="pillars__text">We ontwerpen een identiteit die past bij je merk en overal op werkt. Grafisch en in animatie.</p>
+            </div>
+            <div class="pillars__thumb pillars__thumb--placeholder"></div>
         </div>
-    </div>
+
+        <!-- Verhaal: beeld links, outlined tekst rechts -->
+        <div class="pillars__row js-fade">
+            <div class="pillars__thumb">
+                <img src="assets/cases/greenpeace/thumb.jpg" alt="Greenpeace animatie">
+            </div>
+            <div>
+                <p class="pillars__label">Verhaal</p>
+                <p class="pillars__text pillars__text--outlined">Ingewikkelde materie, scherpe journalistiek, groot onderzoek of een goed idee. Wij duiken in de inhoud en vertalen het naar beeld.</p>
+            </div>
+        </div>
+
+        <!-- Systeem: tekst links, placeholder rechts -->
+        <div class="pillars__row js-fade">
+            <div>
+                <p class="pillars__label">Systeem</p>
+                <p class="pillars__text">Veel content maken kost tijd dat je niet hebt. Wij bouwen systemen zodat dat wel kan.</p>
+            </div>
+            <div class="pillars__thumb pillars__thumb--placeholder"></div>
+        </div>
+
+    </section>
 
     <!-- ===== WORK GRID — resterende cases ===== -->
     <section class="work work--cont">

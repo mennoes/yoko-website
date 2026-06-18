@@ -6,13 +6,59 @@
     <title>Polarsteps — Studio Yoko</title>
     <meta name="description" content="Voor Polarsteps ontwikkelden we een compleet design system, een uitgebreide bannerset voor hun brandpage en een cinematische brand identity film.">
     <link rel="stylesheet" href="css/style.css?v=2">
+    <style>
+        :root { --ps-red: #E8341A; }
+        .ps-hero {
+            min-height: 85vh;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+            background: var(--ps-red);
+        }
+        .ps-hero__img {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.45;
+            mix-blend-mode: luminosity;
+        }
+        .ps-hero__gradient {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(232,52,26,0.95) 0%, rgba(232,52,26,0.5) 50%, rgba(232,52,26,0.15) 100%);
+        }
+        .ps-hero__content {
+            position: relative; z-index: 2;
+            padding: var(--pad-x) var(--pad-x) clamp(48px,7vw,100px);
+            width: 100%;
+        }
+        .ps-hero__meta {
+            display: flex; gap: 20px; margin-bottom: 20px;
+        }
+        .ps-hero__meta span {
+            font-size: clamp(11px,0.9vw,13px);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.55);
+        }
+        .ps-hero__title {
+            font-size: clamp(56px,10vw,140px);
+            font-weight: 700;
+            line-height: 0.9;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+    </style>
 </head>
 <body class="page--case">
 
     <!-- ===== NAVIGATIE ===== -->
     <nav class="nav nav--dark" id="nav">
         <a href="index.html" class="nav__logo"><img src="assets/logo.svg" alt="Studio Yoko"></a>
-        <p class="nav__description">Je visuele redactie. Motion first design studio<br>die inhoud en vorm samenbrengt.</p>
+        <div class="nav__description">
+            <p class="nav__headline">Je visuele redactie.</p>
+            <p class="nav__sub">Motion first design studio die inhoud en vorm samenbrengt.</p>
+        </div>
         <div class="nav__links">
             <a href="work.html">work</a>
             <a href="tools.html">tools</a>
@@ -22,13 +68,15 @@
     </nav>
 
     <!-- ===== HERO ===== -->
-    <section class="case-hero" id="case-hero" style="background: #E8341A;">
-        <img class="case-hero__bg-img" src="assets/cases/polarsteps/thumb.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.4;mix-blend-mode:luminosity;">
-        <div class="case-hero__overlay" style="background: linear-gradient(to top, rgba(232,52,26,0.95) 0%, rgba(232,52,26,0.5) 50%, rgba(232,52,26,0.15) 100%);">
-            <div class="case-hero__meta">
-                <span class="case-hero__category">Brand &amp; Systeem</span>
+    <section class="ps-hero" id="case-hero">
+        <img class="ps-hero__img" src="assets/cases/polarsteps/thumb.jpg" alt="">
+        <div class="ps-hero__gradient"></div>
+        <div class="ps-hero__content">
+            <div class="ps-hero__meta">
+                <span>Polarsteps</span>
+                <span>Brand &amp; Systeem</span>
             </div>
-            <h1 class="case-hero__title">Polarsteps</h1>
+            <h1 class="ps-hero__title">Polarsteps</h1>
         </div>
     </section>
 
@@ -89,13 +137,13 @@
     <!-- Banner showcase -->
     <section class="cs cs--cream">
         <p class="cs__label js-fade">Uitwerking</p>
-        <div class="cs__img js-fade" style="margin-top: clamp(24px, 3vw, 40px);">
-            <img src="assets/cases/polarsteps/thumb.jpg" alt="Polarsteps bannerset overzicht" style="width:100%; display:block;">
+        <div class="cs__img js-fade">
+            <img src="assets/cases/polarsteps/thumb.jpg" alt="Polarsteps bannerset overzicht">
         </div>
     </section>
 
     <!-- Brand film — full bleed -->
-    <section class="cs cs--dark cs--flush">
+    <section class="cs--flush js-fade">
         <img src="assets/cases/polarsteps/thumb.jpg" alt="Polarsteps brand identity film still" style="width:100%; display:block;">
     </section>
 

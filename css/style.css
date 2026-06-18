@@ -1307,3 +1307,71 @@ a { color: inherit; }
 }
 .cs--cream .heyu-name--winner { color: #1B0757; }
 .cs--dark .heyu-name--winner { color: #D6ACFF; }
+
+/* ===== PER-CASE ACCENT ACHTERGRONDEN ===== */
+.cs--heyu { background: #585FF1; }
+.cs--heyu .cs__label    { color: rgba(255,255,255,0.45); }
+.cs--heyu .cs__headline { color: #fff; }
+.cs--heyu .cs__body     { color: rgba(255,255,255,0.6); }
+
+.cs--rewind-blue { background: #1244B5; }
+.cs--rewind-blue .cs__label    { color: rgba(255,255,255,0.45); }
+.cs--rewind-blue .cs__headline { color: #fff; }
+.cs--rewind-blue .cs__body     { color: rgba(255,255,255,0.6); }
+
+.heyu-thumbs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(4px, 0.75vw, 8px);
+    padding: clamp(32px, 4vw, 56px) var(--pad-x-wide);
+}
+.heyu-thumbs img { width: 100%; display: block; border-radius: 6px; }
+
+/* ===== PILLARS (drie pijlers, homepage) ===== */
+.pillars { background: var(--cream); }
+.pillars__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 72px);
+    padding: clamp(56px, 7vw, 100px) var(--pad-x);
+    border-top: 1px solid rgba(50,44,36,0.12);
+    align-items: center;
+}
+.pillars__label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(50,44,36,0.4);
+    margin-bottom: 16px;
+}
+.pillars__text {
+    font-size: clamp(22px, 2.8vw, 40px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    margin: 0;
+}
+.pillars__text--outlined {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--dark);
+}
+.pillars__thumb {
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+}
+.pillars__thumb img,
+.pillars__thumb video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.pillars__thumb--placeholder {
+    background: rgba(50,44,36,0.08);
+}
+@media (max-width: 768px) {
+    .pillars__row { grid-template-columns: 1fr; }
+    .pillars__thumb--placeholder { aspect-ratio: 3/2; }
+}

@@ -12,24 +12,20 @@
             grid-template-columns: repeat(3, 1fr);
             gap: clamp(4px, 0.5vw, 8px);
         }
-        .heyu-logo-grid img {
-            width: 100%;
-            display: block;
-            border-radius: 4px;
-        }
+        .heyu-logo-grid img { width: 100%; display: block; border-radius: 4px; }
         @media (max-width: 600px) {
-            .heyu-logo-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .heyu-logo-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body class="page--case page--heyu">
 
-    <!-- ===== NAVIGATIE ===== -->
     <nav class="nav nav--dark" id="nav">
         <a href="index.html" class="nav__logo"><img src="assets/logo.svg" alt="Studio Yoko"></a>
-        <p class="nav__description">Je visuele redactie. Motion first design studio<br>die inhoud en vorm samenbrengt.</p>
+        <div class="nav__description">
+            <p class="nav__headline">Je visuele redactie.</p>
+            <p class="nav__sub">Motion first design studio die inhoud en vorm samenbrengt.</p>
+        </div>
         <div class="nav__links">
             <a href="work.html">work</a>
             <a href="tools.html">tools</a>
@@ -38,9 +34,10 @@
         </div>
     </nav>
 
-    <!-- ===== HERO ===== -->
+    <!-- HERO -->
     <section class="case-hero" id="case-hero" style="background: #1B0757;">
-        <img class="case-hero__bg-img" src="assets/cases/heyu/bts-set.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.7;">
+        <img class="case-hero__bg-img" src="assets/cases/heyu/bts-set.jpg" alt=""
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.7;">
         <div class="case-hero__overlay">
             <div class="case-hero__meta">
                 <span class="case-hero__category">Format &amp; Concept</span>
@@ -50,7 +47,7 @@
         </div>
     </section>
 
-    <!-- ===== 1. CONTEXT ===== -->
+    <!-- CONTEXT -->
     <section class="cs cs--cream">
         <div class="cs__intro">
             <div class="cs__meta">
@@ -58,7 +55,7 @@
             </div>
             <div>
                 <p class="cs__label js-fade">Context</p>
-                <h2 class="cs__headline js-fade">Professors beantwoorden<br>jouw vragen.</h2>
+                <h2 class="cs__headline js-fade">Professors beantwoorden jouw vragen.</h2>
                 <div class="cs__body js-fade">
                     <p>HEY U is een YouTube-format voor de Universiteit van Nederland. Kijkers sturen vragen in via social media — een professor beantwoordt er vijf per aflevering. Geen academische drempel, gewoon het echte antwoord.</p>
                 </div>
@@ -66,7 +63,12 @@
         </div>
     </section>
 
-    <!-- ===== 2. PROBLEEM ===== -->
+    <!-- CONCEPT BEELD -->
+    <section class="cs--flush">
+        <img src="assets/cases/heyu/new_08.png" alt="HEY U concept" style="width:100%; display:block;">
+    </section>
+
+    <!-- PROBLEEM -->
     <section class="cs cs--dark">
         <p class="cs__label js-fade">Probleem</p>
         <h2 class="cs__headline js-fade">Er was een idee. Geen naam, geen gezicht, geen systeem.</h2>
@@ -75,7 +77,7 @@
         </div>
     </section>
 
-    <!-- ===== 3. INZICHT ===== -->
+    <!-- INZICHT -->
     <section class="cs cs--cream">
         <p class="cs__label js-fade">Inzicht</p>
         <h2 class="cs__headline js-fade">Het format werkt pas als kijkers het in één oogopslag begrijpen.</h2>
@@ -84,12 +86,7 @@
         </div>
     </section>
 
-    <!-- ===== CONCEPT BEELD (na Inzicht) ===== -->
-    <section class="cs--flush">
-        <img src="assets/cases/heyu/new_08.png" alt="HEY U — concept met mensen en grafische elementen" style="width:100%; display:block;">
-    </section>
-
-    <!-- ===== 4. OPLOSSING ===== -->
+    <!-- OPLOSSING: NAMING -->
     <section class="cs cs--dark">
         <p class="cs__label js-fade">Oplossing</p>
         <h2 class="cs__headline js-fade">Van naam tot productiesysteem.</h2>
@@ -127,48 +124,43 @@
         </div>
     </section>
 
-    <!-- ===== 5. UITWERKING ===== -->
-
-    <!-- Patroon — full bleed -->
-    <section class="cs cs--dark cs--flush">
-        <img src="assets/cases/heyu/new_06.png" alt="HEY U U-patroon in alle merkkleuren" style="width:100%; display:block;">
+    <!-- PATROON full bleed -->
+    <section class="cs--flush">
+        <img src="assets/cases/heyu/new_06.png" alt="HEY U U-patroon" style="width:100%; display:block;">
     </section>
 
-    <!-- Thumbnailsysteem -->
-    <section class="cs cs--flush" style="background: #585FF1;">
-        <div class="cs__grid cs__grid--2" style="gap: clamp(4px,0.75vw,8px); padding: clamp(32px,4vw,56px) var(--pad-x-wide);">
-            <div class="cs__img" style="border-radius:6px; overflow:hidden;">
-                <img src="assets/cases/heyu/03-thumb-hond.png" alt="HEY U — Hond met hernia" style="border-radius:0; margin-bottom:0;">
-            </div>
-            <div class="cs__img" style="border-radius:6px; overflow:hidden;">
-                <img src="assets/cases/heyu/04-thumb-cannabis.png" alt="HEY U — Zo werkt cannabis" style="border-radius:0; margin-bottom:0;">
-            </div>
-            <div class="cs__img" style="border-radius:6px; overflow:hidden;">
-                <img src="assets/cases/heyu/05-thumb-angst.png" alt="HEY U — Angst uitschakelen" style="border-radius:0; margin-bottom:0;">
-            </div>
-            <div class="cs__img" style="border-radius:6px; overflow:hidden;">
-                <img src="assets/cases/heyu/06-thumb-anorexia.png" alt="HEY U — Hoe ontstaat anorexia" style="border-radius:0; margin-bottom:0;">
-            </div>
+    <!-- THUMBNAILS — clean, geen inline styles -->
+    <section class="cs cs--heyu cs--flush">
+        <div class="heyu-thumbs js-fade">
+            <img src="assets/cases/heyu/03-thumb-hond.png" alt="HEY U — Hond met hernia">
+            <img src="assets/cases/heyu/04-thumb-cannabis.png" alt="HEY U — Zo werkt cannabis">
+            <img src="assets/cases/heyu/05-thumb-angst.png" alt="HEY U — Angst uitschakelen">
+            <img src="assets/cases/heyu/06-thumb-anorexia.png" alt="HEY U — Hoe ontstaat anorexia">
         </div>
-        <div class="cs cs--tight" style="background:#585FF1;">
-            <p class="cs__label" style="color:rgba(255,255,255,0.5);">Uitwerking</p>
-            <h2 class="cs__headline" style="color:#fff; margin-bottom:24px;">De vraag is de headline.<br>De professor is het bewijs.</h2>
+        <div class="cs cs--tight cs--heyu js-fade">
+            <p class="cs__label">Uitwerking</p>
+            <h2 class="cs__headline">De vraag is de headline.<br>De professor is het bewijs.</h2>
         </div>
     </section>
 
-    <!-- Professor in beeld -->
+    <!-- PROFESSOR IN BEELD -->
     <section class="cs cs--cream">
         <div class="cs__grid cs__grid--2 js-fade">
             <div class="cs__img">
-                <img src="assets/cases/heyu/new_13.png" alt="HEY U professor geïntegreerd met U-patroon">
+                <img src="assets/cases/heyu/new_13.png" alt="HEY U professor geïntegreerd">
             </div>
             <div class="cs__img">
-                <img src="assets/cases/heyu/new_14.png" alt="HEY U professor met kleurvariaties">
+                <img src="assets/cases/heyu/new_14.png" alt="HEY U professor kleurvariaties">
             </div>
         </div>
     </section>
 
-    <!-- Format in actie -->
+    <!-- PROFESSOR + PATROON full bleed -->
+    <section class="cs--flush js-fade">
+        <img src="assets/cases/heyu/20-prof-pattern.png" alt="HEY U professor met patroon" style="width:100%; display:block;">
+    </section>
+
+    <!-- FORMAT IN ACTIE -->
     <section class="cs cs--dark">
         <div class="cs__grid cs__grid--2 js-fade">
             <div class="cs__img">
@@ -180,7 +172,12 @@
         </div>
     </section>
 
-    <!-- ===== 6. RESULTAAT ===== -->
+    <!-- BTS -->
+    <section class="cs--flush js-fade">
+        <img src="assets/cases/heyu/bts-img5138.jpg" alt="HEY U behind the scenes" style="width:100%; display:block; max-height:70vh; object-fit:cover; object-position:center top;">
+    </section>
+
+    <!-- RESULTAAT -->
     <section class="cs cs--cream">
         <p class="cs__label js-fade">Resultaat</p>
         <h2 class="cs__headline js-fade">HEY U staat live op YouTube.</h2>
@@ -189,12 +186,12 @@
         </div>
     </section>
 
-    <!-- ===== 7. TAKEAWAY ===== -->
+    <!-- TAKEAWAY -->
     <section class="cs cs--dark">
         <h2 class="cs__headline js-fade">"Een sterk format begint met een naam die het concept direct communiceert."</h2>
     </section>
 
-    <!-- ===== NEXT CASE ===== -->
+    <!-- NEXT CASE -->
     <section class="case-next" id="case-next">
         <img class="case-next__bg" src="assets/cases/zin/thumb.jpg" alt="" aria-hidden="true">
         <a class="case-next__link" href="zin-in-morgen.html">
@@ -204,7 +201,6 @@
         </a>
     </section>
 
-    <!-- ===== FOOTER ===== -->
     <footer class="footer footer--mini">
         <div class="footer__contact">
             <div class="footer__contact-inner">
@@ -213,10 +209,7 @@
                     <span class="cta-arrow">→</span> hello@studioyoko.nl
                 </a>
                 <div class="footer__address-block">
-                    <address class="footer__address">
-                        Kattenburgerstraat 5<br>
-                        1018 JA Amsterdam
-                    </address>
+                    <address class="footer__address">Kattenburgerstraat 5<br>1018 JA Amsterdam</address>
                     <div class="footer__divider"></div>
                 </div>
                 <p class="footer__legal">©2025 Studio Yoko BV&nbsp;&nbsp;·&nbsp;&nbsp;Privacy&nbsp;&nbsp;·&nbsp;&nbsp;Legal</p>

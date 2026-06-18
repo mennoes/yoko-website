@@ -432,8 +432,8 @@ a { color: inherit; }
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: clamp(16px, 2vw, 28px);
-    row-gap: clamp(72px, 10vw, 140px);
-    padding: 0 var(--pad-x) var(--pad-x);
+    row-gap: clamp(40px, 5vw, 72px);
+    padding: 0 var(--pad-x) clamp(32px, 4vw, 56px);
     background: #fff;
 }
 

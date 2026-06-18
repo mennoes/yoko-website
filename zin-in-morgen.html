@@ -13,17 +13,34 @@
         /* ===== INTRO ===== */
         .zin-intro {
             background: var(--cream);
-            padding: clamp(48px, 6vw, 80px) var(--pad-x);
-            border-bottom: 1px solid rgba(32,32,32,0.08);
+            padding: clamp(56px, 8vw, 120px) var(--pad-x);
         }
-        .zin-intro__summary {
-            font-size: clamp(18px, 2vw, 28px);
-            font-weight: 400;
-            line-height: 1.55;
-            letter-spacing: -0.3px;
+        .zin-intro__inner { max-width: 760px; }
+        .zin-intro__label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(32,32,32,0.4);
+            margin-bottom: clamp(20px, 2.5vw, 32px);
+        }
+        .zin-intro__title {
+            font-size: clamp(28px, 4vw, 52px);
+            font-weight: 500;
+            letter-spacing: -1px;
+            line-height: 1.08;
             color: var(--dark);
-            max-width: 780px;
+            margin-bottom: clamp(24px, 3vw, 36px);
         }
+        .zin-intro__body {
+            display: flex;
+            flex-direction: column;
+            gap: 1.1em;
+            font-size: clamp(15px, 1.2vw, 18px);
+            line-height: 1.7;
+            color: rgba(32,32,32,0.7);
+        }
+        .zin-intro__body p { margin: 0; }
 
         /* ===== PROCESS SWIPE ===== */
         .zin-process {
@@ -110,86 +127,32 @@
             color: rgba(237,234,228,0.2);
         }
 
-        /* ===== BENTO GRIDS ===== */
-        .zin-bento { overflow: hidden; }
-        .zin-bento--cream { background: var(--cream); }
-        .zin-bento--dark  { background: var(--dark); }
-        .zin-bento--flush { line-height: 0; }
-
-        .zin-bento__grid {
-            display: grid;
-            gap: 4px;
+        /* ===== SPEELSE GALLERY (masonry) ===== */
+        .zin-gallery {
+            background: var(--cream);
+            padding: clamp(40px, 5vw, 80px) var(--pad-x);
+            column-count: 4;
+            column-gap: clamp(10px, 1.2vw, 16px);
         }
-
-        /* Logo + kleuren + gradients: 2-col */
-        .zin-bento__grid--logo {
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto auto;
-            padding: 4px;
-        }
-        .zin-bento__cell--logo {
-            grid-column: 1 / 2;
-            grid-row: 1 / 3;
+        .zin-gallery__item {
+            break-inside: avoid;
+            margin-bottom: clamp(10px, 1.2vw, 16px);
+            border-radius: 6px;
+            overflow: hidden;
             background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: clamp(32px, 5vw, 64px);
-            min-height: clamp(240px, 30vw, 480px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
         }
-        .zin-bento__cell--logo img { width: 100%; max-width: 320px; }
-        .zin-bento__cell--colors {
-            grid-column: 2 / 3;
-            grid-row: 1 / 2;
-        }
-        .zin-bento__cell--gradients {
-            grid-column: 2 / 3;
-            grid-row: 2 / 3;
-        }
+        .zin-gallery__item img { width: 100%; display: block; }
+        .zin-gallery__item:nth-child(3n) { transform: rotate(-1deg); }
+        .zin-gallery__item:nth-child(4n) { transform: rotate(0.8deg); }
+        .zin-gallery__item:nth-child(7n) { transform: rotate(1.2deg); }
 
-        /* Subbrands + type: wide left, small right */
-        .zin-bento__grid--brand {
-            grid-template-columns: 1.6fr 1fr;
-            padding: 4px;
+        @media (max-width: 1000px) {
+            .zin-gallery { column-count: 3; }
         }
-
-        /* Thumbs: full width */
-        .zin-bento__grid--thumbs { padding: 0; }
-        .zin-bento__cell--full img { width: 100%; display: block; }
-
-        /* Social */
-        .zin-bento__grid--social {
-            grid-template-columns: 1fr 1fr;
-            align-items: start;
-            padding: 4px;
-        }
-
-        /* Banners */
-        .zin-bento__grid--banners {
-            grid-template-columns: 1fr 1fr;
-            padding: 4px;
-        }
-
-        /* All cells: images fill */
-        .zin-bento__cell img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .zin-bento__cell--wide { grid-column: span 2; }
-        .zin-bento__cell--tall { align-self: stretch; }
-
         @media (max-width: 640px) {
             .zin-process__step { flex: 0 0 88vw; }
-            .zin-bento__grid--logo,
-            .zin-bento__grid--brand,
-            .zin-bento__grid--social,
-            .zin-bento__grid--banners { grid-template-columns: 1fr; }
-            .zin-bento__cell--logo { grid-row: auto; min-height: 200px; }
-            .zin-bento__cell--colors,
-            .zin-bento__cell--gradients { grid-column: auto; grid-row: auto; }
-            .zin-bento__cell--wide { grid-column: span 1; }
+            .zin-gallery { column-count: 2; }
         }
     </style>
 </head>
@@ -198,7 +161,10 @@
     <!-- ===== NAVIGATIE ===== -->
     <nav class="nav nav--dark" id="nav">
         <a href="index.html" class="nav__logo"><img src="assets/logo.svg" alt="Studio Yoko"></a>
-        <p class="nav__description">Je visuele redactie. Motion first design studio<br>die inhoud en vorm samenbrengt.</p>
+        <div class="nav__description">
+            <p class="nav__headline">Je visuele redactie.</p>
+            <p class="nav__sub">Motion first design studio die inhoud en vorm samenbrengt.</p>
+        </div>
         <div class="nav__links">
             <a href="work.html">work</a>
             <a href="tools.html">tools</a>
@@ -220,7 +186,15 @@
 
     <!-- ===== INTRO ===== -->
     <section class="zin-intro">
-        <p class="zin-intro__summary">Naming, merkidentiteit en redactionele templates voor Zin in Morgen (KRO NCRV). Van naamloze redactie naar een merk dat dagelijks publiceert.</p>
+        <div class="zin-intro__inner">
+            <p class="zin-intro__label">Merkidentiteit en redactionele templates voor Zin in Morgen</p>
+            <h2 class="zin-intro__title">Van tv-programma naar social merk</h2>
+            <div class="zin-intro__body">
+                <p>Toen KRO-NCRV's Zin in Morgen de stap maakte van televisie naar een volledig online kanaal, ontstond een nieuwe vraag: hoe geef je een bestaand merk een uitstraling die werkt op sociale platforms, zonder de kern ervan te verliezen?</p>
+                <p>Samen met het team van Zin in Morgen startten we niet met ontwerpen, maar met onderzoeken. In een interactieve sessie verkenden we waar het merk precies staat. Is het vooral een kanaal over zingeving en verdieping? Of juist een plek die energie geeft en laat zien hoe leuk en verrassend het leven kan zijn? Aan de hand van voorbeelden, moodboards en gerichte vragen brachten we die positie in kaart.</p>
+                <p>Die sessie gaf verrassend veel richting. Binnen een week vertaalden we de inzichten naar twee visuele routes. Beide hadden een eigen karakter, maar één sloot vrijwel naadloos aan bij wat tijdens de uitvraag naar voren kwam. Daarmee ontstond niet alleen een ontwerpkeuze, maar ook een gedeeld gevoel over waar het merk voor staat.</p>
+            </div>
+        </div>
     </section>
 
     <!-- ===== PROCESS SWIPE ===== -->
@@ -264,90 +238,20 @@
         </div>
     </section>
 
-    <!-- ===== BENTO GRID — UITINGEN ===== -->
-
-    <!-- Logo groot + kleuren -->
-    <section class="zin-bento zin-bento--dark">
-        <div class="zin-bento__grid zin-bento__grid--logo">
-            <div class="zin-bento__cell zin-bento__cell--logo">
-                <img src="assets/cases/zin/01-logo.png" alt="Z!N logo">
-            </div>
-            <div class="zin-bento__cell zin-bento__cell--colors">
-                <img src="assets/cases/zin/02-colors.png" alt="Z!N kleurenpalet">
-            </div>
-            <div class="zin-bento__cell zin-bento__cell--gradients">
-                <img src="assets/cases/zin/03-gradients.png" alt="Z!N gradients">
-            </div>
-        </div>
-    </section>
-
-    <!-- Patronen full bleed -->
-    <section class="zin-bento zin-bento--flush">
-        <img src="assets/cases/zin/10-patterns.png" alt="Z!N patronen" style="width:100%; display:block;">
-    </section>
-
-    <!-- Subbrands + typografie -->
-    <section class="zin-bento zin-bento--cream">
-        <div class="zin-bento__grid zin-bento__grid--brand">
-            <div class="zin-bento__cell zin-bento__cell--wide">
-                <img src="assets/cases/zin/04-subbrands.png" alt="Z!N subbrands">
-            </div>
-            <div class="zin-bento__cell">
-                <img src="assets/cases/zin/05-typography.png" alt="Z!N typografie">
-            </div>
-        </div>
-    </section>
-
-    <!-- Thumbnails groot -->
-    <section class="zin-bento zin-bento--dark">
-        <div class="zin-bento__grid zin-bento__grid--thumbs">
-            <div class="zin-bento__cell zin-bento__cell--full">
-                <img src="assets/cases/zin/07-thumbs-yt.png" alt="Z!N YouTube thumbnails">
-            </div>
-        </div>
-    </section>
-
-    <!-- Setting + reels -->
-    <section class="zin-bento zin-bento--flush">
-        <img src="assets/cases/zin/08-setting-decor.png" alt="Z!N setting en decor" style="width:100%; display:block;">
-    </section>
-
-    <!-- Reels + social posts -->
-    <section class="zin-bento zin-bento--cream">
-        <div class="zin-bento__grid zin-bento__grid--social">
-            <div class="zin-bento__cell">
-                <img src="assets/cases/zin/06-reels.png" alt="Z!N reels">
-            </div>
-            <div class="zin-bento__cell zin-bento__cell--tall">
-                <img src="assets/cases/zin/09-social-posts.png" alt="Z!N social posts">
-            </div>
-        </div>
-    </section>
-
-    <!-- Banners -->
-    <section class="zin-bento zin-bento--dark">
-        <div class="zin-bento__grid zin-bento__grid--banners">
-            <div class="zin-bento__cell">
-                <img src="assets/cases/zin/11-banner-yt.png" alt="Z!N YouTube banner">
-            </div>
-            <div class="zin-bento__cell">
-                <img src="assets/cases/zin/12-banner-fb.png" alt="Z!N Facebook banner">
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== RESULTAAT ===== -->
-    <section class="cs cs--cream">
-        <p class="cs__label js-fade">Resultaat</p>
-        <h2 class="cs__headline js-fade">109K abonnees. Dagelijks live. Zelfstandig.</h2>
-        <div class="cs__body js-fade">
-            <p>Het merk staat live. Z!N publiceert dagelijks op YouTube, Instagram en Facebook. De redactie maakt zelfstandig alle visuele content — van thumbnail tot banner.</p>
-        </div>
-    </section>
-
-    <!-- ===== TAKEAWAY ===== -->
-    <section class="cs cs--dark">
-        <h2 class="cs__headline js-fade">"Een merk is pas klaar als de klant het zelf kan."</h2>
+    <!-- ===== SPEELSE GALLERY — UITINGEN ===== -->
+    <section class="zin-gallery">
+        <div class="zin-gallery__item"><img src="assets/cases/zin/01-logo.png" alt="Z!N logo"></div>
+        <div class="zin-gallery__item"><img src="assets/cases/zin/07-thumbs-yt.png" alt="Z!N YouTube thumbnails"></div>
+        <div class="zin-gallery__item"><img src="assets/cases/zin/02-colors.png" alt="Z!N kleurenpalet"></div>
+        <div class="zin-gallery__item"><img src="assets/cases/zin/09-social-posts.png" alt="Z!N social posts"></div>
+        <div class="zin-gallery__item"><img src="assets/cases/zin/03-gradients.png" alt="Z!N gradients"></div>
+        <div class="zin-gallery__item"><img src="assets/cases/zin/08-setting-decor.png" alt="Z!N setting en decor"></div>
+        <div class="zin-gallery__item"><img src="assets/cases/zin/04-subbrands.png" alt="Z!N subbrands"></div>
+        <div class="zin-gallery__item"><img src="assets/cases/zin/06-reels.png" alt="Z!N reels"></div>
+        <div class="zin-gallery__item"><img src="assets/cases/zin/10-patterns.png" alt="Z!N patronen"></div>
+        <div class="zin-gallery__item"><img src="assets/cases/zin/05-typography.png" alt="Z!N typografie"></div>
+        <div class="zin-gallery__item"><img src="assets/cases/zin/11-banner-yt.png" alt="Z!N YouTube banner"></div>
+        <div class="zin-gallery__item"><img src="assets/cases/zin/12-banner-fb.png" alt="Z!N Facebook banner"></div>
     </section>
 
     <!-- ===== NEXT CASE ===== -->

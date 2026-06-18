@@ -92,7 +92,7 @@ a { color: inherit; }
     align-items: center;
     gap: clamp(20px, 3vw, 56px);
     background: rgba(237,234,228, var(--nav-fade));
-    border-bottom: 1px solid rgba(32,32,32, calc(0.07 * var(--nav-fade)));
+    border-bottom: none;
     transition: background 0.1s ease, border-color 0.1s ease;
 }
 .nav__logo {
@@ -145,7 +145,7 @@ a { color: inherit; }
 
 /* Nav varianten */
 .nav--dark {
-    background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, transparent 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0, calc(0.45 * var(--nav-fade))) 0%, transparent 100%);
     border-bottom-color: transparent;
 }
 .nav--dark .nav__logo img { filter: brightness(0) invert(1); }

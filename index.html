@@ -70,11 +70,17 @@
             <div class="pillars__thumb pillars__thumb--placeholder"></div>
         </div>
 
-        <!-- Verhaal: beeld links, outlined tekst rechts -->
-        <div class="pillars__row js-fade">
-            <div class="pillars__thumb">
-                <img src="assets/cases/greenpeace/thumb.jpg" alt="Greenpeace animatie">
-            </div>
+        <!-- Verhaal: beeld links (groot), tekst rechts (klein) -->
+        <div class="pillars__row pillars__row--verhaal js-fade">
+            <a class="pillars__case-card" href="greenpeace.html">
+                <div class="pillars__thumb">
+                    <img src="assets/cases/greenpeace/thumb.jpg" alt="Greenpeace animatie">
+                </div>
+                <div class="pillars__case-caption">
+                    <span class="pillars__case-caption__title">Greenpeace</span>
+                    <span class="pillars__case-caption__cat">Animatie &amp; Strategie</span>
+                </div>
+            </a>
             <div>
                 <p class="pillars__label">Verhaal</p>
                 <p class="pillars__text">Ingewikkelde materie, scherpe journalistiek, groot onderzoek of een goed idee. Wij duiken in de inhoud en vertalen het naar beeld.</p>
@@ -99,24 +105,17 @@
         </div>
     </section>
 
-    <!-- ===== ABOUT STRIP ===== -->
-    <section class="about" id="studio">
-        <div class="about__reel">
-            <div class="about__reel-placeholder">
-                <div class="play-btn">
-                    <svg width="16" height="22" viewBox="0 0 16 22" fill="none">
-                        <path d="M0 22L16 11L0 0V22Z" fill="#edeae4" opacity="0.8"/>
-                    </svg>
-                </div>
-            </div>
+    <!-- ===== STUDIO COLLAGE ===== -->
+    <section class="studio-collage js-fade" id="studio">
+        <div class="studio-collage__text">
+            <p class="studio-collage__label">Studio</p>
+            <h2 class="studio-collage__title">Meet the team.</h2>
+            <a href="about.html" class="cta-link studio-collage__cta"><span class="cta-arrow">→</span> Over ons</a>
         </div>
-        <div class="about__content">
-            <p class="about__label">Studio</p>
-            <h2 class="about__title">Your story deserves our love for animation.</h2>
-            <p class="about__text">We make colorful, thoughtful and enriching commercials, TV idents, explainer videos and social media content for brands that want to be remembered.</p>
-            <a href="about.html" class="cta-link about__cta">
-                <span class="cta-arrow">→</span> About us
-            </a>
+        <div class="studio-collage__photos">
+            <img src="assets/about-01.jpg" alt="Studio Yoko team" class="studio-collage__photo studio-collage__photo--1">
+            <img src="assets/about-02.jpg" alt="Studio Yoko team" class="studio-collage__photo studio-collage__photo--2">
+            <img src="assets/about-03.jpg" alt="Studio Yoko team" class="studio-collage__photo studio-collage__photo--3">
         </div>
     </section>
 

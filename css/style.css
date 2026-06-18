@@ -193,7 +193,7 @@ a { color: inherit; }
     padding: clamp(48px, 7vw, 96px) var(--pad-x);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(40px, 6vw, 80px);
+    gap: clamp(56px, 9vw, 140px);
     align-items: start;
 }
 .reel-sub__left { display: flex; flex-direction: column; gap: clamp(20px, 2.5vw, 32px); }
@@ -208,13 +208,13 @@ a { color: inherit; }
     margin: 0;
 }
 .reel-sub__body {
-    font-size: clamp(15px, 1.25vw, 18px);
-    line-height: 1.72;
+    font-size: clamp(14px, 1.1vw, 16px);
+    line-height: 1.6;
     color: rgba(32,32,32,0.55);
 }
 .reel-sub__body--dark {
     color: rgba(32,32,32,0.6);
-    max-width: 52ch;
+    max-width: 72ch;
     margin: 0;
 }
 .reel-sub__for-label {

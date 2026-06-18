@@ -223,6 +223,7 @@ a { color: inherit; }
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: rgba(32,32,32,0.35);
+    margin-top: clamp(32px, 4vw, 56px);
     margin-bottom: 12px;
 }
 .reel-sub__tags {

@@ -1347,7 +1347,7 @@ a { color: inherit; }
 .heyu-thumbs img { width: 100%; display: block; border-radius: 6px; }
 
 /* ===== PILLARS (drie pijlers, homepage) ===== */
-.pillars { background: var(--cream); }
+.pillars { background: #fff; }
 .pillars__row {
     display: grid;
     grid-template-columns: 1fr 1fr;

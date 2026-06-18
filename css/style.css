@@ -192,7 +192,7 @@ a { color: inherit; }
     background: var(--cream);
     padding: clamp(48px, 7vw, 96px) var(--pad-x);
     display: grid;
-    grid-template-columns: 7fr 3fr;
+    grid-template-columns: 1fr 1fr;
     gap: clamp(40px, 6vw, 80px);
     align-items: start;
 }

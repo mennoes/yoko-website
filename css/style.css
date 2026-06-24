@@ -515,11 +515,15 @@ a { color: inherit; }
 .work-item__overlay {
     position: absolute; inset: 0;
     opacity: 0;
-    transition: opacity 0.35s ease;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,0.78) 100%);
+    transition: opacity 0.35s ease, backdrop-filter 0.35s ease;
+    background: linear-gradient(180deg, rgba(20,20,20,0) 40%, rgba(20,20,20,0.35) 100%);
     pointer-events: none;
 }
-.work-item:hover .work-item__overlay { opacity: 1; }
+.work-item:hover .work-item__overlay {
+    opacity: 1;
+    backdrop-filter: blur(6px) brightness(0.85);
+    -webkit-backdrop-filter: blur(6px) brightness(0.85);
+}
 
 
 /* Info als overlay onderin de thumbnail — verschijnt bij hover */

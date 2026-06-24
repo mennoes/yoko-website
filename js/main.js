@@ -283,6 +283,89 @@ function initWordReveal() {
 }
 
 // ===== SMOOTH SCROLL =====
+// ===== INTERACTIVE DOT FIELD =====
+function initDotField() {
+    const canvas = document.getElementById('dot-field');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    const SPACING = 28;
+    const BASE_RADIUS = 1.6;
+    const MAX_RADIUS = 5.5;
+    const INFLUENCE = 130;
+    const PUSH = 60;
+    const EASE = 0.12;
+    const ACCENT = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#DCB83E';
+
+    let dots = [];
+    let w = 0, h = 0;
+    const mouse = { x: -9999, y: -9999, active: false };
+
+    function resize() {
+        const rect = canvas.getBoundingClientRect();
+        w = rect.width; h = rect.height;
+        canvas.width = w * dpr; canvas.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const cols = Math.ceil(w / SPACING) + 1;
+        const rows = Math.ceil(h / SPACING) + 1;
+        const offX = (w - (cols - 1) * SPACING) / 2;
+        const offY = (h - (rows - 1) * SPACING) / 2;
+        dots = [];
+        for (let y = 0; y < rows; y++) {
+            for (let x = 0; x < cols; x++) {
+                const bx = offX + x * SPACING;
+                const by = offY + y * SPACING;
+                dots.push({ bx, by, x: bx, y: by });
+            }
+        }
+    }
+
+    function onMove(e) {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+        mouse.active = true;
+    }
+    function onLeave() { mouse.active = false; mouse.x = -9999; mouse.y = -9999; }
+
+    function frame() {
+        ctx.clearRect(0, 0, w, h);
+        for (const d of dots) {
+            const dx = d.bx - mouse.x;
+            const dy = d.by - mouse.y;
+            const dist = Math.hypot(dx, dy);
+            let targetX = d.bx, targetY = d.by, r = BASE_RADIUS;
+            if (mouse.active && dist < INFLUENCE) {
+                const force = (1 - dist / INFLUENCE);
+                const push = force * PUSH;
+                const ang = Math.atan2(dy, dx);
+                targetX = d.bx + Math.cos(ang) * push;
+                targetY = d.by + Math.sin(ang) * push;
+                r = BASE_RADIUS + force * (MAX_RADIUS - BASE_RADIUS);
+            }
+            d.x += (targetX - d.x) * EASE;
+            d.y += (targetY - d.y) * EASE;
+            ctx.beginPath();
+            ctx.arc(d.x, d.y, r, 0, Math.PI * 2);
+            ctx.fillStyle = ACCENT;
+            ctx.fill();
+        }
+        requestAnimationFrame(frame);
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    canvas.addEventListener('mousemove', onMove);
+    canvas.addEventListener('mouseleave', onLeave);
+    canvas.addEventListener('touchmove', (e) => {
+        const t = e.touches[0]; if (!t) return;
+        onMove({ clientX: t.clientX, clientY: t.clientY });
+    }, { passive: true });
+    canvas.addEventListener('touchend', onLeave);
+    frame();
+}
+
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
@@ -303,6 +386,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initSmoothScroll();
     initWordReveal();
     initBlockReveal();
+    initDotField();
 
     // Fade statische elementen
     document.querySelectorAll('.about__title, .about__text, .footer__title, .footer__team-title, .page-header__title')

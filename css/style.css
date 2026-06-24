@@ -25,7 +25,8 @@
 :root {
     --gray:   #b6b7bb;
     --dark:   #202020;
-    --cream:  #edeae4;
+    --cream:  #DCB83E;
+    --accent: #B0C6EB;
     --font:   'Aeonik', 'DM Sans', sans-serif;
 
     --pad-x:  clamp(32px, 8vw, 160px);
@@ -70,6 +71,7 @@ a { color: inherit; }
 .cta-arrow {
     display: inline-block;
     font-size: 0.85em;
+    color: var(--accent);
     transition: transform 0.2s ease;
 }
 .cta-link:hover .cta-arrow { transform: translate(3px, -1px); }
@@ -226,7 +228,8 @@ a { color: inherit; }
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(32,32,32,0.35);
+    color: var(--dark);
+    opacity: 0.55;
     margin-top: clamp(32px, 4vw, 56px);
     margin-bottom: 12px;
 }
@@ -237,9 +240,10 @@ a { color: inherit; }
 }
 .reel-sub__tag {
     font-size: clamp(12px, 0.9vw, 14px);
-    font-weight: 400;
+    font-weight: 500;
     color: var(--dark);
-    border: 1px solid rgba(32,32,32,0.18);
+    background: var(--accent);
+    border: 1px solid var(--accent);
     border-radius: 99px;
     padding: 6px 14px;
     white-space: nowrap;

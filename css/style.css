@@ -513,7 +513,7 @@ a { color: inherit; }
 }
 .work-item.video-ready:hover .work-item__video { opacity: 1; }
 .work-item.video-autoplay .work-item__video { opacity: 1 !important; }
-.work-item.video-autoplay .work-item__img { display: none; }
+/* Video-autoplay items tonen nu ook de thumbnail als fallback */
 
 /* Kleur-overlay op hover */
 .work-item__overlay {

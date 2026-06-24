@@ -112,17 +112,18 @@ a { color: inherit; }
     transition: opacity 0.1s ease;
 }
 .nav__headline {
-    font-size: clamp(26px, 2.6vw, 42px);
+    font-size: clamp(15px, 1.2vw, 20px);
     font-weight: 500;
     font-style: italic;
     line-height: 1;
-    letter-spacing: -1.5px;
+    letter-spacing: -0.3px;
     color: var(--dark);
     opacity: var(--nav-fade);
     transition: opacity 0.15s ease;
-    justify-self: center;
-    text-align: center;
-    margin: 0;
+    justify-self: start;
+    margin: 0 0 0 clamp(12px, 1.4vw, 20px);
+    align-self: end;
+    padding-bottom: 4px;
 }
 .nav--dark .nav__headline { color: var(--cream); }
 .nav__links { display: flex; gap: clamp(20px, 2.4vw, 40px); }

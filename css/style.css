@@ -721,13 +721,26 @@ a { color: inherit; }
    FOOTER
    ===================================================== */
 .footer {
-    background: var(--dark);
+    background: #DCB83E;
     padding: clamp(48px, 6vw, 88px) var(--pad-x) clamp(28px, 3vw, 44px);
-    border-top: 1px solid rgba(182,183,187,0.08);
+    border-top: none;
     display: flex;
     flex-direction: column;
     gap: clamp(40px, 5vw, 64px);
+    align-items: center;
 }
+.footer__ok {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(80px, 9vw, 140px);
+    height: clamp(80px, 9vw, 140px);
+    border-radius: 50%;
+    background: var(--dark);
+    font-size: clamp(44px, 5vw, 80px);
+    line-height: 1;
+}
+.footer__cols { width: 100%; }
 .footer__cols {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -745,8 +758,8 @@ a { color: inherit; }
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--cream);
-    opacity: 0.4;
+    color: var(--dark);
+    opacity: 0.55;
 }
 .footer__photos {
     display: grid;
@@ -762,7 +775,7 @@ a { color: inherit; }
     transition: filter 0.2s ease;
 }
 .footer__photo:hover { filter: none; }
-.footer__cta { color: var(--cream); opacity: 0.65; }
+.footer__cta { color: var(--dark); opacity: 0.75; }
 .footer__cta:hover { opacity: 1; }
 .footer__info { display: flex; flex-direction: column; gap: 20px; }
 .footer__title {
@@ -770,10 +783,9 @@ a { color: inherit; }
     font-weight: 500;
     letter-spacing: -1px;
     line-height: 1;
-    color: var(--cream);
-    opacity: 0.9;
+    color: var(--dark);
 }
-.footer__email { color: var(--cream); font-size: clamp(14px, 1.2vw, 18px); opacity: 0.65; }
+.footer__email { color: var(--dark); font-size: clamp(14px, 1.2vw, 18px); opacity: 0.8; }
 .footer__email:hover { opacity: 1; }
 .footer__address-block { display: flex; flex-direction: column; gap: 14px; }
 .footer__address {
@@ -781,14 +793,14 @@ a { color: inherit; }
     font-weight: 400;
     letter-spacing: -0.15px;
     line-height: 1.55;
-    color: var(--cream);
-    opacity: 0.35;
+    color: var(--dark);
+    opacity: 0.55;
 }
 .footer__legal {
     font-size: 11px;
     letter-spacing: -0.1px;
-    color: var(--cream);
-    opacity: 0.2;
+    color: var(--dark);
+    opacity: 0.4;
 }
 
 /* Mini footer */

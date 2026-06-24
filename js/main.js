@@ -200,7 +200,11 @@ function initNavScroll() {
 
     function update() {
         const scrolled = window.scrollY;
-        nav.style.setProperty('--nav-fade', 1);
+        const fadeStart = 20;
+        const fadeEnd = 120;
+        const progress = Math.max(0, Math.min(1, (scrolled - fadeStart) / (fadeEnd - fadeStart)));
+
+        nav.style.setProperty('--nav-fade', 1 - progress);
     }
 
     window.addEventListener('scroll', update, { passive: true });

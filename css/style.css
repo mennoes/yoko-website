@@ -25,8 +25,8 @@
 :root {
     --gray:   #b6b7bb;
     --dark:   #202020;
-    --cream:  #DCB83E;
-    --accent: #B0C6EB;
+    --cream:  #B0C6EB;
+    --accent: #DCB83E;
     --font:   'Aeonik', 'DM Sans', sans-serif;
 
     --pad-x:  clamp(32px, 8vw, 160px);
@@ -466,6 +466,18 @@ a { color: inherit; }
     background: var(--dark);
     width: 100%;
 }
+.work-item__media::before {
+    content: "🚧";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(48px, 6vw, 96px);
+    color: var(--accent);
+    background: repeating-linear-gradient(45deg, rgba(0,0,0,0.06) 0 14px, rgba(0,0,0,0) 14px 28px);
+    z-index: 0;
+}
 
 /* Aspect ratios — uniform per rij zodat items netjes uitlijnen */
 .work-item[data-size="full"]   .work-item__media { aspect-ratio: 16/7; }
@@ -520,45 +532,40 @@ a { color: inherit; }
     position: absolute; inset: 0;
     opacity: 0;
     transition: opacity 0.35s ease;
-    background: rgba(20,20,20,0.18);
+    background: rgba(20,20,20,0.22);
     pointer-events: none;
     z-index: 1;
 }
 .work-item:hover .work-item__overlay { opacity: 1; }
-.work-item__media {
-    transition: filter 0.35s ease;
-}
-.work-item:hover .work-item__media {
-    filter: blur(7px) brightness(0.9);
-}
 .work-item__img,
 .work-item__video {
-    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                filter 0.35s ease;
 }
 .work-item:hover .work-item__img,
 .work-item:hover .work-item__video {
     transform: scale(1.05);
+    filter: blur(7px) brightness(0.9);
 }
 
 
 /* Info als overlay onderin de thumbnail — verschijnt bij hover */
 .work-item__info {
     position: absolute;
-    left: 0; right: 0; bottom: 0;
+    inset: 0;
     padding: clamp(16px, 2vw, 28px);
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
     opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.35s ease, transform 0.35s ease;
+    transition: opacity 0.35s ease;
     pointer-events: none;
     z-index: 2;
 }
-.work-item:hover .work-item__info {
-    opacity: 1;
-    transform: translateY(0);
-}
+.work-item:hover .work-item__info { opacity: 1; }
 .work-item__title {
     font-size: clamp(15px, 1.2vw, 20px);
     font-weight: 500;
@@ -731,7 +738,7 @@ a { color: inherit; }
    FOOTER
    ===================================================== */
 .footer {
-    background: #DCB83E;
+    background: var(--cream);
     padding: clamp(48px, 6vw, 88px) var(--pad-x) clamp(28px, 3vw, 44px);
     border-top: none;
     display: flex;

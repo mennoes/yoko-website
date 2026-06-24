@@ -175,7 +175,7 @@ a { color: inherit; }
 .reel {
     padding: 0 var(--pad-x);
     padding-top: clamp(80px, 9vw, 110px); /* ruimte voor vaste nav */
-    background: var(--cream);
+    background: transparent;
     line-height: 0;
 }
 .reel__video {
@@ -201,7 +201,7 @@ a { color: inherit; }
    REEL SUBTEKST (direct onder video)
    ===================================================== */
 .reel-sub {
-    background: var(--cream);
+    background: transparent;
     padding: clamp(48px, 7vw, 96px) var(--pad-x);
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -274,7 +274,7 @@ a { color: inherit; }
    DRIE PIJLERS (na eerste 4 cases)
    ===================================================== */
 .reel-caption {
-    background: var(--cream);
+    background: transparent;
     padding: clamp(56px, 7vw, 104px) var(--pad-x);
     position: relative;
 }
@@ -752,7 +752,7 @@ a { color: inherit; }
    FOOTER
    ===================================================== */
 .footer {
-    background: var(--cream);
+    background: transparent;
     padding: clamp(48px, 6vw, 88px) var(--pad-x) clamp(28px, 3vw, 44px);
     border-top: none;
     display: flex;
@@ -976,7 +976,7 @@ a { color: inherit; }
 /* Related projects */
 .case-related {
     padding: clamp(56px, 7vw, 96px) var(--pad-x);
-    background: var(--cream);
+    background: transparent;
     border-top: 1px solid rgba(32,32,32,0.08);
 }
 .case-related__inner {
@@ -1172,7 +1172,7 @@ a { color: inherit; }
 .cs {
     padding: clamp(72px, 10vw, 140px) var(--pad-x);
 }
-.cs--cream  { background: var(--cream); }
+.cs--cream  { background: transparent; }
 .cs--dark   { background: var(--dark); }
 .cs--tight  { padding-top: clamp(40px, 5vw, 72px); padding-bottom: clamp(40px, 5vw, 72px); }
 .cs--flush  { padding: 0; }
@@ -1459,7 +1459,7 @@ a { color: inherit; }
 
 /* About collage */
 .studio-collage {
-    background: var(--cream);
+    background: transparent;
     padding: clamp(56px, 8vw, 112px) var(--pad-x);
     display: grid;
     grid-template-columns: 260px 1fr;

@@ -291,10 +291,10 @@ function initDotField() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     const SPACING = 14;
-    const BASE_RADIUS = 1.1;
-    const MAX_RADIUS = 4;
-    const INFLUENCE = 130;
-    const PUSH = 50;
+    const BASE_RADIUS = 1.4;
+    const MAX_RADIUS = 1.9;
+    const INFLUENCE = 140;
+    const PUSH = 28;
     const EASE = 0.14;
     const css = getComputedStyle(document.documentElement);
     const DOT_COLOR = (css.getPropertyValue('--dot').trim()) || '#d6d2ca';
@@ -368,7 +368,7 @@ function initDotField() {
 
 // ===== PARALLAX: media binnen work-items =====
 function initWorkParallax() {
-    const STRENGTH = 0.07;
+    const STRENGTH = 0.03;
     let ticking = false;
     function update() {
         const winH = window.innerHeight;
@@ -378,7 +378,7 @@ function initWorkParallax() {
             const center = (rect.top + rect.bottom) / 2;
             const offset = (center - winH / 2) * STRENGTH;
             const inner = media.querySelectorAll('.work-item__img, .work-item__video');
-            inner.forEach(el => el.style.setProperty('--parallax-y', `${-offset}px`));
+            inner.forEach(el => el.style.setProperty('--parallax-y', `${offset}px`));
         });
         ticking = false;
     }
@@ -388,6 +388,46 @@ function initWorkParallax() {
     window.addEventListener('resize', update);
     setTimeout(update, 50);
     setTimeout(update, 500);
+}
+
+// ===== TEXT REPULSION: bold koppen reageren licht op muis =====
+function initTextRepulsion() {
+    const selector = '.reel-sub__text, .pillars__text, .footer__title, .work__label';
+    const targets = Array.from(document.querySelectorAll(selector));
+    if (!targets.length) return;
+    const INFLUENCE = 320;
+    const PUSH = 14;
+    const EASE = 0.12;
+    const state = targets.map(el => ({ el, x: 0, y: 0, tx: 0, ty: 0 }));
+    const mouse = { x: -9999, y: -9999, active: false };
+
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true;
+    });
+
+    function frame() {
+        for (const s of state) {
+            const r = s.el.getBoundingClientRect();
+            const cx = r.left + r.width / 2;
+            const cy = r.top + r.height / 2;
+            const dx = cx - mouse.x;
+            const dy = cy - mouse.y;
+            const dist = Math.hypot(dx, dy);
+            if (mouse.active && dist < INFLUENCE) {
+                const force = (1 - dist / INFLUENCE);
+                const ang = Math.atan2(dy, dx);
+                s.tx = Math.cos(ang) * force * PUSH;
+                s.ty = Math.sin(ang) * force * PUSH;
+            } else {
+                s.tx = 0; s.ty = 0;
+            }
+            s.x += (s.tx - s.x) * EASE;
+            s.y += (s.ty - s.y) * EASE;
+            s.el.style.transform = `translate3d(${s.x.toFixed(2)}px, ${s.y.toFixed(2)}px, 0)`;
+        }
+        requestAnimationFrame(frame);
+    }
+    frame();
 }
 
 function initSmoothScroll() {
@@ -412,6 +452,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initBlockReveal();
     initDotField();
     initWorkParallax();
+    initTextRepulsion();
 
     // Fade statische elementen
     document.querySelectorAll('.about__title, .about__text, .footer__title, .footer__team-title, .page-header__title')

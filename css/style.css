@@ -1084,12 +1084,19 @@ a { color: inherit; }
    Witte sections uitlijnen met de video-inset
    ===================================================== */
 @media (min-width: 1921px) {
+    .reel,
     .reel-sub,
     .reel-caption,
+    .pillars,
+    .studio-collage,
     .work {
         margin-inline: var(--pad-x);
     }
-    /* Interne padding — ademt wat binnen de witte container */
+    .reel { padding-inline: 0; }
+    .reel-sub,
+    .reel-caption,
+    .studio-collage { padding-inline: clamp(24px, 3vw, 48px); }
+    .pillars__row { padding-inline: clamp(24px, 3vw, 48px); }
     .work__header { padding-inline: clamp(24px, 3vw, 48px); }
     .work__grid   { padding-inline: clamp(24px, 3vw, 48px); padding-top: clamp(24px, 3vw, 48px); }
 }

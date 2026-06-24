@@ -72,7 +72,7 @@ function renderWorkGrid(cases, gridEl, preFiltered = false) {
 
     gridEl.innerHTML = filtered.map((c, i) => {
         const size = c.size || 'medium';
-        const delay = Math.min(i * 0.06, 0.4);
+        const delay = Math.min(Math.floor(i / 2) * 0.12, 0.6);
 
         const autoplay = c.autoplay_preview ? ' video-autoplay' : '';
         return `

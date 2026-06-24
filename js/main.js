@@ -290,13 +290,14 @@ function initDotField() {
     const ctx = canvas.getContext('2d');
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    const SPACING = 28;
-    const BASE_RADIUS = 1.6;
-    const MAX_RADIUS = 5.5;
+    const SPACING = 14;
+    const BASE_RADIUS = 1.1;
+    const MAX_RADIUS = 4;
     const INFLUENCE = 130;
-    const PUSH = 60;
-    const EASE = 0.12;
-    const ACCENT = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#DCB83E';
+    const PUSH = 50;
+    const EASE = 0.14;
+    const css = getComputedStyle(document.documentElement);
+    const DOT_COLOR = (css.getPropertyValue('--dot').trim()) || '#d6d2ca';
 
     let dots = [];
     let w = 0, h = 0;
@@ -322,9 +323,8 @@ function initDotField() {
     }
 
     function onMove(e) {
-        const rect = canvas.getBoundingClientRect();
-        mouse.x = e.clientX - rect.left;
-        mouse.y = e.clientY - rect.top;
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
         mouse.active = true;
     }
     function onLeave() { mouse.active = false; mouse.x = -9999; mouse.y = -9999; }
@@ -348,7 +348,7 @@ function initDotField() {
             d.y += (targetY - d.y) * EASE;
             ctx.beginPath();
             ctx.arc(d.x, d.y, r, 0, Math.PI * 2);
-            ctx.fillStyle = ACCENT;
+            ctx.fillStyle = DOT_COLOR;
             ctx.fill();
         }
         requestAnimationFrame(frame);
@@ -356,14 +356,38 @@ function initDotField() {
 
     resize();
     window.addEventListener('resize', resize);
-    canvas.addEventListener('mousemove', onMove);
-    canvas.addEventListener('mouseleave', onLeave);
-    canvas.addEventListener('touchmove', (e) => {
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseout', (e) => { if (!e.relatedTarget) onLeave(); });
+    window.addEventListener('touchmove', (e) => {
         const t = e.touches[0]; if (!t) return;
         onMove({ clientX: t.clientX, clientY: t.clientY });
     }, { passive: true });
-    canvas.addEventListener('touchend', onLeave);
+    window.addEventListener('touchend', onLeave);
     frame();
+}
+
+// ===== PARALLAX: media binnen work-items =====
+function initWorkParallax() {
+    const STRENGTH = 0.07;
+    let ticking = false;
+    function update() {
+        const winH = window.innerHeight;
+        document.querySelectorAll('.work-item__media').forEach(media => {
+            const rect = media.getBoundingClientRect();
+            if (rect.bottom < -100 || rect.top > winH + 100) return;
+            const center = (rect.top + rect.bottom) / 2;
+            const offset = (center - winH / 2) * STRENGTH;
+            const inner = media.querySelectorAll('.work-item__img, .work-item__video');
+            inner.forEach(el => el.style.setProperty('--parallax-y', `${-offset}px`));
+        });
+        ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    setTimeout(update, 50);
+    setTimeout(update, 500);
 }
 
 function initSmoothScroll() {
@@ -387,6 +411,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initWordReveal();
     initBlockReveal();
     initDotField();
+    initWorkParallax();
 
     // Fade statische elementen
     document.querySelectorAll('.about__title, .about__text, .footer__title, .footer__team-title, .page-header__title')

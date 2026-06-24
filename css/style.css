@@ -25,8 +25,10 @@
 :root {
     --gray:   #b6b7bb;
     --dark:   #202020;
-    --cream:  #B0C6EB;
-    --accent: #DCB83E;
+    --cream:  #edeae4;
+    --dot:    #d6d2ca;
+    --accent: #B0C6EB;
+    --highlight: #DCB83E;
     --font:   'Aeonik', 'DM Sans', sans-serif;
 
     --pad-x:  clamp(32px, 8vw, 160px);
@@ -47,7 +49,11 @@ body {
     -moz-osx-font-smoothing: grayscale;
     max-width: 1920px;
     margin-inline: auto;
+    position: relative;
+    z-index: 0;
 }
+::selection { background: var(--highlight); color: var(--dark); }
+::-moz-selection { background: var(--highlight); color: var(--dark); }
 img, video { display: block; max-width: 100%; }
 address { font-style: normal; }
 a { color: inherit; }
@@ -486,10 +492,14 @@ a { color: inherit; }
 .work-item[data-size="small"]  .work-item__media { aspect-ratio: 16/9; }
 
 .work-item__img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
+    position: absolute;
+    left: 0; right: 0;
+    top: -10%;
+    width: 100%; height: 120%;
     object-fit: cover;
-    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translate3d(0, var(--parallax-y, 0), 0);
+    will-change: transform;
+    transition: transform 0.1s linear, filter 0.35s ease;
 }
 
 .work-item__logo {
@@ -516,11 +526,15 @@ a { color: inherit; }
 
 /* Video preview op hover */
 .work-item__video {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
+    position: absolute;
+    left: 0; right: 0;
+    top: -10%;
+    width: 100%; height: 120%;
     object-fit: cover;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transform: translate3d(0, var(--parallax-y, 0), 0);
+    will-change: transform;
+    transition: opacity 0.5s ease, transform 0.1s linear, filter 0.35s ease;
     pointer-events: none;
 }
 .work-item.video-ready:hover .work-item__video { opacity: 1; }
@@ -544,7 +558,7 @@ a { color: inherit; }
 }
 .work-item:hover .work-item__img,
 .work-item:hover .work-item__video {
-    transform: scale(1.05);
+    transform: translate3d(0, var(--parallax-y, 0), 0) scale(1.05);
     filter: blur(7px) brightness(0.9);
 }
 
@@ -1123,15 +1137,16 @@ a { color: inherit; }
    INTERACTIVE DOT FIELD
    ===================================================== */
 .dot-field-wrap {
-    width: 100%;
-    height: clamp(280px, 32vw, 460px);
-    background: var(--cream);
-    overflow: hidden;
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
 }
 .dot-field {
     display: block;
     width: 100%;
     height: 100%;
+    pointer-events: none;
 }
 
 /* =====================================================

@@ -217,10 +217,16 @@ a { color: inherit; }
     font-size: clamp(28px, 3.4vw, 56px);
     font-weight: 600;
     letter-spacing: -1.5px;
-    line-height: 1.05;
+    line-height: 1.15;
     color: var(--dark);
     max-width: 28ch;
     margin: 0;
+    display: inline;
+    background: var(--accent);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    padding: 0.1em 0.25em;
+    box-shadow: 0.2em 0 0 var(--accent), -0.2em 0 0 var(--accent);
 }
 .reel-sub__body {
     font-size: clamp(17px, 1.4vw, 22px);

@@ -51,6 +51,10 @@ body {
     margin-inline: auto;
     position: relative;
     z-index: 0;
+    cursor: url('../assets/cursor-ok.svg') 16 16, auto;
+}
+a, button, [role="button"], .work-item, .pillars__case-card, .filter-btn, .footer__photo {
+    cursor: url('../assets/cursor-ok.svg') 16 16, pointer;
 }
 ::selection { background: var(--highlight); color: var(--dark); }
 ::-moz-selection { background: var(--highlight); color: var(--dark); }

@@ -262,6 +262,13 @@ a { color: inherit; }
     }
 }
 
+/* Word-pop span — inline-block zodat transform werkt */
+.word-pop {
+    display: inline-block;
+    will-change: transform;
+    transition: transform 0.05s linear;
+}
+
 /* Word-chips binnen de subtekst — dimmed naar zwart */
 .reel-sub .word-chip {
     color: rgba(32, 32, 32, 0.18);
@@ -803,9 +810,16 @@ a { color: inherit; }
     object-fit: cover;
     border-radius: 4px;
     filter: grayscale(15%);
-    transition: filter 0.2s ease;
+    transform: rotate(var(--rot, 0deg));
+    transition: filter 0.25s ease, transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.footer__photo:hover { filter: none; }
+.footer__photo:nth-child(1) { --rot: -3.5deg; }
+.footer__photo:nth-child(2) { --rot: 2.5deg; }
+.footer__photo:nth-child(3) { --rot: -1.5deg; }
+.footer__photo:hover {
+    filter: none;
+    transform: rotate(0deg) scale(1.02);
+}
 .footer__cta { color: var(--dark); opacity: 0.75; }
 .footer__cta:hover { opacity: 1; }
 .footer__info { display: flex; flex-direction: column; gap: 20px; }

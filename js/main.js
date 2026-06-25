@@ -292,7 +292,8 @@ function initDotField() {
 
     const SPACING = 14;
     const DOT_RADIUS = 1.4;
-    const SNAKE_LEN = 6;
+    const SNAKE_MIN = 6;
+    const SNAKE_MAX = 22;
     const STEPS_PER_FRAME = 2;
     const css = getComputedStyle(document.documentElement);
     const DOT_COLOR = (css.getPropertyValue('--dot').trim()) || '#d6d2ca';
@@ -301,8 +302,9 @@ function initDotField() {
     let offX = 0, offY = 0;
     let cols = 0, rows = 0;
     let w = 0, h = 0;
-    const mouse = { x: -9999, y: -9999, active: false };
+    const mouse = { x: -9999, y: -9999, px: -9999, py: -9999, active: false, speed: 0 };
     let snake = []; // array of { col, row }
+    let snakeLen = SNAKE_MIN;
 
     function resize() {
         const rect = canvas.getBoundingClientRect();
@@ -344,18 +346,31 @@ function initDotField() {
         // alleen toevoegen als verschillend (Math.sign kan 0 geven)
         if (next.col === head.col && next.row === head.row) return;
         snake.unshift(next);
-        if (snake.length > SNAKE_LEN) snake.length = SNAKE_LEN;
+        if (snake.length > snakeLen) snake.length = snakeLen;
     }
 
     function onMove(e) {
+        if (mouse.active) {
+            const dx = e.clientX - mouse.x;
+            const dy = e.clientY - mouse.y;
+            const instant = Math.hypot(dx, dy);
+            mouse.speed += (instant - mouse.speed) * 0.3;
+        }
         mouse.x = e.clientX;
         mouse.y = e.clientY;
         mouse.active = true;
     }
-    function onLeave() { mouse.active = false; mouse.x = -9999; mouse.y = -9999; }
+    function onLeave() { mouse.active = false; mouse.x = -9999; mouse.y = -9999; mouse.speed = 0; }
 
     function frame() {
         ctx.clearRect(0, 0, w, h);
+
+        // mouse speed decay
+        mouse.speed *= 0.92;
+        const targetLen = Math.round(SNAKE_MIN + Math.min(1, mouse.speed / 60) * (SNAKE_MAX - SNAKE_MIN));
+        snakeLen += (targetLen - snakeLen) * 0.18;
+        const lenInt = Math.max(SNAKE_MIN, Math.round(snakeLen));
+        if (snake.length > lenInt) snake.length = lenInt;
 
         // dots renderen
         ctx.fillStyle = DOT_COLOR;
@@ -424,24 +439,47 @@ function initWorkParallax() {
     setTimeout(update, 500);
 }
 
-// ===== TEXT REPULSION: bold koppen reageren licht op muis =====
+// ===== TEXT REPULSION: woorden reageren los op de muis =====
 function initTextRepulsion() {
-    const selector = '.reel-sub__text, .pillars__text, .footer__title, .work__label';
-    const targets = Array.from(document.querySelectorAll(selector));
-    if (!targets.length) return;
-    const INFLUENCE = 320;
-    const PUSH = 14;
-    const EASE = 0.12;
-    const state = targets.map(el => ({ el, x: 0, y: 0, tx: 0, ty: 0 }));
-    const mouse = { x: -9999, y: -9999, active: false };
+    const selector = '.reel-sub__text, .pillars__text, .footer__title';
+    const containers = Array.from(document.querySelectorAll(selector));
+    if (!containers.length) return;
+    const INFLUENCE = 160;
+    const PUSH = 16;
+    const EASE = 0.16;
 
+    // split elke tekst-container in <span class="word-pop"> per woord
+    const words = [];
+    containers.forEach(el => {
+        // niet dubbel splitsen (bv. reel-sub__text gebruikt al word-chip via initWordReveal)
+        if (el.dataset.wordRepulse) return;
+        el.dataset.wordRepulse = '1';
+        const existingChips = el.querySelectorAll('.word-chip');
+        if (existingChips.length) {
+            existingChips.forEach(c => { c.classList.add('word-pop'); words.push({ el: c, x: 0, y: 0, tx: 0, ty: 0 }); });
+            return;
+        }
+        const html = el.innerHTML.replace(/<br\s*\/?>/gi, '\n');
+        const stripped = html.replace(/<[^>]+>/g, '');
+        const parts = stripped.split(/(\s+)/);
+        el.innerHTML = parts.map(p => {
+            if (p === '\n') return '<br>';
+            if (/\S/.test(p)) return `<span class="word-pop">${p}</span>`;
+            return p;
+        }).join('');
+        el.querySelectorAll('.word-pop').forEach(s => words.push({ el: s, x: 0, y: 0, tx: 0, ty: 0 }));
+    });
+
+    if (!words.length) return;
+
+    const mouse = { x: -9999, y: -9999, active: false };
     window.addEventListener('mousemove', (e) => {
         mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true;
     });
 
     function frame() {
-        for (const s of state) {
-            const r = s.el.getBoundingClientRect();
+        for (const w of words) {
+            const r = w.el.getBoundingClientRect();
             const cx = r.left + r.width / 2;
             const cy = r.top + r.height / 2;
             const dx = cx - mouse.x;
@@ -450,14 +488,14 @@ function initTextRepulsion() {
             if (mouse.active && dist < INFLUENCE) {
                 const force = (1 - dist / INFLUENCE);
                 const ang = Math.atan2(dy, dx);
-                s.tx = Math.cos(ang) * force * PUSH;
-                s.ty = Math.sin(ang) * force * PUSH;
+                w.tx = Math.cos(ang) * force * PUSH;
+                w.ty = Math.sin(ang) * force * PUSH;
             } else {
-                s.tx = 0; s.ty = 0;
+                w.tx = 0; w.ty = 0;
             }
-            s.x += (s.tx - s.x) * EASE;
-            s.y += (s.ty - s.y) * EASE;
-            s.el.style.transform = `translate3d(${s.x.toFixed(2)}px, ${s.y.toFixed(2)}px, 0)`;
+            w.x += (w.tx - w.x) * EASE;
+            w.y += (w.ty - w.y) * EASE;
+            w.el.style.transform = `translate3d(${w.x.toFixed(2)}px, ${w.y.toFixed(2)}px, 0)`;
         }
         requestAnimationFrame(frame);
     }

@@ -293,10 +293,11 @@ function initDotField() {
     const SPACING = 14;
     const DOT_RADIUS = 1.4;
     const HIT_RADIUS = 22;
-    const COOLDOWN = 600;     // ms voordat dezelfde dot opnieuw mag spawnen
-    const FLASH_LIFE = 520;   // ms levensduur van een lijn
-    const SHOTS_PER_HIT = 3;
-    const SHOT_ALPHA = 0.55;
+    const COOLDOWN = 4000;    // ms voordat dezelfde dot opnieuw mag spawnen
+    const FLASH_LIFE = 700;   // ms levensduur van een lijn
+    const SHOTS_PER_HIT = 1;
+    const SHOT_ALPHA = 0.45;
+    const FIRE_CHANCE = 0.06; // kans dat een dot afgaat als de muis erover komt
     const css = getComputedStyle(document.documentElement);
     const DOT_COLOR = (css.getPropertyValue('--dot').trim()) || '#d6d2ca';
 
@@ -335,16 +336,15 @@ function initDotField() {
     function onLeave() { mouse.active = false; mouse.x = -9999; mouse.y = -9999; }
 
     function trigger(d, now) {
-        // 8 buren ophalen
+        // alleen 4 cardinale buren (90°)
+        const dirs = [[-1,0],[1,0],[0,-1],[0,1]];
         const neighbors = [];
-        for (let dr = -1; dr <= 1; dr++) {
-            for (let dc = -1; dc <= 1; dc++) {
-                if (dr === 0 && dc === 0) continue;
-                const nc = d.col + dc, nr = d.row + dr;
-                if (nc < 0 || nc >= cols || nr < 0 || nr >= rows) continue;
-                neighbors.push(dots[nr * cols + nc]);
-            }
+        for (const [dc, dr] of dirs) {
+            const nc = d.col + dc, nr = d.row + dr;
+            if (nc < 0 || nc >= cols || nr < 0 || nr >= rows) continue;
+            neighbors.push(dots[nr * cols + nc]);
         }
+        if (!neighbors.length) return;
         // shuffle, neem er N
         for (let i = neighbors.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -376,6 +376,7 @@ function initDotField() {
                     const dy = d.y - mouse.y;
                     if (dx * dx + dy * dy > HIT_RADIUS * HIT_RADIUS) continue;
                     if (now - d.triggered < COOLDOWN) continue;
+                    if (Math.random() > FIRE_CHANCE) continue;
                     trigger(d, now);
                 }
             }

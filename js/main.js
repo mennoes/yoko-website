@@ -292,14 +292,14 @@ function initDotField() {
 
     const SPACING = 14;
     const BASE_RADIUS = 1.4;
-    const MAX_RADIUS = 1.9;
-    const INFLUENCE = 140;
-    const PUSH = 28;
-    const EASE = 0.14;
+    const HOT_RADIUS = 2.4;
+    const INFLUENCE = 130;
+    const LINK_DIST = SPACING * 1.6;
     const css = getComputedStyle(document.documentElement);
     const DOT_COLOR = (css.getPropertyValue('--dot').trim()) || '#d6d2ca';
 
     let dots = [];
+    let cols = 0;
     let w = 0, h = 0;
     const mouse = { x: -9999, y: -9999, active: false };
 
@@ -308,16 +308,14 @@ function initDotField() {
         w = rect.width; h = rect.height;
         canvas.width = w * dpr; canvas.height = h * dpr;
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        const cols = Math.ceil(w / SPACING) + 1;
+        cols = Math.ceil(w / SPACING) + 1;
         const rows = Math.ceil(h / SPACING) + 1;
         const offX = (w - (cols - 1) * SPACING) / 2;
         const offY = (h - (rows - 1) * SPACING) / 2;
         dots = [];
         for (let y = 0; y < rows; y++) {
             for (let x = 0; x < cols; x++) {
-                const bx = offX + x * SPACING;
-                const by = offY + y * SPACING;
-                dots.push({ bx, by, x: bx, y: by });
+                dots.push({ x: offX + x * SPACING, y: offY + y * SPACING, lit: 0 });
             }
         }
     }
@@ -331,24 +329,48 @@ function initDotField() {
 
     function frame() {
         ctx.clearRect(0, 0, w, h);
+
+        // bereken "lit"-waarde per dot (0..1) op basis van afstand tot muis
         for (const d of dots) {
-            const dx = d.bx - mouse.x;
-            const dy = d.by - mouse.y;
+            const dx = d.x - mouse.x;
+            const dy = d.y - mouse.y;
             const dist = Math.hypot(dx, dy);
-            let targetX = d.bx, targetY = d.by, r = BASE_RADIUS;
-            if (mouse.active && dist < INFLUENCE) {
-                const force = (1 - dist / INFLUENCE);
-                const push = force * PUSH;
-                const ang = Math.atan2(dy, dx);
-                targetX = d.bx + Math.cos(ang) * push;
-                targetY = d.by + Math.sin(ang) * push;
-                r = BASE_RADIUS + force * (MAX_RADIUS - BASE_RADIUS);
+            const target = mouse.active && dist < INFLUENCE
+                ? 1 - dist / INFLUENCE
+                : 0;
+            d.lit += (target - d.lit) * 0.18;
+        }
+
+        // teken lijnen tussen dots die beide enigszins "lit" zijn
+        ctx.lineWidth = 1;
+        for (let i = 0; i < dots.length; i++) {
+            const a = dots[i];
+            if (a.lit < 0.06) continue;
+            // alleen rechtsboven/rechts/rechtsonder buren — voorkomt dubbele lijnen
+            const neighbors = [i + 1, i + cols - 1, i + cols, i + cols + 1];
+            for (const j of neighbors) {
+                if (j <= i || j >= dots.length) continue;
+                const b = dots[j];
+                if (b.lit < 0.06) continue;
+                const ddx = a.x - b.x, ddy = a.y - b.y;
+                if (Math.hypot(ddx, ddy) > LINK_DIST) continue;
+                const alpha = Math.min(a.lit, b.lit) * 0.85;
+                ctx.strokeStyle = `rgba(32,32,32,${alpha.toFixed(3)})`;
+                ctx.beginPath();
+                ctx.moveTo(a.x, a.y);
+                ctx.lineTo(b.x, b.y);
+                ctx.stroke();
             }
-            d.x += (targetX - d.x) * EASE;
-            d.y += (targetY - d.y) * EASE;
+        }
+
+        // teken dots
+        for (const d of dots) {
+            const r = BASE_RADIUS + d.lit * (HOT_RADIUS - BASE_RADIUS);
             ctx.beginPath();
             ctx.arc(d.x, d.y, r, 0, Math.PI * 2);
-            ctx.fillStyle = DOT_COLOR;
+            ctx.fillStyle = d.lit > 0.05
+                ? `rgba(32,32,32,${(0.4 + d.lit * 0.55).toFixed(3)})`
+                : DOT_COLOR;
             ctx.fill();
         }
         requestAnimationFrame(frame);

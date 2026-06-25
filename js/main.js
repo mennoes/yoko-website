@@ -292,22 +292,21 @@ function initDotField() {
 
     const SPACING = 14;
     const DOT_RADIUS = 1.4;
-    const SNAKE_BASE = 192;
-    const SNAKE_MIN = 0;
-    const SHRINK_DELAY = 40; // ms zonder beweging voordat hij krimpt
-    const SHRINK_INTERVAL = 3; // ms per segment dat verdwijnt
-    const STEPS_PER_FRAME = 4;
-    const SNAKE_ALPHA = 0.2;
+    const HIT_RADIUS = 22;
+    const COOLDOWN = 600;     // ms voordat dezelfde dot opnieuw mag spawnen
+    const FLASH_LIFE = 520;   // ms levensduur van een lijn
+    const SHOTS_PER_HIT = 3;
+    const SHOT_ALPHA = 0.55;
     const css = getComputedStyle(document.documentElement);
     const DOT_COLOR = (css.getPropertyValue('--dot').trim()) || '#d6d2ca';
 
     let dots = [];
-    let offX = 0, offY = 0;
     let cols = 0, rows = 0;
+    let offX = 0, offY = 0;
     let w = 0, h = 0;
-    const mouse = { x: -9999, y: -9999, active: false, lastMove: 0 };
-    let snake = []; // array of { col, row }
-    let shrinkTimer = 0;
+    let flashes = []; // { ax, ay, bx, by, born }
+
+    const mouse = { x: -9999, y: -9999, active: false };
 
     function resize() {
         const rect = canvas.getBoundingClientRect();
@@ -321,46 +320,66 @@ function initDotField() {
         dots = [];
         for (let r = 0; r < rows; r++) {
             for (let c = 0; c < cols; c++) {
-                dots.push({ x: offX + c * SPACING, y: offY + r * SPACING });
+                dots.push({
+                    x: offX + c * SPACING,
+                    y: offY + r * SPACING,
+                    col: c, row: r,
+                    triggered: -Infinity,
+                });
             }
         }
-        snake = [];
+        flashes = [];
     }
 
-    function gridFromPx(x, y) {
-        const c = Math.round((x - offX) / SPACING);
-        const r = Math.round((y - offY) / SPACING);
-        return { col: Math.max(0, Math.min(cols - 1, c)), row: Math.max(0, Math.min(rows - 1, r)) };
-    }
-
-    function gridToPx(col, row) {
-        return { x: offX + col * SPACING, y: offY + row * SPACING };
-    }
-
-    function stepSnake() {
-        if (!mouse.active) return;
-        const target = gridFromPx(mouse.x, mouse.y);
-        if (!snake.length) { snake.push(target); return; }
-        const head = snake[0];
-        if (head.col === target.col && head.row === target.row) return;
-        const dc = Math.sign(target.col - head.col);
-        const dr = Math.sign(target.row - head.row);
-        const next = { col: head.col + dc, row: head.row + dr };
-        if (next.col === head.col && next.row === head.row) return;
-        snake.unshift(next);
-        if (snake.length > SNAKE_BASE) snake.length = SNAKE_BASE;
-    }
-
-    function onMove(e) {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-        mouse.active = true;
-        mouse.lastMove = performance.now();
-    }
+    function onMove(e) { mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true; }
     function onLeave() { mouse.active = false; mouse.x = -9999; mouse.y = -9999; }
+
+    function trigger(d, now) {
+        // 8 buren ophalen
+        const neighbors = [];
+        for (let dr = -1; dr <= 1; dr++) {
+            for (let dc = -1; dc <= 1; dc++) {
+                if (dr === 0 && dc === 0) continue;
+                const nc = d.col + dc, nr = d.row + dr;
+                if (nc < 0 || nc >= cols || nr < 0 || nr >= rows) continue;
+                neighbors.push(dots[nr * cols + nc]);
+            }
+        }
+        // shuffle, neem er N
+        for (let i = neighbors.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [neighbors[i], neighbors[j]] = [neighbors[j], neighbors[i]];
+        }
+        const picks = neighbors.slice(0, SHOTS_PER_HIT);
+        for (const n of picks) {
+            flashes.push({ ax: d.x, ay: d.y, bx: n.x, by: n.y, born: now });
+        }
+        d.triggered = now;
+    }
 
     function frame() {
         ctx.clearRect(0, 0, w, h);
+        const now = performance.now();
+
+        // muis nabij dots → trigger
+        if (mouse.active) {
+            // alleen dots binnen redelijk gebied checken
+            const minC = Math.max(0, Math.floor((mouse.x - HIT_RADIUS - offX) / SPACING));
+            const maxC = Math.min(cols - 1, Math.ceil((mouse.x + HIT_RADIUS - offX) / SPACING));
+            const minR = Math.max(0, Math.floor((mouse.y - HIT_RADIUS - offY) / SPACING));
+            const maxR = Math.min(rows - 1, Math.ceil((mouse.y + HIT_RADIUS - offY) / SPACING));
+            for (let r = minR; r <= maxR; r++) {
+                for (let c = minC; c <= maxC; c++) {
+                    const d = dots[r * cols + c];
+                    if (!d) continue;
+                    const dx = d.x - mouse.x;
+                    const dy = d.y - mouse.y;
+                    if (dx * dx + dy * dy > HIT_RADIUS * HIT_RADIUS) continue;
+                    if (now - d.triggered < COOLDOWN) continue;
+                    trigger(d, now);
+                }
+            }
+        }
 
         // dots renderen
         ctx.fillStyle = DOT_COLOR;
@@ -370,44 +389,23 @@ function initDotField() {
             ctx.fill();
         }
 
-        // snake: groei bij beweging, krimp bij stilstand
-        const now = performance.now();
-        const idle = now - mouse.lastMove;
-        if (idle < SHRINK_DELAY) {
-            for (let s = 0; s < STEPS_PER_FRAME; s++) stepSnake();
-            shrinkTimer = now;
-        } else {
-            if (now - shrinkTimer > SHRINK_INTERVAL && snake.length > SNAKE_MIN) {
-                snake.pop();
-                shrinkTimer = now;
-            }
+        // flashes renderen + opruimen
+        ctx.lineCap = 'round';
+        ctx.lineWidth = 1.4;
+        const next = [];
+        for (const f of flashes) {
+            const t = (now - f.born) / FLASH_LIFE;
+            if (t >= 1) continue;
+            const alpha = SHOT_ALPHA * (1 - t);
+            ctx.strokeStyle = `rgba(32,32,32,${alpha.toFixed(3)})`;
+            ctx.beginPath();
+            ctx.moveTo(f.ax, f.ay);
+            ctx.lineTo(f.bx, f.by);
+            ctx.stroke();
+            next.push(f);
         }
+        flashes = next;
 
-        // snake renderen — subtiel, fade naar staart + zwaartekracht naar tail
-        if (snake.length > 1) {
-            ctx.lineCap = 'round';
-            ctx.lineJoin = 'round';
-            const len = snake.length;
-            const posAt = (i) => {
-                if (i === 0 && mouse.active) {
-                    return { x: mouse.x, y: mouse.y };
-                }
-                return gridToPx(snake[i].col, snake[i].row);
-            };
-            for (let i = 0; i < len - 1; i++) {
-                const a = posAt(i);
-                const b = posAt(i + 1);
-                const tg = 1 - i / (len - 1);
-                const alpha = SNAKE_ALPHA * (0.5 + tg * 0.5);
-                if (alpha <= 0.005) continue;
-                ctx.strokeStyle = `rgba(32,32,32,${alpha.toFixed(3)})`;
-                ctx.lineWidth = 1.4 + tg * 1.2;
-                ctx.beginPath();
-                ctx.moveTo(a.x, a.y);
-                ctx.lineTo(b.x, b.y);
-                ctx.stroke();
-            }
-        }
         requestAnimationFrame(frame);
     }
 

@@ -297,7 +297,9 @@ function initDotField() {
     const FLASH_LIFE = 700;   // ms levensduur van een lijn
     const SHOTS_PER_HIT = 1;
     const SHOT_ALPHA = 0.45;
-    const FIRE_CHANCE = 0.06; // kans dat een dot afgaat als de muis erover komt
+    const FIRE_CHANCE = 0.025; // kans dat een dot afgaat als de muis erover komt
+    const PATH_MIN = 2;
+    const PATH_MAX = 8;
     const css = getComputedStyle(document.documentElement);
     const DOT_COLOR = (css.getPropertyValue('--dot').trim()) || '#d6d2ca';
 
@@ -336,27 +338,25 @@ function initDotField() {
     function onLeave() { mouse.active = false; mouse.x = -9999; mouse.y = -9999; }
 
     function trigger(d, now) {
-        // 4 cardinale richtingen
+        // bouw een pad van segmenten — elk hokje een nieuwe 90° richting
         const dirs = [[-1,0],[1,0],[0,-1],[0,1]];
-        // shuffle
-        for (let i = dirs.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [dirs[i], dirs[j]] = [dirs[j], dirs[i]];
-        }
-        let shotsLeft = SHOTS_PER_HIT;
-        for (const [dc, dr] of dirs) {
-            if (shotsLeft <= 0) break;
-            // 30% kans op een lange shot (2..8 cellen), anders 1..2
-            const long = Math.random() < 0.3;
-            const steps = long
-                ? 2 + Math.floor(Math.random() * 7)
-                : 1 + Math.floor(Math.random() * 2);
-            const nc = d.col + dc * steps;
-            const nr = d.row + dr * steps;
-            if (nc < 0 || nc >= cols || nr < 0 || nr >= rows) continue;
-            const target = dots[nr * cols + nc];
-            flashes.push({ ax: d.x, ay: d.y, bx: target.x, by: target.y, born: now });
-            shotsLeft--;
+        let dir = dirs[Math.floor(Math.random() * 4)];
+        let cc = d.col, cr = d.row;
+        const steps = PATH_MIN + Math.floor(Math.random() * (PATH_MAX - PATH_MIN + 1));
+        for (let s = 0; s < steps; s++) {
+            const nc = cc + dir[0];
+            const nr = cr + dir[1];
+            if (nc < 0 || nc >= cols || nr < 0 || nr >= rows) break;
+            const a = dots[cr * cols + cc];
+            const b = dots[nr * cols + nc];
+            flashes.push({ ax: a.x, ay: a.y, bx: b.x, by: b.y, born: now });
+            cc = nc; cr = nr;
+            // kies een nieuwe 90°-richting, niet de reverse (geen backtrack)
+            const perp = (dir[0] === 0)
+                ? [[-1,0],[1,0]]
+                : [[0,-1],[0,1]];
+            // 50% kans om door te gaan, 50% kans om te draaien
+            if (Math.random() < 0.5) dir = perp[Math.floor(Math.random() * 2)];
         }
         d.triggered = now;
     }
@@ -565,7 +565,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     initDotField();
     initWorkParallax();
     initTextRepulsion();
-    initNavContrast();
 
     // Fade statische elementen
     document.querySelectorAll('.about__title, .about__text, .footer__title, .footer__team-title, .page-header__title')

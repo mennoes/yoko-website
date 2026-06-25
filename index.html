@@ -18,9 +18,9 @@
         <a href="index.html" class="nav__logo"><img src="assets/logo.svg" alt="Studio Yoko"></a>
         <p class="nav__headline">Inhoud dat beweegt.</p>
         <div class="nav__links">
-            <a href="work.html">work</a>
+            <a href="work.html">werk</a>
             <a href="tools.html">tools</a>
-            <a href="about.html">about</a>
+            <a href="about.html">over</a>
             <a href="#contact">contact</a>
         </div>
     </nav>
@@ -124,6 +124,23 @@
             <section class="footer__contact">
                 <p class="footer__label">Contact</p>
                 <h2 class="footer__title">Tijd voor een babbel!</h2>
+                <form class="contact-form" action="mailto:hello@studioyoko.nl" method="post" enctype="text/plain">
+                    <label class="contact-form__row">
+                        <span class="contact-form__label">Naam</span>
+                        <input class="contact-form__input" type="text" name="naam" required autocomplete="name">
+                    </label>
+                    <label class="contact-form__row">
+                        <span class="contact-form__label">E-mail</span>
+                        <input class="contact-form__input" type="email" name="email" required autocomplete="email">
+                    </label>
+                    <label class="contact-form__row">
+                        <span class="contact-form__label">Waar gaat het over?</span>
+                        <textarea class="contact-form__input contact-form__input--area" name="bericht" rows="4" required></textarea>
+                    </label>
+                    <button class="contact-form__btn" type="submit">
+                        <span class="cta-arrow">→</span> Verstuur
+                    </button>
+                </form>
                 <div class="footer__info">
                     <a href="mailto:hello@studioyoko.nl" class="cta-link footer__email">
                         <span class="cta-arrow">→</span> hello@studioyoko.nl

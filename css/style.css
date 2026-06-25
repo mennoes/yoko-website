@@ -129,8 +129,6 @@ a { color: inherit; }
     line-height: 1;
     letter-spacing: -0.4px;
     color: var(--dark);
-    opacity: var(--nav-fade);
-    transition: opacity 0.15s ease;
     justify-self: start;
     margin: 0 0 0 clamp(16px, 1.8vw, 28px);
     align-self: center;
@@ -813,6 +811,65 @@ a { color: inherit; }
 .footer__cta { color: var(--dark); opacity: 0.75; }
 .footer__cta:hover { opacity: 1; }
 .footer__info { display: flex; flex-direction: column; gap: 20px; }
+
+/* ===== CONTACT FORM ===== */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 8px 0 24px;
+    max-width: 460px;
+}
+.contact-form__row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.contact-form__label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dark);
+    opacity: 0.55;
+}
+.contact-form__input {
+    font-family: var(--font);
+    font-size: clamp(15px, 1.1vw, 17px);
+    font-weight: 500;
+    color: var(--dark);
+    background: transparent;
+    border: 0;
+    border-bottom: 1.5px solid rgba(32,32,32,0.25);
+    padding: 8px 0;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+.contact-form__input:focus { border-bottom-color: var(--dark); }
+.contact-form__input--area {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.45;
+}
+.contact-form__btn {
+    align-self: flex-start;
+    margin-top: 8px;
+    font-family: var(--font);
+    font-size: clamp(15px, 1.2vw, 18px);
+    font-weight: 600;
+    color: var(--dark);
+    background: var(--accent);
+    border: 0;
+    border-radius: 999px;
+    padding: 12px 22px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+.contact-form__btn:hover { transform: translateY(-1px); background: var(--highlight); }
+.contact-form__btn .cta-arrow { color: var(--dark); }
 .footer__title {
     font-size: clamp(28px, 3vw, 44px);
     font-weight: 500;

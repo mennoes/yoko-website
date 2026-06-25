@@ -292,10 +292,11 @@ function initDotField() {
 
     const SPACING = 14;
     const DOT_RADIUS = 1.4;
-    const SNAKE_BASE = 16;
+    const SNAKE_BASE = 48;
     const SNAKE_MIN = 0;
-    const SHRINK_DELAY = 220; // ms zonder beweging voordat hij krimpt
-    const STEPS_PER_FRAME = 2;
+    const SHRINK_DELAY = 80; // ms zonder beweging voordat hij krimpt
+    const SHRINK_INTERVAL = 18; // ms per segment dat verdwijnt
+    const STEPS_PER_FRAME = 3;
     const css = getComputedStyle(document.documentElement);
     const DOT_COLOR = (css.getPropertyValue('--dot').trim()) || '#d6d2ca';
 
@@ -376,7 +377,7 @@ function initDotField() {
             shrinkTimer = now;
         } else {
             // langzaam korter: één segment per ~80ms
-            if (now - shrinkTimer > 80 && snake.length > SNAKE_MIN) {
+            if (now - shrinkTimer > SHRINK_INTERVAL && snake.length > SNAKE_MIN) {
                 snake.pop();
                 shrinkTimer = now;
             }
@@ -505,6 +506,31 @@ function initTextRepulsion() {
     frame();
 }
 
+// ===== NAV CONTRAST: invert wanneer donkere content onder nav zit =====
+function initNavContrast() {
+    const nav = document.getElementById('nav');
+    if (!nav) return;
+    let ticking = false;
+    function update() {
+        const navRect = nav.getBoundingClientRect();
+        const probeY = navRect.bottom - navRect.height / 2;
+        const targets = document.querySelectorAll('.work-item__media, .pillars__thumb, .reel__video, .footer');
+        let overDark = false;
+        for (const el of targets) {
+            const r = el.getBoundingClientRect();
+            if (r.top <= probeY && r.bottom >= probeY) { overDark = true; break; }
+        }
+        nav.classList.toggle('nav--dark', overDark);
+        ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    setTimeout(update, 100);
+    setTimeout(update, 800);
+}
+
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
@@ -528,6 +554,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initDotField();
     initWorkParallax();
     initTextRepulsion();
+    initNavContrast();
 
     // Fade statische elementen
     document.querySelectorAll('.about__title, .about__text, .footer__title, .footer__team-title, .page-header__title')

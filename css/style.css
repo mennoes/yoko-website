@@ -154,7 +154,7 @@ a { color: inherit; }
 
 /* Nav varianten */
 .nav--dark {
-    background: linear-gradient(to bottom, rgba(0,0,0, calc(0.45 * var(--nav-fade))) 0%, transparent 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 100%);
     border-bottom-color: transparent;
 }
 .nav--dark .nav__logo img { filter: brightness(0) invert(1); }

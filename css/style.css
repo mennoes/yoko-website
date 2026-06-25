@@ -123,18 +123,17 @@ a { color: inherit; }
     transition: opacity 0.1s ease;
 }
 .nav__headline {
-    font-size: clamp(15px, 1.2vw, 20px);
+    font-size: clamp(18px, 1.5vw, 26px);
     font-weight: 500;
-    font-style: italic;
+    font-style: normal;
     line-height: 1;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.4px;
     color: var(--dark);
     opacity: var(--nav-fade);
     transition: opacity 0.15s ease;
     justify-self: start;
-    margin: 0 0 0 clamp(12px, 1.4vw, 20px);
-    align-self: end;
-    padding-bottom: 4px;
+    margin: 0 0 0 clamp(16px, 1.8vw, 28px);
+    align-self: center;
 }
 .nav--dark .nav__headline { color: var(--cream); }
 .nav__links { display: flex; gap: clamp(20px, 2.4vw, 40px); }
@@ -152,9 +151,8 @@ a { color: inherit; }
 .nav__links a:hover { opacity: 1; }
 .nav__link--active { opacity: 1 !important; }
 
-/* Nav varianten */
+/* Nav varianten — alleen tekstkleur flippen, balk blijft blauw */
 .nav--dark {
-    background: transparent;
     border-bottom-color: transparent;
 }
 .nav--dark .nav__logo img { filter: brightness(0) invert(1); }

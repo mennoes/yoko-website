@@ -342,9 +342,6 @@ function initDotField() {
     }
 
     function gridToPx(col, row) {
-        const i = row * cols + col;
-        const d = dots[i];
-        if (d) return { x: d.x + d.ox, y: d.y + d.oy };
         return { x: offX + col * SPACING, y: offY + row * SPACING };
     }
 
@@ -419,14 +416,26 @@ function initDotField() {
             alphaMul = 1 - t;
         }
 
-        // snake renderen — subtiel, fade naar staart
+        // snake renderen — subtiel, fade naar staart + zwaartekracht naar tail
         if (snake.length > 1) {
             ctx.lineCap = 'round';
             ctx.lineJoin = 'round';
-            for (let i = 0; i < snake.length - 1; i++) {
-                const a = gridToPx(snake[i].col, snake[i].row);
-                const b = gridToPx(snake[i + 1].col, snake[i + 1].row);
-                const tg = 1 - i / (snake.length - 1); // 1 bij head → ~0 bij tail
+            const len = snake.length;
+            const DROOP_MAX = SPACING * 0.9;
+            const posAt = (i) => {
+                if (i === 0 && mouse.active) {
+                    return { x: mouse.x, y: mouse.y };
+                }
+                const p = gridToPx(snake[i].col, snake[i].row);
+                // zwaartekracht: kwadratisch toenemend richting de staart
+                const k = i / (len - 1);
+                const droop = Math.pow(k, 1.8) * DROOP_MAX;
+                return { x: p.x, y: p.y + droop };
+            };
+            for (let i = 0; i < len - 1; i++) {
+                const a = posAt(i);
+                const b = posAt(i + 1);
+                const tg = 1 - i / (len - 1);
                 const alpha = SNAKE_ALPHA * (0.5 + tg * 0.5) * alphaMul;
                 if (alpha <= 0.005) continue;
                 ctx.strokeStyle = `rgba(32,32,32,${alpha.toFixed(3)})`;

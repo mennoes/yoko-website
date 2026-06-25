@@ -391,9 +391,9 @@ function initDotField() {
                 const a = gridToPx(snake[i].col, snake[i].row);
                 const b = gridToPx(snake[i + 1].col, snake[i + 1].row);
                 const t = 1 - i / (snake.length - 1); // 1 bij head → ~0 bij tail
-                const alpha = 0.18 + t * 0.32;
+                const alpha = 0.35 + t * 0.55;
                 ctx.strokeStyle = `rgba(32,32,32,${alpha.toFixed(3)})`;
-                ctx.lineWidth = 1 + t * 0.6;
+                ctx.lineWidth = 1.4 + t * 1.2;
                 ctx.beginPath();
                 ctx.moveTo(a.x, a.y);
                 ctx.lineTo(b.x, b.y);
@@ -444,9 +444,10 @@ function initTextRepulsion() {
     const selector = '.reel-sub__text, .pillars__text, .footer__title';
     const containers = Array.from(document.querySelectorAll(selector));
     if (!containers.length) return;
-    const INFLUENCE = 160;
-    const PUSH = 16;
-    const EASE = 0.16;
+    const INFLUENCE = 180;
+    const PUSH = 4;
+    const ROT = 8; // graden
+    const EASE = 0.12;
 
     // split elke tekst-container in <span class="word-pop"> per woord
     const words = [];
@@ -456,7 +457,7 @@ function initTextRepulsion() {
         el.dataset.wordRepulse = '1';
         const existingChips = el.querySelectorAll('.word-chip');
         if (existingChips.length) {
-            existingChips.forEach(c => { c.classList.add('word-pop'); words.push({ el: c, x: 0, y: 0, tx: 0, ty: 0 }); });
+            existingChips.forEach(c => { c.classList.add('word-pop'); words.push({ el: c, x: 0, y: 0, r: 0, tx: 0, ty: 0, tr: 0 }); });
             return;
         }
         const html = el.innerHTML.replace(/<br\s*\/?>/gi, '\n');
@@ -467,7 +468,7 @@ function initTextRepulsion() {
             if (/\S/.test(p)) return `<span class="word-pop">${p}</span>`;
             return p;
         }).join('');
-        el.querySelectorAll('.word-pop').forEach(s => words.push({ el: s, x: 0, y: 0, tx: 0, ty: 0 }));
+        el.querySelectorAll('.word-pop').forEach(s => words.push({ el: s, x: 0, y: 0, r: 0, tx: 0, ty: 0, tr: 0 }));
     });
 
     if (!words.length) return;
@@ -490,12 +491,15 @@ function initTextRepulsion() {
                 const ang = Math.atan2(dy, dx);
                 w.tx = Math.cos(ang) * force * PUSH;
                 w.ty = Math.sin(ang) * force * PUSH;
+                // rotatie volgt horizontale offset van muis t.o.v. woord
+                w.tr = -(dx / INFLUENCE) * force * ROT;
             } else {
-                w.tx = 0; w.ty = 0;
+                w.tx = 0; w.ty = 0; w.tr = 0;
             }
             w.x += (w.tx - w.x) * EASE;
             w.y += (w.ty - w.y) * EASE;
-            w.el.style.transform = `translate3d(${w.x.toFixed(2)}px, ${w.y.toFixed(2)}px, 0)`;
+            w.r += (w.tr - w.r) * EASE;
+            w.el.style.transform = `translate3d(${w.x.toFixed(2)}px, ${w.y.toFixed(2)}px, 0) rotate(${w.r.toFixed(2)}deg)`;
         }
         requestAnimationFrame(frame);
     }

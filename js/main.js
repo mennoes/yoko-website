@@ -292,19 +292,12 @@ function initDotField() {
 
     const SPACING = 14;
     const DOT_RADIUS = 1.4;
-    const SNAKE_BASE = 96;
+    const SNAKE_BASE = 192;
     const SNAKE_MIN = 0;
     const SHRINK_DELAY = 40; // ms zonder beweging voordat hij krimpt
     const SHRINK_INTERVAL = 8; // ms per segment dat verdwijnt
     const STEPS_PER_FRAME = 4;
-    const SNAKE_ALPHA = 0.4;
-
-    // Fysica
-    const HIT_RADIUS = 38;
-    const KICK = 3.2;          // verticale impuls bij muis dichtbij
-    const GRAVITY = 0.18;      // val per frame
-    const SPRING = 0.06;       // terugkeer naar basispositie
-    const DAMP = 0.86;         // wrijving
+    const SNAKE_ALPHA = 0.2;
     const css = getComputedStyle(document.documentElement);
     const DOT_COLOR = (css.getPropertyValue('--dot').trim()) || '#d6d2ca';
 
@@ -329,7 +322,7 @@ function initDotField() {
         dots = [];
         for (let r = 0; r < rows; r++) {
             for (let c = 0; c < cols; c++) {
-                dots.push({ x: offX + c * SPACING, y: offY + r * SPACING, ox: 0, oy: 0, vx: 0, vy: 0 });
+                dots.push({ x: offX + c * SPACING, y: offY + r * SPACING });
             }
         }
         snake = [];
@@ -370,30 +363,11 @@ function initDotField() {
     function frame() {
         ctx.clearRect(0, 0, w, h);
 
-        // dots fysica + render
+        // dots renderen
         ctx.fillStyle = DOT_COLOR;
         for (const d of dots) {
-            // impuls bij muis dichtbij
-            if (mouse.active) {
-                const dx = d.x - mouse.x;
-                const dy = d.y - mouse.y;
-                const dist = Math.hypot(dx, dy);
-                if (dist < HIT_RADIUS) {
-                    const force = (1 - dist / HIT_RADIUS);
-                    d.vy += KICK * force;
-                    d.vx += (dx / (dist || 1)) * force * 0.6;
-                }
-            }
-            // zwaartekracht + veer + demping
-            d.vy += GRAVITY;
-            d.vx += -d.ox * SPRING;
-            d.vy += -d.oy * SPRING;
-            d.vx *= DAMP;
-            d.vy *= DAMP;
-            d.ox += d.vx;
-            d.oy += d.vy;
             ctx.beginPath();
-            ctx.arc(d.x + d.ox, d.y + d.oy, DOT_RADIUS, 0, Math.PI * 2);
+            ctx.arc(d.x, d.y, DOT_RADIUS, 0, Math.PI * 2);
             ctx.fill();
         }
 
@@ -421,16 +395,11 @@ function initDotField() {
             ctx.lineCap = 'round';
             ctx.lineJoin = 'round';
             const len = snake.length;
-            const DROOP_MAX = SPACING * 0.9;
             const posAt = (i) => {
                 if (i === 0 && mouse.active) {
                     return { x: mouse.x, y: mouse.y };
                 }
-                const p = gridToPx(snake[i].col, snake[i].row);
-                // zwaartekracht: kwadratisch toenemend richting de staart
-                const k = i / (len - 1);
-                const droop = Math.pow(k, 1.8) * DROOP_MAX;
-                return { x: p.x, y: p.y + droop };
+                return gridToPx(snake[i].col, snake[i].row);
             };
             for (let i = 0; i < len - 1; i++) {
                 const a = posAt(i);

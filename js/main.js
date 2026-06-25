@@ -336,23 +336,27 @@ function initDotField() {
     function onLeave() { mouse.active = false; mouse.x = -9999; mouse.y = -9999; }
 
     function trigger(d, now) {
-        // alleen 4 cardinale buren (90°)
+        // 4 cardinale richtingen
         const dirs = [[-1,0],[1,0],[0,-1],[0,1]];
-        const neighbors = [];
-        for (const [dc, dr] of dirs) {
-            const nc = d.col + dc, nr = d.row + dr;
-            if (nc < 0 || nc >= cols || nr < 0 || nr >= rows) continue;
-            neighbors.push(dots[nr * cols + nc]);
-        }
-        if (!neighbors.length) return;
-        // shuffle, neem er N
-        for (let i = neighbors.length - 1; i > 0; i--) {
+        // shuffle
+        for (let i = dirs.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [neighbors[i], neighbors[j]] = [neighbors[j], neighbors[i]];
+            [dirs[i], dirs[j]] = [dirs[j], dirs[i]];
         }
-        const picks = neighbors.slice(0, SHOTS_PER_HIT);
-        for (const n of picks) {
-            flashes.push({ ax: d.x, ay: d.y, bx: n.x, by: n.y, born: now });
+        let shotsLeft = SHOTS_PER_HIT;
+        for (const [dc, dr] of dirs) {
+            if (shotsLeft <= 0) break;
+            // 30% kans op een lange shot (2..8 cellen), anders 1..2
+            const long = Math.random() < 0.3;
+            const steps = long
+                ? 2 + Math.floor(Math.random() * 7)
+                : 1 + Math.floor(Math.random() * 2);
+            const nc = d.col + dc * steps;
+            const nr = d.row + dr * steps;
+            if (nc < 0 || nc >= cols || nr < 0 || nr >= rows) continue;
+            const target = dots[nr * cols + nc];
+            flashes.push({ ax: d.x, ay: d.y, bx: target.x, by: target.y, born: now });
+            shotsLeft--;
         }
         d.triggered = now;
     }

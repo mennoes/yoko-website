@@ -292,8 +292,9 @@ function initDotField() {
 
     const SPACING = 14;
     const DOT_RADIUS = 1.4;
-    const SNAKE_MIN = 6;
-    const SNAKE_MAX = 22;
+    const SNAKE_BASE = 16;
+    const SNAKE_MIN = 0;
+    const SHRINK_DELAY = 220; // ms zonder beweging voordat hij krimpt
     const STEPS_PER_FRAME = 2;
     const css = getComputedStyle(document.documentElement);
     const DOT_COLOR = (css.getPropertyValue('--dot').trim()) || '#d6d2ca';
@@ -302,9 +303,9 @@ function initDotField() {
     let offX = 0, offY = 0;
     let cols = 0, rows = 0;
     let w = 0, h = 0;
-    const mouse = { x: -9999, y: -9999, px: -9999, py: -9999, active: false, speed: 0 };
+    const mouse = { x: -9999, y: -9999, active: false, lastMove: 0 };
     let snake = []; // array of { col, row }
-    let snakeLen = SNAKE_MIN;
+    let shrinkTimer = 0;
 
     function resize() {
         const rect = canvas.getBoundingClientRect();
@@ -343,34 +344,21 @@ function initDotField() {
         const dc = Math.sign(target.col - head.col);
         const dr = Math.sign(target.row - head.row);
         const next = { col: head.col + dc, row: head.row + dr };
-        // alleen toevoegen als verschillend (Math.sign kan 0 geven)
         if (next.col === head.col && next.row === head.row) return;
         snake.unshift(next);
-        if (snake.length > snakeLen) snake.length = snakeLen;
+        if (snake.length > SNAKE_BASE) snake.length = SNAKE_BASE;
     }
 
     function onMove(e) {
-        if (mouse.active) {
-            const dx = e.clientX - mouse.x;
-            const dy = e.clientY - mouse.y;
-            const instant = Math.hypot(dx, dy);
-            mouse.speed += (instant - mouse.speed) * 0.3;
-        }
         mouse.x = e.clientX;
         mouse.y = e.clientY;
         mouse.active = true;
+        mouse.lastMove = performance.now();
     }
-    function onLeave() { mouse.active = false; mouse.x = -9999; mouse.y = -9999; mouse.speed = 0; }
+    function onLeave() { mouse.active = false; mouse.x = -9999; mouse.y = -9999; }
 
     function frame() {
         ctx.clearRect(0, 0, w, h);
-
-        // mouse speed decay
-        mouse.speed *= 0.92;
-        const targetLen = Math.round(SNAKE_MIN + Math.min(1, mouse.speed / 60) * (SNAKE_MAX - SNAKE_MIN));
-        snakeLen += (targetLen - snakeLen) * 0.18;
-        const lenInt = Math.max(SNAKE_MIN, Math.round(snakeLen));
-        if (snake.length > lenInt) snake.length = lenInt;
 
         // dots renderen
         ctx.fillStyle = DOT_COLOR;
@@ -380,8 +368,19 @@ function initDotField() {
             ctx.fill();
         }
 
-        // snake stappen
-        for (let s = 0; s < STEPS_PER_FRAME; s++) stepSnake();
+        // snake: groei bij beweging, krimp bij stilstand
+        const now = performance.now();
+        const idle = now - mouse.lastMove;
+        if (idle < SHRINK_DELAY) {
+            for (let s = 0; s < STEPS_PER_FRAME; s++) stepSnake();
+            shrinkTimer = now;
+        } else {
+            // langzaam korter: één segment per ~80ms
+            if (now - shrinkTimer > 80 && snake.length > SNAKE_MIN) {
+                snake.pop();
+                shrinkTimer = now;
+            }
+        }
 
         // snake renderen — subtiel, fade naar staart
         if (snake.length > 1) {
@@ -444,10 +443,10 @@ function initTextRepulsion() {
     const selector = '.reel-sub__text, .pillars__text, .footer__title';
     const containers = Array.from(document.querySelectorAll(selector));
     if (!containers.length) return;
-    const INFLUENCE = 180;
-    const PUSH = 4;
-    const ROT = 8; // graden
-    const EASE = 0.12;
+    const INFLUENCE = 120;
+    const PUSH = 1.5;
+    const ROT = 2.5; // graden
+    const EASE = 0.1;
 
     // split elke tekst-container in <span class="word-pop"> per woord
     const words = [];

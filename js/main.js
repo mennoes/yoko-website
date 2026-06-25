@@ -291,17 +291,18 @@ function initDotField() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     const SPACING = 14;
-    const BASE_RADIUS = 1.4;
-    const HOT_RADIUS = 2.4;
-    const INFLUENCE = 130;
-    const LINK_DIST = SPACING * 1.6;
+    const DOT_RADIUS = 1.4;
+    const SNAKE_LEN = 6;
+    const STEPS_PER_FRAME = 2;
     const css = getComputedStyle(document.documentElement);
     const DOT_COLOR = (css.getPropertyValue('--dot').trim()) || '#d6d2ca';
 
     let dots = [];
-    let cols = 0;
+    let offX = 0, offY = 0;
+    let cols = 0, rows = 0;
     let w = 0, h = 0;
     const mouse = { x: -9999, y: -9999, active: false };
+    let snake = []; // array of { col, row }
 
     function resize() {
         const rect = canvas.getBoundingClientRect();
@@ -309,15 +310,41 @@ function initDotField() {
         canvas.width = w * dpr; canvas.height = h * dpr;
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         cols = Math.ceil(w / SPACING) + 1;
-        const rows = Math.ceil(h / SPACING) + 1;
-        const offX = (w - (cols - 1) * SPACING) / 2;
-        const offY = (h - (rows - 1) * SPACING) / 2;
+        rows = Math.ceil(h / SPACING) + 1;
+        offX = (w - (cols - 1) * SPACING) / 2;
+        offY = (h - (rows - 1) * SPACING) / 2;
         dots = [];
-        for (let y = 0; y < rows; y++) {
-            for (let x = 0; x < cols; x++) {
-                dots.push({ x: offX + x * SPACING, y: offY + y * SPACING, lit: 0 });
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+                dots.push({ x: offX + c * SPACING, y: offY + r * SPACING });
             }
         }
+        snake = [];
+    }
+
+    function gridFromPx(x, y) {
+        const c = Math.round((x - offX) / SPACING);
+        const r = Math.round((y - offY) / SPACING);
+        return { col: Math.max(0, Math.min(cols - 1, c)), row: Math.max(0, Math.min(rows - 1, r)) };
+    }
+
+    function gridToPx(col, row) {
+        return { x: offX + col * SPACING, y: offY + row * SPACING };
+    }
+
+    function stepSnake() {
+        if (!mouse.active) return;
+        const target = gridFromPx(mouse.x, mouse.y);
+        if (!snake.length) { snake.push(target); return; }
+        const head = snake[0];
+        if (head.col === target.col && head.row === target.row) return;
+        const dc = Math.sign(target.col - head.col);
+        const dr = Math.sign(target.row - head.row);
+        const next = { col: head.col + dc, row: head.row + dr };
+        // alleen toevoegen als verschillend (Math.sign kan 0 geven)
+        if (next.col === head.col && next.row === head.row) return;
+        snake.unshift(next);
+        if (snake.length > SNAKE_LEN) snake.length = SNAKE_LEN;
     }
 
     function onMove(e) {
@@ -330,48 +357,33 @@ function initDotField() {
     function frame() {
         ctx.clearRect(0, 0, w, h);
 
-        // bereken "lit"-waarde per dot (0..1) op basis van afstand tot muis
+        // dots renderen
+        ctx.fillStyle = DOT_COLOR;
         for (const d of dots) {
-            const dx = d.x - mouse.x;
-            const dy = d.y - mouse.y;
-            const dist = Math.hypot(dx, dy);
-            const target = mouse.active && dist < INFLUENCE
-                ? 1 - dist / INFLUENCE
-                : 0;
-            d.lit += (target - d.lit) * 0.18;
+            ctx.beginPath();
+            ctx.arc(d.x, d.y, DOT_RADIUS, 0, Math.PI * 2);
+            ctx.fill();
         }
 
-        // teken lijnen tussen dots die beide enigszins "lit" zijn
-        ctx.lineWidth = 1;
-        for (let i = 0; i < dots.length; i++) {
-            const a = dots[i];
-            if (a.lit < 0.06) continue;
-            // alleen rechtsboven/rechts/rechtsonder buren — voorkomt dubbele lijnen
-            const neighbors = [i + 1, i + cols - 1, i + cols, i + cols + 1];
-            for (const j of neighbors) {
-                if (j <= i || j >= dots.length) continue;
-                const b = dots[j];
-                if (b.lit < 0.06) continue;
-                const ddx = a.x - b.x, ddy = a.y - b.y;
-                if (Math.hypot(ddx, ddy) > LINK_DIST) continue;
-                const alpha = Math.min(a.lit, b.lit) * 0.85;
+        // snake stappen
+        for (let s = 0; s < STEPS_PER_FRAME; s++) stepSnake();
+
+        // snake renderen — subtiel, fade naar staart
+        if (snake.length > 1) {
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            for (let i = 0; i < snake.length - 1; i++) {
+                const a = gridToPx(snake[i].col, snake[i].row);
+                const b = gridToPx(snake[i + 1].col, snake[i + 1].row);
+                const t = 1 - i / (snake.length - 1); // 1 bij head → ~0 bij tail
+                const alpha = 0.18 + t * 0.32;
                 ctx.strokeStyle = `rgba(32,32,32,${alpha.toFixed(3)})`;
+                ctx.lineWidth = 1 + t * 0.6;
                 ctx.beginPath();
                 ctx.moveTo(a.x, a.y);
                 ctx.lineTo(b.x, b.y);
                 ctx.stroke();
             }
-        }
-
-        // teken dots
-        for (const d of dots) {
-            const r = BASE_RADIUS + d.lit * (HOT_RADIUS - BASE_RADIUS);
-            ctx.beginPath();
-            ctx.arc(d.x, d.y, r, 0, Math.PI * 2);
-            ctx.fillStyle = d.lit > 0.05
-                ? `rgba(32,32,32,${(0.4 + d.lit * 0.55).toFixed(3)})`
-                : DOT_COLOR;
-            ctx.fill();
         }
         requestAnimationFrame(frame);
     }

@@ -295,6 +295,7 @@ function initDotField() {
     const HIT_RADIUS = 22;
     const COOLDOWN = 4000;    // ms voordat dezelfde dot opnieuw mag spawnen
     const FLASH_LIFE = 700;   // ms levensduur van een lijn
+    const STEP_DELAY = 70;    // ms tussen segmenten — hoe langzamer de lijn zich tekent
     const SHOTS_PER_HIT = 1;
     const SHOT_ALPHA = 0.45;
     const FIRE_CHANCE = 0.025; // kans dat een dot afgaat als de muis erover komt
@@ -349,7 +350,7 @@ function initDotField() {
             if (nc < 0 || nc >= cols || nr < 0 || nr >= rows) break;
             const a = dots[cr * cols + cc];
             const b = dots[nr * cols + nc];
-            flashes.push({ ax: a.x, ay: a.y, bx: b.x, by: b.y, born: now });
+            flashes.push({ ax: a.x, ay: a.y, bx: b.x, by: b.y, born: now + s * STEP_DELAY });
             cc = nc; cr = nr;
             // kies een nieuwe 90°-richting, niet de reverse (geen backtrack)
             const perp = (dir[0] === 0)
@@ -399,13 +400,19 @@ function initDotField() {
         ctx.lineWidth = 1.4;
         const next = [];
         for (const f of flashes) {
-            const t = (now - f.born) / FLASH_LIFE;
+            const elapsed = now - f.born;
+            if (elapsed < 0) { next.push(f); continue; } // nog niet aangekomen — bewaar
+            const t = elapsed / FLASH_LIFE;
             if (t >= 1) continue;
+            // segment tekent zich uit over de eerste 30% van zijn levensduur
+            const drawT = Math.min(1, t / 0.3);
+            const ex = f.ax + (f.bx - f.ax) * drawT;
+            const ey = f.ay + (f.by - f.ay) * drawT;
             const alpha = SHOT_ALPHA * (1 - t);
             ctx.strokeStyle = `rgba(32,32,32,${alpha.toFixed(3)})`;
             ctx.beginPath();
             ctx.moveTo(f.ax, f.ay);
-            ctx.lineTo(f.bx, f.by);
+            ctx.lineTo(ex, ey);
             ctx.stroke();
             next.push(f);
         }

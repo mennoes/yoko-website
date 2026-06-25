@@ -292,11 +292,12 @@ function initDotField() {
 
     const SPACING = 14;
     const DOT_RADIUS = 1.4;
-    const SNAKE_BASE = 48;
+    const SNAKE_BASE = 96;
     const SNAKE_MIN = 0;
-    const SHRINK_DELAY = 80; // ms zonder beweging voordat hij krimpt
-    const SHRINK_INTERVAL = 18; // ms per segment dat verdwijnt
-    const STEPS_PER_FRAME = 3;
+    const SHRINK_DELAY = 40; // ms zonder beweging voordat hij krimpt
+    const SHRINK_INTERVAL = 8; // ms per segment dat verdwijnt
+    const STEPS_PER_FRAME = 4;
+    const SNAKE_ALPHA = 0.4;
     const css = getComputedStyle(document.documentElement);
     const DOT_COLOR = (css.getPropertyValue('--dot').trim()) || '#d6d2ca';
 
@@ -307,6 +308,7 @@ function initDotField() {
     const mouse = { x: -9999, y: -9999, active: false, lastMove: 0 };
     let snake = []; // array of { col, row }
     let shrinkTimer = 0;
+    let alphaMul = 1;
 
     function resize() {
         const rect = canvas.getBoundingClientRect();
@@ -369,18 +371,23 @@ function initDotField() {
             ctx.fill();
         }
 
-        // snake: groei bij beweging, krimp bij stilstand
+        // snake: groei bij beweging, krimp + fade bij stilstand
         const now = performance.now();
         const idle = now - mouse.lastMove;
         if (idle < SHRINK_DELAY) {
             for (let s = 0; s < STEPS_PER_FRAME; s++) stepSnake();
             shrinkTimer = now;
+            alphaMul += (1 - alphaMul) * 0.25;
         } else {
-            // langzaam korter: één segment per ~80ms
             if (now - shrinkTimer > SHRINK_INTERVAL && snake.length > SNAKE_MIN) {
                 snake.pop();
                 shrinkTimer = now;
             }
+            // fade naar 0 over ~500ms idle
+            const fadeStart = SHRINK_DELAY;
+            const fadeEnd = SHRINK_DELAY + 500;
+            const t = Math.min(1, Math.max(0, (idle - fadeStart) / (fadeEnd - fadeStart)));
+            alphaMul = 1 - t;
         }
 
         // snake renderen — subtiel, fade naar staart
@@ -390,10 +397,11 @@ function initDotField() {
             for (let i = 0; i < snake.length - 1; i++) {
                 const a = gridToPx(snake[i].col, snake[i].row);
                 const b = gridToPx(snake[i + 1].col, snake[i + 1].row);
-                const t = 1 - i / (snake.length - 1); // 1 bij head → ~0 bij tail
-                const alpha = 0.35 + t * 0.55;
+                const tg = 1 - i / (snake.length - 1); // 1 bij head → ~0 bij tail
+                const alpha = SNAKE_ALPHA * (0.5 + tg * 0.5) * alphaMul;
+                if (alpha <= 0.005) continue;
                 ctx.strokeStyle = `rgba(32,32,32,${alpha.toFixed(3)})`;
-                ctx.lineWidth = 1.4 + t * 1.2;
+                ctx.lineWidth = 1.4 + tg * 1.2;
                 ctx.beginPath();
                 ctx.moveTo(a.x, a.y);
                 ctx.lineTo(b.x, b.y);

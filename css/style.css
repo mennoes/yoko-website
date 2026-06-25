@@ -766,15 +766,9 @@ a { color: inherit; }
     align-items: center;
 }
 .footer__ok {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: clamp(80px, 9vw, 140px);
-    height: clamp(80px, 9vw, 140px);
-    border-radius: 50%;
-    background: var(--dark);
-    font-size: clamp(44px, 5vw, 80px);
-    line-height: 1;
+    display: block;
+    width: clamp(96px, 11vw, 160px);
+    height: auto;
 }
 .footer__cols { width: 100%; }
 .footer__cols {

@@ -4,21 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Greenpeace — Studio Yoko</title>
-    <meta name="description" content="Voor Greenpeace vertalen we wetenschappelijke dossiers naar animaties die overtuigen vanuit kennis, niet alleen vanuit emotie.">
+    <meta name="description" content="Een serie video's voor Greenpeace over onderwerpen die er echt toe doen. Concept, script, visuele stijl en productie door Studio Yoko.">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="stylesheet" href="css/style.css?v=2">
     <style>
-        :root { --gp-dark: #0a1a0d; --gp-green: #006633; }
-
         .gp-hero {
-            min-height: 100vh;
+            min-height: 100svh;
             position: relative;
             display: flex;
             align-items: flex-end;
             overflow: hidden;
-            background: var(--gp-dark);
+            background: #0a1a0d;
         }
         .gp-hero__video {
             position: absolute; inset: 0;
@@ -27,89 +25,140 @@
         }
         .gp-hero__gradient {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(10,26,13,0.95) 0%, rgba(10,26,13,0.3) 60%, transparent 100%);
+            background: linear-gradient(to top, rgba(10,26,13,0.9) 0%, rgba(10,26,13,0.25) 55%, transparent 100%);
         }
         .gp-hero__content {
             position: relative; z-index: 2;
-            padding: var(--pad-x) var(--pad-x) clamp(48px,7vw,100px);
+            padding: 0 var(--pad-x) clamp(48px, 7vw, 100px);
             width: 100%;
         }
         .gp-hero__meta {
             display: flex; gap: 20px; margin-bottom: 20px;
         }
         .gp-hero__meta span {
-            font-size: clamp(11px,0.9vw,13px);
-            letter-spacing: 0.08em;
+            font-size: clamp(11px, 0.9vw, 13px);
+            letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.55);
         }
         .gp-hero__title {
-            font-size: clamp(56px,10vw,140px);
+            font-size: clamp(56px, 10vw, 140px);
             font-weight: 700;
             line-height: 0.9;
             color: #fff;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
+            margin-bottom: 18px;
         }
-
-        .cs--gp-dark  { background: var(--gp-dark); }
-        .cs--gp-green { background: var(--gp-green); }
-
-        .cs--gp-dark .cs__label    { color: rgba(180,220,180,0.55); }
-        .cs--gp-dark .cs__headline { color: #fff; }
-        .cs--gp-dark .cs__body     { color: rgba(255,255,255,0.58); }
-
-        .cs--gp-green .cs__headline {
+        .gp-hero__lead {
+            font-size: clamp(18px, 1.8vw, 28px);
+            font-weight: 500;
+            line-height: 1.25;
+            letter-spacing: -0.3px;
             color: #fff;
-            max-width: 900px;
-            font-size: clamp(28px,4.5vw,64px);
+            max-width: 720px;
+            margin-bottom: 10px;
+        }
+        .gp-hero__sub {
+            font-size: clamp(14px, 1.1vw, 17px);
+            font-style: italic;
+            line-height: 1.55;
+            color: rgba(255,255,255,0.7);
+            max-width: 640px;
         }
 
+        .gp-section {
+            padding: clamp(72px, 9vw, 140px) var(--pad-x);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .gp-section--dark { background: #0a1a0d; color: rgba(255,255,255,0.85); max-width: none; }
+        .gp-section--dark h2 { color: #fff; }
+
+        .gp-body {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: clamp(40px, 6vw, 96px);
+            align-items: start;
+        }
+        .gp-body h2 {
+            font-size: clamp(32px, 4.2vw, 64px);
+            font-weight: 700;
+            line-height: 1.02;
+            letter-spacing: -0.03em;
+            color: var(--dark);
+        }
+        .gp-body__text {
+            font-size: clamp(16px, 1.25vw, 20px);
+            line-height: 1.65;
+            color: rgba(32,32,32,0.75);
+        }
+        .gp-body__text p + p { margin-top: 1.2em; }
+        @media (max-width: 800px) {
+            .gp-body { grid-template-columns: 1fr; gap: 24px; }
+        }
+
+        .gp-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--dark);
+            opacity: 0.55;
+            margin-bottom: 20px;
+        }
+        .gp-section--dark .gp-label { color: rgba(255,255,255,0.55); opacity: 1; }
+
+        .gp-videos {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(72px, 9vw, 128px);
+            margin-top: clamp(40px, 5vw, 72px);
+        }
+        .gp-video__title {
+            font-size: clamp(24px, 3vw, 44px);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            color: #fff;
+            margin-bottom: 14px;
+        }
+        .gp-video__body {
+            font-size: clamp(15px, 1.15vw, 18px);
+            line-height: 1.6;
+            color: rgba(255,255,255,0.7);
+            max-width: 62ch;
+            margin-bottom: 22px;
+        }
         .yt-embed {
             position: relative; aspect-ratio: 16/9;
-            border-radius: 8px; overflow: hidden; background: #111;
+            border-radius: 6px; overflow: hidden; background: #111;
         }
         .yt-embed iframe {
             position: absolute; inset: 0;
             width: 100%; height: 100%; border: 0;
         }
 
-        .gp-videos { display: flex; flex-direction: column; gap: clamp(56px,8vw,112px); }
-
-        .gp-video-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: clamp(32px,5vw,72px);
-            align-items: center;
+        .gp-closer {
+            padding: clamp(96px, 12vw, 180px) var(--pad-x);
+            text-align: center;
         }
-        .gp-video-row--flip { direction: rtl; }
-        .gp-video-row--flip > * { direction: ltr; }
-        @media (max-width: 768px) {
-            .gp-video-row,
-            .gp-video-row--flip { grid-template-columns: 1fr; direction: ltr; }
-        }
-        .gp-video-row__num {
-            font-size: 11px; font-weight: 600;
-            letter-spacing: 0.12em; text-transform: uppercase;
-            color: rgba(255,255,255,0.3);
-            margin-bottom: 14px;
-        }
-        .gp-video-row__title {
-            font-size: clamp(22px,2.5vw,36px);
-            font-weight: 700; line-height: 1.1;
+        .gp-closer p {
+            font-size: clamp(24px, 3vw, 44px);
+            font-style: italic;
+            font-weight: 500;
+            line-height: 1.2;
             letter-spacing: -0.5px;
-            color: #fff;
-            margin-bottom: 14px;
-        }
-        .gp-video-row__body {
-            font-size: clamp(14px,1.1vw,17px);
-            line-height: 1.65;
-            color: rgba(255,255,255,0.52);
+            color: var(--dark);
+            max-width: 22ch;
+            margin: 0 auto;
         }
     </style>
 </head>
 <body class="page--case page--greenpeace">
 
-    <nav class="nav nav--dark" id="nav">
+    <div class="dot-field-wrap" aria-hidden="true"><canvas class="dot-field" id="dot-field"></canvas></div>
+
+    <nav class="nav" id="nav">
         <a href="index.html" class="nav__logo"><img src="assets/logo.svg" alt="Studio Yoko"></a>
         <p class="nav__headline">Inhoud dat beweegt.</p>
         <div class="nav__links">
@@ -120,6 +169,7 @@
         </div>
     </nav>
 
+    <!-- HERO -->
     <section class="gp-hero" id="case-hero">
         <video class="gp-hero__video" autoplay muted loop playsinline>
             <source src="assets/cases/greenpeace/Tippingpoint_header.mp4" type="video/mp4">
@@ -128,101 +178,82 @@
         <div class="gp-hero__content">
             <div class="gp-hero__meta">
                 <span>Greenpeace</span>
-                <span>Animatie &amp; Strategie</span>
+                <span>Concept · Script · Productie</span>
             </div>
             <h1 class="gp-hero__title">Greenpeace</h1>
+            <p class="gp-hero__lead">Een serie video's over onderwerpen die er echt toe doen.</p>
+            <p class="gp-hero__sub">Concept, script, visuele stijl en productie. Een samenwerking die blijft doorlopen zolang er iets te vertellen valt.</p>
         </div>
     </section>
 
-    <section class="cs cs--cream">
-        <div class="cs__intro js-fade">
+    <!-- INTRO -->
+    <section class="gp-section">
+        <div class="gp-body js-fade">
             <div>
-                <p class="cs__summary">Voor Greenpeace vertalen we wetenschappelijke dossiers naar animaties die overtuigen vanuit kennis, niet alleen vanuit emotie.</p>
+                <p class="gp-label">De vraag</p>
+                <h2>Een tas vol inhoud,<br>nog geen bondig verhaal.</h2>
             </div>
+            <div class="gp-body__text">
+                <p>Greenpeace kwam bij ons langs met een tas vol inhoud, maar nog geen bondig verhaal. Complexe onderwerpen, stapels research, een duidelijke urgentie. De vraag: hoe krijg je dat kijkbaar voor een breed publiek, zonder dat de inhoud verwatert tot een hapklaar filmpje?</p>
+                <p>Precies het soort puzzel waar wij warm voor lopen. We knippen, plakken, filmen en schrijven onze weg naar iets dat blijft hangen. Voor Greenpeace stapten we in bij de kern: vanuit de ruwe inhoud schreven we de scripts en bouwden we per video een heldere verhaallijn, van het probleem naar wie erachter zit naar wat er anders kan. We dachten mee over de inhoudelijke keuzes en bepaalden de vorm. Zo werden complexe onderwerpen video's die informeren én activeren.</p>
+                <p>We hebben er inmiddels drie gemaakt over belangrijke thema's. En het houdt daar niet op: zolang er onderwerpen zijn die aandacht verdienen, blijven we de serie uitbreiden.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STIJL -->
+    <section class="gp-section">
+        <div class="gp-body js-fade">
             <div>
-                <p class="cs__label">Context</p>
-                <h2 class="cs__headline">Stop met de natuur verwoesten.</h2>
-                <div class="cs__body">
-                    <p>Greenpeace is de meest herkenbare milieuorganisatie ter wereld. De boodschap is duidelijk — maar hoe verwoesting precies werkt, direct of indirect, zichtbaar of onzichtbaar, dat weten de meeste mensen niet.</p>
-                    <p>Studio Yoko vertaalt de wetenschappelijke dossiers van Greenpeace naar animaties die dat wél uitleggen. Niet als activisme, maar als bewijs.</p>
-                </div>
+                <p class="gp-label">De stijl</p>
+                <h2>Rauw, donker en activistisch. Met een handgemaakt randje.</h2>
+            </div>
+            <div class="gp-body__text">
+                <p>Krantenknipsels, collage en mixed media vormen een wereld waarin het Greenpeace-groen het enige lichtpunt is: het redmiddel te midden van vlammen, geld en rook.</p>
+                <p>We filmden losse elementen voor green screen en plakten die middenin de collage, zodat mens en boodschap letterlijk deel worden van het verhaal. Het is knutselwerk met een boodschap, precies zoals wij het het liefst doen.</p>
+                <p>Alle video's leveren we aan in meerdere formaten en lengtes, klaar voor inzet op social en campagnekanalen.</p>
             </div>
         </div>
     </section>
 
-    <section class="cs cs--gp-dark js-fade">
-        <p class="cs__label">Het probleem</p>
-        <div class="cs__story">
-            <h2 class="cs__headline">Emotie overtuigt. Maar feiten winnen.</h2>
-            <div class="cs__body">
-                <p>Activisme werkt op gevoel. Maar een sceptische kijker haken we niet binnen met beelden van schepen en spandoeken alleen — die wil argumenten.</p>
-                <p>De uitdaging: hoe overtuig je ook degenen die al gewend zijn aan de activistische toon van Greenpeace? Door naast emotie ook inhoudelijk sterker te zijn. Wetenschap als argument.</p>
-            </div>
-        </div>
-    </section>
+    <!-- SERIE -->
+    <section class="gp-section gp-section--dark">
+        <p class="gp-label js-fade">De serie tot nu toe</p>
+        <div class="gp-videos">
 
-    <section class="cs cs--gp-green js-fade">
-        <h2 class="cs__headline">Greenpeace heeft dossiers vol informatie. Wij maken die visueel.</h2>
-    </section>
-
-    <section class="cs cs--cream js-fade">
-        <div class="cs__story">
-            <div>
-                <p class="cs__label">De aanpak</p>
-                <h2 class="cs__headline">Beeld gebaseerd op kennis.</h2>
-            </div>
-            <div class="cs__body">
-                <p>Elk Greenpeace-dossier bevat ijzersterke informatie en bewijzen. Studio Yoko neemt dat als vertrekpunt: we vertalen de data en argumenten naar animaties die de kijker stap voor stap meenemen in het verhaal.</p>
-                <p>Het resultaat is geen activistische poster — het is uitleg. Begrijpelijk, visueel sterk en onderbouwd.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="cs cs--gp-dark">
-        <p class="cs__label js-fade">Uitwerking</p>
-        <div class="gp-videos" style="margin-top: clamp(40px,5vw,72px);">
-
-            <div class="gp-video-row js-fade">
+            <div class="gp-video js-fade">
+                <h3 class="gp-video__title">Tipping point</h3>
+                <p class="gp-video__body">Over de ontbossing van het Amazonewoud en het punt waarop het bos onherstelbaar kantelt. Een video die de urgentie van behoud invoelbaar maakt, voordat het te laat is.</p>
                 <div class="yt-embed">
-                    <iframe src="https://www.youtube.com/embed/pqdlJDh1NCI" title="Greenpeace — Amazone" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div>
-                    <p class="gp-video-row__num">01 — Amazone</p>
-                    <h3 class="gp-video-row__title">Wat er echt<br>gebeurt in het woud.</h3>
-                    <p class="gp-video-row__body">De ontbossing van het Amazonegebied is complex — landbouw, vee, grondstoffen, beleid. Wij maakten het inzichtelijk: wie doet wat, waarom, en wat is de impact. Geen activisme, maar bewijs in beeld.</p>
+                    <iframe src="https://www.youtube.com/embed/pqdlJDh1NCI" title="Greenpeace — Tipping point" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="gp-video-row gp-video-row--flip js-fade">
+            <div class="gp-video js-fade">
+                <h3 class="gp-video__title">Rabobank</h3>
+                <p class="gp-video__body">Over de bank die boeren jarenlang aanjoeg tot schaalvergroting, ze opzadelde met torenhoge leningen en vervolgens liet zitten met de schuld en de schuldvraag. De winst voor de bank, de rekening voor de boer en het klimaat. Een scherpe, onderbouwde aanklacht.</p>
                 <div class="yt-embed">
                     <iframe src="https://www.youtube.com/embed/-fXRgGsRwj0" title="Greenpeace — Rabobank" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <div>
-                    <p class="gp-video-row__num">02 — Financiering</p>
-                    <h3 class="gp-video-row__title">Hoe banken<br>ontbossing financieren.</h3>
-                    <p class="gp-video-row__body">Verwoesting van natuur heeft een financiële kant die de meeste mensen nooit zien. Deze animatie maakt de geldstroom inzichtelijk — van bank tot ontbost perceel.</p>
-                </div>
             </div>
 
-            <div class="gp-video-row js-fade">
+            <div class="gp-video js-fade">
+                <h3 class="gp-video__title">Diepzeemijnbouw</h3>
+                <p class="gp-video__body">Over de dreiging van mijnbouw op de zeebodem en wat er op het spel staat in een gebied dat we amper kennen. Inzicht in een onderwerp dat bij de meeste mensen nog volledig onder de radar blijft.</p>
                 <div class="yt-embed">
-                    <iframe src="https://www.youtube.com/embed/lpmsgrXKJ7o" title="Greenpeace — Diepzee" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div>
-                    <p class="gp-video-row__num">03 — Diepzee</p>
-                    <h3 class="gp-video-row__title">Wat er op de<br>zeebodem op het spel staat.</h3>
-                    <p class="gp-video-row__body">De diepzee is het minst bekende en meest bedreigde ecosysteem op aarde. We vertaalden het wetenschappelijke dossier van Greenpeace naar een animatie die laat zien waarom dat een probleem is.</p>
+                    <iframe src="https://www.youtube.com/embed/lpmsgrXKJ7o" title="Greenpeace — Diepzeemijnbouw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <section class="cs cs--cream js-fade">
-        <p class="cs__label">Takeaway</p>
-        <h2 class="cs__headline">Zo overtuig je met beeld dat is gebouwd op kennis.</h2>
+    <!-- CLOSER -->
+    <section class="gp-closer js-fade">
+        <p>Van een tas vol inhoud naar een serie die aanzet tot actie. Inhoud die beweegt.</p>
     </section>
 
+    <!-- NEXT -->
     <section class="case-next" id="case-next">
         <img class="case-next__bg" src="assets/cases/rewind/image 16.jpg" alt="" aria-hidden="true">
         <a class="case-next__link" href="rewind.html">
@@ -232,38 +263,19 @@
         </a>
     </section>
 
-    <footer class="footer footer--mini">
-        <div class="footer__contact">
-            <div class="footer__contact-inner">
-                <h2 class="footer__title">Tijd voor een babbel!</h2>
-                <a href="mailto:hello@studioyoko.nl" class="cta-link footer__email">
-                    <span class="cta-arrow">→</span> hello@studioyoko.nl
-                </a>
-                <div class="footer__address-block">
-                    <address class="footer__address">Kattenburgerstraat 5<br>1018 JA Amsterdam</address>
-                    <div class="footer__divider"></div>
-                </div>
-                <p class="footer__legal">©2025 Studio Yoko BV&nbsp;&nbsp;·&nbsp;&nbsp;Privacy&nbsp;&nbsp;·&nbsp;&nbsp;Legal</p>
-            </div>
-        </div>
-        <div class="footer__team">
-            <h2 class="footer__team-title">Meet the team.</h2>
-            <div class="footer__team-photos"></div>
-        </div>
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
+        <svg class="footer__ok" aria-hidden="true" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="300" cy="300" r="300" fill="#2C272C"/>
+            <path d="M281.479 101.464C289.079 101.464 295.908 105.402 300.534 112.716C312.429 131.282 320.69 151.423 325.426 173.139C325.757 174.601 326.087 175.952 327.409 177.527C329.391 169.763 331.264 162.112 333.356 154.348C334.127 151.31 334.898 148.047 336.33 145.234C339.855 138.37 346.684 134.545 353.733 134.545C356.156 134.545 358.579 134.995 360.892 135.895C370.805 139.833 375.871 149.96 373.118 160.874C366.84 185.853 360.451 210.832 354.063 235.924L442.067 415.842C448.786 431.144 437.992 448.36 421.581 448.585L335.119 449.26C335.009 449.26 335.009 449.26 334.898 449.26C334.458 449.26 334.127 449.26 333.797 449.26C325.536 448.81 318.267 443.409 314.852 435.645L298.551 398.739L298.992 397.276C291.833 404.59 283.242 410.328 273.219 414.266C258.019 420.23 243.37 423.268 229.162 423.268C204.269 423.268 181.029 413.704 159.992 393.338C152.282 385.799 145.784 376.235 140.937 366.446C132.456 349.231 126.289 331.003 127.39 311.199C127.61 306.698 128.161 301.973 129.703 297.697C132.456 290.046 139.506 285.432 147.105 285.432C148.097 285.432 149.088 285.545 150.189 285.657C159.331 287.12 165.83 294.096 166.491 303.548L166.711 302.985C166.931 308.499 167.702 314.237 169.024 320.088C174.751 345.967 189.4 364.983 202.727 364.983C203.829 364.983 204.82 364.871 205.811 364.646C219.91 361.383 226.298 336.066 220.02 308.161C214.292 282.282 199.643 263.266 186.316 263.266C185.215 263.266 184.223 263.379 183.232 263.604C177.945 264.841 170.566 270.805 167.702 277.331C165.389 278.344 162.856 279.019 160.212 279.019C159.111 279.019 157.899 278.906 156.688 278.681C142.479 275.531 139.726 257.753 148.868 246.051C164.178 226.585 184.334 217.359 208.675 217.246C208.785 217.246 208.785 217.246 208.895 217.246C220.681 217.246 231.695 220.622 243.48 225.797C238.854 212.858 233.237 201.718 225.527 192.042C219.469 184.503 212.861 177.864 206.472 171.001C200.194 164.362 197.991 154.573 201.185 146.472C204.71 137.695 212.53 132.069 221.672 132.069C221.672 132.069 221.672 132.069 221.782 132.069C227.84 132.069 233.017 134.32 237.532 138.483C256.807 156.261 271.677 177.189 281.81 201.606C282.471 203.181 283.131 204.644 284.563 206.107C284.563 204.756 284.453 203.406 284.453 202.056C282.911 178.54 275.642 157.049 263.085 137.245C254.164 123.293 261.213 105.29 276.743 101.914C278.395 101.577 279.937 101.464 281.479 101.464Z" fill="#DCB83E"/>
+        </svg>
+        <p class="footer__legal">©2025 Studio Yoko BV&nbsp;&nbsp;·&nbsp;&nbsp;Privacy&nbsp;&nbsp;·&nbsp;&nbsp;Legal</p>
     </footer>
 
     <script src="data/cases.js"></script>
     <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const nav = document.getElementById('nav');
-            const hero = document.getElementById('case-hero');
-            if (nav && hero) {
-                const obs = new IntersectionObserver(([e]) => {
-                    nav.classList.toggle('is-past-hero', !e.isIntersecting);
-                }, { threshold: 0.05 });
-                obs.observe(hero);
-            }
             const targets = document.querySelectorAll('.js-fade');
             const observer = new IntersectionObserver(
                 entries => entries.forEach(e => {

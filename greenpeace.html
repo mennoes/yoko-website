@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/style.css?v=2">
     <style>
         .gp-hero {
-            min-height: 100svh;
+            min-height: 50svh;
             position: relative;
             display: flex;
             align-items: flex-end;
@@ -71,8 +71,6 @@
             max-width: 1400px;
             margin: 0 auto;
         }
-        .gp-section--dark { background: #0a1a0d; color: rgba(255,255,255,0.85); max-width: none; }
-        .gp-section--dark h2 { color: #fff; }
 
         .gp-body {
             display: grid;
@@ -114,20 +112,41 @@
             gap: clamp(72px, 9vw, 128px);
             margin-top: clamp(40px, 5vw, 72px);
         }
+        .gp-video-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(32px, 5vw, 80px);
+            align-items: center;
+        }
+        .gp-video-row--flip .gp-video-row__text { order: 2; }
+        .gp-video-row--flip .yt-embed { order: 1; }
+        @media (max-width: 800px) {
+            .gp-video-row { grid-template-columns: 1fr; gap: 24px; }
+            .gp-video-row--flip .gp-video-row__text,
+            .gp-video-row--flip .yt-embed { order: initial; }
+        }
+        .gp-video__num {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--dark);
+            opacity: 0.55;
+            margin-bottom: 14px;
+        }
         .gp-video__title {
             font-size: clamp(24px, 3vw, 44px);
             font-weight: 700;
             line-height: 1.05;
             letter-spacing: -0.02em;
-            color: #fff;
+            color: var(--dark);
             margin-bottom: 14px;
         }
         .gp-video__body {
             font-size: clamp(15px, 1.15vw, 18px);
             line-height: 1.6;
-            color: rgba(255,255,255,0.7);
-            max-width: 62ch;
-            margin-bottom: 22px;
+            color: rgba(32,32,32,0.72);
+            max-width: 46ch;
         }
         .yt-embed {
             position: relative; aspect-ratio: 16/9;
@@ -136,6 +155,60 @@
         .yt-embed iframe {
             position: absolute; inset: 0;
             width: 100%; height: 100%; border: 0;
+        }
+
+        /* Making of */
+        .gp-making {
+            padding: clamp(72px, 9vw, 140px) var(--pad-x);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .gp-making__header {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: clamp(40px, 6vw, 96px);
+            margin-bottom: clamp(40px, 5vw, 72px);
+        }
+        .gp-making__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(12px, 1.5vw, 24px);
+        }
+        .gp-making__item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .gp-making__item {
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        .gp-making__item img,
+        .gp-making__item video {
+            width: 100%;
+            height: 116%;
+            margin-top: -8%;
+            aspect-ratio: unset;
+            object-fit: cover;
+            display: block;
+            background: rgba(32,32,32,0.06);
+            transform: translate3d(0, var(--parallax-y, 0), 0);
+            will-change: transform;
+        }
+        .gp-making__caption {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--dark);
+            opacity: 0.55;
+        }
+        @media (max-width: 900px) {
+            .gp-making__grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .gp-making__header { grid-template-columns: 1fr; gap: 20px; }
+            .gp-making__grid { grid-template-columns: 1fr; }
         }
 
         .gp-closer {
@@ -190,7 +263,6 @@
     <section class="gp-section">
         <div class="gp-body js-fade">
             <div>
-                <p class="gp-label">De vraag</p>
                 <h2>Een tas vol inhoud,<br>nog geen bondig verhaal.</h2>
             </div>
             <div class="gp-body__text">
@@ -217,34 +289,68 @@
     </section>
 
     <!-- SERIE -->
-    <section class="gp-section gp-section--dark">
+    <section class="gp-section">
         <p class="gp-label js-fade">De serie tot nu toe</p>
         <div class="gp-videos">
 
-            <div class="gp-video js-fade">
-                <h3 class="gp-video__title">Tipping point</h3>
-                <p class="gp-video__body">Over de ontbossing van het Amazonewoud en het punt waarop het bos onherstelbaar kantelt. Een video die de urgentie van behoud invoelbaar maakt, voordat het te laat is.</p>
+            <div class="gp-video-row js-fade">
+                <div class="gp-video-row__text">
+                    <p class="gp-video__num">01</p>
+                    <h3 class="gp-video__title">Tipping point</h3>
+                    <p class="gp-video__body">Over de ontbossing van het Amazonewoud en het punt waarop het bos onherstelbaar kantelt. Een video die de urgentie van behoud invoelbaar maakt, voordat het te laat is.</p>
+                </div>
                 <div class="yt-embed">
                     <iframe src="https://www.youtube.com/embed/pqdlJDh1NCI" title="Greenpeace — Tipping point" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="gp-video js-fade">
-                <h3 class="gp-video__title">Rabobank</h3>
-                <p class="gp-video__body">Over de bank die boeren jarenlang aanjoeg tot schaalvergroting, ze opzadelde met torenhoge leningen en vervolgens liet zitten met de schuld en de schuldvraag. De winst voor de bank, de rekening voor de boer en het klimaat. Een scherpe, onderbouwde aanklacht.</p>
+            <div class="gp-video-row gp-video-row--flip js-fade">
+                <div class="gp-video-row__text">
+                    <p class="gp-video__num">02</p>
+                    <h3 class="gp-video__title">Rabobank</h3>
+                    <p class="gp-video__body">Over de bank die boeren jarenlang aanjoeg tot schaalvergroting, ze opzadelde met torenhoge leningen en vervolgens liet zitten met de schuld en de schuldvraag. De winst voor de bank, de rekening voor de boer en het klimaat. Een scherpe, onderbouwde aanklacht.</p>
+                </div>
                 <div class="yt-embed">
                     <iframe src="https://www.youtube.com/embed/-fXRgGsRwj0" title="Greenpeace — Rabobank" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="gp-video js-fade">
-                <h3 class="gp-video__title">Diepzeemijnbouw</h3>
-                <p class="gp-video__body">Over de dreiging van mijnbouw op de zeebodem en wat er op het spel staat in een gebied dat we amper kennen. Inzicht in een onderwerp dat bij de meeste mensen nog volledig onder de radar blijft.</p>
+            <div class="gp-video-row js-fade">
+                <div class="gp-video-row__text">
+                    <p class="gp-video__num">03</p>
+                    <h3 class="gp-video__title">Diepzeemijnbouw</h3>
+                    <p class="gp-video__body">Over de dreiging van mijnbouw op de zeebodem en wat er op het spel staat in een gebied dat we amper kennen. Inzicht in een onderwerp dat bij de meeste mensen nog volledig onder de radar blijft.</p>
+                </div>
                 <div class="yt-embed">
                     <iframe src="https://www.youtube.com/embed/lpmsgrXKJ7o" title="Greenpeace — Diepzeemijnbouw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <!-- MAKING OF -->
+    <section class="gp-making js-fade">
+        <div class="gp-making__header">
+            <div>
+                <p class="gp-label">Making of</p>
+                <h2 style="font-size: clamp(28px, 3.6vw, 52px); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; color: var(--dark);">Green screen, blote voeten en veel plakwerk.</h2>
+            </div>
+            <p style="font-size: clamp(15px, 1.2vw, 19px); line-height: 1.65; color: rgba(32,32,32,0.72); max-width: 56ch;">De echte mensen in de collages beginnen als losse elementen op een green screen. Blote voeten, handen, silhouetten — allemaal gefilmd op één laken, later los uitgesneden en middenin het verhaal geplakt.</p>
+        </div>
+        <div class="gp-making__grid">
+            <div class="gp-making__item">
+                <img src="assets/cases/greenpeace/making-01.jpg" alt="Green screen footage: blote voeten op groen laken" onerror="this.style.background='#25c95a';this.removeAttribute('src');">
+                <span class="gp-making__caption">Ruwe opname · green screen</span>
+            </div>
+            <div class="gp-making__item">
+                <img src="assets/cases/greenpeace/making-02.jpg" alt="Zelfde footage gekeyed in de collage-omgeving" onerror="this.style.background='#0f6b7b';this.removeAttribute('src');">
+                <span class="gp-making__caption">In de collage · na key + textuur</span>
+            </div>
+            <div class="gp-making__item">
+                <img src="assets/cases/greenpeace/making-03.gif" alt="Hand die met een gebogen vinger over een blauw laken tikt — houtje-touwtje stopmotion op de studiotafel" onerror="this.style.background='#1e3fa1';this.removeAttribute('src');">
+                <span class="gp-making__caption">Op de studiotafel · houtje-touwtje</span>
+            </div>
         </div>
     </section>
 

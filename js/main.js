@@ -433,20 +433,26 @@ function initDotField() {
     frame();
 }
 
-// ===== PARALLAX: media binnen work-items =====
+// ===== PARALLAX: media binnen work-items en case content =====
 function initWorkParallax() {
     const STRENGTH = 0.03;
+    const targets = [
+        { holder: '.work-item__media', inner: '.work-item__img, .work-item__video', strength: 0.03 },
+        { holder: '.js-parallax', inner: '.js-parallax > *', strength: 0.05 },
+    ];
     let ticking = false;
     function update() {
         const winH = window.innerHeight;
-        document.querySelectorAll('.work-item__media').forEach(media => {
-            const rect = media.getBoundingClientRect();
-            if (rect.bottom < -100 || rect.top > winH + 100) return;
-            const center = (rect.top + rect.bottom) / 2;
-            const offset = (center - winH / 2) * STRENGTH;
-            const inner = media.querySelectorAll('.work-item__img, .work-item__video');
-            inner.forEach(el => el.style.setProperty('--parallax-y', `${offset}px`));
-        });
+        for (const t of targets) {
+            document.querySelectorAll(t.holder).forEach(media => {
+                const rect = media.getBoundingClientRect();
+                if (rect.bottom < -100 || rect.top > winH + 100) return;
+                const center = (rect.top + rect.bottom) / 2;
+                const offset = (center - winH / 2) * t.strength;
+                const inner = media.querySelectorAll(t.inner);
+                inner.forEach(el => el.style.setProperty('--parallax-y', `${offset}px`));
+            });
+        }
         ticking = false;
     }
     window.addEventListener('scroll', () => {

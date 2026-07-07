@@ -67,7 +67,7 @@
         }
 
         .gp-section {
-            padding: clamp(72px, 9vw, 140px) var(--pad-x);
+            padding: clamp(40px, 5vw, 72px) var(--pad-x);
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -151,10 +151,44 @@
         .yt-embed {
             position: relative; aspect-ratio: 16/9;
             border-radius: 6px; overflow: hidden; background: #111;
+            cursor: pointer;
         }
         .yt-embed iframe {
             position: absolute; inset: 0;
             width: 100%; height: 100%; border: 0;
+        }
+        .yt-embed__thumb {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
+        }
+        .yt-embed:hover .yt-embed__thumb { transform: scale(1.03); filter: brightness(0.85); }
+        .yt-embed__play {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: clamp(64px, 8vw, 96px);
+            height: clamp(64px, 8vw, 96px);
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.2s ease;
+        }
+        .yt-embed:hover .yt-embed__play {
+            transform: translate(-50%, -50%) scale(1.08);
+            background: var(--highlight);
+        }
+        .yt-embed__play::before {
+            content: "";
+            width: 0; height: 0;
+            border-style: solid;
+            border-width: clamp(11px, 1.3vw, 15px) 0 clamp(11px, 1.3vw, 15px) clamp(18px, 2vw, 22px);
+            border-color: transparent transparent transparent var(--dark);
+            margin-left: 4px;
         }
 
         /* Forest overlay boven de Tipping point video */
@@ -178,58 +212,60 @@
             .gp-video-media__overlay { left: -4%; right: -4%; width: 108%; bottom: -14%; }
         }
 
-        /* Making of */
+        /* Making of — losse post-its */
         .gp-making {
-            padding: clamp(72px, 9vw, 140px) var(--pad-x);
+            position: relative;
+            padding: clamp(40px, 5vw, 72px) var(--pad-x);
             max-width: 1400px;
             margin: 0 auto;
+            min-height: clamp(520px, 55vw, 800px);
         }
-        .gp-making__header {
-            display: grid;
-            grid-template-columns: 1fr 1.4fr;
-            gap: clamp(40px, 6vw, 96px);
-            margin-bottom: clamp(40px, 5vw, 72px);
+        .gp-post {
+            position: absolute;
+            width: clamp(160px, 18vw, 280px);
+            aspect-ratio: 4/5;
+            background: #fff;
+            padding: 10px 10px 32px;
+            box-shadow: 0 12px 22px rgba(0,0,0,0.12), 0 3px 6px rgba(0,0,0,0.08);
+            transform: rotate(var(--rot, 0deg));
+            transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
         }
-        .gp-making__grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: clamp(12px, 1.5vw, 24px);
+        .gp-post:hover {
+            transform: rotate(0deg) scale(1.04);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+            z-index: 10;
         }
-        .gp-making__item {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .gp-making__item {
-            overflow: hidden;
-            border-radius: 4px;
-        }
-        .gp-making__item img,
-        .gp-making__item video {
+        .gp-post img,
+        .gp-post video {
             width: 100%;
-            height: 116%;
-            margin-top: -8%;
-            aspect-ratio: unset;
+            height: 100%;
             object-fit: cover;
             display: block;
-            background: rgba(32,32,32,0.06);
-            transform: translate3d(0, var(--parallax-y, 0), 0);
-            will-change: transform;
+            background: rgba(32,32,32,0.08);
         }
-        .gp-making__caption {
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--dark);
-            opacity: 0.55;
-        }
-        @media (max-width: 900px) {
-            .gp-making__grid { grid-template-columns: 1fr 1fr; }
-        }
-        @media (max-width: 600px) {
-            .gp-making__header { grid-template-columns: 1fr; gap: 20px; }
-            .gp-making__grid { grid-template-columns: 1fr; }
+        .gp-post--wide { aspect-ratio: 16/10; width: clamp(220px, 26vw, 400px); }
+        .gp-post--tall { aspect-ratio: 3/4; }
+        .gp-post--sq   { aspect-ratio: 1/1; width: clamp(160px, 17vw, 260px); }
+
+        /* Post-it posities */
+        .gp-post:nth-child(1) { top: 4%;  left: 4%;  --rot: -5deg; }
+        .gp-post:nth-child(2) { top: 12%; left: 30%; --rot: 3.5deg; }
+        .gp-post:nth-child(3) { top: 2%;  left: 62%; --rot: -2deg; }
+        .gp-post:nth-child(4) { top: 46%; left: 12%; --rot: 4.5deg; }
+        .gp-post:nth-child(5) { top: 40%; left: 46%; --rot: -3.5deg; }
+        .gp-post:nth-child(6) { top: 55%; left: 72%; --rot: 5deg; }
+
+        @media (max-width: 800px) {
+            .gp-making { padding: 32px 16px; min-height: 0; }
+            .gp-post {
+                position: relative;
+                display: block;
+                width: 70%;
+                margin: 0 auto -28px;
+                top: auto !important; left: auto !important;
+            }
+            .gp-post:nth-child(odd)  { margin-left: 4%; }
+            .gp-post:nth-child(even) { margin-left: auto; margin-right: 4%; }
         }
 
         .gp-closer {
@@ -270,10 +306,6 @@
         </video>
         <div class="gp-hero__gradient"></div>
         <div class="gp-hero__content">
-            <div class="gp-hero__meta">
-                <span>Greenpeace</span>
-                <span>Concept · Script · Productie</span>
-            </div>
             <h1 class="gp-hero__title">Greenpeace</h1>
             <p class="gp-hero__lead">Een serie video's over onderwerpen die er echt toe doen.</p>
             <p class="gp-hero__sub">Concept, script, visuele stijl en productie. Een samenwerking die blijft doorlopen zolang er iets te vertellen valt.</p>
@@ -311,7 +343,6 @@
 
     <!-- SERIE -->
     <section class="gp-section">
-        <p class="gp-label js-fade">De serie tot nu toe</p>
         <div class="gp-videos">
 
             <div class="gp-video-row js-fade">
@@ -321,8 +352,9 @@
                     <p class="gp-video__body">Over de ontbossing van het Amazonewoud en het punt waarop het bos onherstelbaar kantelt. Een video die de urgentie van behoud invoelbaar maakt, voordat het te laat is.</p>
                 </div>
                 <div class="gp-video-media">
-                    <div class="yt-embed">
-                        <iframe src="https://www.youtube.com/embed/pqdlJDh1NCI" title="Greenpeace — Tipping point" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="yt-embed js-yt" data-id="pqdlJDh1NCI" role="button" tabindex="0" aria-label="Speel Tipping point video af">
+                        <img class="yt-embed__thumb" src="https://i.ytimg.com/vi/pqdlJDh1NCI/maxresdefault.jpg" alt="Tipping point videothumbnail" onerror="this.src='https://i.ytimg.com/vi/pqdlJDh1NCI/hqdefault.jpg'">
+                        <span class="yt-embed__play" aria-hidden="true"></span>
                     </div>
                     <img class="gp-video-media__overlay" src="assets/cases/greenpeace/forest-overlay.png" alt="" aria-hidden="true">
                 </div>
@@ -334,8 +366,9 @@
                     <h3 class="gp-video__title">Rabobank</h3>
                     <p class="gp-video__body">Over de bank die boeren jarenlang aanjoeg tot schaalvergroting, ze opzadelde met torenhoge leningen en vervolgens liet zitten met de schuld en de schuldvraag. De winst voor de bank, de rekening voor de boer en het klimaat. Een scherpe, onderbouwde aanklacht.</p>
                 </div>
-                <div class="yt-embed">
-                    <iframe src="https://www.youtube.com/embed/-fXRgGsRwj0" title="Greenpeace — Rabobank" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="yt-embed js-yt" data-id="-fXRgGsRwj0" role="button" tabindex="0" aria-label="Speel Rabobank video af">
+                    <img class="yt-embed__thumb" src="https://i.ytimg.com/vi/-fXRgGsRwj0/maxresdefault.jpg" alt="Rabobank videothumbnail" onerror="this.src='https://i.ytimg.com/vi/-fXRgGsRwj0/hqdefault.jpg'">
+                    <span class="yt-embed__play" aria-hidden="true"></span>
                 </div>
             </div>
 
@@ -345,8 +378,9 @@
                     <h3 class="gp-video__title">Diepzeemijnbouw</h3>
                     <p class="gp-video__body">Over de dreiging van mijnbouw op de zeebodem en wat er op het spel staat in een gebied dat we amper kennen. Inzicht in een onderwerp dat bij de meeste mensen nog volledig onder de radar blijft.</p>
                 </div>
-                <div class="yt-embed">
-                    <iframe src="https://www.youtube.com/embed/lpmsgrXKJ7o" title="Greenpeace — Diepzeemijnbouw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="yt-embed js-yt" data-id="lpmsgrXKJ7o" role="button" tabindex="0" aria-label="Speel Diepzeemijnbouw video af">
+                    <img class="yt-embed__thumb" src="https://i.ytimg.com/vi/lpmsgrXKJ7o/maxresdefault.jpg" alt="Diepzeemijnbouw videothumbnail" onerror="this.src='https://i.ytimg.com/vi/lpmsgrXKJ7o/hqdefault.jpg'">
+                    <span class="yt-embed__play" aria-hidden="true"></span>
                 </div>
             </div>
 
@@ -354,28 +388,25 @@
     </section>
 
     <!-- MAKING OF -->
-    <section class="gp-making js-fade">
-        <div class="gp-making__header">
-            <div>
-                <p class="gp-label">Making of</p>
-                <h2 style="font-size: clamp(28px, 3.6vw, 52px); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; color: var(--dark);">Green screen, blote voeten en veel plakwerk.</h2>
-            </div>
-            <p style="font-size: clamp(15px, 1.2vw, 19px); line-height: 1.65; color: rgba(32,32,32,0.72); max-width: 56ch;">De echte mensen in de collages beginnen als losse elementen op een green screen. Blote voeten, handen, silhouetten — allemaal gefilmd op één laken, later los uitgesneden en middenin het verhaal geplakt.</p>
-        </div>
-        <div class="gp-making__grid">
-            <div class="gp-making__item">
-                <img src="assets/cases/greenpeace/making-01.jpg" alt="Green screen footage: blote voeten op groen laken" onerror="this.style.background='#25c95a';this.removeAttribute('src');">
-                <span class="gp-making__caption">Ruwe opname · green screen</span>
-            </div>
-            <div class="gp-making__item">
-                <img src="assets/cases/greenpeace/making-02.jpg" alt="Zelfde footage gekeyed in de collage-omgeving" onerror="this.style.background='#0f6b7b';this.removeAttribute('src');">
-                <span class="gp-making__caption">In de collage · na key + textuur</span>
-            </div>
-            <div class="gp-making__item">
-                <img src="assets/cases/greenpeace/making-03.gif" alt="Hand die met een gebogen vinger over een blauw laken tikt — houtje-touwtje stopmotion op de studiotafel" onerror="this.style.background='#1e3fa1';this.removeAttribute('src');">
-                <span class="gp-making__caption">Op de studiotafel · houtje-touwtje</span>
-            </div>
-        </div>
+    <section class="gp-making js-fade" aria-label="Making of">
+        <figure class="gp-post gp-post--tall">
+            <img src="assets/cases/greenpeace/making-01.jpg" alt="" onerror="this.style.background='#25c95a';this.removeAttribute('src');">
+        </figure>
+        <figure class="gp-post gp-post--wide">
+            <img src="assets/cases/greenpeace/making-02.jpg" alt="" onerror="this.style.background='#0f6b7b';this.removeAttribute('src');">
+        </figure>
+        <figure class="gp-post gp-post--sq">
+            <img src="assets/cases/greenpeace/making-03.gif" alt="" onerror="this.style.background='#1e3fa1';this.removeAttribute('src');">
+        </figure>
+        <figure class="gp-post gp-post--tall">
+            <img src="assets/cases/greenpeace/making-04.jpg" alt="" onerror="this.style.background='#c65b3a';this.removeAttribute('src');">
+        </figure>
+        <figure class="gp-post gp-post--sq">
+            <img src="assets/cases/greenpeace/making-05.gif" alt="" onerror="this.style.background='#e2b23a';this.removeAttribute('src');">
+        </figure>
+        <figure class="gp-post gp-post--wide">
+            <img src="assets/cases/greenpeace/making-06.jpg" alt="" onerror="this.style.background='#2c3e50';this.removeAttribute('src');">
+        </figure>
     </section>
 
     <!-- CLOSER -->
@@ -414,6 +445,19 @@
                 { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
             );
             targets.forEach(el => observer.observe(el));
+
+            // Custom YouTube lite: klik → laadt iframe met autoplay
+            document.querySelectorAll('.js-yt').forEach(box => {
+                function play() {
+                    const id = box.dataset.id;
+                    if (!id) return;
+                    box.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" title="YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                }
+                box.addEventListener('click', play);
+                box.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
+                });
+            });
         });
     </script>
 </body>

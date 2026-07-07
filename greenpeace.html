@@ -218,7 +218,7 @@
             padding: clamp(40px, 5vw, 72px) var(--pad-x);
             max-width: 1400px;
             margin: 0 auto;
-            min-height: clamp(520px, 55vw, 800px);
+            min-height: clamp(380px, 42vw, 620px);
         }
         .gp-post {
             position: absolute;
@@ -247,13 +247,12 @@
         .gp-post--tall { aspect-ratio: 3/4; }
         .gp-post--sq   { aspect-ratio: 1/1; width: clamp(160px, 17vw, 260px); }
 
-        /* Post-it posities */
-        .gp-post:nth-child(1) { top: 4%;  left: 4%;  --rot: -5deg; }
-        .gp-post:nth-child(2) { top: 12%; left: 30%; --rot: 3.5deg; }
-        .gp-post:nth-child(3) { top: 2%;  left: 62%; --rot: -2deg; }
-        .gp-post:nth-child(4) { top: 46%; left: 12%; --rot: 4.5deg; }
-        .gp-post:nth-child(5) { top: 40%; left: 46%; --rot: -3.5deg; }
-        .gp-post:nth-child(6) { top: 55%; left: 72%; --rot: 5deg; }
+        /* Post-it posities (3 stuks) */
+        .gp-post:nth-child(1) { top: 8%;  left: 8%;  --rot: -5deg; }
+        .gp-post:nth-child(2) { top: 14%; left: 40%; --rot: 4deg; }
+        .gp-post:nth-child(3) { top: 4%;  left: 66%; --rot: -3deg; }
+        .gp-post--greenscreen { background: #2ecc4f; padding: 14px 14px 36px; }
+        .gp-post--greenscreen img { background: #2ecc4f; }
 
         @media (max-width: 800px) {
             .gp-making { padding: 32px 16px; min-height: 0; }
@@ -389,23 +388,14 @@
 
     <!-- MAKING OF -->
     <section class="gp-making js-fade" aria-label="Making of">
-        <figure class="gp-post gp-post--tall">
-            <img src="assets/cases/greenpeace/making-01.jpg" alt="" onerror="this.style.background='#25c95a';this.removeAttribute('src');">
-        </figure>
-        <figure class="gp-post gp-post--wide">
-            <img src="assets/cases/greenpeace/making-02.jpg" alt="" onerror="this.style.background='#0f6b7b';this.removeAttribute('src');">
-        </figure>
-        <figure class="gp-post gp-post--sq">
-            <img src="assets/cases/greenpeace/making-03.gif" alt="" onerror="this.style.background='#1e3fa1';this.removeAttribute('src');">
+        <figure class="gp-post gp-post--tall gp-post--greenscreen">
+            <img src="assets/cases/greenpeace/voeten-af.png" alt="Voeten losgeknipt uit green screen opname" onerror="this.style.background='#25c95a';this.removeAttribute('src');">
         </figure>
         <figure class="gp-post gp-post--tall">
-            <img src="assets/cases/greenpeace/making-04.jpg" alt="" onerror="this.style.background='#c65b3a';this.removeAttribute('src');">
-        </figure>
-        <figure class="gp-post gp-post--sq">
-            <img src="assets/cases/greenpeace/making-05.gif" alt="" onerror="this.style.background='#e2b23a';this.removeAttribute('src');">
+            <img src="assets/cases/greenpeace/voeten-erin.png" alt="Zelfde voeten geplakt in de collage" onerror="this.style.background='#0f6b7b';this.removeAttribute('src');">
         </figure>
         <figure class="gp-post gp-post--wide">
-            <img src="assets/cases/greenpeace/making-06.jpg" alt="" onerror="this.style.background='#2c3e50';this.removeAttribute('src');">
+            <img src="assets/cases/greenpeace/making-off.gif" alt="Making off — knutselwerk op de studiotafel" onerror="this.style.background='#1e3fa1';this.removeAttribute('src');">
         </figure>
     </section>
 

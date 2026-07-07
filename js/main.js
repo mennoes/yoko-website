@@ -435,10 +435,10 @@ function initDotField() {
 
 // ===== PARALLAX: media binnen work-items en case content =====
 function initWorkParallax() {
-    const STRENGTH = 0.03;
     const targets = [
-        { holder: '.work-item__media', inner: '.work-item__img, .work-item__video', strength: 0.03 },
-        { holder: '.js-parallax', inner: '.js-parallax > *', strength: 0.05 },
+        { holder: '.work-item__media', inner: '.work-item__img, .work-item__video', strength: 0.03, prop: '--parallax-y' },
+        { holder: '.gp-making__item', inner: 'img, video', strength: 0.06, prop: '--parallax-y' },
+        { holder: '.gp-video-media', inner: '.gp-video-media__overlay', strength: 0.18, prop: '--overlay-parallax' },
     ];
     let ticking = false;
     function update() {
@@ -446,11 +446,11 @@ function initWorkParallax() {
         for (const t of targets) {
             document.querySelectorAll(t.holder).forEach(media => {
                 const rect = media.getBoundingClientRect();
-                if (rect.bottom < -100 || rect.top > winH + 100) return;
+                if (rect.bottom < -300 || rect.top > winH + 300) return;
                 const center = (rect.top + rect.bottom) / 2;
                 const offset = (center - winH / 2) * t.strength;
                 const inner = media.querySelectorAll(t.inner);
-                inner.forEach(el => el.style.setProperty('--parallax-y', `${offset}px`));
+                inner.forEach(el => el.style.setProperty(t.prop, `${-offset}px`));
             });
         }
         ticking = false;

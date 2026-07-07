@@ -157,6 +157,27 @@
             width: 100%; height: 100%; border: 0;
         }
 
+        /* Forest overlay boven de Tipping point video */
+        .gp-video-media {
+            position: relative;
+            overflow: visible;
+        }
+        .gp-video-media__overlay {
+            position: absolute;
+            left: -6%;
+            right: -6%;
+            bottom: -22%;
+            width: 112%;
+            height: auto;
+            pointer-events: none;
+            transform: translate3d(0, var(--overlay-parallax, 0), 0);
+            will-change: transform;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+        }
+        @media (max-width: 800px) {
+            .gp-video-media__overlay { left: -4%; right: -4%; width: 108%; bottom: -14%; }
+        }
+
         /* Making of */
         .gp-making {
             padding: clamp(72px, 9vw, 140px) var(--pad-x);
@@ -299,8 +320,11 @@
                     <h3 class="gp-video__title">Tipping point</h3>
                     <p class="gp-video__body">Over de ontbossing van het Amazonewoud en het punt waarop het bos onherstelbaar kantelt. Een video die de urgentie van behoud invoelbaar maakt, voordat het te laat is.</p>
                 </div>
-                <div class="yt-embed">
-                    <iframe src="https://www.youtube.com/embed/pqdlJDh1NCI" title="Greenpeace — Tipping point" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="gp-video-media">
+                    <div class="yt-embed">
+                        <iframe src="https://www.youtube.com/embed/pqdlJDh1NCI" title="Greenpeace — Tipping point" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <img class="gp-video-media__overlay" src="assets/cases/greenpeace/forest-overlay.png" alt="" aria-hidden="true">
                 </div>
             </div>
 

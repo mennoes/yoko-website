@@ -212,27 +212,28 @@
             .gp-video-media__overlay { left: -4%; right: -4%; width: 108%; bottom: -14%; }
         }
 
-        /* Making of — losse post-its */
+        /* Making of — losse post-its met dunne blauwe rand */
         .gp-making {
             position: relative;
-            padding: clamp(40px, 5vw, 72px) var(--pad-x);
+            padding: clamp(24px, 3vw, 48px) var(--pad-x);
             max-width: 1400px;
             margin: 0 auto;
-            min-height: clamp(380px, 42vw, 620px);
+            min-height: clamp(360px, 40vw, 560px);
         }
         .gp-post {
             position: absolute;
-            width: clamp(160px, 18vw, 280px);
+            width: clamp(180px, 22vw, 340px);
             aspect-ratio: 4/5;
-            background: #fff;
-            padding: 10px 10px 32px;
-            box-shadow: 0 12px 22px rgba(0,0,0,0.12), 0 3px 6px rgba(0,0,0,0.08);
+            background: transparent;
+            border: 2px solid var(--accent);
+            padding: 0;
+            overflow: hidden;
             transform: rotate(var(--rot, 0deg));
-            transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+            transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s ease;
         }
         .gp-post:hover {
-            transform: rotate(0deg) scale(1.04);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+            transform: rotate(0deg) scale(1.05);
+            border-color: var(--highlight);
             z-index: 10;
         }
         .gp-post img,
@@ -243,15 +244,19 @@
             display: block;
             background: rgba(32,32,32,0.08);
         }
-        .gp-post--wide { aspect-ratio: 16/10; width: clamp(220px, 26vw, 400px); }
-        .gp-post--tall { aspect-ratio: 3/4; }
-        .gp-post--sq   { aspect-ratio: 1/1; width: clamp(160px, 17vw, 260px); }
+        .gp-post--wide { aspect-ratio: 16/10; width: clamp(260px, 32vw, 480px); }
+        .gp-post--tall { aspect-ratio: 3/4; width: clamp(200px, 22vw, 340px); }
+        .gp-post--sq   { aspect-ratio: 1/1; width: clamp(200px, 22vw, 320px); }
 
-        /* Post-it posities (3 stuks) */
-        .gp-post:nth-child(1) { top: 8%;  left: 8%;  --rot: -5deg; }
-        .gp-post:nth-child(2) { top: 14%; left: 40%; --rot: 4deg; }
-        .gp-post:nth-child(3) { top: 4%;  left: 66%; --rot: -3deg; }
-        .gp-post--greenscreen { background: #2ecc4f; padding: 14px 14px 36px; }
+        /* Posities zodat de ruimte lekker gevuld is */
+        .gp-post:nth-child(1) { top: 2%;  left: 2%;   --rot: -5deg; }
+        .gp-post:nth-child(2) { top: 6%;  left: 34%;  --rot: 3.5deg; }
+        .gp-post:nth-child(3) { top: 0%;  left: 68%;  --rot: -3deg; }
+        .gp-post:nth-child(4) { top: 52%; left: 10%;  --rot: 4deg; }
+        .gp-post:nth-child(5) { top: 48%; left: 42%;  --rot: -2.5deg; }
+        .gp-post:nth-child(6) { top: 56%; left: 72%;  --rot: 4.5deg; }
+
+        .gp-post--greenscreen { background: #2ecc4f; }
         .gp-post--greenscreen img { background: #2ecc4f; }
 
         @media (max-width: 800px) {
@@ -391,11 +396,20 @@
         <figure class="gp-post gp-post--tall gp-post--greenscreen">
             <img src="assets/cases/greenpeace/voeten-af.png" alt="Voeten losgeknipt uit green screen opname" onerror="this.style.background='#25c95a';this.removeAttribute('src');">
         </figure>
+        <figure class="gp-post gp-post--wide">
+            <img src="assets/cases/greenpeace/making-off.gif" alt="Making off — knutselwerk op de studiotafel" onerror="this.style.background='#1e3fa1';this.removeAttribute('src');">
+        </figure>
         <figure class="gp-post gp-post--tall">
             <img src="assets/cases/greenpeace/voeten-erin.png" alt="Zelfde voeten geplakt in de collage" onerror="this.style.background='#0f6b7b';this.removeAttribute('src');">
         </figure>
+        <figure class="gp-post gp-post--sq">
+            <img src="assets/cases/greenpeace/voeten-erin.png" alt="Voeten in de collage — detail" onerror="this.style.background='#0f6b7b';this.removeAttribute('src');">
+        </figure>
         <figure class="gp-post gp-post--wide">
-            <img src="assets/cases/greenpeace/making-off.gif" alt="Making off — knutselwerk op de studiotafel" onerror="this.style.background='#1e3fa1';this.removeAttribute('src');">
+            <img src="assets/cases/greenpeace/making-off.gif" alt="Making off — knutselen" onerror="this.style.background='#1e3fa1';this.removeAttribute('src');">
+        </figure>
+        <figure class="gp-post gp-post--tall gp-post--greenscreen">
+            <img src="assets/cases/greenpeace/voeten-af.png" alt="Voeten cutout — extra weergave" onerror="this.style.background='#25c95a';this.removeAttribute('src');">
         </figure>
     </section>
 

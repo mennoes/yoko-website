@@ -78,6 +78,7 @@
             gap: clamp(40px, 6vw, 96px);
             align-items: start;
         }
+        .gp-body--single { grid-template-columns: 1fr; max-width: 900px; margin: 0 auto; }
         .gp-body h2 {
             font-size: clamp(32px, 4.2vw, 64px);
             font-weight: 700;
@@ -255,10 +256,21 @@
         .gp-post--still  { width: clamp(220px, 26vw, 400px); --rot: 3.5deg; --m: -10px 0 0 -22px; z-index: 2; }
         .gp-post--vissen { width: clamp(200px, 24vw, 360px); --rot: -3deg;  --m: 40px 0 0 -30px; z-index: 4; }
 
+        /* Voeten-paar altijd naast elkaar */
+        .gp-voeten-pair {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 clamp(12px, 2vw, 32px) clamp(20px, 3vw, 40px) 0;
+        }
+        .gp-voeten-pair .gp-post { margin: 0 !important; }
+
         @media (max-width: 800px) {
             .gp-making { gap: 0; }
             .gp-post { width: 60% !important; margin: -30px 0 0 !important; }
             .gp-post:nth-child(even) { margin-left: 20% !important; }
+            .gp-voeten-pair { width: 100%; justify-content: center; margin: 0 0 20px; }
+            .gp-voeten-pair .gp-post { width: 42% !important; margin: 0 !important; }
         }
 
         @media (max-width: 800px) {
@@ -313,36 +325,18 @@
         <div class="gp-hero__gradient"></div>
         <div class="gp-hero__content">
             <h1 class="gp-hero__title">Greenpeace</h1>
-            <p class="gp-hero__lead">Een serie video's over onderwerpen die er echt toe doen.</p>
-            <p class="gp-hero__sub">Concept, script, visuele stijl en productie. Een samenwerking die blijft doorlopen zolang er iets te vertellen valt.</p>
+            <p class="gp-hero__lead">Droge klimaatfeiten overtuigen niemand meer. Bewegend beeld dat urgentie voelbaar maakt, doet dat wel.</p>
+            <p class="gp-hero__sub">Wij maken video's die mensen aanzetten tot actie.</p>
         </div>
     </section>
 
     <!-- INTRO -->
     <section class="gp-section">
-        <div class="gp-body js-fade">
-            <div>
-                <h2>Een tas vol inhoud,<br>nog geen bondig verhaal.</h2>
-            </div>
+        <div class="gp-body gp-body--single js-fade">
             <div class="gp-body__text">
-                <p>Greenpeace kwam bij ons langs met een tas vol inhoud, maar nog geen bondig verhaal. Complexe onderwerpen, stapels research, een duidelijke urgentie. De vraag: hoe krijg je dat kijkbaar voor een breed publiek, zonder dat de inhoud verwatert tot een hapklaar filmpje?</p>
-                <p>Precies het soort puzzel waar wij warm voor lopen. We knippen, plakken, filmen en schrijven onze weg naar iets dat blijft hangen. Voor Greenpeace stapten we in bij de kern: vanuit de ruwe inhoud schreven we de scripts en bouwden we per video een heldere verhaallijn, van het probleem naar wie erachter zit naar wat er anders kan. We dachten mee over de inhoudelijke keuzes en bepaalden de vorm. Zo werden complexe onderwerpen video's die informeren én activeren.</p>
-                <p>We hebben er inmiddels drie gemaakt over belangrijke thema's. En het houdt daar niet op: zolang er onderwerpen zijn die aandacht verdienen, blijven we de serie uitbreiden.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- STIJL -->
-    <section class="gp-section">
-        <div class="gp-body js-fade">
-            <div>
-                <p class="gp-label">De stijl</p>
-                <h2>Rauw, donker en activistisch. Met een handgemaakt randje.</h2>
-            </div>
-            <div class="gp-body__text">
-                <p>Krantenknipsels, collage en mixed media vormen een wereld waarin het Greenpeace-groen het enige lichtpunt is: het redmiddel te midden van vlammen, geld en rook.</p>
-                <p>We filmden losse elementen voor green screen en plakten die middenin de collage, zodat mens en boodschap letterlijk deel worden van het verhaal. Het is knutselwerk met een boodschap, precies zoals wij het het liefst doen.</p>
-                <p>Alle video's leveren we aan in meerdere formaten en lengtes, klaar voor inzet op social en campagnekanalen.</p>
+                <p>Hoe krijg je complexe informatie, stapels research kijkbaar voor een groot publiek?</p>
+                <p>Voor Greenpeace zijn we ingestapt bij het begin: we duiken in de materie, schrijven scripts, knippen, plakken en filmen onze weg om tot een duidelijke video te komen.</p>
+                <p>Zo worden complexe onderwerpen begrijpbare video's die informeren en activeren.</p>
             </div>
         </div>
     </section>
@@ -355,7 +349,7 @@
                 <div class="gp-video-row__text">
                     <p class="gp-video__num">01</p>
                     <h3 class="gp-video__title">Tipping point</h3>
-                    <p class="gp-video__body">Over de ontbossing van het Amazonewoud en het punt waarop het bos onherstelbaar kantelt. Een video die de urgentie van behoud invoelbaar maakt, voordat het te laat is.</p>
+                    <p class="gp-video__body">Ontbossing van het Amazonewoud; we gaan te ver en bereiken een onherstelbaar kantelpunt.</p>
                 </div>
                 <div class="gp-video-media">
                     <div class="yt-embed js-yt" data-id="pqdlJDh1NCI" role="button" tabindex="0" aria-label="Speel Tipping point video af">
@@ -370,7 +364,7 @@
                 <div class="gp-video-row__text">
                     <p class="gp-video__num">02</p>
                     <h3 class="gp-video__title">Rabobank</h3>
-                    <p class="gp-video__body">Over de bank die boeren jarenlang aanjoeg tot schaalvergroting, ze opzadelde met torenhoge leningen en vervolgens liet zitten met de schuld en de schuldvraag. De winst voor de bank, de rekening voor de boer en het klimaat. Een scherpe, onderbouwde aanklacht.</p>
+                    <p class="gp-video__body">De bank heeft boeren jarenlang aangemoedigd tot schaalvergroting. Zadelde ze op met torenhoge leningen en liet ze vervolgens zitten met de schuld. De winst voor de bank, de rekening voor de boer en het klimaat.</p>
                 </div>
                 <div class="yt-embed js-yt" data-id="-fXRgGsRwj0" role="button" tabindex="0" aria-label="Speel Rabobank video af">
                     <img class="yt-embed__thumb" src="https://i.ytimg.com/vi/-fXRgGsRwj0/maxresdefault.jpg" alt="Rabobank videothumbnail" onerror="this.src='https://i.ytimg.com/vi/-fXRgGsRwj0/hqdefault.jpg'">
@@ -382,7 +376,7 @@
                 <div class="gp-video-row__text">
                     <p class="gp-video__num">03</p>
                     <h3 class="gp-video__title">Diepzeemijnbouw</h3>
-                    <p class="gp-video__body">Over de dreiging van mijnbouw op de zeebodem en wat er op het spel staat in een gebied dat we amper kennen. Inzicht in een onderwerp dat bij de meeste mensen nog volledig onder de radar blijft.</p>
+                    <p class="gp-video__body">De dreiging van mijnbouw in de diepzee. Wat staat er op het spel in een gebied dat we nauwelijks kennen. Inzicht in een onderwerp dat bij veel mensen onder de radar blijft.</p>
                 </div>
                 <div class="yt-embed js-yt" data-id="lpmsgrXKJ7o" role="button" tabindex="0" aria-label="Speel Diepzeemijnbouw video af">
                     <img class="yt-embed__thumb" src="https://i.ytimg.com/vi/lpmsgrXKJ7o/maxresdefault.jpg" alt="Diepzeemijnbouw videothumbnail" onerror="this.src='https://i.ytimg.com/vi/lpmsgrXKJ7o/hqdefault.jpg'">
@@ -394,14 +388,34 @@
     </section>
 
 
+    <!-- FORMAT & DISTRIBUTIE -->
+    <section class="gp-section">
+        <div class="gp-body gp-body--single js-fade">
+            <div class="gp-body__text">
+                <p>Doordat we meerdere onderwerpen behandelen hebben we er een herkenbaar format van gemaakt. We maken altijd als basis één lange video die we vervolgens verknippen naar allerlei clips in alle mogelijke resoluties voor socials en campagne kanalen.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STIJL -->
+    <section class="gp-section">
+        <div class="gp-body gp-body--single js-fade">
+            <div class="gp-body__text">
+                <p>Krantenknipsels, collage en mixed media vormen een wereld waarin het Greenpeace-groen het enige lichtpunt is: het redmiddel te midden van vlammen, geld en rook. De rauwe collage-stijl en losse gefilmde elementen voor green screen zijn ons handschrift.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- MAKING OF -->
     <section class="gp-making js-fade" aria-label="Making of">
-        <figure class="gp-post gp-post--voeten gp-post--greenscreen">
-            <img src="assets/cases/greenpeace/voeten-af.png" alt="Voeten losgeknipt uit green screen">
-        </figure>
-        <figure class="gp-post gp-post--erin">
-            <img src="assets/cases/greenpeace/voeten-erin.png" alt="Voeten geplakt in de collage">
-        </figure>
+        <div class="gp-voeten-pair">
+            <figure class="gp-post gp-post--voeten gp-post--greenscreen">
+                <img src="assets/cases/greenpeace/voeten-af.png" alt="Voeten losgeknipt uit green screen">
+            </figure>
+            <figure class="gp-post gp-post--erin">
+                <img src="assets/cases/greenpeace/voeten-erin.png" alt="Voeten geplakt in de collage">
+            </figure>
+        </div>
         <figure class="gp-post gp-post--gif">
             <img src="assets/cases/greenpeace/making-off.gif" alt="Making off — knutselwerk op de studiotafel">
         </figure>

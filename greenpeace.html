@@ -256,21 +256,42 @@
         .gp-post--still  { width: clamp(220px, 26vw, 400px); --rot: 3.5deg; --m: -10px 0 0 -22px; z-index: 2; }
         .gp-post--vissen { width: clamp(200px, 24vw, 360px); --rot: -3deg;  --m: 40px 0 0 -30px; z-index: 4; }
 
-        /* Voeten-paar altijd naast elkaar */
-        .gp-voeten-pair {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        /* Voeten: één 16:9 vlak, hover wisselt van beeld */
+        .gp-voeten {
+            position: relative;
+            width: clamp(280px, 34vw, 560px);
+            aspect-ratio: 16/9;
+            border: 2px solid var(--accent);
+            overflow: hidden;
+            transform: rotate(-3.5deg);
             margin: 0 clamp(12px, 2vw, 32px) clamp(20px, 3vw, 40px) 0;
+            transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s ease;
+            background: #2ecc4f;
         }
-        .gp-voeten-pair .gp-post { margin: 0 !important; }
+        .gp-voeten:hover {
+            transform: rotate(0deg) scale(1.03);
+            border-color: var(--highlight);
+            z-index: 20;
+        }
+        .gp-voeten img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .gp-voeten__erin {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .gp-voeten:hover .gp-voeten__erin { opacity: 1; }
 
         @media (max-width: 800px) {
             .gp-making { gap: 0; }
             .gp-post { width: 60% !important; margin: -30px 0 0 !important; }
             .gp-post:nth-child(even) { margin-left: 20% !important; }
-            .gp-voeten-pair { width: 100%; justify-content: center; margin: 0 0 20px; }
-            .gp-voeten-pair .gp-post { width: 42% !important; margin: 0 !important; }
+            .gp-voeten { width: 80%; margin: 0 auto 20px; }
         }
 
         @media (max-width: 800px) {
@@ -408,13 +429,9 @@
 
     <!-- MAKING OF -->
     <section class="gp-making js-fade" aria-label="Making of">
-        <div class="gp-voeten-pair">
-            <figure class="gp-post gp-post--voeten gp-post--greenscreen">
-                <img src="assets/cases/greenpeace/voeten-af.png" alt="Voeten losgeknipt uit green screen">
-            </figure>
-            <figure class="gp-post gp-post--erin">
-                <img src="assets/cases/greenpeace/voeten-erin.png" alt="Voeten geplakt in de collage">
-            </figure>
+        <div class="gp-voeten" role="img" aria-label="Voeten op green screen, bij hover geplakt in de collage">
+            <img class="gp-voeten__af" src="assets/cases/greenpeace/voeten-af.png" alt="">
+            <img class="gp-voeten__erin" src="assets/cases/greenpeace/voeten-erin.png" alt="">
         </div>
         <figure class="gp-post gp-post--gif">
             <img src="assets/cases/greenpeace/making-off.gif" alt="Making off — knutselwerk op de studiotafel">

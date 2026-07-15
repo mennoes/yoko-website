@@ -1237,20 +1237,69 @@ a { color: inherit; }
 /* Volledig pagina-breed design — geen insets meer op ultra-wide */
 
 /* =====================================================
-   INTERACTIVE DOT FIELD
+   CUSTOM CURSOR (Kaliber-stijl)
    ===================================================== */
-.dot-field-wrap {
+.has-cursor,
+.has-cursor a,
+.has-cursor button,
+.has-cursor [role="button"],
+.has-cursor .pillars__case-card,
+.has-cursor .work-item,
+.has-cursor .yt-embed,
+.has-cursor .gp-post,
+.has-cursor .footer__photo { cursor: none; }
+
+.cursor-dot,
+.cursor-ring {
     position: fixed;
-    inset: 0;
+    top: 0; left: 0;
     pointer-events: none;
-    z-index: -1;
+    z-index: 9999;
+    mix-blend-mode: difference;
 }
-.dot-field {
-    display: block;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+.cursor-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    transition: opacity 0.25s ease, width 0.25s ease, height 0.25s ease;
 }
+.cursor-ring {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.3s cubic-bezier(0.2,0.8,0.2,1),
+                height 0.3s cubic-bezier(0.2,0.8,0.2,1),
+                background 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+}
+.cursor-ring__label {
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    color: var(--dark);
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+    mix-blend-mode: normal;
+}
+/* Hover over interactieve elementen: ring groeit */
+.cursor-hover .cursor-ring {
+    width: 64px; height: 64px;
+    border-color: transparent;
+    background: var(--accent);
+    mix-blend-mode: normal;
+}
+.cursor-hover .cursor-dot { opacity: 0; }
+.cursor-ring--labeled {
+    width: 96px !important; height: 96px !important;
+}
+.cursor-ring--labeled .cursor-ring__label { opacity: 1; transform: scale(1); }
+/* Klik: dot even inkrimpen */
+.cursor-down .cursor-dot { width: 5px; height: 5px; }
 
 /* =====================================================
    ANIMATIES

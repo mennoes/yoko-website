@@ -283,155 +283,7 @@ function initWordReveal() {
 }
 
 // ===== SMOOTH SCROLL =====
-// ===== INTERACTIVE DOT FIELD =====
-function initDotField() {
-    const canvas = document.getElementById('dot-field');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-    const SPACING = 14;
-    const DOT_RADIUS = 1.4;
-    const HIT_RADIUS = 22;
-    const COOLDOWN = 4000;    // ms voordat dezelfde dot opnieuw mag spawnen
-    const FLASH_LIFE = 700;   // ms levensduur van een lijn
-    const STEP_DELAY = 70;    // ms tussen segmenten — hoe langzamer de lijn zich tekent
-    const SHOTS_PER_HIT = 1;
-    const SHOT_ALPHA = 0.45;
-    const FIRE_CHANCE = 0.025; // kans dat een dot afgaat als de muis erover komt
-    const PATH_MIN = 2;
-    const PATH_MAX = 8;
-    const css = getComputedStyle(document.documentElement);
-    const DOT_COLOR = (css.getPropertyValue('--dot').trim()) || '#d6d2ca';
-
-    let dots = [];
-    let cols = 0, rows = 0;
-    let offX = 0, offY = 0;
-    let w = 0, h = 0;
-    let flashes = []; // { ax, ay, bx, by, born }
-
-    const mouse = { x: -9999, y: -9999, active: false };
-
-    function resize() {
-        const rect = canvas.getBoundingClientRect();
-        w = rect.width; h = rect.height;
-        canvas.width = w * dpr; canvas.height = h * dpr;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        cols = Math.ceil(w / SPACING) + 1;
-        rows = Math.ceil(h / SPACING) + 1;
-        offX = (w - (cols - 1) * SPACING) / 2;
-        offY = (h - (rows - 1) * SPACING) / 2;
-        dots = [];
-        for (let r = 0; r < rows; r++) {
-            for (let c = 0; c < cols; c++) {
-                dots.push({
-                    x: offX + c * SPACING,
-                    y: offY + r * SPACING,
-                    col: c, row: r,
-                    triggered: -Infinity,
-                });
-            }
-        }
-        flashes = [];
-    }
-
-    function onMove(e) { mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true; }
-    function onLeave() { mouse.active = false; mouse.x = -9999; mouse.y = -9999; }
-
-    function trigger(d, now) {
-        // bouw een pad van segmenten — elk hokje een nieuwe 90° richting
-        const dirs = [[-1,0],[1,0],[0,-1],[0,1]];
-        let dir = dirs[Math.floor(Math.random() * 4)];
-        let cc = d.col, cr = d.row;
-        const steps = PATH_MIN + Math.floor(Math.random() * (PATH_MAX - PATH_MIN + 1));
-        for (let s = 0; s < steps; s++) {
-            const nc = cc + dir[0];
-            const nr = cr + dir[1];
-            if (nc < 0 || nc >= cols || nr < 0 || nr >= rows) break;
-            const a = dots[cr * cols + cc];
-            const b = dots[nr * cols + nc];
-            flashes.push({ ax: a.x, ay: a.y, bx: b.x, by: b.y, born: now + s * STEP_DELAY });
-            cc = nc; cr = nr;
-            // kies een nieuwe 90°-richting, niet de reverse (geen backtrack)
-            const perp = (dir[0] === 0)
-                ? [[-1,0],[1,0]]
-                : [[0,-1],[0,1]];
-            // 50% kans om door te gaan, 50% kans om te draaien
-            if (Math.random() < 0.5) dir = perp[Math.floor(Math.random() * 2)];
-        }
-        d.triggered = now;
-    }
-
-    function frame() {
-        ctx.clearRect(0, 0, w, h);
-        const now = performance.now();
-
-        // muis nabij dots → trigger
-        if (mouse.active) {
-            // alleen dots binnen redelijk gebied checken
-            const minC = Math.max(0, Math.floor((mouse.x - HIT_RADIUS - offX) / SPACING));
-            const maxC = Math.min(cols - 1, Math.ceil((mouse.x + HIT_RADIUS - offX) / SPACING));
-            const minR = Math.max(0, Math.floor((mouse.y - HIT_RADIUS - offY) / SPACING));
-            const maxR = Math.min(rows - 1, Math.ceil((mouse.y + HIT_RADIUS - offY) / SPACING));
-            for (let r = minR; r <= maxR; r++) {
-                for (let c = minC; c <= maxC; c++) {
-                    const d = dots[r * cols + c];
-                    if (!d) continue;
-                    const dx = d.x - mouse.x;
-                    const dy = d.y - mouse.y;
-                    if (dx * dx + dy * dy > HIT_RADIUS * HIT_RADIUS) continue;
-                    if (now - d.triggered < COOLDOWN) continue;
-                    if (Math.random() > FIRE_CHANCE) continue;
-                    trigger(d, now);
-                }
-            }
-        }
-
-        // dots renderen
-        ctx.fillStyle = DOT_COLOR;
-        for (const d of dots) {
-            ctx.beginPath();
-            ctx.arc(d.x, d.y, DOT_RADIUS, 0, Math.PI * 2);
-            ctx.fill();
-        }
-
-        // flashes renderen + opruimen
-        ctx.lineCap = 'round';
-        ctx.lineWidth = 1.4;
-        const next = [];
-        for (const f of flashes) {
-            const elapsed = now - f.born;
-            if (elapsed < 0) { next.push(f); continue; } // nog niet aangekomen — bewaar
-            const t = elapsed / FLASH_LIFE;
-            if (t >= 1) continue;
-            // segment tekent zich uit over de eerste 30% van zijn levensduur
-            const drawT = Math.min(1, t / 0.3);
-            const ex = f.ax + (f.bx - f.ax) * drawT;
-            const ey = f.ay + (f.by - f.ay) * drawT;
-            const alpha = SHOT_ALPHA * (1 - t);
-            ctx.strokeStyle = `rgba(32,32,32,${alpha.toFixed(3)})`;
-            ctx.beginPath();
-            ctx.moveTo(f.ax, f.ay);
-            ctx.lineTo(ex, ey);
-            ctx.stroke();
-            next.push(f);
-        }
-        flashes = next;
-
-        requestAnimationFrame(frame);
-    }
-
-    resize();
-    window.addEventListener('resize', resize);
-    window.addEventListener('mousemove', onMove);
-    window.addEventListener('mouseout', (e) => { if (!e.relatedTarget) onLeave(); });
-    window.addEventListener('touchmove', (e) => {
-        const t = e.touches[0]; if (!t) return;
-        onMove({ clientX: t.clientX, clientY: t.clientY });
-    }, { passive: true });
-    window.addEventListener('touchend', onLeave);
-    frame();
-}
+// (dot-field verwijderd)
 
 // ===== PARALLAX: media binnen work-items en case content =====
 function initWorkParallax() {
@@ -567,6 +419,95 @@ function initSmoothScroll() {
     });
 }
 
+// ===== CUSTOM CURSOR (Kaliber-stijl) =====
+function initCursor() {
+    // alleen op apparaten met een echte muis
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    const dot = document.createElement('div');
+    dot.className = 'cursor-dot';
+    const ring = document.createElement('div');
+    ring.className = 'cursor-ring';
+    ring.innerHTML = '<span class="cursor-ring__label"></span>';
+    document.body.appendChild(ring);
+    document.body.appendChild(dot);
+    document.documentElement.classList.add('has-cursor');
+
+    let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+    let rx = mx, ry = my;          // ring lag-positie
+    let visible = false;
+
+    window.addEventListener('mousemove', (e) => {
+        mx = e.clientX; my = e.clientY;
+        if (!visible) { visible = true; dot.style.opacity = ring.style.opacity = ''; }
+        dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
+    });
+    window.addEventListener('mouseout', (e) => {
+        if (!e.relatedTarget) { visible = false; dot.style.opacity = ring.style.opacity = '0'; }
+    });
+    window.addEventListener('mousedown', () => document.body.classList.add('cursor-down'));
+    window.addEventListener('mouseup',   () => document.body.classList.remove('cursor-down'));
+
+    function frame() {
+        rx += (mx - rx) * 0.16;
+        ry += (my - ry) * 0.16;
+        ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
+        requestAnimationFrame(frame);
+    }
+    frame();
+
+    // Interactieve elementen: ring groeit + toont label
+    const SEL = 'a, button, [role="button"], .pillars__case-card, .work-item, .yt-embed, .footer__photo, .contact-form__btn, .gp-post, input, textarea';
+    function bind(el) {
+        const label = el.getAttribute('data-cursor')
+            || (el.matches('.pillars__case-card, .work-item') ? 'Bekijk'
+            : el.matches('.yt-embed') ? 'Speel'
+            : '');
+        el.addEventListener('mouseenter', () => {
+            document.body.classList.add('cursor-hover');
+            ring.querySelector('.cursor-ring__label').textContent = label;
+            ring.classList.toggle('cursor-ring--labeled', !!label);
+        });
+        el.addEventListener('mouseleave', () => {
+            document.body.classList.remove('cursor-hover');
+            ring.classList.remove('cursor-ring--labeled');
+        });
+    }
+    document.querySelectorAll(SEL).forEach(bind);
+    // observe voor later ingeladen kaarten (work grids etc.)
+    const mo = new MutationObserver(muts => {
+        muts.forEach(m => m.addedNodes.forEach(n => {
+            if (n.nodeType !== 1) return;
+            if (n.matches && n.matches(SEL)) bind(n);
+            n.querySelectorAll && n.querySelectorAll(SEL).forEach(bind);
+        }));
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
+}
+
+// ===== TILE MAGNET: case-beeld volgt licht de muis =====
+function initTileMagnet() {
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    const tiles = document.querySelectorAll('.pillars__thumb, .work-item__media');
+    tiles.forEach(tile => {
+        const img = tile.querySelector('img, video');
+        if (!img) return;
+        img.style.transition = 'transform 0.4s cubic-bezier(0.2,0.8,0.2,1)';
+        img.style.willChange = 'transform';
+        tile.addEventListener('mousemove', (e) => {
+            const r = tile.getBoundingClientRect();
+            const dx = ((e.clientX - r.left) / r.width - 0.5) * 2;   // -1..1
+            const dy = ((e.clientY - r.top) / r.height - 0.5) * 2;
+            img.style.transition = 'transform 0.1s linear';
+            img.style.transform = `scale(1.06) translate(${dx * 10}px, ${dy * 10}px)`;
+        });
+        tile.addEventListener('mouseleave', () => {
+            img.style.transition = 'transform 0.5s cubic-bezier(0.2,0.8,0.2,1)';
+            img.style.transform = '';
+        });
+    });
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', async () => {
     initHeroHeadline();
@@ -575,9 +516,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     initSmoothScroll();
     initWordReveal();
     initBlockReveal();
-    initDotField();
     initWorkParallax();
     initTextRepulsion();
+    initCursor();
+    initTileMagnet();
 
     // Fade statische elementen
     document.querySelectorAll('.about__title, .about__text, .footer__title, .footer__team-title, .page-header__title')

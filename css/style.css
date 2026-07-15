@@ -1622,7 +1622,7 @@ a { color: inherit; }
 }
 .pillars__row .pillars__intro { margin-bottom: 0; max-width: none; }
 .pillars__hero { display: block; }
-.pillars__hero .pillars__case-title { font-size: clamp(15px, 1.2vw, 18px); }
+.pillars__hero .pillars__case-title { font-size: 14px; }
 /* Tekst in de inline rij: breder, iets compacter */
 .pillars__row .pillars__text {
     font-size: clamp(20px, 2vw, 32px);
@@ -1657,12 +1657,14 @@ a { color: inherit; }
 .pillars__row + .pillars__cases { margin-top: clamp(24px, 3vw, 48px); }
 .pillars__case-title {
     display: block;
-    margin-top: 12px;
-    font-size: clamp(14px, 1.1vw, 17px);
-    font-weight: 500;
-    letter-spacing: -0.2px;
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
     color: var(--dark);
+    opacity: 0.7;
 }
+.pillars__case-card:hover .pillars__case-title { opacity: 1; }
 @media (max-width: 720px) {
     .pillars__cases { grid-template-columns: 1fr; }
 }

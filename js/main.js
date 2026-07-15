@@ -420,8 +420,11 @@ function initHeroReveal() {
         const peak = (1 - p) * vh * 0.55;
         reveal.style.setProperty('--peak', peak.toFixed(1) + 'px');
         if (reel) reel.style.setProperty('--reel-dim', (p * 0.12).toFixed(3));
-        // intro schaalt subtiel mee terwijl de driehoek opent
-        if (intro) intro.style.setProperty('--intro-scale', (0.9 + p * 0.1).toFixed(3));
+        // intro schaalt mee terwijl de driehoek opent + regelafstand krimpt
+        if (intro) {
+            intro.style.setProperty('--intro-scale', (0.82 + p * 0.24).toFixed(3));
+            intro.style.setProperty('--intro-lh', (1.55 - p * 0.4).toFixed(3));
+        }
         ticking = false;
     }
     window.addEventListener('scroll', () => {

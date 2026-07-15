@@ -216,7 +216,7 @@ a { color: inherit; }
 }
 .reel__scrim {
     position: absolute; inset: 0;
-    background: var(--cream);
+    background: #9AAEA5;
     opacity: var(--reel-dim, 0);
     pointer-events: none;
     transition: opacity 0.1s linear;
@@ -225,7 +225,7 @@ a { color: inherit; }
 .page-reveal {
     position: relative;
     z-index: 2;
-    background: var(--cream);
+    background: #9AAEA5;
     /* driehoek-top die opent bij scrollen (--peak → 0) */
     clip-path: polygon(
         0 var(--peak, 0px),
@@ -281,6 +281,7 @@ a { color: inherit; }
 /* Wij werken voor — vlak boven contact */
 .worked-for {
     padding: clamp(40px, 6vw, 80px) var(--pad-x);
+    background: var(--cream);
 }
 .worked-for .reel-sub__for-label {
     font-size: 11px;
@@ -847,7 +848,7 @@ a { color: inherit; }
    FOOTER
    ===================================================== */
 .footer {
-    background: transparent;
+    background: var(--cream);
     padding: clamp(20px, 2.4vw, 36px) var(--pad-x) clamp(20px, 2.4vw, 36px);
     border-top: none;
     display: flex;
@@ -1649,10 +1650,10 @@ a { color: inherit; }
     padding: clamp(28px, 3.5vw, 56px) var(--pad-x);
     border-top: 1px solid rgba(50,44,36,0.12);
 }
-/* Elk hoofdstuk een eigen zachte tint */
-.pillars__block--vorm    { background: #E6E9F1; }
-.pillars__block--verhaal { background: #F0E9DF; }
-.pillars__block--systeem { background: #E4EDE7; }
+/* Elk hoofdstuk een eigen kleur */
+.pillars__block--vorm    { background: #9AAEA5; }
+.pillars__block--verhaal { background: #B6B7BB; }
+.pillars__block--systeem { background: #B0C6EB; }
 .pillars__intro { max-width: 60ch; margin-bottom: clamp(24px, 3vw, 40px); }
 .pillars__cases {
     display: grid;

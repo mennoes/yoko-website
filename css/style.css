@@ -216,7 +216,7 @@ a { color: inherit; }
 }
 .reel__scrim {
     position: absolute; inset: 0;
-    background: #9AAEA5;
+    background: var(--cream);
     opacity: var(--reel-dim, 0);
     pointer-events: none;
     transition: opacity 0.1s linear;
@@ -225,7 +225,7 @@ a { color: inherit; }
 .page-reveal {
     position: relative;
     z-index: 2;
-    background: #9AAEA5;
+    background: var(--cream);
     /* driehoek-top die opent bij scrollen (--peak → 0) */
     clip-path: polygon(
         0 var(--peak, 0px),
@@ -1616,10 +1616,9 @@ a { color: inherit; }
     align-items: center;
 }
 .pillars__row--flip .pillars__intro { text-align: right; }
-/* Losse rij (buiten een block) houdt eigen padding + rand */
+/* Losse rij (buiten een block) houdt eigen padding */
 .pillars > .pillars__row {
     padding: clamp(14px, 1.6vw, 24px) var(--pad-x);
-    border-top: 1px solid rgba(50,44,36,0.12);
 }
 .pillars__row .pillars__intro { margin-bottom: 0; max-width: none; }
 .pillars__hero { display: block; }
@@ -1648,12 +1647,7 @@ a { color: inherit; }
 /* Pijler-blok: inline rij + rij met resterende cases */
 .pillars__block {
     padding: clamp(28px, 3.5vw, 56px) var(--pad-x);
-    border-top: 1px solid rgba(50,44,36,0.12);
 }
-/* Elk hoofdstuk een eigen kleur */
-.pillars__block--vorm    { background: #9AAEA5; }
-.pillars__block--verhaal { background: #B6B7BB; }
-.pillars__block--systeem { background: #B0C6EB; }
 .pillars__intro { max-width: 60ch; margin-bottom: clamp(24px, 3vw, 40px); }
 .pillars__cases {
     display: grid;

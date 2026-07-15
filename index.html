@@ -31,29 +31,12 @@
     </section>
 
     <!-- ===== REEL SUBTEKST + ALINEA ===== -->
-    <div class="reel-sub">
-        <div class="reel-sub__left">
-            <p class="reel-sub__text js-word-reveal">Beeld dat ergens over gaat. Animatie, vormgeving en slimme software.</p>
-        </div>
-        <div class="reel-sub__right">
-            <p class="reel-sub__body reel-sub__body--dark">Meer dan 10 jaar maken we dagelijks beeld voor de Universiteit van Nederland, Human, Omroep Zwart, Nieuwsuur en Greenpeace.</p>
-            <p class="reel-sub__for-label">Wij werken voor</p>
-            <div class="reel-sub__tags">
-                <span class="reel-sub__tag">Mediaredacties</span>
-                <span class="reel-sub__tag">Scale-ups met een verhaal</span>
-                <span class="reel-sub__tag">Goede doelen &amp; NGO's</span>
-                <span class="reel-sub__tag">Wetenschap &amp; onderwijs</span>
-                <span class="reel-sub__tag">Merken met een missie</span>
-            </div>
-        </div>
+    <div class="reel-sub reel-sub--single">
+        <p class="reel-sub__body reel-sub__body--dark">Meer dan 10 jaar maken we dagelijks beeld voor onder andere de Universiteit van Nederland, Human, Omroep Zwart, Nieuwsuur en Greenpeace.</p>
     </div>
 
     <!-- ===== WORK GRID — eerste 4 cases ===== -->
     <section class="work" id="work">
-        <div class="work__header">
-            <h2 class="work__label">Uitverkoren werk</h2>
-            <a href="work.html" class="cta-link work__all-link">Al het werk <span class="cta-arrow">→</span></a>
-        </div>
         <div class="work__grid" id="work-grid-top">
             <!-- Geladen vanuit data/cases.json, eerste 4 -->
         </div>
@@ -62,13 +45,17 @@
     <!-- ===== DRIE PIJLERS ===== -->
     <section class="pillars">
 
-        <!-- Vorm: tekst links, placeholder rechts -->
-        <div class="pillars__row js-fade">
+        <!-- Vorm: tekst links, case ZIN rechts -->
+        <div class="pillars__row pillars__row--verhaal js-fade">
+            <a class="pillars__case-card" href="zin-in-morgen.html">
+                <div class="pillars__thumb" style="background:#1A2EE8;">
+                    <img src="assets/cases/zin/thumb.jpg" alt="Zin in Morgen">
+                </div>
+            </a>
             <div>
                 <p class="pillars__label">Vorm</p>
                 <p class="pillars__text">We geven je merk een gezicht dat overal werkt, grafisch en in animatie.</p>
             </div>
-            <div class="pillars__thumb pillars__thumb--placeholder"></div>
         </div>
 
         <!-- Verhaal: beeld links (groot), tekst rechts (klein) -->
@@ -101,6 +88,18 @@
     <section class="work work--cont">
         <div class="work__grid" id="work-grid-bottom">
             <!-- Geladen vanuit data/cases.json, overige -->
+        </div>
+    </section>
+
+    <!-- ===== WIJ WERKEN VOOR ===== -->
+    <section class="worked-for js-fade">
+        <p class="reel-sub__for-label">Wij werken voor</p>
+        <div class="reel-sub__tags">
+            <span class="reel-sub__tag">Mediaredacties</span>
+            <span class="reel-sub__tag">Scale-ups met een verhaal</span>
+            <span class="reel-sub__tag">Goede doelen &amp; NGO's</span>
+            <span class="reel-sub__tag">Wetenschap &amp; onderwijs</span>
+            <span class="reel-sub__tag">Merken met een missie</span>
         </div>
     </section>
 

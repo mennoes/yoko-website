@@ -209,6 +209,28 @@ a { color: inherit; }
 }
 .reel-sub__left { display: flex; flex-direction: column; gap: clamp(20px, 2.5vw, 32px); }
 .reel-sub__right { padding-top: 6px; }
+.reel-sub--single {
+    display: block;
+    padding-top: clamp(40px, 5vw, 72px);
+    padding-bottom: clamp(40px, 5vw, 72px);
+}
+.reel-sub--single .reel-sub__body--dark {
+    font-size: clamp(24px, 3vw, 44px);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.6px;
+    color: var(--dark);
+    max-width: 24ch;
+}
+
+/* Wij werken voor — vlak boven contact */
+.worked-for {
+    padding: clamp(40px, 6vw, 80px) var(--pad-x);
+}
+.worked-for .reel-sub__for-label {
+    font-size: 11px;
+    margin-bottom: 16px;
+}
 .reel-sub__text {
     font-size: clamp(28px, 3.4vw, 56px);
     font-weight: 600;

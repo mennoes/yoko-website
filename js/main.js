@@ -411,6 +411,7 @@ function initNavContrast() {
 function initHeroReveal() {
     const reveal = document.getElementById('pageReveal');
     const reel = document.querySelector('.reel--pinned');
+    const intro = reveal ? reveal.querySelector('.reel-sub--center') : null;
     if (!reveal) return;
     let ticking = false;
     function update() {
@@ -419,6 +420,8 @@ function initHeroReveal() {
         const peak = (1 - p) * vh * 0.55;
         reveal.style.setProperty('--peak', peak.toFixed(1) + 'px');
         if (reel) reel.style.setProperty('--reel-dim', (p * 0.12).toFixed(3));
+        // intro schaalt subtiel mee terwijl de driehoek opent
+        if (intro) intro.style.setProperty('--intro-scale', (0.9 + p * 0.1).toFixed(3));
         ticking = false;
     }
     window.addEventListener('scroll', () => {

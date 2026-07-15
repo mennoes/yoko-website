@@ -255,19 +255,25 @@ a { color: inherit; }
     padding-top: clamp(40px, 5vw, 72px);
     padding-bottom: clamp(40px, 5vw, 72px);
 }
+.reel-sub--single {
+    padding-top: clamp(56px, 8vw, 120px);
+}
 .reel-sub--single .reel-sub__body--dark {
-    font-size: clamp(24px, 3vw, 44px);
+    font-size: clamp(17px, 1.7vw, 26px);
     font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: -0.6px;
+    line-height: 1.3;
+    letter-spacing: -0.4px;
     color: var(--dark);
-    max-width: 24ch;
+    max-width: 30ch;
 }
 .reel-sub--center {
     text-align: center;
+    transform: scale(var(--intro-scale, 1));
+    transform-origin: top center;
+    will-change: transform;
 }
 .reel-sub--center .reel-sub__body--dark {
-    max-width: 20ch;
+    max-width: 26ch;
     margin: 0 auto;
 }
 
@@ -1603,16 +1609,21 @@ a { color: inherit; }
 .pillars { background: transparent; }
 .pillars__row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(24px, 4vw, 64px);
+    grid-template-columns: minmax(0, 40ch) minmax(0, 460px);
+    justify-content: center;
+    gap: clamp(20px, 3vw, 48px);
     align-items: center;
 }
+.pillars__row--flip {
+    grid-template-columns: minmax(0, 460px) minmax(0, 40ch);
+}
+.pillars__row--flip .pillars__intro { text-align: right; }
 /* Losse rij (buiten een block) houdt eigen padding + rand */
 .pillars > .pillars__row {
     padding: clamp(14px, 1.6vw, 24px) var(--pad-x);
     border-top: 1px solid rgba(50,44,36,0.12);
 }
-.pillars__row .pillars__intro { margin-bottom: 0; }
+.pillars__row .pillars__intro { margin-bottom: 0; max-width: none; }
 .pillars__hero { display: block; }
 .pillars__hero .pillars__case-title { font-size: clamp(15px, 1.2vw, 18px); }
 .pillars__label {
@@ -1639,11 +1650,10 @@ a { color: inherit; }
 .pillars__intro { max-width: 60ch; margin-bottom: clamp(24px, 3vw, 40px); }
 .pillars__cases {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: clamp(16px, 2vw, 28px);
 }
 /* cases-rij ná een inline rij krijgt lucht erboven */
-.pillars__row + .pillars__cases { margin-top: clamp(20px, 2.5vw, 40px); }
+.pillars__row + .pillars__cases { margin-top: clamp(24px, 3vw, 48px); }
 .pillars__case-title {
     display: block;
     margin-top: 12px;

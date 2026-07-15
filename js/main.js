@@ -407,6 +407,27 @@ function initNavContrast() {
     setTimeout(update, 800);
 }
 
+// ===== HERO REVEAL: driehoek opent terwijl content over de video scrolt =====
+function initHeroReveal() {
+    const reveal = document.getElementById('pageReveal');
+    const reel = document.querySelector('.reel--pinned');
+    if (!reveal) return;
+    let ticking = false;
+    function update() {
+        const vh = window.innerHeight;
+        const p = Math.min(1, Math.max(0, window.scrollY / vh));
+        const peak = (1 - p) * vh * 0.55;
+        reveal.style.setProperty('--peak', peak.toFixed(1) + 'px');
+        if (reel) reel.style.setProperty('--reel-dim', (p * 0.12).toFixed(3));
+        ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+}
+
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
@@ -520,6 +541,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initTextRepulsion();
     initCursor();
     initTileMagnet();
+    initHeroReveal();
 
     // Fade statische elementen
     document.querySelectorAll('.about__title, .about__text, .footer__title, .footer__team-title, .page-header__title')

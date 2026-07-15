@@ -24,10 +24,17 @@
         </div>
     </nav>
 
-    <!-- ===== SHOWREEL ===== -->
-    <section class="reel">
+    <!-- ===== SHOWREEL (vastgepind achtergrond) ===== -->
+    <section class="reel reel--pinned">
         <video class="reel__video" id="hero-video" autoplay muted loop playsinline></video>
+        <div class="reel__scrim"></div>
     </section>
+
+    <!-- Ruimte zodat je eerst de video ziet -->
+    <div class="reveal-spacer"></div>
+
+    <!-- ===== ALLES HIERONDER SCROLT OVER DE VIDEO (driehoek opent) ===== -->
+    <div class="page-reveal" id="pageReveal">
 
     <!-- ===== REEL SUBTEKST + ALINEA ===== -->
     <div class="reel-sub reel-sub--single reel-sub--center">
@@ -181,6 +188,8 @@
         </div>
         <p class="footer__legal">©2025 Studio Yoko BV&nbsp;&nbsp;·&nbsp;&nbsp;Privacy&nbsp;&nbsp;·&nbsp;&nbsp;Legal</p>
     </footer>
+
+    </div><!-- /.page-reveal -->
 
     <script src="data/cases.js"></script>
     <script>window.YOKO_CONFIG = { mode: 'homepage', maxItems: 12 };</script>

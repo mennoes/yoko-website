@@ -222,6 +222,13 @@ a { color: inherit; }
     color: var(--dark);
     max-width: 24ch;
 }
+.reel-sub--center {
+    text-align: center;
+}
+.reel-sub--center .reel-sub__body--dark {
+    max-width: 20ch;
+    margin: 0 auto;
+}
 
 /* Wij werken voor — vlak boven contact */
 .worked-for {
@@ -230,6 +237,19 @@ a { color: inherit; }
 .worked-for .reel-sub__for-label {
     font-size: 11px;
     margin-bottom: 16px;
+}
+.worked-for--center { text-align: center; }
+.worked-for--center .reel-sub__tags { justify-content: center; }
+
+/* Pillar cases grids */
+.pillars__cases--3 { grid-template-columns: repeat(3, 1fr); }
+.pillars__cases--4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 900px) {
+    .pillars__cases--4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+    .pillars__cases--3,
+    .pillars__cases--4 { grid-template-columns: 1fr; }
 }
 .reel-sub__text {
     font-size: clamp(28px, 3.4vw, 56px);

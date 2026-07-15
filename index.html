@@ -31,27 +31,20 @@
     </section>
 
     <!-- ===== REEL SUBTEKST + ALINEA ===== -->
-    <div class="reel-sub reel-sub--single">
+    <div class="reel-sub reel-sub--single reel-sub--center">
         <p class="reel-sub__body reel-sub__body--dark">Meer dan 10 jaar maken we dagelijks beeld voor onder andere de Universiteit van Nederland, Human, Omroep Zwart, Nieuwsuur en Greenpeace.</p>
     </div>
 
-    <!-- ===== WORK GRID — eerste 4 cases ===== -->
-    <section class="work" id="work">
-        <div class="work__grid" id="work-grid-top">
-            <!-- Geladen vanuit data/cases.json, eerste 4 -->
-        </div>
-    </section>
+    <!-- ===== PIJLERS MET CASES ===== -->
+    <section class="pillars" id="work">
 
-    <!-- ===== DRIE PIJLERS ===== -->
-    <section class="pillars">
-
-        <!-- Vorm: tekst + drie cases -->
+        <!-- Vorm -->
         <div class="pillars__block js-fade">
             <div class="pillars__intro">
                 <p class="pillars__label">Vorm</p>
                 <p class="pillars__text">We geven je merk een gezicht dat overal werkt, grafisch en in animatie.</p>
             </div>
-            <div class="pillars__cases">
+            <div class="pillars__cases pillars__cases--3">
                 <a class="pillars__case-card" href="zin-in-morgen.html">
                     <div class="pillars__thumb" style="background:#1A2EE8;">
                         <img src="assets/cases/zin/thumb.jpg" alt="Zin in Morgen">
@@ -64,48 +57,67 @@
                     </div>
                     <span class="pillars__case-title">Polarsteps</span>
                 </a>
-                <a class="pillars__case-card" href="#">
-                    <div class="pillars__thumb pillars__thumb--placeholder"></div>
+                <a class="pillars__case-card" href="afhaalchinees.html">
+                    <div class="pillars__thumb" style="background:#C1272D;"></div>
                     <span class="pillars__case-title">Afhaalchinees</span>
                 </a>
             </div>
         </div>
 
-        <!-- Verhaal: beeld links (groot), tekst rechts (klein) -->
-        <div class="pillars__row pillars__row--verhaal js-fade">
-            <a class="pillars__case-card" href="greenpeace.html">
-                <div class="pillars__thumb" style="background:#00A650;">
-                    <video autoplay muted loop playsinline poster="assets/cases/greenpeace/thumb.jpg">
-                        <source src="assets/cases/greenpeace/Tippingpoint_header.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </a>
-            <div>
+        <!-- Verhaal -->
+        <div class="pillars__block js-fade">
+            <div class="pillars__intro">
                 <p class="pillars__label">Verhaal</p>
                 <p class="pillars__text">Ingewikkelde materie, scherpe journalistiek, groot onderzoek of een goed idee. Wij duiken in de materie en maken er beeld van.</p>
             </div>
+            <div class="pillars__cases pillars__cases--4">
+                <a class="pillars__case-card" href="case.html?slug=universiteit-van-nederland">
+                    <div class="pillars__thumb" style="background:#0A4A35;">
+                        <img src="assets/cases/universiteit-van-nederland/thumb.jpg" alt="Universiteit van Nederland">
+                    </div>
+                    <span class="pillars__case-title">Universiteit van Nederland</span>
+                </a>
+                <a class="pillars__case-card" href="greenpeace.html">
+                    <div class="pillars__thumb" style="background:#00A650;">
+                        <video autoplay muted loop playsinline poster="assets/cases/greenpeace/thumb.jpg">
+                            <source src="assets/cases/greenpeace/Tippingpoint_header.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <span class="pillars__case-title">Greenpeace</span>
+                </a>
+                <a class="pillars__case-card" href="rewind.html">
+                    <div class="pillars__thumb" style="background:#1244B5;">
+                        <img src="assets/cases/rewind/screenshot-thumb.jpg" alt="Human Rewind">
+                    </div>
+                    <span class="pillars__case-title">Human — Rewind</span>
+                </a>
+                <a class="pillars__case-card" href="case.html?slug=argos-vpro">
+                    <div class="pillars__thumb" style="background:#8B7355;">
+                        <img src="assets/cases/argos-vpro/thumb.jpg" alt="Argos">
+                    </div>
+                    <span class="pillars__case-title">Argos</span>
+                </a>
+            </div>
         </div>
 
-        <!-- Inhoud: tekst links, placeholder rechts -->
-        <div class="pillars__row js-fade">
-            <div>
-                <p class="pillars__label">Inhoud</p>
+        <!-- Systeem -->
+        <div class="pillars__block js-fade">
+            <div class="pillars__intro">
+                <p class="pillars__label">Systeem</p>
                 <p class="pillars__text">Veel maken kost tijd! Wij bouwen tools die versnellen en maken het schaalbaar.</p>
             </div>
-            <div class="pillars__thumb pillars__thumb--placeholder"></div>
+            <div class="pillars__cases pillars__cases--3">
+                <div class="pillars__case-card">
+                    <div class="pillars__thumb pillars__thumb--placeholder"></div>
+                    <span class="pillars__case-title">Case nog invullen</span>
+                </div>
+            </div>
         </div>
 
-    </section>
-
-    <!-- ===== WORK GRID — resterende cases ===== -->
-    <section class="work work--cont">
-        <div class="work__grid" id="work-grid-bottom">
-            <!-- Geladen vanuit data/cases.json, overige -->
-        </div>
     </section>
 
     <!-- ===== WIJ WERKEN VOOR ===== -->
-    <section class="worked-for js-fade">
+    <section class="worked-for worked-for--center js-fade">
         <p class="reel-sub__for-label">Wij werken voor</p>
         <div class="reel-sub__tags">
             <span class="reel-sub__tag">Mediaredacties</span>

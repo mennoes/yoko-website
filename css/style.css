@@ -1670,10 +1670,35 @@ a { color: inherit; }
 }
 
 .pillars__thumb {
+    position: relative;
     border-radius: 8px;
     overflow: hidden;
     aspect-ratio: 16/9;
 }
+/* Hover-overlay met korte omschrijving */
+.pillars__thumb-ov {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: clamp(16px, 1.8vw, 26px);
+    background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.3) 55%, rgba(0,0,0,0) 100%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+.pillars__thumb-ov p {
+    color: #fff;
+    font-size: clamp(13px, 1.05vw, 16px);
+    line-height: 1.4;
+    letter-spacing: -0.1px;
+    transform: translateY(8px);
+    transition: transform 0.35s ease;
+    max-width: 40ch;
+}
+.pillars__case-card:hover .pillars__thumb-ov { opacity: 1; }
+.pillars__case-card:hover .pillars__thumb-ov p { transform: translateY(0); }
 .pillars__thumb img,
 .pillars__thumb video {
     width: 100%; height: 100%;

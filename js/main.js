@@ -434,6 +434,21 @@ function initHeroReveal() {
     update();
 }
 
+// ===== MOBIEL MENU =====
+function initNavMenu() {
+    const nav = document.getElementById('nav');
+    const toggle = document.getElementById('navToggle');
+    if (!nav || !toggle) return;
+    function close() { nav.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+    toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        document.body.style.overflow = open ? 'hidden' : '';
+    });
+    nav.querySelectorAll('.nav__links a').forEach(a => a.addEventListener('click', close));
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+}
+
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
@@ -548,6 +563,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initCursor();
     initTileMagnet();
     initHeroReveal();
+    initNavMenu();
 
     // Fade statische elementen
     document.querySelectorAll('.about__title, .about__text, .footer__title, .footer__team-title, .page-header__title')

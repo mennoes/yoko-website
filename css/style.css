@@ -285,6 +285,10 @@ a { color: inherit; }
     transition: opacity 0.1s linear;
 }
 .reveal-spacer { height: 100svh; }
+@media (max-width: 720px) {
+    .reel--pinned { height: 58svh; }
+    .reveal-spacer { height: 58svh; }
+}
 .page-reveal {
     position: relative;
     z-index: 2;

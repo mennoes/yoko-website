@@ -138,8 +138,11 @@ a { color: inherit; }
     justify-self: start;
     margin: 0 0 0 clamp(16px, 1.8vw, 28px);
     align-self: center;
+    transition: opacity 0.35s ease;
 }
 .nav--dark .nav__headline { color: var(--cream); }
+/* Mee faden met de rest van de header bij scrollen */
+.nav.is-collapsed .nav__headline { opacity: 0; pointer-events: none; }
 .nav__links { display: flex; gap: clamp(20px, 2.4vw, 40px); }
 .nav__links a {
     font-family: var(--font);
@@ -1900,10 +1903,20 @@ a { color: inherit; }
 /* =====================================================
    CHAPTERS (homepage hoofdstukken, vaste rij-hoogte)
    ===================================================== */
+/* Uniforme witruimte: verticale gap tussen rijen = horizontale gap tussen tegels */
+#work {
+    padding: clamp(28px, 3.5vw, 56px) 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(44px, 5.5vw, 88px);   /* ruimte tússen categorieën */
+}
 .ch {
     --gap: clamp(12px, 1.6vw, 26px);
     --rowh: clamp(200px, 24vw, 360px);
-    padding: clamp(32px, 4vw, 64px) var(--pad-x);
+    padding: 0 var(--pad-x);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);                 /* rijen binnen een categorie even ver uit elkaar als de tegels */
 }
 .ch__row {
     display: flex;
@@ -1911,7 +1924,6 @@ a { color: inherit; }
     height: var(--rowh);
     align-items: stretch;
 }
-.ch__row + .ch__row { margin-top: var(--gap); }
 .ch__text {
     flex: 1 1 auto;
     min-width: 0;

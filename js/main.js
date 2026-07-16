@@ -532,7 +532,7 @@ function initCursor() {
 // ===== TILE MAGNET: case-beeld volgt licht de muis =====
 function initTileMagnet() {
     if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-    const tiles = document.querySelectorAll('.pillars__thumb, .work-item__media');
+    const tiles = document.querySelectorAll('.pillars__thumb, .work-item__media, .ch__media');
     tiles.forEach(tile => {
         const img = tile.querySelector('img, video');
         if (!img) return;

@@ -110,12 +110,18 @@ a { color: inherit; }
     display: block;
     flex-shrink: 0;
     text-decoration: none;
+    transition: opacity 0.35s ease;
 }
 .nav__logo img {
     height: clamp(24px, 2.4vw, 38px);
     width: auto;
     filter: brightness(0);
     display: block;
+}
+/* Logo faded uit bij scrollen (mobiel + desktop) */
+.nav.is-collapsed .nav__logo {
+    opacity: 0;
+    pointer-events: none;
 }
 .nav__description {
     max-width: 900px;
@@ -163,16 +169,21 @@ a { color: inherit; }
 .nav--dark.is-past-hero .nav__logo img { filter: brightness(0); }
 .nav--dark.is-past-hero .nav__links a { color: var(--dark); }
 
-/* Hamburger — alleen op mobiel */
+/* Hamburger-knop — absoluut rechtsboven zodat 'ie het grid niet verstoort */
 .nav__toggle {
-    display: none;
-    justify-self: end;
+    position: absolute;
+    right: var(--pad-x);
+    top: 50%;
     width: 44px; height: 44px;
     border: 0;
     background: transparent;
     cursor: pointer;
     padding: 10px;
     z-index: 1002;
+    opacity: 0;
+    transform: translateY(-50%) scale(0.8);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
 }
 .nav__toggle span {
     display: block;
@@ -185,45 +196,63 @@ a { color: inherit; }
 .nav--dark .nav__toggle span { background: var(--cream); }
 .nav--dark.is-past-hero .nav__toggle span { background: var(--dark); }
 
+/* Menupaneel (fullscreen) — geldt op alle schermbreedtes zodra open */
+.nav__links {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.nav.is-open .nav__links {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(24px, 4vh, 40px);
+    background: var(--cream);
+    z-index: 1001;
+}
+.nav.is-open .nav__links a {
+    font-size: clamp(28px, 6vw, 56px);
+    opacity: 1;
+    color: var(--dark);
+}
+/* Kruis-animatie */
+.nav.is-open .nav__toggle span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav.is-open .nav__toggle span:nth-child(2) { opacity: 0; }
+.nav.is-open .nav__toggle span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.nav.is-open .nav__toggle span { background: var(--dark); }
+.nav.is-open .nav__toggle { opacity: 1; transform: translateY(-50%) scale(1); pointer-events: auto; }
+
+/* Bij scrollen: inline links faden weg, menu-icoon fadet in */
+.nav.is-collapsed .nav__links {
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+}
+.nav.is-collapsed .nav__toggle {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+    pointer-events: auto;
+}
+/* Open menu wint altijd van de collapse-fade */
+.nav.is-open .nav__links {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+}
+
 @media (max-width: 720px) {
     .nav {
-        grid-template-columns: 1fr auto;
+        grid-template-columns: 1fr;
         padding: 16px var(--pad-x);
         align-items: center;
     }
     .nav__headline { display: none; }
-    .nav__logo img { height: clamp(34px, 9vw, 52px); }  /* groter logo */
-    .nav__toggle { display: block; }
-    /* Menupaneel */
-    .nav__links {
-        position: fixed;
-        inset: 0;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 28px;
-        background: var(--cream);
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(-8px);
-        transition: opacity 0.25s ease, transform 0.25s ease;
-        z-index: 1001;
-    }
-    .nav__links a {
-        font-size: clamp(28px, 8vw, 40px);
-        opacity: 1;
-        color: var(--dark);
-    }
-    .nav.is-open .nav__links {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-    }
-    /* Kruis-animatie */
-    .nav.is-open .nav__toggle span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .nav.is-open .nav__toggle span:nth-child(2) { opacity: 0; }
-    .nav.is-open .nav__toggle span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-    .nav.is-open .nav__toggle span { background: var(--dark); }
+    .nav__logo img { height: clamp(26px, 6.5vw, 38px); }
+    /* Op mobiel altijd het icoon */
+    .nav__toggle { opacity: 1; transform: translateY(-50%) scale(1); pointer-events: auto; }
+    /* Inline links verborgen tenzij menu open */
+    .nav__links { display: none; }
 }
 
 /* =====================================================

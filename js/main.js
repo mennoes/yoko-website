@@ -205,6 +205,8 @@ function initNavScroll() {
         const progress = Math.max(0, Math.min(1, (scrolled - fadeStart) / (fadeEnd - fadeStart)));
 
         nav.style.setProperty('--nav-fade', 1 - progress);
+        // Voorbij een drempel: logo faden + links inklappen naar menu-icoon
+        nav.classList.toggle('is-collapsed', scrolled > 60);
     }
 
     window.addEventListener('scroll', update, { passive: true });

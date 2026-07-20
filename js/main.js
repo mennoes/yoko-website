@@ -187,7 +187,7 @@ function initScrollFade() {
                 observer.unobserve(e.target);
             }
         }),
-        { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
+        { threshold: 0, rootMargin: '0px 0px -10% 0px' }
     );
 
     targets.forEach(el => observer.observe(el));
@@ -454,7 +454,9 @@ function initNavMenu() {
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
-            const target = document.querySelector(a.getAttribute('href'));
+            const href = a.getAttribute('href');
+            if (!href || href === '#') return;
+            const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });

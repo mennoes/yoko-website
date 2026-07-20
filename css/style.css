@@ -1919,12 +1919,12 @@ a { color: inherit; }
     gap: var(--gap);                 /* rijen binnen een categorie even ver uit elkaar als de tegels */
 }
 .ch__row {
-    display: flex;
+    display: grid;
+    grid-template-columns: var(--cols, 3fr 4fr 3fr);
     gap: var(--gap);
-    align-items: flex-start;
+    align-items: start;
 }
 .ch__text {
-    flex: 1 1 auto;
     min-width: 0;
     align-self: stretch;
     display: flex;
@@ -1956,7 +1956,7 @@ a { color: inherit; }
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    flex: 0 0 auto;          /* breedte volgt uit de tegel (row A) */
+    min-width: 0;            /* vult zijn grid-kolom */
 }
 .ch__client {
     margin-top: 10px;
@@ -1968,8 +1968,9 @@ a { color: inherit; }
     transition: opacity 0.2s ease;
 }
 .ch__item:hover .ch__client { opacity: 1; }
-/* Media-tegels — hoogte vast, breedte uit aspect ratio */
+/* Media-tegels — vult grid-kolom, vaste hoogte per rij */
 .ch__media {
+    width: 100%;
     height: var(--rowh);
     border-radius: 8px;
     overflow: hidden;
@@ -1977,23 +1978,20 @@ a { color: inherit; }
     background: #2a2a2a;
     display: block;
 }
-.ch__media--16x9 { aspect-ratio: 16 / 9; }
-.ch__media--9x16 { aspect-ratio: 9 / 16; }
 .ch__media img,
 .ch__media video {
     width: 100%; height: 100%;
     object-fit: cover;
     display: block;
 }
-/* Onderste rij: drie items met breedte-verhoudingen */
+/* Onderste rij: zelfde kolomverdeling als de bovenste → uitgelijnd */
 .ch__grid {
     display: grid;
     gap: var(--gap);
-    grid-template-columns: var(--cols, 1fr 2fr 2fr);
+    grid-template-columns: var(--cols, 3fr 4fr 3fr);
     align-items: start;
 }
-.ch__grid .ch__item { flex: initial; width: 100%; }
-.ch__grid .ch__media { height: var(--rowh); width: 100%; aspect-ratio: auto; }
+.ch__grid .ch__media { height: var(--rowh); width: 100%; }
 /* Placeholder-tegel */
 .ch__media--ph { display: flex; align-items: center; justify-content: center; }
 .ch__ph-label {
@@ -2029,12 +2027,10 @@ a { color: inherit; }
 
 @media (max-width: 720px) {
     .ch__row, .ch__grid {
-        display: flex;
-        flex-direction: column;
-        height: auto;
+        grid-template-columns: 1fr;
     }
     .ch__text { order: -1; }
     .ch__text--right, .ch__text--left { text-align: left; align-items: flex-start; }
     .ch__item { width: 100%; }
-    .ch__media { width: 100%; height: auto; aspect-ratio: 16 / 9 !important; }
+    .ch__media { width: 100%; height: auto; aspect-ratio: 16 / 9; }
 }

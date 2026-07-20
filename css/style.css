@@ -318,8 +318,8 @@ a { color: inherit; }
 }
 .reveal-spacer { height: 100svh; }
 @media (max-width: 720px) {
-    .reel--pinned { height: 58svh; }
-    .reveal-spacer { height: 58svh; }
+    .reel--pinned { height: 40svh; }
+    .reveal-spacer { height: 40svh; }
 }
 .page-reveal {
     position: relative;

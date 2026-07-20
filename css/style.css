@@ -267,13 +267,17 @@ a { color: inherit; }
    SHOWREEL
    ===================================================== */
 .reel {
-    padding: clamp(72px, 9vw, 110px) 0 0;   /* ruimte voor vaste nav; full-bleed breedte */
+    padding-top: clamp(72px, 9vw, 110px);    /* ruimte voor vaste nav */
+    width: 100vw;                            /* echt van links naar rechts */
+    margin-left: calc(50% - 50vw);
     background: transparent;
     line-height: 0;
 }
 .reel__video {
     width: 100%;
-    height: clamp(280px, 58svh, 720px);      /* full-width, niet giga hoog */
+    aspect-ratio: 16 / 9;                    /* zoveel mogelijk 16:9 */
+    height: auto;
+    max-height: 88svh;                       /* op ultrabreed niet giga hoog */
     object-fit: cover;
     display: block;
     background: #111;
@@ -282,7 +286,7 @@ a { color: inherit; }
 }
 @media (max-width: 640px) {
     .reel { padding-top: clamp(64px, 16vw, 88px); }
-    .reel__video { height: clamp(200px, 40svh, 360px); }
+    .reel__video { max-height: 62svh; }
 }
 .reel__video.is-playing { opacity: 1; }
 
@@ -1363,7 +1367,7 @@ a { color: inherit; }
 a, button, [role="button"],
 .ch__item, .pillars__case-card, .work-item, .yt-embed,
 .gp-post, .footer__photo, .nav__toggle, .contact-form__btn {
-    cursor: url('../assets/cursor-thumb.svg') 6 4, pointer;
+    cursor: url('../assets/cursor-thumb.svg') 4 3, pointer;
 }
 
 /* =====================================================
@@ -1814,7 +1818,7 @@ a, button, [role="button"],
 }
 .ch__row {
     display: grid;
-    grid-template-columns: var(--cols, 2fr 4fr 4fr);
+    grid-template-columns: var(--cols, 15% 1fr 1fr);
     gap: var(--gap);
     align-items: start;
 }
@@ -1837,7 +1841,7 @@ a, button, [role="button"],
     opacity: 0.5;
 }
 .ch__desc {
-    font-size: clamp(15px, 1.35vw, 22px);
+    font-size: clamp(18px, 1.7vw, 28px);
     font-weight: 600;
     line-height: 1.2;
     letter-spacing: -0.02em;
@@ -1881,7 +1885,7 @@ a, button, [role="button"],
 .ch__grid {
     display: grid;
     gap: var(--gap);
-    grid-template-columns: var(--cols, 2fr 4fr 4fr);
+    grid-template-columns: var(--cols, 15% 1fr 1fr);
     align-items: start;
 }
 .ch__grid .ch__media { height: var(--rowh); width: 100%; }

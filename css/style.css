@@ -385,6 +385,7 @@ a { color: inherit; }
     object-fit: cover;
     border-radius: 10px;
     display: block;
+    filter: saturate(1.35);
 }
 .intro-collage__p {
     position: absolute;

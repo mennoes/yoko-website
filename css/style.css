@@ -1918,6 +1918,12 @@ a, button, [role="button"],
     text-decoration: none;
     min-width: 0;            /* vult zijn grid-kolom */
 }
+/* Vrije variant: tegels op eigen 5:4 hoogte i.p.v. vaste rijhoogte */
+.ch--free .ch__row { align-items: start; }
+.ch--free .ch__media {
+    height: auto;
+    aspect-ratio: 5 / 4;
+}
 .ch__client {
     margin-top: 10px;
     font-size: clamp(12px, 1vw, 14px);

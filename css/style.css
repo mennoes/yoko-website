@@ -1430,7 +1430,7 @@ a { color: inherit; }
 a, button, [role="button"],
 .ch__item, .pillars__case-card, .work-item, .yt-embed,
 .gp-post, .footer__photo, .nav__toggle, .contact-form__btn {
-    cursor: url('../assets/cursor-thumb.svg') 4 3, pointer;
+    cursor: url('../assets/cursor-thumb.svg?v=2') 8 4, pointer;
 }
 
 /* =====================================================

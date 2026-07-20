@@ -1873,7 +1873,7 @@ a, button, [role="button"],
 }
 .ch {
     --gap: clamp(12px, 1.6vw, 26px);
-    --rowh: clamp(200px, 24vw, 360px);
+    --rowh: clamp(260px, 32vw, 500px);
     padding: 0 var(--pad-x);
     display: flex;
     flex-direction: column;

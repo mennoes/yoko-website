@@ -1921,12 +1921,12 @@ a { color: inherit; }
 .ch__row {
     display: flex;
     gap: var(--gap);
-    height: var(--rowh);
-    align-items: stretch;
+    align-items: flex-start;
 }
 .ch__text {
     flex: 1 1 auto;
     min-width: 0;
+    align-self: stretch;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1951,15 +1951,30 @@ a { color: inherit; }
     max-width: 24ch;
     margin: 0;
 }
-/* Media-tegels */
+/* Case-item = tegel + opdrachtgever eronder */
+.ch__item {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    flex: 0 0 auto;          /* breedte volgt uit de tegel (row A) */
+}
+.ch__client {
+    margin-top: 10px;
+    font-size: clamp(12px, 1vw, 14px);
+    font-weight: 600;
+    letter-spacing: -0.1px;
+    color: var(--dark);
+    opacity: 0.65;
+    transition: opacity 0.2s ease;
+}
+.ch__item:hover .ch__client { opacity: 1; }
+/* Media-tegels — hoogte vast, breedte uit aspect ratio */
 .ch__media {
-    flex: 0 0 auto;
-    height: 100%;
+    height: var(--rowh);
     border-radius: 8px;
     overflow: hidden;
     position: relative;
     background: #2a2a2a;
-    text-decoration: none;
     display: block;
 }
 .ch__media--16x9 { aspect-ratio: 16 / 9; }
@@ -1970,44 +1985,47 @@ a { color: inherit; }
     object-fit: cover;
     display: block;
 }
-/* Onderste rij: drie tegels met breedte-verhoudingen */
+/* Onderste rij: drie items met breedte-verhoudingen */
 .ch__grid {
     display: grid;
     gap: var(--gap);
-    height: var(--rowh);
     grid-template-columns: var(--cols, 1fr 2fr 2fr);
+    align-items: start;
 }
-.ch__grid .ch__media { height: 100%; width: 100%; aspect-ratio: auto; }
-/* Placeholder-tegel met naam */
+.ch__grid .ch__item { flex: initial; width: 100%; }
+.ch__grid .ch__media { height: var(--rowh); width: 100%; aspect-ratio: auto; }
+/* Placeholder-tegel */
 .ch__media--ph { display: flex; align-items: center; justify-content: center; }
 .ch__ph-label {
-    color: rgba(255,255,255,0.85);
+    color: rgba(255,255,255,0.9);
     font-size: clamp(13px, 1.1vw, 16px);
     font-weight: 600;
     letter-spacing: -0.2px;
     padding: 10px 14px;
     text-align: center;
 }
-/* Hover-caption */
-.ch__cap {
+/* Hover-overlay met omschrijving */
+.ch__ov {
     position: absolute; inset: 0;
     display: flex; align-items: flex-end;
-    padding: clamp(12px, 1.4vw, 20px);
-    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 100%);
+    padding: clamp(14px, 1.6vw, 24px);
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 55%, rgba(0,0,0,0) 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 2;
+    pointer-events: none;
 }
-.ch__cap span {
+.ch__ov p {
     color: #fff;
-    font-size: clamp(13px, 1.1vw, 16px);
-    font-weight: 600;
-    letter-spacing: -0.2px;
-    transform: translateY(6px);
+    font-size: clamp(13px, 1.05vw, 16px);
+    line-height: 1.4;
+    letter-spacing: -0.1px;
+    transform: translateY(8px);
     transition: transform 0.3s ease;
+    max-width: 42ch;
 }
-.ch__media:hover .ch__cap { opacity: 1; }
-.ch__media:hover .ch__cap span { transform: translateY(0); }
+.ch__item:hover .ch__ov { opacity: 1; }
+.ch__item:hover .ch__ov p { transform: translateY(0); }
 
 @media (max-width: 720px) {
     .ch__row, .ch__grid {
@@ -2017,5 +2035,6 @@ a { color: inherit; }
     }
     .ch__text { order: -1; }
     .ch__text--right, .ch__text--left { text-align: left; align-items: flex-start; }
+    .ch__item { width: 100%; }
     .ch__media { width: 100%; height: auto; aspect-ratio: 16 / 9 !important; }
 }

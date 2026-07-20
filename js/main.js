@@ -463,71 +463,6 @@ function initSmoothScroll() {
     });
 }
 
-// ===== CUSTOM CURSOR (Kaliber-stijl) =====
-function initCursor() {
-    // alleen op apparaten met een echte muis
-    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-
-    const dot = document.createElement('div');
-    dot.className = 'cursor-dot';
-    const ring = document.createElement('div');
-    ring.className = 'cursor-ring';
-    ring.innerHTML = '<span class="cursor-ring__label"></span>';
-    document.body.appendChild(ring);
-    document.body.appendChild(dot);
-    document.documentElement.classList.add('has-cursor');
-
-    let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-    let rx = mx, ry = my;          // ring lag-positie
-    let visible = false;
-
-    window.addEventListener('mousemove', (e) => {
-        mx = e.clientX; my = e.clientY;
-        if (!visible) { visible = true; dot.style.opacity = ring.style.opacity = ''; }
-        dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
-    });
-    window.addEventListener('mouseout', (e) => {
-        if (!e.relatedTarget) { visible = false; dot.style.opacity = ring.style.opacity = '0'; }
-    });
-    window.addEventListener('mousedown', () => document.body.classList.add('cursor-down'));
-    window.addEventListener('mouseup',   () => document.body.classList.remove('cursor-down'));
-
-    function frame() {
-        rx += (mx - rx) * 0.16;
-        ry += (my - ry) * 0.16;
-        ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
-        requestAnimationFrame(frame);
-    }
-    frame();
-
-    // Interactieve elementen: ring groeit + toont label
-    const SEL = 'a, button, [role="button"], .pillars__case-card, .work-item, .yt-embed, .footer__photo, .contact-form__btn, .gp-post, input, textarea';
-    function bind(el) {
-        const label = el.getAttribute('data-cursor')
-            || (el.matches('.pillars__case-card, .work-item') ? 'Bekijk'
-            : el.matches('.yt-embed') ? 'Speel'
-            : '');
-        el.addEventListener('mouseenter', () => {
-            document.body.classList.add('cursor-hover');
-            ring.querySelector('.cursor-ring__label').textContent = label;
-            ring.classList.toggle('cursor-ring--labeled', !!label);
-        });
-        el.addEventListener('mouseleave', () => {
-            document.body.classList.remove('cursor-hover');
-            ring.classList.remove('cursor-ring--labeled');
-        });
-    }
-    document.querySelectorAll(SEL).forEach(bind);
-    // observe voor later ingeladen kaarten (work grids etc.)
-    const mo = new MutationObserver(muts => {
-        muts.forEach(m => m.addedNodes.forEach(n => {
-            if (n.nodeType !== 1) return;
-            if (n.matches && n.matches(SEL)) bind(n);
-            n.querySelectorAll && n.querySelectorAll(SEL).forEach(bind);
-        }));
-    });
-    mo.observe(document.body, { childList: true, subtree: true });
-}
 
 // ===== TILE MAGNET: case-beeld volgt licht de muis =====
 function initTileMagnet() {
@@ -562,7 +497,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     initBlockReveal();
     initWorkParallax();
     initTextRepulsion();
-    initCursor();
     initTileMagnet();
     initHeroReveal();
     initNavMenu();

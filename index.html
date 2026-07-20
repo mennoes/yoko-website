@@ -8,7 +8,7 @@
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-    <link rel="stylesheet" href="css/style.css?v=3">
+    <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
 
@@ -25,17 +25,10 @@
         <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </nav>
 
-    <!-- ===== SHOWREEL (vastgepind achtergrond) ===== -->
-    <section class="reel reel--pinned">
+    <!-- ===== SHOWREEL (full-width) ===== -->
+    <section class="reel">
         <video class="reel__video" id="hero-video" autoplay muted loop playsinline></video>
-        <div class="reel__scrim"></div>
     </section>
-
-    <!-- Ruimte zodat je eerst de video ziet -->
-    <div class="reveal-spacer"></div>
-
-    <!-- ===== ALLES HIERONDER SCROLT OVER DE VIDEO (driehoek opent) ===== -->
-    <div class="page-reveal" id="pageReveal">
 
     <!-- ===== REEL SUBTEKST + ALINEA ===== -->
     <div class="reel-sub reel-sub--single reel-sub--center">
@@ -53,8 +46,8 @@
 
         <!-- 01 Vorm -->
         <div class="ch js-fade">
-            <div class="ch__row" style="--cols: 3fr 4fr 3fr;">
-                <div class="ch__text ch__text--right">
+            <div class="ch__row">
+                <div class="ch__text ch__text--left">
                     <p class="ch__num">01 — Vorm</p>
                     <p class="ch__desc">We geven je merk een gezicht dat overal werkt, grafisch en in animatie.</p>
                 </div>
@@ -73,7 +66,7 @@
                     <span class="ch__client">Zin in Morgen</span>
                 </a>
             </div>
-            <div class="ch__grid" style="--cols: 3fr 4fr 3fr;">
+            <div class="ch__grid">
                 <a class="ch__item" href="polarsteps.html">
                     <div class="ch__media">
                         <img src="assets/cases/polarsteps/thumb.jpg" alt="Polarsteps">
@@ -97,7 +90,11 @@
 
         <!-- 02 Verhaal -->
         <div class="ch js-fade">
-            <div class="ch__row" style="--cols: 3fr 4fr 3fr;">
+            <div class="ch__row">
+                <div class="ch__text ch__text--left">
+                    <p class="ch__num">02 — Verhaal</p>
+                    <p class="ch__desc">Wil je iets vertellen? Ingewikkelde materie, scherpe journalistiek, groot onderzoek of een goed idee. Wij maken er beeld mee.</p>
+                </div>
                 <a class="ch__item" href="rewind.html">
                     <div class="ch__media">
                         <img src="assets/cases/rewind/screenshot-thumb.jpg" alt="Human — Rewind">
@@ -114,12 +111,8 @@
                     </div>
                     <span class="ch__client">Greenpeace</span>
                 </a>
-                <div class="ch__text ch__text--left">
-                    <p class="ch__num">02 — Verhaal</p>
-                    <p class="ch__desc">Wil je iets vertellen? Ingewikkelde materie, scherpe journalistiek, groot onderzoek of een goed idee. Wij maken er beeld mee.</p>
-                </div>
             </div>
-            <div class="ch__grid" style="--cols: 3fr 4fr 3fr;">
+            <div class="ch__grid">
                 <a class="ch__item" href="afhaalchinees.html">
                     <div class="ch__media" style="background:#C1272D;">
                         <div class="ch__ov"><p>Een merkidentiteit die overal werkt — grafisch en in animatie.</p></div>
@@ -139,8 +132,8 @@
 
         <!-- 03 Systeem -->
         <div class="ch js-fade">
-            <div class="ch__row" style="--cols: 3fr 4fr 3fr;">
-                <div class="ch__text ch__text--right">
+            <div class="ch__row">
+                <div class="ch__text ch__text--left">
                     <p class="ch__num">03 — Systeem</p>
                     <p class="ch__desc">Veel maken kost tijd. Wij bouwen tools die versnellen en maken het schaalbaar.</p>
                 </div>
@@ -153,7 +146,7 @@
                     <span class="ch__client">Planningstool</span>
                 </a>
             </div>
-            <div class="ch__grid" style="--cols: 3fr 4fr 3fr;">
+            <div class="ch__grid">
                 <a class="ch__item" href="tools.html">
                     <div class="ch__media" style="background:#3A2E1F;"></div>
                     <span class="ch__client">Titelbalk generator</span>
@@ -234,7 +227,6 @@
         <p class="footer__legal">©2025 Studio Yoko BV&nbsp;&nbsp;·&nbsp;&nbsp;Privacy&nbsp;&nbsp;·&nbsp;&nbsp;Legal</p>
     </footer>
 
-    </div><!-- /.page-reveal -->
 
     <script src="data/cases.js"></script>
     <script>window.YOKO_CONFIG = { mode: 'homepage', maxItems: 12 };</script>

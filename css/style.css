@@ -267,9 +267,7 @@ a { color: inherit; }
    SHOWREEL
    ===================================================== */
 .reel {
-    padding-top: clamp(72px, 9vw, 110px);    /* ruimte voor vaste nav */
-    width: 100vw;                            /* echt van links naar rechts */
-    margin-left: calc(50% - 50vw);
+    padding: clamp(72px, 9vw, 110px) var(--pad-x) 0;   /* zelfde breedte als de tabellen eronder */
     background: transparent;
     line-height: 0;
 }
@@ -277,10 +275,11 @@ a { color: inherit; }
     width: 100%;
     aspect-ratio: 16 / 9;                    /* zoveel mogelijk 16:9 */
     height: auto;
-    max-height: 88svh;                       /* op ultrabreed niet giga hoog */
+    max-height: 82svh;
     object-fit: cover;
     display: block;
     background: #111;
+    border-radius: 8px;
     opacity: 0;
     transition: opacity 1.4s ease;
 }

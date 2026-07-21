@@ -1443,10 +1443,11 @@ a, button, [role="button"],
 
 .js-fade {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(48px);
     transition:
-        opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
 }
 .js-fade.is-visible { opacity: 1; transform: translateY(0); }
 

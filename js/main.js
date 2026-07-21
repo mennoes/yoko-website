@@ -187,7 +187,7 @@ function initScrollFade() {
                 observer.unobserve(e.target);
             }
         }),
-        { threshold: 0, rootMargin: '0px 0px -10% 0px' }
+        { threshold: 0, rootMargin: '0px 0px -22% 0px' }
     );
 
     targets.forEach(el => observer.observe(el));

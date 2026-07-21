@@ -1430,7 +1430,7 @@ a { color: inherit; }
 a, button, [role="button"],
 .ch__item, .pillars__case-card, .work-item, .yt-embed,
 .gp-post, .footer__photo, .nav__toggle, .contact-form__btn {
-    cursor: url('../assets/cursor-thumb.svg?v=2') 8 4, pointer;
+    cursor: url('../assets/cursor-thumb.svg?v=3') 11 6, pointer;
 }
 
 /* =====================================================
@@ -1919,7 +1919,7 @@ a, button, [role="button"],
     min-width: 0;            /* vult zijn grid-kolom */
 }
 /* Vrije variant: tegels op eigen 5:4 hoogte i.p.v. vaste rijhoogte */
-.ch--free .ch__row { align-items: start; }
+.ch--free .ch__row { align-items: center; }
 .ch--free .ch__media {
     height: auto;
     aspect-ratio: 5 / 4;

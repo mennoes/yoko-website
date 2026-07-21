@@ -248,39 +248,41 @@ function initBlockReveal() {
 
 // ===== WORD REVEAL (reel caption) =====
 function initWordReveal() {
-    const el = document.querySelector('.js-word-reveal');
-    if (!el) return;
+    const els = document.querySelectorAll('.js-word-reveal');
+    if (!els.length) return;
 
-    // Split text into word spans, preserving <br> line breaks
-    const raw = el.innerHTML;
-    // Replace <br> tags with a placeholder, then split on spaces
-    const withPlaceholder = raw.replace(/<br\s*\/?>/gi, '\n');
-    // Strip any other HTML tags
-    const stripped = withPlaceholder.replace(/<[^>]+>/g, '');
-    const parts = stripped.split(/(\s+)/);
-    el.innerHTML = parts.map(part => {
-        if (part === '\n') return '<br>';
-        if (/\S/.test(part)) return `<span class="word-chip">${part}</span>`;
-        return part;
-    }).join('');
-
-    const chips = Array.from(el.querySelectorAll('.word-chip'));
-    const total = chips.length;
+    const instances = [];
+    els.forEach(el => {
+        // Split text into word spans, preserving <br> line breaks
+        const raw = el.innerHTML;
+        const withPlaceholder = raw.replace(/<br\s*\/?>/gi, '\n');
+        const stripped = withPlaceholder.replace(/<[^>]+>/g, '');
+        const parts = stripped.split(/(\s+)/);
+        el.innerHTML = parts.map(part => {
+            if (part === '\n') return '<br>';
+            if (/\S/.test(part)) return `<span class="word-chip">${part}</span>`;
+            return part;
+        }).join('');
+        instances.push({ el, chips: Array.from(el.querySelectorAll('.word-chip')) });
+    });
 
     function update() {
-        const rect = el.getBoundingClientRect();
-        const winH  = window.innerHeight;
-        // Reveal starts when top of element hits 85% of viewport, ends at 30%
-        const start = winH * 0.85;
-        const end   = winH * 0.15;
-        const progress = Math.max(0, Math.min(1, (start - rect.top) / (start - end)));
-        const litCount  = Math.round(progress * total);
-        chips.forEach((chip, i) => {
-            chip.classList.toggle('is-lit', i < litCount);
-        });
+        const winH = window.innerHeight;
+        for (const inst of instances) {
+            const rect = inst.el.getBoundingClientRect();
+            // Reveal loopt terwijl de tekst van 85% naar 25% van het scherm schuift
+            const start = winH * 0.85;
+            const end   = winH * 0.25;
+            const progress = Math.max(0, Math.min(1, (start - rect.top) / (start - end)));
+            const litCount = Math.round(progress * inst.chips.length);
+            inst.chips.forEach((chip, i) => {
+                chip.classList.toggle('is-lit', i < litCount);
+            });
+        }
     }
 
     window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
     update();
 }
 

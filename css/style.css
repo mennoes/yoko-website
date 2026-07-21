@@ -505,6 +505,14 @@ a { color: inherit; }
 .reel-sub .word-chip.is-lit {
     color: var(--dark);
 }
+/* Word-voor-word reveal — dim → op tijdens scrollen */
+.js-word-reveal .word-chip {
+    color: rgba(32, 32, 32, 0.16);
+    transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.js-word-reveal .word-chip.is-lit {
+    color: var(--dark);
+}
 
 /* =====================================================
    DRIE PIJLERS (na eerste 4 cases)
@@ -1443,10 +1451,10 @@ a, button, [role="button"],
 
 .js-fade {
     opacity: 0;
-    transform: translateY(48px);
+    transform: translateY(64px);
     transition:
-        opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity 1.4s ease,
+        transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
 .js-fade.is-visible { opacity: 1; transform: translateY(0); }

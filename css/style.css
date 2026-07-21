@@ -268,8 +268,17 @@ a { color: inherit; }
    ===================================================== */
 .reel {
     padding: clamp(72px, 9vw, 110px) var(--pad-x) 0;   /* zelfde breedte als de tabellen eronder */
-    background: transparent;
+    background: var(--cream);
     line-height: 0;
+    position: sticky;
+    top: 0;
+    z-index: 0;
+}
+/* Inhoud scrollt met eigen achtergrond over de vaste showreel */
+.page-flow {
+    position: relative;
+    z-index: 1;
+    background: var(--cream);
 }
 .reel__video {
     width: 100%;

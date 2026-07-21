@@ -376,7 +376,7 @@ a { color: inherit; }
     line-height: 1.15;
     letter-spacing: -0.6px;
     color: var(--dark);
-    max-width: 20ch;
+    max-width: 34ch;
     margin: 0;
 }
 .reel-sub__intro-text {

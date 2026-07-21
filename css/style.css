@@ -379,6 +379,18 @@ a { color: inherit; }
     max-width: 20ch;
     margin: 0;
 }
+.reel-sub__intro-text {
+    margin-top: clamp(18px, 2vw, 30px);
+    max-width: 52ch;
+}
+.reel-sub__intro-text p {
+    font-size: clamp(13px, 1vw, 15.5px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(32,32,32,0.6);
+    margin: 0;
+}
+.reel-sub__intro-text p + p { margin-top: 1em; }
 .reel-sub--intro .reel-sub__sub { margin-top: 4px; }
 .reel-sub--intro .reel-sub__meta { margin: 8px 0 0; max-width: 46ch; }
 .reel-sub--intro .reel-sub__tags { margin-top: 10px; }

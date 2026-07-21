@@ -378,13 +378,17 @@ a { color: inherit; }
     position: relative;
     width: 100%;
 }
+.intro-collage {
+    display: flex;
+    justify-content: flex-end;
+}
 .intro-collage__bg {
-    width: 100%;
+    width: 88%;
     aspect-ratio: 5 / 4;
     object-fit: cover;
     border-radius: 0;
     display: block;
-    filter: saturate(1.2);
+    filter: saturate(1.5) brightness(1.1);
 }
 .intro-collage__p {
     position: absolute;
@@ -395,8 +399,8 @@ a { color: inherit; }
 .intro-collage__p--front {
     width: 62%;
     aspect-ratio: 4 / 3;
-    left: -8%;
-    bottom: -8%;
+    left: -14%;
+    bottom: -14%;
 }
 @media (max-width: 720px) {
     .reel-sub--intro { grid-template-columns: 1fr; gap: clamp(48px, 12vw, 80px); }
@@ -1478,10 +1482,10 @@ a, button, [role="button"],
 
 .js-fade {
     opacity: 0;
-    transform: translateY(300px);
+    transform: translateY(60px);
     transition:
-        opacity 0.35s ease,
-        transform 2.4s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity 0.5s ease,
+        transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: opacity, transform;
 }
 /* Cases in een rij na elkaar laten verschijnen */

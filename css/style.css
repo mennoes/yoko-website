@@ -1872,7 +1872,7 @@ a, button, [role="button"],
     gap: clamp(44px, 5.5vw, 88px);   /* ruimte tússen categorieën */
 }
 .ch {
-    --gap: clamp(12px, 1.6vw, 26px);
+    --gap: clamp(40px, 6vw, 100px);   /* gelijk aan de horizontale witruimte in de intro */
     --rowh: clamp(260px, 32vw, 500px);
     padding: 0 var(--pad-x);
     display: flex;

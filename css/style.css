@@ -371,7 +371,7 @@ a { color: inherit; }
     gap: clamp(14px, 1.6vw, 22px);
 }
 .reel-sub--intro .reel-sub__body--dark {
-    font-size: clamp(24px, 2.7vw, 42px);
+    font-size: clamp(22px, 2.3vw, 36px);
     font-weight: 600;
     line-height: 1.15;
     letter-spacing: -0.6px;
@@ -384,10 +384,10 @@ a { color: inherit; }
     max-width: 52ch;
 }
 .reel-sub__intro-text p {
-    font-size: clamp(13px, 1vw, 15.5px);
+    font-size: clamp(15px, 1.25vw, 19px);
     font-weight: 400;
     line-height: 1.6;
-    color: rgba(32,32,32,0.6);
+    color: rgba(32,32,32,0.62);
     margin: 0;
 }
 .reel-sub__intro-text p + p { margin-top: 1em; }

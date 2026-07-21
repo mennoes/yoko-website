@@ -1473,9 +1473,13 @@ a, button, [role="button"],
     opacity: 0;
     transform: translateY(300px);
     transition:
-        opacity 0.9s ease,
+        opacity 0.55s ease,
         transform 5.8s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
+}
+/* Cases in een rij na elkaar laten verschijnen */
+.ch__row .ch__item:nth-of-type(2) {
+    transition-delay: 0.28s;
 }
 .js-fade.is-visible { opacity: 1; transform: translateY(0); }
 

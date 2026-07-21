@@ -380,7 +380,7 @@ a { color: inherit; }
 }
 .intro-collage__bg {
     width: 100%;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 5 / 4;
     object-fit: cover;
     border-radius: 0;
     display: block;
@@ -393,10 +393,10 @@ a { color: inherit; }
 }
 /* Voorste foto: speels linksonder, niet geroteerd, geen shadow/stroke */
 .intro-collage__p--front {
-    width: 52%;
-    aspect-ratio: 4 / 5;
+    width: 62%;
+    aspect-ratio: 4 / 3;
     left: -8%;
-    bottom: -9%;
+    bottom: -8%;
 }
 @media (max-width: 720px) {
     .reel-sub--intro { grid-template-columns: 1fr; gap: clamp(48px, 12vw, 80px); }

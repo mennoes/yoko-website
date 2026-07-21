@@ -279,7 +279,7 @@ a { color: inherit; }
     object-fit: cover;
     display: block;
     background: #111;
-    border-radius: 8px;
+    border-radius: 0;
     opacity: 0;
     transition: opacity 1.4s ease;
 }
@@ -382,14 +382,14 @@ a { color: inherit; }
     width: 100%;
     aspect-ratio: 10 / 9;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 0;
     display: block;
     filter: saturate(1.35);
 }
 .intro-collage__p {
     position: absolute;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 0;
     border: 4px solid var(--cream);
     box-shadow: 0 16px 34px rgba(0,0,0,0.22);
 }
@@ -1919,7 +1919,7 @@ a, button, [role="button"],
     min-width: 0;            /* vult zijn grid-kolom */
 }
 /* Vrije variant: tegels op eigen 5:4 hoogte i.p.v. vaste rijhoogte */
-.ch--free .ch__row { align-items: center; }
+.ch--free .ch__row { align-items: start; }
 .ch--free .ch__media {
     height: auto;
     aspect-ratio: 5 / 4;
@@ -1938,7 +1938,7 @@ a, button, [role="button"],
 .ch__media {
     width: 100%;
     height: var(--rowh);
-    border-radius: 8px;
+    border-radius: 0;
     overflow: hidden;
     position: relative;
     background: #2a2a2a;

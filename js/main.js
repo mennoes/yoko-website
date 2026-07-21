@@ -295,6 +295,9 @@ function initWorkParallax() {
         { holder: '.work-item__media', inner: '.work-item__img, .work-item__video', strength: 0.03, prop: '--parallax-y' },
         { holder: '.gp-making__item', inner: 'img, video', strength: 0.06, prop: '--parallax-y' },
         { holder: '.gp-video-media', inner: '.gp-video-media__overlay', strength: 0.18, prop: '--overlay-parallax' },
+        // Studio-foto's onder de showreel: voorste foto's bewegen sterker mee
+        { holder: '.intro-collage', inner: '.intro-collage__p--2', strength: 0.12, prop: '--parallax-y' },
+        { holder: '.intro-collage', inner: '.intro-collage__p--3', strength: 0.22, prop: '--parallax-y' },
     ];
     let ticking = false;
     function update() {

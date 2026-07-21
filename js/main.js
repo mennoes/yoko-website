@@ -81,6 +81,7 @@ function renderWorkGrid(cases, gridEl, preFiltered = false) {
             href="${c.href || 'case.html?slug=' + c.slug}"
             data-size="${size}"
             data-category="${c.category}"
+            data-group="${workGroupOf(c.category)}"
             data-slug="${c.slug}"
             style="transition-delay: ${delay}s"
         >
@@ -150,29 +151,63 @@ function renderWorkGrid(cases, gridEl, preFiltered = false) {
     initScrollFade();
 }
 
-// ===== CATEGORIE FILTERS (work.html) =====
-function initFilters(cases) {
+// ===== CATEGORIE-INDELING work.html (3 groepen) =====
+const WORK_GROUPS = {
+    'Motion branding':      'vorm',
+    'Brand & Systeem':      'vorm',
+    'Explainers':           'verhaal',
+    'Brandmovies':          'verhaal',
+    'Format & Concept':     'verhaal',
+    'Animatie & Strategie': 'verhaal',
+};
+function workGroupOf(category) {
+    return WORK_GROUPS[category] || 'verhaal';
+}
+const WORK_CAT_TEXT = {
+    vorm:    'We geven je merk een gezicht dat overal werkt, grafisch en in animatie.',
+    verhaal: 'Wil je iets vertellen? Ingewikkelde materie, scherpe journalistiek, groot onderzoek of een goed idee. Wij maken er beeld mee.',
+    tools:   'Veel maken kost tijd. Wij bouwen tools die versnellen en maken het schaalbaar.',
+};
+const WORK_TOOLS = [
+    { client: 'AI Presentaties',      color: '#2E2A3F' },
+    { client: 'Planningstool',        color: '#1F3A34' },
+    { client: 'Titelbalk generator',  color: '#3A2E1F' },
+    { client: 'KNRM Hotspot kaart',   color: '#003F8A' },
+    { client: 'Editing tool',         color: '#2B2B2B' },
+];
+
+// Voegt de tool-tegels (groep 'tools') toe aan het work-grid
+function appendToolTiles(gridEl) {
+    const html = WORK_TOOLS.map(t => `
+        <a class="work-item js-fade" href="tools.html" data-group="tools">
+            <div class="work-item__media" style="background:${t.color}">
+                <div class="work-item__overlay" style="background:${t.color}"></div>
+            </div>
+            <div class="work-item__info">
+                <span class="work-item__client">${t.client}</span>
+            </div>
+        </a>`).join('');
+    gridEl.insertAdjacentHTML('beforeend', html);
+}
+
+// 3-categorie filter + bijpassende tekst onder "Work"
+function initWorkCategories() {
     const filterBtns = document.querySelectorAll('.filter-btn');
+    const desc = document.getElementById('cat-desc');
     if (!filterBtns.length) return;
 
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const filter = btn.dataset.filter;
-
-            // Actieve staat
-            filterBtns.forEach(b => b.classList.remove('filter-btn--active'));
-            btn.classList.add('filter-btn--active');
-
-            // Items tonen/verbergen
-            document.querySelectorAll('.work-item').forEach(item => {
-                if (filter === 'all' || item.dataset.category === filter) {
-                    item.classList.remove('is-hidden');
-                } else {
-                    item.classList.add('is-hidden');
-                }
-            });
+    function activate(group) {
+        filterBtns.forEach(b => b.classList.toggle('filter-btn--active', b.dataset.filter === group));
+        if (desc) desc.textContent = WORK_CAT_TEXT[group] || '';
+        document.querySelectorAll('.work-item').forEach(item => {
+            item.classList.toggle('is-hidden', item.dataset.group !== group);
         });
-    });
+    }
+
+    filterBtns.forEach(btn => btn.addEventListener('click', () => activate(btn.dataset.filter)));
+
+    // Standaard: eerste categorie (Vorm)
+    activate('vorm');
 }
 
 // ===== SCROLL FADE ANIMATIES =====
@@ -295,9 +330,6 @@ function initWorkParallax() {
         { holder: '.work-item__media', inner: '.work-item__img, .work-item__video', strength: 0.03, prop: '--parallax-y' },
         { holder: '.gp-making__item', inner: 'img, video', strength: 0.06, prop: '--parallax-y' },
         { holder: '.gp-video-media', inner: '.gp-video-media__overlay', strength: 0.18, prop: '--overlay-parallax' },
-        // Studio-foto's onder de showreel: voorste foto's bewegen sterker mee
-        { holder: '.intro-collage', inner: '.intro-collage__p--2', strength: 0.12, prop: '--parallax-y' },
-        { holder: '.intro-collage', inner: '.intro-collage__p--3', strength: 0.22, prop: '--parallax-y' },
     ];
     let ticking = false;
     function update() {
@@ -567,9 +599,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else if (gridSingle) {
         const cases = await loadCases();
         renderWorkGrid(cases, gridSingle);
-        initScrollFade();
         if (CONFIG.mode === 'work') {
-            initFilters(cases);
+            appendToolTiles(gridSingle);
+            initWorkCategories();
         }
+        initScrollFade();
     }
 });

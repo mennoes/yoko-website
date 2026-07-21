@@ -404,8 +404,8 @@ a { color: inherit; }
     justify-content: flex-end;
 }
 .intro-collage__bg {
-    width: 88%;
-    aspect-ratio: 5 / 4;
+    width: 72%;
+    aspect-ratio: 4 / 3;
     object-fit: cover;
     border-radius: 0;
     display: block;
@@ -418,10 +418,10 @@ a { color: inherit; }
 }
 /* Voorste foto: speels linksonder, niet geroteerd, geen shadow/stroke */
 .intro-collage__p--front {
-    width: 62%;
+    width: 72%;
     aspect-ratio: 4 / 3;
-    left: -14%;
-    bottom: -14%;
+    left: -8%;
+    bottom: -12%;
 }
 @media (max-width: 720px) {
     .reel-sub--intro { grid-template-columns: 1fr; gap: clamp(48px, 12vw, 80px); }

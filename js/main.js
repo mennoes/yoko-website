@@ -509,13 +509,15 @@ function initCaseCursor() {
         cursor.style.top  = e.clientY + 'px';
         if (activeItem) {
             const r = activeItem.getBoundingClientRect();
-            const cx = r.left + r.width / 2;
-            const cy = r.top + r.height / 2;
-            const dx = cx - e.clientX;
-            const dy = cy - e.clientY;
-            // 0deg = hand wijst omhoog; draai naar het midden van de case
-            const angle = Math.atan2(dx, -dy) * 180 / Math.PI;
-            cursor.style.setProperty('--rot', angle + 'deg');
+            // Genormaliseerde positie t.o.v. het midden (-1 .. 1)
+            const nx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+            const ny = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+            // Recht in het midden, kantelt licht weg naar de zijkanten
+            const MAX = 20; // graden
+            const rot = Math.max(-1, Math.min(1, nx)) * MAX;
+            // subtiele extra beweging in de verticale as
+            const tilt = Math.max(-1, Math.min(1, ny)) * 4;
+            cursor.style.setProperty('--rot', (rot + tilt) + 'deg');
         }
     }
 

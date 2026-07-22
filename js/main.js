@@ -259,9 +259,18 @@ function initNavScroll() {
         // Blauwe pagina-achtergrond rustig transparant laten worden, zodat
         // de oorspronkelijke crèmekleur er tijdens het scrollen doorheen komt.
         if (document.body.classList.contains('page--home')) {
-            const tintEnd = Math.max(window.innerHeight * 0.85, 520);
+            const tintEnd = Math.max(window.innerHeight * 0.6, 380);
             const tintProgress = Math.max(0, Math.min(1, scrolled / tintEnd));
             document.documentElement.style.setProperty('--page-tint-opacity', 1 - tintProgress);
+
+            const vormText = document.querySelector('.pillars .ch:first-child .ch__text');
+            if (vormText) {
+                const vormTop = vormText.getBoundingClientRect().top;
+                const vormStart = window.innerHeight * 0.85;
+                const vormEnd = window.innerHeight * 0.5;
+                const vormProgress = Math.max(0, Math.min(1, (vormStart - vormTop) / (vormStart - vormEnd)));
+                document.documentElement.style.setProperty('--vorm-tint-opacity', vormProgress);
+            }
         }
     }
 

@@ -400,7 +400,21 @@ function initWorkParallax() {
 
 // ===== TEXT REPULSION: woorden reageren los op de muis =====
 function initTextRepulsion() {
-    const selector = '.reel-sub__text, .pillars__text, .footer__title';
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const selector = [
+        '.reel-sub__text',
+        '.reel-sub__body--dark',
+        '.pillars__text',
+        '.ch__desc',
+        '.studio__headline',
+        '.studio__h2',
+        '.page-header__title',
+        '.footer__title',
+        '.footer__team-title',
+        '.nav__links a'
+    ].join(', ');
     const containers = Array.from(document.querySelectorAll(selector));
     if (!containers.length) return;
     const INFLUENCE = 120;
@@ -622,8 +636,6 @@ function initNavLogo() {
         autoplay: true,
         path: 'assets/yoko-logo.json',
     });
-    const link = box.closest('.site-logo, .nav__logo') || box;
-
     // Bovenaan loopt de animatie; zodra je scrollt maakt 'ie de cyclus af
     // en stopt op de rustpositie (begin/eind-frame = normale logo).
     let collapsed = false;
@@ -636,8 +648,6 @@ function initNavLogo() {
     }
     window.addEventListener('scroll', syncScroll, { passive: true });
 
-    // Hover → meteen animeren (één cyclus wanneer gestopt, blijft loopen bovenaan)
-    link.addEventListener('mouseenter', () => anim.goToAndPlay(0, true));
 }
 
 // ===== INTRO-SLIDESHOW: crossfade tussen studio-foto's =====

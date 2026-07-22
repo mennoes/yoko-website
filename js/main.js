@@ -263,13 +263,29 @@ function initNavScroll() {
             const tintProgress = Math.max(0, Math.min(1, scrolled / tintEnd));
             document.documentElement.style.setProperty('--page-tint-opacity', 1 - tintProgress);
 
-            const vormText = document.querySelector('.pillars .ch:first-child .ch__text');
-            if (vormText) {
-                const vormTop = vormText.getBoundingClientRect().top;
+            const chapters = Array.from(document.querySelectorAll('.pillars .ch'));
+            if (chapters.length >= 3) {
                 const vormStart = window.innerHeight * 0.85;
                 const vormEnd = window.innerHeight * 0.5;
-                const vormProgress = Math.max(0, Math.min(1, (vormStart - vormTop) / (vormStart - vormEnd)));
-                document.documentElement.style.setProperty('--vorm-tint-opacity', vormProgress);
+                const entryProgress = chapter => {
+                    const text = chapter.querySelector('.ch__text');
+                    const top = text.getBoundingClientRect().top;
+                    return Math.max(0, Math.min(1, (vormStart - top) / (vormStart - vormEnd)));
+                };
+
+                const vormProgress = entryProgress(chapters[0]);
+                const verhaalProgress = entryProgress(chapters[1]);
+                const systeemProgress = entryProgress(chapters[2]);
+
+                // Na het laatste hoofdstuk alle kleur weer wegfaden.
+                const lastBottom = chapters[2].getBoundingClientRect().bottom;
+                const exitStart = window.innerHeight * 0.6;
+                const exitEnd = window.innerHeight * 0.25;
+                const sectionVisibility = Math.max(0, Math.min(1, (lastBottom - exitEnd) / (exitStart - exitEnd)));
+
+                document.documentElement.style.setProperty('--vorm-tint-opacity', vormProgress * (1 - verhaalProgress) * sectionVisibility);
+                document.documentElement.style.setProperty('--verhaal-tint-opacity', verhaalProgress * (1 - systeemProgress) * sectionVisibility);
+                document.documentElement.style.setProperty('--systeem-tint-opacity', systeemProgress * sectionVisibility);
             }
         }
     }

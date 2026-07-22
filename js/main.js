@@ -282,8 +282,10 @@ function initNavScroll() {
                 const exitEnd = window.innerHeight * 0.25;
                 const sectionVisibility = Math.max(0, Math.min(1, (lastBottom - exitEnd) / (exitStart - exitEnd)));
 
-                document.documentElement.style.setProperty('--verhaal-tint-opacity', verhaalProgress * (1 - systeemProgress) * sectionVisibility);
+                const verhaalOpacity = verhaalProgress * (1 - systeemProgress) * sectionVisibility;
+                document.documentElement.style.setProperty('--verhaal-tint-opacity', verhaalOpacity);
                 document.documentElement.style.setProperty('--systeem-tint-opacity', systeemProgress * sectionVisibility);
+                document.body.classList.toggle('cursor-on-yellow', verhaalOpacity > 0.45);
             }
         }
     }
@@ -710,11 +712,34 @@ function initChapterRandomizers() {
     });
 }
 
+function initRandomizerPlacement() {
+    const mobile = window.matchMedia('(max-width: 720px)');
+
+    function placeButtons() {
+        document.querySelectorAll('.ch').forEach(chapter => {
+            const leadRow = chapter.querySelector('.ch__lead-row');
+            const text = leadRow?.querySelector('.ch__text');
+            const button = chapter.querySelector('.ch__randomize');
+            if (!leadRow || !text || !button) return;
+
+            if (mobile.matches) {
+                text.after(button);
+            } else {
+                leadRow.after(button);
+            }
+        });
+    }
+
+    mobile.addEventListener('change', placeButtons);
+    placeButtons();
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', async () => {
     initNavLogo();
     initIntroSlideshow();
     initChapterRandomizers();
+    initRandomizerPlacement();
     initHeroHeadline();
     initHeroVideo();
     initNavScroll();

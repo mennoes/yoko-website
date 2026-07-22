@@ -1756,6 +1756,22 @@ a, button, [role="button"],
 .gp-post, .footer__photo, .nav__toggle, .contact-form__btn {
     cursor: url('../assets/cursor-thumb.svg?v=4') 15 8, pointer;
 }
+body.cursor-on-yellow {
+    cursor: url('../assets/cursor-default-white.svg?v=1') 3 2, auto;
+}
+body.cursor-on-yellow a,
+body.cursor-on-yellow button,
+body.cursor-on-yellow [role="button"],
+body.cursor-on-yellow .ch__item,
+body.cursor-on-yellow .pillars__case-card,
+body.cursor-on-yellow .work-item,
+body.cursor-on-yellow .yt-embed,
+body.cursor-on-yellow .gp-post,
+body.cursor-on-yellow .footer__photo,
+body.cursor-on-yellow .nav__toggle,
+body.cursor-on-yellow .contact-form__btn {
+    cursor: url('../assets/cursor-thumb-white.svg?v=1') 15 8, pointer;
+}
 /* Klik-cursor (mousedown) op alle interactieve elementen én de pagina zelf */
 :active {
     cursor: url('../assets/cursor-click.svg?v=3') 12 3, pointer;
@@ -2442,5 +2458,5 @@ a, button, [role="button"],
     .ch__text--right, .ch__text--left { text-align: left; align-items: flex-start; }
     .ch__item { width: 100%; }
     .ch__media { width: 100%; height: auto; aspect-ratio: 16 / 9; }
-    .ch__randomize { margin-block: calc(var(--gap) * -0.25); }
+    .ch__randomize { margin: 0 0 clamp(12px, 4vw, 20px); justify-self: start; }
 }

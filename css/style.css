@@ -45,7 +45,7 @@ body {
     background: var(--cream);
     color: var(--dark);
     overflow-x: hidden;
-    cursor: url('../assets/cursor-default.svg?v=1') 3 2, auto;
+    cursor: url('../assets/cursor-default.svg?v=2') 3 2, auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     max-width: 1920px;

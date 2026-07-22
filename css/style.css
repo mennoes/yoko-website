@@ -166,10 +166,11 @@ a { color: inherit; }
     justify-self: auto;
     margin: 0;
     text-align: center;
-    font-size: clamp(27px, 2.4vw, 44px);
+    font-size: clamp(24px, 2.15vw, 40px);
     font-weight: 700;
-    line-height: 0.88;
+    line-height: 1;
     letter-spacing: -0.045em;
+    white-space: nowrap;
 }
 .nav--dark .nav__headline { color: var(--cream); }
 /* Mee faden met de rest van de header bij scrollen */
@@ -177,7 +178,7 @@ a { color: inherit; }
 .nav__links { display: flex; gap: clamp(16px, 1.8vw, 28px); }
 .nav__links a {
     font-family: var(--font);
-    font-size: clamp(14px, 1.05vw, 18px);
+    font-size: clamp(16px, 1.2vw, 20px);
     font-weight: 500;
     letter-spacing: -0.3px;
     color: var(--dark);

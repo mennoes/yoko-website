@@ -110,6 +110,7 @@ function renderWorkGrid(cases, gridEl, preFiltered = false) {
                 ${c.summary ? `<p class="work-item__summary">${c.summary}</p>` : `<h3 class="work-item__title">${c.title}</h3>`}
                 ${c.client ? `<span class="work-item__client">${c.client}</span>` : ''}
             </div>
+            <span class="work-item__label">${c.client || c.title}</span>
         </a>`;
     }).join('');
 
@@ -186,6 +187,7 @@ function appendToolTiles(gridEl) {
             <div class="work-item__info">
                 <span class="work-item__client">${t.client}</span>
             </div>
+            <span class="work-item__label">${t.client}</span>
         </a>`).join('');
     gridEl.insertAdjacentHTML('beforeend', html);
 }

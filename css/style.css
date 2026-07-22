@@ -860,6 +860,18 @@ a { color: inherit; }
     opacity: 0.7;
     letter-spacing: -0.1px;
 }
+/* Opdrachtgever-label onder de case (altijd zichtbaar) */
+.work-item__label {
+    display: block;
+    margin-top: 12px;
+    font-size: clamp(15px, 1.2vw, 19px);
+    font-weight: 400;
+    color: var(--dark);
+    opacity: 0.7;
+    letter-spacing: -0.1px;
+    transition: opacity 0.2s ease;
+}
+.work-item:hover .work-item__label { opacity: 1; }
 
 /* Desktop column spans */
 @media (min-width: 768px) {
@@ -2001,8 +2013,8 @@ a, button, [role="button"],
     aspect-ratio: 5 / 4;
 }
 .ch__client {
-    margin-top: 10px;
-    font-size: clamp(12px, 1vw, 14px);
+    margin-top: 12px;
+    font-size: clamp(15px, 1.2vw, 19px);
     font-weight: 400;
     letter-spacing: -0.1px;
     color: var(--dark);

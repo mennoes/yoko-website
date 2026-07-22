@@ -253,8 +253,13 @@ function initNavScroll() {
         const progress = Math.max(0, Math.min(1, (scrolled - fadeStart) / (fadeEnd - fadeStart)));
 
         nav.style.setProperty('--nav-fade', 1 - progress);
-        // Voorbij een drempel: logo faden + links inklappen naar menu-icoon
-        nav.classList.toggle('is-collapsed', scrolled > 60);
+        // Op home pas inklappen wanneer het eerste hoofdstukvlak de header raakt.
+        // Op andere pagina's blijft de vaste scrolldrempel gelden.
+        const firstChapter = document.querySelector('.page--home .pillars .ch');
+        const shouldCollapse = firstChapter
+            ? firstChapter.getBoundingClientRect().top <= nav.offsetHeight
+            : scrolled > 60;
+        nav.classList.toggle('is-collapsed', shouldCollapse);
 
         // Blauwe pagina-achtergrond rustig transparant laten worden, zodat
         // de oorspronkelijke crèmekleur er tijdens het scrollen doorheen komt.

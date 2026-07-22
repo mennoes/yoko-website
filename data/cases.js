@@ -342,7 +342,7 @@ window.YOKO_CASES = {
       "summary": "Hoe vertaal je de energie van 300 zingende kinderen naar animatie? Door het echt te laten voelen — kleurrijk, snel, eerlijk.",
       "description": "Kinderen voor Kinderen is een van de meest geliefde kinderprogramma's van Nederland. Studio Yoko verzorgde de volledige animatie-identiteit voor het seizoen — van de intro tot de tussenstukjes.\n\nDe uitdaging was om een stijl te vinden die past bij de energie van de muziek en de beleving van kinderen: kleurrijk, snel, eerlijk. Samen met de redactie van BNNVARA ontwikkelden we een visuele taal die de show aanvult zonder te overheersen.\n\nHet resultaat is een volledig geanimeerde broadcast-identiteit die seizoen na seizoen terugkeert.",
       "thumbnail": "assets/cases/kinderen-voor-kinderen/thumb.jpg",
-      "video_preview": "assets/cases/kinderen-voor-kinderen/preview.mp4",
+      "video_preview": "assets/cases/kinderen-voor-kinderen/_KvK_LogoLoops.mp4",
       "accent_color": "#F7B23B",
       "size": "large",
       "featured": false,

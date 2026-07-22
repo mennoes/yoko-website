@@ -30,7 +30,6 @@
     --accent: #B0C6EB;
     --highlight: #DCB83E;
     --page-tint-opacity: 1;
-    --vorm-tint-opacity: 0;
     --verhaal-tint-opacity: 0;
     --systeem-tint-opacity: 0;
     --font:   'Aeonik', 'DM Sans', sans-serif;
@@ -310,10 +309,6 @@ a { color: inherit; }
             rgba(220, 184, 62, var(--verhaal-tint-opacity))
         ),
         linear-gradient(
-            rgba(192, 154, 203, var(--vorm-tint-opacity)),
-            rgba(192, 154, 203, var(--vorm-tint-opacity))
-        ),
-        linear-gradient(
             rgba(176, 198, 235, var(--page-tint-opacity)),
             rgba(176, 198, 235, var(--page-tint-opacity))
         ),
@@ -321,7 +316,6 @@ a { color: inherit; }
     box-shadow:
         0 0 0 100vmax rgba(154, 174, 165, var(--systeem-tint-opacity)),
         0 0 0 100vmax rgba(220, 184, 62, var(--verhaal-tint-opacity)),
-        0 0 0 100vmax rgba(192, 154, 203, var(--vorm-tint-opacity)),
         0 0 0 100vmax rgba(176, 198, 235, var(--page-tint-opacity));
     clip-path: inset(0 -100vmax);
 }

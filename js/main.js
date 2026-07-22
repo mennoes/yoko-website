@@ -273,7 +273,6 @@ function initNavScroll() {
                     return Math.max(0, Math.min(1, (vormStart - top) / (vormStart - vormEnd)));
                 };
 
-                const vormProgress = entryProgress(chapters[0]);
                 const verhaalProgress = entryProgress(chapters[1]);
                 const systeemProgress = entryProgress(chapters[2]);
 
@@ -283,7 +282,6 @@ function initNavScroll() {
                 const exitEnd = window.innerHeight * 0.25;
                 const sectionVisibility = Math.max(0, Math.min(1, (lastBottom - exitEnd) / (exitStart - exitEnd)));
 
-                document.documentElement.style.setProperty('--vorm-tint-opacity', vormProgress * (1 - verhaalProgress) * sectionVisibility);
                 document.documentElement.style.setProperty('--verhaal-tint-opacity', verhaalProgress * (1 - systeemProgress) * sectionVisibility);
                 document.documentElement.style.setProperty('--systeem-tint-opacity', systeemProgress * sectionVisibility);
             }

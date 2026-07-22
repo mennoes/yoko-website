@@ -218,12 +218,8 @@ function initWorkCategories() {
         }
     }));
 
-    // Standaard: niets geselecteerd — toon alle cases (tools verborgen), geen tekst
-    filterBtns.forEach(b => b.classList.remove('filter-btn--active'));
-    if (desc) desc.textContent = '';
-    document.querySelectorAll('.work-item').forEach(item => {
-        item.classList.toggle('is-hidden', item.dataset.group === 'tools');
-    });
+    // Standaard: Alles geselecteerd
+    activate('alles');
 }
 
 // ===== SCROLL FADE ANIMATIES =====

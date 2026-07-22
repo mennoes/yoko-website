@@ -156,7 +156,13 @@ a { color: inherit; }
     white-space: nowrap;
 }
 .nav__links a:hover { opacity: 1; }
-.nav__link--active { opacity: 1 !important; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.nav__links a.nav__link--active {
+    opacity: 1 !important;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+}
 
 /* Nav varianten — alleen tekstkleur flippen, balk blijft blauw */
 .nav--dark {

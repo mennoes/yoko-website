@@ -636,6 +636,7 @@ function initNavLogo() {
         autoplay: true,
         path: 'assets/yoko-logo.json',
     });
+    const link = box.closest('.site-logo, .nav__logo') || box;
     // Bovenaan loopt de animatie; zodra je scrollt maakt 'ie de cyclus af
     // en stopt op de rustpositie (begin/eind-frame = normale logo).
     let collapsed = false;
@@ -647,6 +648,13 @@ function initNavLogo() {
         else { anim.loop = true; anim.play(); }
     }
     window.addEventListener('scroll', syncScroll, { passive: true });
+
+    // Op hover blijft het logo op het huidige frame staan; geen sprong naar
+    // het begin van de animatie. Bovenaan loopt het na hover weer verder.
+    link.addEventListener('mouseenter', () => anim.pause());
+    link.addEventListener('mouseleave', () => {
+        if (!collapsed) anim.play();
+    });
 
 }
 

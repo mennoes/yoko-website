@@ -573,6 +573,19 @@ function initCaseCursor() {
     window.addEventListener('mousemove', onMove, { passive: true });
 }
 
+// ===== NAV-LOGO: Lottie-animatie linksboven =====
+function initNavLogo() {
+    const box = document.getElementById('navLogoAni');
+    if (!box || typeof lottie === 'undefined') return;
+    lottie.loadAnimation({
+        container: box,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'assets/yoko-logo.json',
+    });
+}
+
 // ===== INTRO-SLIDESHOW: crossfade tussen studio-foto's =====
 function initIntroSlideshow() {
     const box = document.getElementById('introSlideshow');
@@ -589,6 +602,7 @@ function initIntroSlideshow() {
 
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', async () => {
+    initNavLogo();
     initIntroSlideshow();
     initHeroHeadline();
     initHeroVideo();

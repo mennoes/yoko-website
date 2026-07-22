@@ -119,6 +119,17 @@ a { color: inherit; }
     filter: brightness(0);
     display: block;
 }
+/* Lottie-logo linksboven — zelfde hoogte/kleurbehandeling als het statische logo */
+.nav__logo-ani {
+    height: clamp(24px, 2.4vw, 38px);
+    aspect-ratio: 2672 / 490;
+    width: auto;
+    display: block;
+    filter: brightness(0);
+}
+.nav__logo-ani svg { display: block; width: 100% !important; height: 100% !important; }
+.nav--dark .nav__logo-ani { filter: brightness(0) invert(1); }
+.nav--dark.is-past-hero .nav__logo-ani { filter: brightness(0); }
 /* Logo faded uit bij scrollen (mobiel + desktop) */
 .nav.is-collapsed .nav__logo {
     opacity: 0;

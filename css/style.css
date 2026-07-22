@@ -406,7 +406,7 @@ a { color: inherit; }
 
 /* ===== Intro: tekst links (op kolom-lijn) + speelse foto-collage rechts ===== */
 .reel-sub--intro {
-    grid-template-columns: minmax(0, 56fr) minmax(0, 44fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: clamp(32px, 3vw, 56px);
     align-items: center;
     text-align: left;
@@ -470,7 +470,7 @@ a { color: inherit; }
 @media (max-width: 720px) {
     .reel-sub--intro { grid-template-columns: 1fr; gap: clamp(48px, 12vw, 80px); }
     .reel-sub--intro .reel-sub__body--dark { white-space: normal; }
-    .intro-collage { max-width: 460px; }
+    .intro-collage { max-width: 600px; }
     .intro-collage__p--2 { left: 0; }
 }
 

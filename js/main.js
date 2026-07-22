@@ -105,9 +105,9 @@ function renderWorkGrid(cases, gridEl, preFiltered = false) {
                     class="work-item__overlay"
                     style="background: ${c.accent_color || '#202020'}"
                 ></div>
-            </div>
-            <div class="work-item__info">
-                ${c.summary ? `<p class="work-item__summary">${c.summary}</p>` : `<h3 class="work-item__title">${c.title}</h3>`}
+                <div class="work-item__info">
+                    ${c.summary ? `<p class="work-item__summary">${c.summary}</p>` : `<h3 class="work-item__title">${c.title}</h3>`}
+                </div>
             </div>
             <span class="work-item__label">${c.client || c.title}</span>
         </a>`;

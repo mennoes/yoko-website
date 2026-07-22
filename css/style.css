@@ -2322,6 +2322,13 @@ a, button, [role="button"],
     object-fit: cover;
     display: block;
 }
+.ch__media--afhaalchinees {
+    background-image: url('../assets/cases/afhaalchinees-thumb.png');
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: repeat-y;
+}
+.ch__media--afhaalchinees > img { object-fit: contain; }
 .ch__media--swap .ch__swap-hover {
     position: absolute;
     inset: 0;

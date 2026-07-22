@@ -1563,7 +1563,7 @@ a, button, [role="button"],
 }
 /* Klik-cursor (mousedown) op alle interactieve elementen én de pagina zelf */
 :active {
-    cursor: url('../assets/cursor-click.svg?v=2') 9 2, pointer;
+    cursor: url('../assets/cursor-click.svg?v=3') 9 2, pointer;
 }
 /* Menu-items krijgen underline bij hover */
 .nav__links a {

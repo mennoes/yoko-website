@@ -8,13 +8,13 @@
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-    <link rel="stylesheet" href="css/style.css?v=51">
+    <link rel="stylesheet" href="css/style.css?v=52">
 </head>
 <body>
 
     <!-- ===== NAVIGATIE ===== -->
     <nav class="nav" id="nav">
-        <a href="index.html" class="nav__logo"><div class="nav__logo-ani" id="navLogoAni" role="img" aria-label="Studio Yoko"></div></a>
+        <span class="nav__logo nav__logo--spacer" aria-hidden="true"><span class="nav__logo-ani"></span></span>
         <p class="nav__headline">Motion design studio</p>
         <div class="nav__links">
             <a href="work.html">werk</a>
@@ -29,6 +29,9 @@
     <section class="reel">
         <video class="reel__video" id="hero-video" autoplay muted loop playsinline></video>
     </section>
+
+    <!-- Logo als eigen laag: zichtbaar bovenaan, content scrolt eroverheen -->
+    <a href="index.html" class="site-logo" aria-label="Studio Yoko"><span class="nav__logo-ani" id="navLogoAni" role="img"></span></a>
 
     <!-- Inhoud scrollt over de vaste showreel heen -->
     <div class="page-flow">
@@ -257,6 +260,6 @@
     <script src="data/cases.js"></script>
     <script>window.YOKO_CONFIG = { mode: 'homepage', maxItems: 12 };</script>
     <script src="js/lottie.min.js?v=1"></script>
-    <script src="js/main.js?v=20"></script>
+    <script src="js/main.js?v=21"></script>
 </body>
 </html>

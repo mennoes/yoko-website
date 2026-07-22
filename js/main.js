@@ -582,7 +582,7 @@ function initNavLogo() {
         autoplay: true,
         path: 'assets/yoko-logo.json',
     });
-    const link = box.closest('.nav__logo') || box;
+    const link = box.closest('.site-logo, .nav__logo') || box;
 
     // Bovenaan loopt de animatie; zodra je scrollt maakt 'ie de cyclus af
     // en stopt op de rustpositie (begin/eind-frame = normale logo).

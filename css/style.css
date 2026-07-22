@@ -45,6 +45,7 @@ body {
     background: var(--cream);
     color: var(--dark);
     overflow-x: hidden;
+    overscroll-behavior-y: none;
     cursor: url('../assets/cursor-default.svg?v=3') 3 2, auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -298,6 +299,17 @@ a { color: inherit; }
     z-index: 1;
     background: var(--cream);
 }
+/* Logo-laag onder de content: bovenaan zichtbaar, verdwijnt achter page-flow bij scroll */
+.site-logo {
+    position: fixed;
+    top: clamp(18px, 2vw, 28px);
+    left: var(--pad-x);
+    z-index: 0;
+    display: block;
+    transform-origin: left center;
+    transition: transform 0.35s ease;
+}
+.nav.is-collapsed ~ .site-logo { transform: scale(0.82); }
 .reel__video {
     width: 100%;
     aspect-ratio: 16 / 9;                    /* zoveel mogelijk 16:9 */

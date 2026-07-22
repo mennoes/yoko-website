@@ -2329,6 +2329,16 @@ a, button, [role="button"],
     background-repeat: repeat-y;
 }
 .ch__media--afhaalchinees > img { object-fit: contain; }
+.ch__media--logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ch__media--logo > img {
+    width: 72%;
+    height: auto;
+    object-fit: contain;
+}
 .ch__media--swap .ch__swap-hover {
     position: absolute;
     inset: 0;

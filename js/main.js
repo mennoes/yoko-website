@@ -246,7 +246,6 @@ function initNavScroll() {
     const nav = document.getElementById('nav');
     if (!nav) return;
 
-    const filledBg = !nav.classList.contains('nav--dark');
     function update() {
         const scrolled = window.scrollY;
         const fadeStart = 20;
@@ -257,13 +256,12 @@ function initNavScroll() {
         // Voorbij een drempel: logo faden + links inklappen naar menu-icoon
         nav.classList.toggle('is-collapsed', scrolled > 60);
 
-        // Gevulde header: #B0C6EB → wit, langzaam over de eerste ~520px
-        if (filledBg) {
-            const t = Math.max(0, Math.min(1, scrolled / 520));
-            const r = Math.round(176 + (255 - 176) * t);
-            const g = Math.round(198 + (255 - 198) * t);
-            const b = Math.round(235 + (255 - 235) * t);
-            nav.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        // Blauwe pagina-achtergrond rustig transparant laten worden, zodat
+        // de oorspronkelijke crèmekleur er tijdens het scrollen doorheen komt.
+        if (document.body.classList.contains('page--home')) {
+            const tintEnd = Math.max(window.innerHeight * 0.85, 520);
+            const tintProgress = Math.max(0, Math.min(1, scrolled / tintEnd));
+            document.documentElement.style.setProperty('--page-tint-opacity', 1 - tintProgress);
         }
     }
 

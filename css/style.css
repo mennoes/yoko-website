@@ -2318,6 +2318,13 @@ a, button, [role="button"],
     object-fit: cover;
     display: block;
 }
+.ch__media--swap .ch__swap-hover {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.ch__item:hover .ch__swap-hover { opacity: 1; }
 /* Onderste rij: zelfde kolomverdeling als de bovenste → uitgelijnd */
 .ch__grid {
     display: grid;

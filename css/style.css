@@ -460,8 +460,8 @@ a { color: inherit; }
     display: block;
     opacity: 0;
     transition: opacity 1s ease;
-    filter: saturate(1.4) brightness(1.08);
 }
+.intro-collage__bg--saturated { filter: saturate(1.4) brightness(1.08); }
 .intro-collage__bg.is-active { opacity: 1; }
 @media (max-width: 720px) {
     .reel-sub--intro { grid-template-columns: 1fr; gap: clamp(48px, 12vw, 80px); }

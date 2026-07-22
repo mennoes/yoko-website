@@ -2291,19 +2291,52 @@ body.cursor-on-yellow .contact-form__btn {
 }
 
 /* Uniforme witruimte: verticale gap tussen rijen = horizontale gap tussen tegels */
+.home-work-intro {
+    padding: clamp(72px, 10vw, 160px) var(--pad-x) clamp(48px, 7vw, 112px);
+}
+.home-work-intro p {
+    max-width: 24ch;
+    margin: 0;
+    font-size: clamp(32px, 4.2vw, 72px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: var(--dark);
+}
 #work {
-    padding: clamp(28px, 3.5vw, 56px) 0;
+    padding: clamp(28px, 3.5vw, 56px) 0 0;
     display: flex;
     flex-direction: column;
-    gap: clamp(44px, 5.5vw, 88px);   /* ruimte tússen categorieën */
+    gap: 0;
+    isolation: isolate;
 }
 .ch {
     --gap: clamp(40px, 6vw, 100px);   /* gelijk aan de horizontale witruimte in de intro */
     --rowh: clamp(260px, 32vw, 500px);
-    padding: 0 var(--pad-x);
+    padding: 0 var(--pad-x) clamp(44px, 5.5vw, 88px);
     display: flex;
     flex-direction: column;
     gap: var(--gap);                 /* rijen binnen een categorie even ver uit elkaar als de tegels */
+}
+@media (min-width: 721px) {
+    .ch {
+        position: sticky;
+        bottom: 0;
+    }
+    .ch:nth-child(1) {
+        z-index: 1;
+        background: var(--cream);
+    }
+    .ch:nth-child(2) {
+        z-index: 2;
+        padding-top: clamp(44px, 5.5vw, 88px);
+        background: var(--highlight);
+    }
+    .ch:nth-child(3) {
+        z-index: 3;
+        padding-top: clamp(44px, 5.5vw, 88px);
+        background: #9aaea5;
+    }
 }
 .ch__randomize {
     align-self: center;

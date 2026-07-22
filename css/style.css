@@ -2209,6 +2209,18 @@ a, button, [role="button"],
 /* =====================================================
    CHAPTERS (homepage hoofdstukken, vaste rij-hoogte)
    ===================================================== */
+.work-heading {
+    width: fit-content;
+    margin: 0 auto clamp(12px, 1.5vw, 24px);
+    padding: 10px 26px;
+    border: 2px solid var(--dark);
+    border-radius: 999px;
+    color: var(--dark);
+    font-size: clamp(16px, 1.25vw, 20px);
+    font-weight: 500;
+    line-height: 1;
+}
+
 /* Uniforme witruimte: verticale gap tussen rijen = horizontale gap tussen tegels */
 #work {
     padding: clamp(28px, 3.5vw, 56px) 0;

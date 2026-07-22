@@ -2275,10 +2275,12 @@ a, button, [role="button"],
 }
 .ch__text {
     min-width: 0;
-    align-self: stretch;
+    align-self: start;
+    position: sticky;
+    top: clamp(88px, 8vw, 128px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 12px;
 }
 .ch__text--right { text-align: right; align-items: flex-end; }
@@ -2407,7 +2409,7 @@ a, button, [role="button"],
     .ch__row, .ch__grid {
         grid-template-columns: 1fr;
     }
-    .ch__text { order: -1; }
+    .ch__text { order: -1; position: static; }
     .ch__text--right, .ch__text--left { text-align: left; align-items: flex-start; }
     .ch__item { width: 100%; }
     .ch__media { width: 100%; height: auto; aspect-ratio: 16 / 9; }

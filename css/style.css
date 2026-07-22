@@ -299,17 +299,6 @@ a { color: inherit; }
     z-index: 1;
     background: var(--cream);
 }
-/* Logo-laag onder de content: bovenaan zichtbaar, verdwijnt achter page-flow bij scroll */
-.site-logo {
-    position: fixed;
-    top: clamp(18px, 2vw, 28px);
-    left: var(--pad-x);
-    z-index: 0;
-    display: block;
-    transform-origin: left center;
-    transition: transform 0.35s ease;
-}
-.nav.is-collapsed ~ .site-logo { transform: scale(0.82); }
 .reel__video {
     width: 100%;
     aspect-ratio: 16 / 9;                    /* zoveel mogelijk 16:9 */

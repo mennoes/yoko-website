@@ -407,7 +407,7 @@ a { color: inherit; }
     padding-bottom: clamp(48px, 6vw, 96px);
 }
 .reel-sub--intro .reel-sub__left {
-    gap: clamp(14px, 1.6vw, 22px);
+    gap: clamp(12px, 1.2vw, 18px);
 }
 .reel-sub--intro .reel-sub__body--dark {
     font-size: clamp(26px, 2.9vw, 46px);
@@ -419,17 +419,17 @@ a { color: inherit; }
     margin: 0;
 }
 .reel-sub__intro-text {
-    margin-top: clamp(10px, 1vw, 16px);
-    max-width: 52ch;
+    margin-top: 0;
+    max-width: 48ch;
 }
 .reel-sub__intro-text p {
     font-size: clamp(17px, 1.5vw, 23px);
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.45;
     color: rgba(32,32,32,0.62);
     margin: 0;
 }
-.reel-sub__intro-text p + p { margin-top: 1em; }
+.reel-sub__intro-text p + p { margin-top: 0.75em; }
 .reel-sub--intro .reel-sub__sub { margin-top: 4px; }
 .reel-sub--intro .reel-sub__meta { margin: 8px 0 0; max-width: 46ch; }
 .reel-sub--intro .reel-sub__tags { margin-top: 10px; }

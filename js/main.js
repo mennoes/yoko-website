@@ -672,10 +672,49 @@ function initIntroSlideshow() {
     }, 3500);
 }
 
+// ===== HOMEPAGE CASE RANDOMIZERS =====
+function initChapterRandomizers() {
+    document.querySelectorAll('.ch').forEach(chapter => {
+        const button = chapter.querySelector('.ch__randomize');
+        const row = chapter.querySelector('.ch__random-row');
+        const poolRow = chapter.querySelector('.ch__pool-row');
+        if (!button || !row || !poolRow) return;
+
+        const cards = [...row.querySelectorAll(':scope > .ch__item'), ...poolRow.querySelectorAll(':scope > .ch__item')]
+            .map(card => card.cloneNode(true));
+        poolRow.remove();
+
+        button.addEventListener('click', () => {
+            const current = [...row.querySelectorAll(':scope > .ch__item')]
+                .map(card => card.dataset.caseId)
+                .sort()
+                .join('|');
+
+            let next = cards.slice(0, 2);
+            for (let attempt = 0; attempt < 12; attempt += 1) {
+                next = [...cards].sort(() => Math.random() - 0.5).slice(0, 2);
+                const signature = next.map(card => card.dataset.caseId).sort().join('|');
+                if (signature !== current) break;
+            }
+
+            row.replaceChildren(...next.map(card => {
+                const clone = card.cloneNode(true);
+                clone.classList.remove('js-fade');
+                return clone;
+            }));
+
+            button.classList.remove('is-spinning');
+            void button.offsetWidth;
+            button.classList.add('is-spinning');
+        });
+    });
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', async () => {
     initNavLogo();
     initIntroSlideshow();
+    initChapterRandomizers();
     initHeroHeadline();
     initHeroVideo();
     initNavScroll();

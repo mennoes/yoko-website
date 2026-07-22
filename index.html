@@ -8,7 +8,7 @@
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-    <link rel="stylesheet" href="css/style.css?v=84">
+    <link rel="stylesheet" href="css/style.css?v=85">
 </head>
 <body class="page--home">
 
@@ -58,9 +58,10 @@
                     <span class="ch__client">Universiteit van Nederland</span>
                 </a>
             </div>
-            <!-- rij 2: Zin (65%) + Polarsteps (35%) -->
-            <div class="ch__row" style="--cols: 65fr 35fr;">
-                <a class="ch__item js-fade" href="zin-in-morgen.html">
+            <button class="ch__randomize" type="button">Randomize ↻</button>
+            <!-- rij 2: twee wisselende cases -->
+            <div class="ch__row ch__random-row" style="--cols: 65fr 35fr;">
+                <a class="ch__item js-fade" data-case-id="zin" href="zin-in-morgen.html">
                     <div class="ch__media">
                         <video autoplay muted loop playsinline poster="assets/cases/zin/thumb.jpg">
                             <source src="assets/cases/zin/Logo%20zin.mp4" type="video/mp4">
@@ -69,7 +70,7 @@
                     </div>
                     <span class="ch__client">Zin in Morgen</span>
                 </a>
-                <a class="ch__item js-fade" href="polarsteps.html">
+                <a class="ch__item js-fade" data-case-id="polarsteps" href="polarsteps.html">
                     <div class="ch__media" style="aspect-ratio: 4 / 5;">
                         <img src="assets/cases/polarsteps/thumb.jpg" alt="Polarsteps">
                         <div class="ch__ov"><p>Van merkstrategie naar systeem — design system, banners en een cinematische brand identity film.</p></div>
@@ -77,9 +78,8 @@
                     <span class="ch__client">Polarsteps</span>
                 </a>
             </div>
-            <!-- rij 3: Kinderen (45%) + Zero Density (55%) -->
-            <div class="ch__row" style="--cols: 45fr 55fr;">
-                <a class="ch__item js-fade" href="case.html?slug=kinderen-voor-kinderen">
+            <div class="ch__row ch__pool-row" hidden>
+                <a class="ch__item" data-case-id="kinderen-voor-kinderen" href="case.html?slug=kinderen-voor-kinderen">
                     <div class="ch__media">
                         <video autoplay muted loop playsinline poster="assets/cases/kinderen-voor-kinderen/thumb.jpg">
                             <source src="assets/cases/kinderen-voor-kinderen/KvK-LogoLoops.mp4?v=3" type="video/mp4">
@@ -88,7 +88,7 @@
                     </div>
                     <span class="ch__client">Kinderen voor Kinderen</span>
                 </a>
-                <a class="ch__item js-fade" href="#">
+                <a class="ch__item" data-case-id="zero-density" href="#">
                     <div class="ch__media" style="background:#1B1E26;"></div>
                     <span class="ch__client">Zero Density</span>
                 </a>
@@ -112,32 +112,32 @@
                     <p class="ch__desc js-word-reveal">Wil je iets vertellen? Ingewikkelde materie, scherpe journalistiek, groot onderzoek of een goed&nbsp;idee.</p>
                 </div>
             </div>
-            <!-- rij 2: Afhaalchinees (65%) + Nieuwsuur (35%) -->
-            <div class="ch__row" style="--cols: 65fr 35fr;">
-                <a class="ch__item js-fade" href="afhaalchinees.html">
+            <button class="ch__randomize" type="button">Randomize ↻</button>
+            <!-- rij 2: twee wisselende cases -->
+            <div class="ch__row ch__random-row" style="--cols: 65fr 35fr;">
+                <a class="ch__item js-fade" data-case-id="afhaalchinees" href="afhaalchinees.html">
                     <div class="ch__media ch__media--afhaalchinees">
                         <img src="assets/cases/afhaalchinees-thumb.png" alt="De Afhaalchinees">
                         <div class="ch__ov"><p>Een merkidentiteit die overal werkt — grafisch en in animatie.</p></div>
                     </div>
                     <span class="ch__client">Afhaalchinees</span>
                 </a>
-                <a class="ch__item js-fade" href="#">
-                    <div class="ch__media ch__media--logo" style="background:#006aff; aspect-ratio: 4 / 5;">
-                        <img src="assets/cases/nieuwsuur-logo.svg" alt="Nieuwsuur">
-                    </div>
-                    <span class="ch__client">Nieuwsuur</span>
-                </a>
-            </div>
-            <!-- rij 3: SAS (45%) + Human (55%) -->
-            <div class="ch__row" style="--cols: 45fr 55fr;">
-                <a class="ch__item js-fade" href="#">
+                <a class="ch__item js-fade" data-case-id="sas" href="#">
                     <div class="ch__media ch__media--swap">
                         <img src="assets/cases/sas-default.png" alt="SAS">
                         <img class="ch__swap-hover" src="assets/cases/sas-hover.png" alt="" aria-hidden="true">
                     </div>
                     <span class="ch__client">SAS</span>
                 </a>
-                <a class="ch__item js-fade" href="rewind.html">
+            </div>
+            <div class="ch__row ch__pool-row" hidden>
+                <a class="ch__item" data-case-id="nieuwsuur" href="#">
+                    <div class="ch__media ch__media--logo" style="background:#006aff; aspect-ratio: 4 / 5;">
+                        <img src="assets/cases/nieuwsuur-logo.svg" alt="Nieuwsuur">
+                    </div>
+                    <span class="ch__client">Nieuwsuur</span>
+                </a>
+                <a class="ch__item" data-case-id="human" href="rewind.html">
                     <div class="ch__media">
                         <img src="assets/cases/rewind/screenshot-thumb.jpg" alt="Human — Rewind">
                         <div class="ch__ov"><p>Wekelijks complexe nieuwsthema's vertalen naar animaties die jongeren op social vasthouden.</p></div>
@@ -149,34 +149,34 @@
 
         <!-- 03 Systeem -->
         <div class="ch ch--free">
-            <!-- rij 1: tekst + AI Presentaties -->
+            <!-- rij 1: tekst + Planningstool -->
             <div class="ch__row" style="--cols: 25fr 75fr;">
                 <div class="ch__text ch__text--left">
                     <p class="ch__desc js-word-reveal">Veel maken kost tijd. Wij bouwen tools die versnellen en maken het schaalbaar.</p>
                 </div>
                 <a class="ch__item js-fade" href="tools.html">
-                    <div class="ch__media" style="background:#2E2A3F; aspect-ratio: 16 / 9;"></div>
-                    <span class="ch__client">AI Presentaties</span>
-                </a>
-            </div>
-            <!-- rij 2: Planningstool (65%) + Titelbalk (35%) -->
-            <div class="ch__row" style="--cols: 65fr 35fr;">
-                <a class="ch__item js-fade" href="tools.html">
-                    <div class="ch__media" style="background:#1F3A34;"></div>
+                    <div class="ch__media" style="background:#1F3A34; aspect-ratio: 16 / 9;"></div>
                     <span class="ch__client">Planningstool</span>
                 </a>
-                <a class="ch__item js-fade" href="tools.html">
-                    <div class="ch__media" style="background:#3A2E1F; aspect-ratio: 4 / 5;"></div>
+            </div>
+            <button class="ch__randomize" type="button">Randomize ↻</button>
+            <!-- rij 2: twee wisselende tools -->
+            <div class="ch__row ch__random-row" style="--cols: 65fr 35fr;">
+                <a class="ch__item js-fade" data-case-id="titelbalk" href="tools.html">
+                    <div class="ch__media" style="background:#3A2E1F;"></div>
                     <span class="ch__client">Titelbalk generator</span>
                 </a>
-            </div>
-            <!-- rij 3: KNRM (45%) + Editing (55%) -->
-            <div class="ch__row" style="--cols: 45fr 55fr;">
-                <a class="ch__item js-fade" href="tools.html">
-                    <div class="ch__media" style="background:#003F8A;"></div>
+                <a class="ch__item js-fade" data-case-id="knrm" href="tools.html">
+                    <div class="ch__media" style="background:#003F8A; aspect-ratio: 4 / 5;"></div>
                     <span class="ch__client">KNRM Hotspot kaart</span>
                 </a>
-                <a class="ch__item js-fade" href="tools.html">
+            </div>
+            <div class="ch__row ch__pool-row" hidden>
+                <a class="ch__item" data-case-id="ai-presentaties" href="tools.html">
+                    <div class="ch__media" style="background:#2E2A3F;"></div>
+                    <span class="ch__client">AI Presentaties</span>
+                </a>
+                <a class="ch__item" data-case-id="editing" href="tools.html">
                     <div class="ch__media" style="background:#2B2B2B;"></div>
                     <span class="ch__client">Editing tool</span>
                 </a>
@@ -253,6 +253,6 @@
     <script src="data/cases.js?v=3"></script>
     <script>window.YOKO_CONFIG = { mode: 'homepage', maxItems: 12 };</script>
     <script src="js/lottie.min.js?v=1"></script>
-    <script src="js/main.js?v=31"></script>
+    <script src="js/main.js?v=32"></script>
 </body>
 </html>

@@ -473,7 +473,6 @@ a { color: inherit; }
     .intro-collage { max-width: 600px; }
     .intro-collage__p--2 { left: 0; }
 }
-
 .reel-sub--headline {
     display: flex;
     align-items: center;
@@ -2268,6 +2267,26 @@ a, button, [role="button"],
     flex-direction: column;
     gap: var(--gap);                 /* rijen binnen een categorie even ver uit elkaar als de tegels */
 }
+.ch__randomize {
+    align-self: center;
+    margin-block: calc(var(--gap) * -0.35);
+    padding: 9px 18px;
+    border: 2px solid var(--dark);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--dark);
+    font: 700 clamp(13px, 1vw, 16px)/1 var(--font);
+    transition: background 0.2s ease, color 0.2s ease, transform 0.25s ease;
+}
+.ch__randomize:hover {
+    background: var(--dark);
+    color: var(--cream);
+}
+.ch__randomize.is-spinning { animation: randomize-pop 0.35s ease; }
+@keyframes randomize-pop {
+    50% { transform: rotate(4deg) scale(0.94); }
+}
+.ch__pool-row[hidden] { display: none; }
 .ch__row {
     display: grid;
     grid-template-columns: var(--cols, 15% 1fr 1fr);
@@ -2414,4 +2433,5 @@ a, button, [role="button"],
     .ch__text--right, .ch__text--left { text-align: left; align-items: flex-start; }
     .ch__item { width: 100%; }
     .ch__media { width: 100%; height: auto; aspect-ratio: 16 / 9; }
+    .ch__randomize { margin-block: calc(var(--gap) * -0.25); }
 }

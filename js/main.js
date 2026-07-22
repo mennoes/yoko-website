@@ -29,11 +29,22 @@ function initHeroVideo() {
     const video = document.getElementById('hero-video');
     if (!video) return;
     const src = heroVideos[Math.floor(Math.random() * heroVideos.length)];
-    const source = document.createElement('source');
-    source.src = src;
-    source.type = 'video/mp4';
-    video.appendChild(source);
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.src = src;
+
+    const playImmediately = () => {
+        video.play().catch(() => {});
+    };
+
+    video.addEventListener('loadeddata', playImmediately, { once: true });
+    window.addEventListener('pageshow', playImmediately);
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) playImmediately();
+    });
     video.load();
+    playImmediately();
     video.addEventListener('playing', () => {
         video.classList.add('is-playing');
     }, { once: true });

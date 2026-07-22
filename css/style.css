@@ -2317,7 +2317,7 @@ a, button, [role="button"],
 }
 .ch__client {
     margin-top: 12px;
-    font-size: clamp(15px, 1.2vw, 19px);
+    font-size: clamp(18px, 1.5vw, 24px);
     font-weight: 400;
     letter-spacing: -0.1px;
     color: var(--dark);
@@ -2342,12 +2342,12 @@ a, button, [role="button"],
     display: block;
 }
 .ch__media--afhaalchinees {
-    background-image: url('../assets/cases/afhaalchinees-thumb.png');
-    background-size: 100% auto;
-    background-position: center;
-    background-repeat: repeat-y;
+    background: #8fa4a4;
 }
-.ch__media--afhaalchinees > img { object-fit: contain; }
+.ch__media--afhaalchinees > img {
+    object-fit: contain;
+    transform: scale(1.1);
+}
 .ch__media--logo {
     display: flex;
     align-items: center;

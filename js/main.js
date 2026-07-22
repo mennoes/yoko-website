@@ -216,8 +216,11 @@ function initWorkCategories() {
         }
     }));
 
-    // Standaard: Alles geselecteerd
-    activate('alles');
+    // Startcategorie: ?filter= uit de URL (bv. vanaf de About-pagina), anders Alles
+    const params = new URLSearchParams(window.location.search);
+    const start = params.get('filter');
+    const valid = ['vorm', 'verhaal', 'tools'];
+    activate(valid.includes(start) ? start : 'alles');
 }
 
 // ===== SCROLL FADE ANIMATIES =====

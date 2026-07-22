@@ -112,6 +112,7 @@ a { color: inherit; }
     transition: background 0.1s ease;
 }
 .nav__logo {
+    grid-column: 1;
     display: block;
     flex-shrink: 0;
     text-decoration: none;
@@ -160,6 +161,7 @@ a { color: inherit; }
     transition: opacity 0.35s ease;
 }
 .nav__headline--tagline {
+    grid-column: 2;
     position: static;
     transform: none;
     justify-self: center;
@@ -174,7 +176,7 @@ a { color: inherit; }
 .nav--dark .nav__headline { color: var(--cream); }
 /* Mee faden met de rest van de header bij scrollen */
 .nav.is-collapsed .nav__headline { opacity: 0; pointer-events: none; }
-.nav__links { display: flex; justify-self: end; gap: clamp(16px, 1.8vw, 28px); }
+.nav__links { grid-column: 3; display: flex; justify-self: end; gap: clamp(16px, 1.8vw, 28px); }
 .nav__links a {
     font-family: var(--font);
     font-size: clamp(18px, 1.35vw, 22px);

@@ -41,7 +41,8 @@ window.YOKO_CASES = {
           "label": "Format bedenken",
           "slug": "heyu"
         }
-      ]
+      ],
+      "autoplay_preview": true
     },
     {
       "id": 19,
@@ -71,7 +72,8 @@ window.YOKO_CASES = {
           "src": "assets/cases/zin/thumb.jpg",
           "alt": "Zin in Morgen merkidentiteit"
         }
-      ]
+      ],
+      "autoplay_preview": true
     },
     {
       "id": 21,
@@ -361,7 +363,8 @@ window.YOKO_CASES = {
           "src": "assets/cases/kinderen-voor-kinderen/02.jpg",
           "alt": ""
         }
-      ]
+      ],
+      "autoplay_preview": true
     },
     {
       "id": 2,

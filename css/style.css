@@ -2209,16 +2209,27 @@ a, button, [role="button"],
 /* =====================================================
    CHAPTERS (homepage hoofdstukken, vaste rij-hoogte)
    ===================================================== */
-.work-heading {
-    width: fit-content;
+.work-scroll-cue {
+    width: max-content;
     margin: 0 auto clamp(12px, 1.5vw, 24px);
-    padding: 10px 26px;
-    border: 2px solid var(--dark);
-    border-radius: 999px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
     color: var(--dark);
-    font-size: clamp(16px, 1.25vw, 20px);
+    font-size: clamp(14px, 1.05vw, 17px);
     font-weight: 500;
+    line-height: 1.2;
+    text-decoration: none;
+}
+.work-scroll-cue__arrow {
+    font-size: clamp(24px, 2vw, 34px);
     line-height: 1;
+    animation: work-cue-bob 1.8s ease-in-out infinite;
+}
+@keyframes work-cue-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
 }
 
 /* Uniforme witruimte: verticale gap tussen rijen = horizontale gap tussen tegels */

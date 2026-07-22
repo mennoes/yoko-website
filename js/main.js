@@ -542,7 +542,6 @@ function initTileMagnet() {
 const CASE_CURSOR_SEL = '.ch__item, .work-item';
 function initCaseCursor() {
     if (window.matchMedia && window.matchMedia('(hover: none)').matches) return;
-    if (!document.querySelector(CASE_CURSOR_SEL)) return;
 
     const cursor = document.createElement('div');
     cursor.className = 'case-cursor';

@@ -824,11 +824,8 @@ a { color: inherit; }
     pointer-events: none;
     z-index: 1;
 }
-.work-item:hover .work-item__overlay { opacity: 1; }
-.work-item:hover .work-item__img,
-.work-item:hover .work-item__video {
-    transform: translate3d(0, var(--parallax-y, 0), 0) scale(1.04);
-}
+/* Geen extra kleur-overlay of aparte hover-scale → gelijk aan de homepage-cases
+   (beeld blijft zichtbaar, alleen de scrim + tekst, beweging via tile-magnet) */
 
 
 /* Info als overlay onderin de thumbnail — verschijnt bij hover */

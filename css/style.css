@@ -474,6 +474,22 @@ a { color: inherit; }
     .intro-collage__p--2 { left: 0; }
 }
 
+.reel-sub--headline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(72px, 10vw, 160px) var(--pad-x);
+    text-align: center;
+}
+.reel-sub--headline .reel-sub__body--dark {
+    max-width: none;
+    margin: 0;
+    font-size: clamp(52px, 8vw, 140px);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: clamp(-7px, -0.4vw, -2px);
+}
+
 /* Wij werken voor — vlak boven contact */
 .worked-for {
     padding: clamp(40px, 6vw, 80px) var(--pad-x);

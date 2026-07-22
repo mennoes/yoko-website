@@ -112,7 +112,7 @@ a { color: inherit; }
     flex-shrink: 0;
     text-decoration: none;
     transform-origin: left center;
-    transition: opacity 0.35s ease, transform 0.35s ease;
+    transition: transform 0.35s ease;
 }
 .nav__logo img {
     height: clamp(24px, 2.4vw, 38px);
@@ -133,7 +133,10 @@ a { color: inherit; }
 .nav--dark.is-past-hero .nav__logo-ani { filter: brightness(0); }
 /* Logo faded uit bij scrollen (mobiel + desktop) */
 .nav.is-collapsed .nav__logo {
+    opacity: 0;
+    visibility: hidden;
     transform: scale(0.82);
+    pointer-events: none;
 }
 .nav__description {
     max-width: 900px;

@@ -577,13 +577,16 @@ function initCaseCursor() {
 function initNavLogo() {
     const box = document.getElementById('navLogoAni');
     if (!box || typeof lottie === 'undefined') return;
-    lottie.loadAnimation({
+    const anim = lottie.loadAnimation({
         container: box,
         renderer: 'svg',
-        loop: true,
+        loop: false,
         autoplay: true,
         path: 'assets/yoko-logo.json',
     });
+    // Alleen opnieuw animeren bij hover over het logo
+    const link = box.closest('.nav__logo') || box;
+    link.addEventListener('mouseenter', () => anim.goToAndPlay(0, true));
 }
 
 // ===== INTRO-SLIDESHOW: crossfade tussen studio-foto's =====

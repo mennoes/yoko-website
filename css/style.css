@@ -111,7 +111,8 @@ a { color: inherit; }
     display: block;
     flex-shrink: 0;
     text-decoration: none;
-    transition: opacity 0.35s ease;
+    transform-origin: left center;
+    transition: opacity 0.35s ease, transform 0.35s ease;
 }
 .nav__logo img {
     height: clamp(24px, 2.4vw, 38px);
@@ -122,8 +123,8 @@ a { color: inherit; }
 /* Lottie-logo linksboven — zelfde hoogte/kleurbehandeling als het statische logo */
 .nav__logo-ani {
     height: clamp(24px, 2.4vw, 38px);
-    aspect-ratio: 2672 / 490;
-    width: auto;
+    width: clamp(131px, 13.1vw, 207px);
+    overflow: hidden;
     display: block;
     filter: brightness(0);
 }
@@ -133,6 +134,7 @@ a { color: inherit; }
 /* Logo faded uit bij scrollen (mobiel + desktop) */
 .nav.is-collapsed .nav__logo {
     opacity: 0;
+    transform: scale(0.82);
     pointer-events: none;
 }
 .nav__description {

@@ -1577,7 +1577,8 @@ a, button, [role="button"],
 }
 .nav__links a:hover { opacity: 1; text-decoration-color: currentColor; }
 /* Custom roterende cursor op cases → standaardcursor verbergen */
-.ch__item, .ch__item * { cursor: none; }
+.ch__item, .ch__item *,
+.work-item, .work-item * { cursor: none; }
 .case-cursor {
     position: fixed;
     top: 0; left: 0;

@@ -1561,11 +1561,11 @@ a, button, [role="button"],
 .gp-post, .footer__photo, .nav__toggle, .contact-form__btn {
     cursor: url('../assets/cursor-thumb.svg?v=4') 15 8, pointer;
 }
-/* Click-cursor op menu-items + de team-titel; menu-items krijgen underline bij hover */
-.nav__links a,
-.footer__team .footer__title {
-    cursor: url('../assets/cursor-click.svg?v=1') 9 2, pointer;
+/* Klik-cursor (mousedown) op alle interactieve elementen én de pagina zelf */
+:active {
+    cursor: url('../assets/cursor-click.svg?v=2') 9 2, pointer;
 }
+/* Menu-items krijgen underline bij hover */
 .nav__links a {
     text-decoration: underline;
     text-underline-offset: 4px;
@@ -1592,7 +1592,16 @@ a, button, [role="button"],
     will-change: transform;
 }
 .case-cursor.is-visible { opacity: 1; }
-.case-cursor svg { width: 100%; height: 100%; display: block; }
+.case-cursor__ico {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    display: block;
+}
+/* Klik-hand staat los van de rotatie: recht overeind, iets kleiner uitgelijnd */
+.case-cursor__ico--click { display: none; transform: rotate(calc(-1 * var(--rot, 0deg))); }
+.case-cursor.is-click .case-cursor__ico--ok { display: none; }
+.case-cursor.is-click .case-cursor__ico--click { display: block; }
 
 /* =====================================================
    ANIMATIES

@@ -133,10 +133,7 @@ a { color: inherit; }
 .nav--dark.is-past-hero .nav__logo-ani { filter: brightness(0); }
 /* Logo faded uit bij scrollen (mobiel + desktop) */
 .nav.is-collapsed .nav__logo {
-    opacity: 0;
-    visibility: hidden;
     transform: scale(0.82);
-    pointer-events: none;
 }
 .nav__description {
     max-width: 900px;

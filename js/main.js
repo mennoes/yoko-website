@@ -580,13 +580,26 @@ function initNavLogo() {
     const anim = lottie.loadAnimation({
         container: box,
         renderer: 'svg',
-        loop: false,
+        loop: true,
         autoplay: true,
         path: 'assets/yoko-logo.json',
     });
-    // Alleen opnieuw animeren bij hover over het logo
     const link = box.closest('.nav__logo') || box;
+
+    // Bovenaan loopt de animatie; zodra je scrollt stopt 'ie
+    let collapsed = false;
+    function syncScroll() {
+        const isCol = window.scrollY > 60;
+        if (isCol === collapsed) return;
+        collapsed = isCol;
+        if (collapsed) anim.pause();
+        else anim.play();
+    }
+    window.addEventListener('scroll', syncScroll, { passive: true });
+
+    // Hover → meteen animeren; bij verlaten na scroll weer stoppen
     link.addEventListener('mouseenter', () => anim.goToAndPlay(0, true));
+    link.addEventListener('mouseleave', () => { if (collapsed) anim.pause(); });
 }
 
 // ===== INTRO-SLIDESHOW: crossfade tussen studio-foto's =====

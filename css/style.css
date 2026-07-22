@@ -295,9 +295,13 @@ a { color: inherit; }
     padding: clamp(72px, 9vw, 110px) var(--pad-x) 0;   /* zelfde breedte als de tabellen eronder */
     background: var(--cream);
     line-height: 0;
+    position: sticky;
+    top: 0;
+    z-index: 0;
 }
 .page-flow {
     position: relative;
+    z-index: 1;
     background: var(--cream);
 }
 .page--home .reel,

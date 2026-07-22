@@ -962,6 +962,15 @@ a { color: inherit; }
     gap: clamp(40px, 6vw, 100px);
     align-items: center;
 }
+.about-carousel-intro {
+    padding-top: clamp(120px, 14vw, 200px);
+}
+.page--studio .studio {
+    padding-top: clamp(44px, 5vw, 76px);
+}
+.studio__intro--text-only {
+    grid-template-columns: minmax(0, 820px);
+}
 .studio__label {
     font-size: clamp(11px, 0.9vw, 13px);
     font-weight: 700;

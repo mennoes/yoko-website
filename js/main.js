@@ -200,11 +200,23 @@ function initWorkCategories() {
         filterBtns.forEach(b => b.classList.toggle('filter-btn--active', b.dataset.filter === group));
         if (desc) desc.textContent = WORK_CAT_TEXT[group] || '';
         document.querySelectorAll('.work-item').forEach(item => {
-            item.classList.toggle('is-hidden', item.dataset.group !== group);
+            if (group === 'alles') {
+                item.classList.toggle('is-hidden', item.dataset.group === 'tools');
+            } else {
+                item.classList.toggle('is-hidden', item.dataset.group !== group);
+            }
         });
     }
 
-    filterBtns.forEach(btn => btn.addEventListener('click', () => activate(btn.dataset.filter)));
+    filterBtns.forEach(btn => btn.addEventListener('click', () => {
+        const g = btn.dataset.filter;
+        // Nogmaals klikken op een actieve categorie → terug naar Alles
+        if (g !== 'alles' && btn.classList.contains('filter-btn--active')) {
+            activate('alles');
+        } else {
+            activate(g);
+        }
+    }));
 
     // Standaard: niets geselecteerd — toon alle cases (tools verborgen), geen tekst
     filterBtns.forEach(b => b.classList.remove('filter-btn--active'));

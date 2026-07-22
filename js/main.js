@@ -573,8 +573,23 @@ function initCaseCursor() {
     window.addEventListener('mousemove', onMove, { passive: true });
 }
 
+// ===== INTRO-SLIDESHOW: crossfade tussen studio-foto's =====
+function initIntroSlideshow() {
+    const box = document.getElementById('introSlideshow');
+    if (!box) return;
+    const slides = Array.from(box.querySelectorAll('.intro-collage__bg'));
+    if (slides.length < 2) return;
+    let i = 0;
+    setInterval(() => {
+        slides[i].classList.remove('is-active');
+        i = (i + 1) % slides.length;
+        slides[i].classList.add('is-active');
+    }, 3500);
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', async () => {
+    initIntroSlideshow();
     initHeroHeadline();
     initHeroVideo();
     initNavScroll();

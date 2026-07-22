@@ -156,7 +156,7 @@ a { color: inherit; }
     white-space: nowrap;
 }
 .nav__links a:hover { opacity: 1; }
-.nav__link--active { opacity: 1 !important; }
+.nav__link--active { opacity: 1 !important; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
 
 /* Nav varianten — alleen tekstkleur flippen, balk blijft blauw */
 .nav--dark {
@@ -884,14 +884,19 @@ a { color: inherit; }
     color: var(--dark);
     opacity: 0.9;
 }
-/* Work-header: titel + categorie-tekst links, filters rechts */
+/* Work-header: grote filterknoppen + categorie-tekst, links uitgelijnd */
 .page-header--work {
-    padding-top: clamp(80px, 9.5vw, 128px);
+    padding-top: clamp(96px, 12vw, 168px);
+    justify-content: flex-start;
 }
 .page-header__left {
     display: flex;
     flex-direction: column;
     gap: clamp(18px, 2vw, 30px);
+}
+.page-header--work .filter-btn {
+    font-size: clamp(16px, 1.5vw, 22px);
+    padding: 12px 26px;
 }
 .page-header__desc {
     margin: 0;

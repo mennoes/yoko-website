@@ -206,8 +206,12 @@ function initWorkCategories() {
 
     filterBtns.forEach(btn => btn.addEventListener('click', () => activate(btn.dataset.filter)));
 
-    // Standaard: eerste categorie (Vorm)
-    activate('vorm');
+    // Standaard: niets geselecteerd — toon alle cases (tools verborgen), geen tekst
+    filterBtns.forEach(b => b.classList.remove('filter-btn--active'));
+    if (desc) desc.textContent = '';
+    document.querySelectorAll('.work-item').forEach(item => {
+        item.classList.toggle('is-hidden', item.dataset.group === 'tools');
+    });
 }
 
 // ===== SCROLL FADE ANIMATIES =====

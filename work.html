@@ -8,7 +8,7 @@
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-    <link rel="stylesheet" href="css/style.css?v=22">
+    <link rel="stylesheet" href="css/style.css?v=36">
 </head>
 <body class="page--work">
 
@@ -28,15 +28,13 @@
     <!-- ===== WORK HEADER ===== -->
     <header class="page-header page-header--work">
         <div class="page-header__left">
-            <h1 class="page-header__title">Work</h1>
+            <!-- Categorie filters -->
+            <div class="filters" id="filters">
+                <button class="filter-btn" data-filter="vorm">Vorm</button>
+                <button class="filter-btn" data-filter="verhaal">Verhaal</button>
+                <button class="filter-btn" data-filter="tools">Slimme tools</button>
+            </div>
             <p class="page-header__desc" id="cat-desc"></p>
-        </div>
-
-        <!-- Categorie filters -->
-        <div class="filters" id="filters">
-            <button class="filter-btn filter-btn--active" data-filter="vorm">Vorm</button>
-            <button class="filter-btn" data-filter="verhaal">Verhaal</button>
-            <button class="filter-btn" data-filter="tools">Slimme tools</button>
         </div>
     </header>
 
@@ -75,6 +73,6 @@
 
     <script src="data/cases.js"></script>
     <script>window.YOKO_CONFIG = { mode: 'work', maxItems: 999 };</script>
-    <script src="js/main.js?v=8"></script>
+    <script src="js/main.js?v=9"></script>
 </body>
 </html>

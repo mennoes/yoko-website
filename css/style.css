@@ -2320,6 +2320,9 @@ body.cursor-on-yellow .contact-form__btn {
 .ch {
     --gap: clamp(40px, 6vw, 100px);   /* gelijk aan de horizontale witruimte in de intro */
     --rowh: clamp(260px, 32vw, 500px);
+    width: 100%;
+    min-width: 0;
+    overflow-x: clip;
     padding: 0 var(--pad-x) clamp(44px, 5.5vw, 88px);
     display: flex;
     flex-direction: column;

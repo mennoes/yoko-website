@@ -47,7 +47,7 @@
     --page-tint-opacity: 1;
     --verhaal-tint-opacity: 0;
     --systeem-tint-opacity: 0;
-    --font:   'Aeonik', 'DM Sans', sans-serif;
+    --font:   'Hagrid', 'Aeonik', 'DM Sans', sans-serif;
     --font-display: 'Hagrid', var(--font);
 
     --content-max: 1920px;

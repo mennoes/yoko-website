@@ -1060,6 +1060,11 @@ a { color: inherit; }
 }
 .studio__split--rev .studio__split-img  { order: 2; }
 .studio__split--rev .studio__split-text { order: 1; }
+.studio__split--text-right .studio__split-text {
+    justify-self: end;
+    text-align: right;
+}
+.studio__split--text-right .studio__body { margin-left: auto; }
 .studio__split-img img {
     width: 100%;
     aspect-ratio: 4 / 3;
@@ -1178,6 +1183,8 @@ a { color: inherit; }
     .studio__split { grid-template-columns: 1fr; gap: clamp(18px, 5vw, 32px); }
     .studio__split--rev .studio__split-img  { order: 1; }
     .studio__split--rev .studio__split-text { order: 2; }
+    .studio__split--text-right .studio__split-text { text-align: left; }
+    .studio__split--text-right .studio__body { margin-left: 0; }
 }
 
 /* Work-header: grote filterknoppen + categorie-tekst, links uitgelijnd */

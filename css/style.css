@@ -2320,7 +2320,7 @@ body.cursor-on-yellow .contact-form__btn {
     color: var(--dark);
 }
 #work {
-    padding: clamp(16px, 2vw, 32px) 0 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     gap: 0;

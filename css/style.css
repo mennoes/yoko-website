@@ -1392,6 +1392,8 @@ h2,
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: clamp(12px, 1.4vw, 22px);
+    width: 100%;
+    max-width: 620px;
 }
 .footer__photo {
     width: 100%;
@@ -1428,10 +1430,24 @@ h2,
 .footer__cta:hover .cta-arrow { transform: translateX(7px) rotate(-12deg); }
 .footer__info { display: flex; flex-direction: column; gap: 20px; }
 .footer__contact--direct {
-    min-height: 100%;
-    padding: clamp(30px, 4vw, 64px);
-    border: 1px solid rgba(200, 155, 213, 0.38);
-    justify-content: space-between;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    justify-content: flex-start;
+    gap: clamp(14px, 1.6vw, 22px);
+}
+.footer__cols > .footer__team > .footer__label,
+.footer__cols > .footer__contact > .footer__label { display: none; }
+.footer__contact--direct .footer__title {
+    font-size: clamp(34px, 3.2vw, 52px);
+    line-height: 1;
+}
+.footer__contact--direct .footer__info {
+    gap: clamp(18px, 2vw, 28px);
+    margin-top: 0;
+}
+.footer__contact--direct .footer__email {
+    font-size: clamp(18px, 1.55vw, 26px);
 }
 
 /* ===== CONTACT FORM ===== */
@@ -1570,7 +1586,7 @@ h2,
 }
 @media (max-width: 800px) {
     .footer__cols { grid-template-columns: 1fr; }
-    .footer__contact--direct { min-height: 420px; }
+    .footer__contact--direct { min-height: 0; }
     .footer__photos { gap: 10px; }
     .page-handoff__title { font-size: clamp(52px, 17vw, 96px); }
 }

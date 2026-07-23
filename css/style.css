@@ -34,8 +34,11 @@
     --systeem-tint-opacity: 0;
     --font:   'Aeonik', 'DM Sans', sans-serif;
 
-    --pad-x:  clamp(32px, 8vw, 160px);
-    --pad-x-wide: clamp(48px, 12vw, 240px);
+    --content-max: 1920px;
+    --pad-x-base: clamp(32px, 8vw, 160px);
+    --pad-x-wide-base: clamp(48px, 12vw, 240px);
+    --pad-x: max(var(--pad-x-base), calc((100vw - var(--content-max)) / 2 + var(--pad-x-base)));
+    --pad-x-wide: max(var(--pad-x-wide-base), calc((100vw - var(--content-max)) / 2 + var(--pad-x-wide-base)));
     --grid-gap: 5px;
     --nav-pad: clamp(20px, 3vw, 40px);
 }
@@ -99,7 +102,6 @@ a { color: inherit; }
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    max-width: 1920px;
     z-index: 1000;
     padding: clamp(18px, 2vw, 28px) var(--pad-x);
     display: grid;

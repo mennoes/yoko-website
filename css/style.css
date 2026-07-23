@@ -324,22 +324,11 @@ a { color: inherit; }
 .page--home .page-flow {
     background:
         linear-gradient(
-            rgba(154, 174, 165, var(--systeem-tint-opacity)),
-            rgba(154, 174, 165, var(--systeem-tint-opacity))
-        ),
-        linear-gradient(
-            rgba(220, 184, 62, var(--verhaal-tint-opacity)),
-            rgba(220, 184, 62, var(--verhaal-tint-opacity))
-        ),
-        linear-gradient(
             rgba(176, 198, 235, var(--page-tint-opacity)),
             rgba(176, 198, 235, var(--page-tint-opacity))
         ),
         var(--cream);
-    box-shadow:
-        0 0 0 100vmax rgba(154, 174, 165, var(--systeem-tint-opacity)),
-        0 0 0 100vmax rgba(220, 184, 62, var(--verhaal-tint-opacity)),
-        0 0 0 100vmax rgba(176, 198, 235, var(--page-tint-opacity));
+    box-shadow: 0 0 0 100vmax rgba(176, 198, 235, var(--page-tint-opacity));
     clip-path: inset(0 -100vmax);
 }
 .reel__video {

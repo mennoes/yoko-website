@@ -483,7 +483,12 @@ a { color: inherit; }
 .intro-collage__bg--saturated { filter: saturate(1.4) brightness(1.08); }
 .intro-collage__bg.is-active { opacity: 1; }
 @media (max-width: 720px) {
-    .reel-sub--intro { grid-template-columns: 1fr; gap: clamp(48px, 12vw, 80px); }
+    .reel-sub--intro {
+        grid-template-columns: 1fr;
+        gap: clamp(32px, 9vw, 48px);
+        padding-top: clamp(20px, 6vw, 28px);
+        padding-bottom: clamp(40px, 10vw, 56px);
+    }
     .reel-sub--intro .reel-sub__body--dark { white-space: normal; }
     .intro-collage { max-width: 600px; }
     .intro-collage__p--2 { left: 0; }
@@ -2498,7 +2503,81 @@ body.cursor-on-yellow .contact-form__btn {
 .ch__item:hover .ch__ov { opacity: 1; }
 .ch__item:hover .ch__ov p { transform: translateY(0); }
 
+/* Touch: geen verborgen hoverstatus, maar direct context + duidelijke actie. */
+@media (hover: none), (pointer: coarse) {
+    .ch__item,
+    .work-item {
+        -webkit-tap-highlight-color: transparent;
+    }
+    .ch__item:not([href="#"]) .ch__media::after,
+    .work-item .work-item__media::after {
+        content: "Bekijk \2197";
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        z-index: 4;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(237, 234, 228, 0.9);
+        color: var(--dark);
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.1px;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        pointer-events: none;
+    }
+    .ch__ov,
+    .work-item__info {
+        opacity: 1;
+        padding: 14px;
+        background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.18) 48%, transparent 72%);
+    }
+    .ch__ov p,
+    .work-item__title,
+    .work-item__summary {
+        transform: none;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        font-size: 13px;
+        line-height: 1.35;
+    }
+    .ch__client,
+    .work-item__label {
+        opacity: 1;
+    }
+    .ch__item:active .ch__media,
+    .work-item:active .work-item__media {
+        transform: scale(0.985);
+    }
+    .ch__media,
+    .work-item__media {
+        transition: transform 0.16s ease;
+    }
+}
+
 @media (max-width: 720px) {
+    .ch {
+        position: sticky;
+        bottom: 0;
+    }
+    .ch:nth-child(1) {
+        z-index: 1;
+        background: var(--cream);
+    }
+    .ch:nth-child(2) {
+        z-index: 2;
+        padding-top: clamp(32px, 9vw, 52px);
+        background: var(--highlight);
+    }
+    .ch:nth-child(3) {
+        z-index: 3;
+        padding-top: clamp(32px, 9vw, 52px);
+        background: #9aaea5;
+    }
     .ch__row, .ch__grid {
         grid-template-columns: 1fr;
     }

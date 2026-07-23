@@ -2307,7 +2307,7 @@ body.cursor-on-yellow .contact-form__btn {
 
 /* Uniforme witruimte: verticale gap tussen rijen = horizontale gap tussen tegels */
 .home-work-intro {
-    padding: clamp(72px, 10vw, 160px) var(--pad-x) clamp(48px, 7vw, 112px);
+    padding: clamp(36px, 4vw, 64px) var(--pad-x) clamp(28px, 3vw, 48px);
 }
 .home-work-intro p {
     max-width: 24ch;
@@ -2319,7 +2319,7 @@ body.cursor-on-yellow .contact-form__btn {
     color: var(--dark);
 }
 #work {
-    padding: clamp(28px, 3.5vw, 56px) 0 0;
+    padding: clamp(16px, 2vw, 32px) 0 0;
     display: flex;
     flex-direction: column;
     gap: 0;

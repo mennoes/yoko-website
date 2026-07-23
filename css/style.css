@@ -2473,6 +2473,10 @@ body.cursor-on-yellow .contact-form__btn {
     gap: var(--gap);
     align-items: start;
 }
+.ch__lead-row--media-left .ch__item,
+.ch__lead-row--media-right .ch__text { order: 1; }
+.ch__lead-row--media-left .ch__text,
+.ch__lead-row--media-right .ch__item { order: 2; }
 .ch__text {
     min-width: 0;
     align-self: start;
@@ -2689,6 +2693,10 @@ body.cursor-on-yellow .contact-form__btn {
         grid-template-columns: 1fr;
     }
     .ch__text { order: -1; position: static; }
+    .ch__lead-row--media-left .ch__text,
+    .ch__lead-row--media-right .ch__text { order: -1; }
+    .ch__lead-row--media-left .ch__item,
+    .ch__lead-row--media-right .ch__item { order: 0; }
     .ch__text--right, .ch__text--left { text-align: left; align-items: flex-start; }
     .ch__item { width: 100%; }
     .ch__media { width: 100%; height: auto; aspect-ratio: 16 / 9; }

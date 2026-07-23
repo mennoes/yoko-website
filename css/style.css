@@ -52,8 +52,7 @@ body {
     cursor: url('../assets/cursor-default.svg?v=3') 3 2, auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    max-width: 1920px;
-    margin-inline: auto;
+    width: 100%;
     position: relative;
     z-index: 0;
 }

@@ -2369,7 +2369,7 @@ body.cursor-on-yellow .contact-form__btn {
 }
 .ch__randomize {
     align-self: center;
-    margin-block: calc(var(--gap) * -0.35);
+    margin-block: calc(var(--gap) * -0.65);
     padding: 9px 18px;
     border: 2px solid var(--dark);
     border-radius: 999px;

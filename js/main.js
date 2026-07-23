@@ -694,32 +694,39 @@ function initIntroSlideshow() {
 function initChapterRandomizers() {
     document.querySelectorAll('.ch').forEach(chapter => {
         const button = chapter.querySelector('.ch__randomize');
+        const leadRow = chapter.querySelector('.ch__lead-row');
+        const leadItem = leadRow?.querySelector(':scope > .ch__item');
         const row = chapter.querySelector('.ch__random-row');
         const poolRow = chapter.querySelector('.ch__pool-row');
-        if (!button || !row || !poolRow) return;
+        if (!button || !leadItem || !row || !poolRow) return;
 
-        const cards = [...row.querySelectorAll(':scope > .ch__item'), ...poolRow.querySelectorAll(':scope > .ch__item')]
+        const cards = [leadItem, ...row.querySelectorAll(':scope > .ch__item'), ...poolRow.querySelectorAll(':scope > .ch__item')]
             .map(card => card.cloneNode(true));
         poolRow.remove();
 
         button.addEventListener('click', () => {
-            const current = [...row.querySelectorAll(':scope > .ch__item')]
-                .map(card => card.dataset.caseId)
+            const currentLead = leadRow.querySelector(':scope > .ch__item');
+            const visibleCards = [currentLead, ...row.querySelectorAll(':scope > .ch__item')];
+            const cardKey = card => card.dataset.caseId || card.getAttribute('href') || card.querySelector('.ch__client')?.textContent;
+            const current = visibleCards
+                .map(cardKey)
                 .sort()
                 .join('|');
 
-            let next = cards.slice(0, 2);
+            let next = cards.slice(0, 3);
             for (let attempt = 0; attempt < 12; attempt += 1) {
-                next = [...cards].sort(() => Math.random() - 0.5).slice(0, 2);
-                const signature = next.map(card => card.dataset.caseId).sort().join('|');
+                next = [...cards].sort(() => Math.random() - 0.5).slice(0, 3);
+                const signature = next.map(cardKey).sort().join('|');
                 if (signature !== current) break;
             }
 
-            row.replaceChildren(...next.map(card => {
+            const replacements = next.map(card => {
                 const clone = card.cloneNode(true);
                 clone.classList.remove('js-fade');
                 return clone;
-            }));
+            });
+            currentLead.replaceWith(replacements[0]);
+            row.replaceChildren(replacements[1], replacements[2]);
 
             button.classList.remove('is-spinning');
             void button.offsetWidth;

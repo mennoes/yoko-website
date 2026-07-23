@@ -750,12 +750,37 @@ function initRandomizerPlacement() {
     placeButtons();
 }
 
+function initChapterStacking() {
+    const desktop = window.matchMedia('(min-width: 721px)');
+    const chapters = Array.from(document.querySelectorAll('.page--home .pillars .ch'));
+    if (!chapters.length) return;
+
+    function updateStickyTops() {
+        chapters.forEach(chapter => {
+            if (!desktop.matches) {
+                chapter.style.removeProperty('--chapter-sticky-top');
+                return;
+            }
+
+            const stickyTop = Math.min(0, window.innerHeight - chapter.offsetHeight);
+            chapter.style.setProperty('--chapter-sticky-top', `${stickyTop}px`);
+        });
+    }
+
+    const resizeObserver = new ResizeObserver(updateStickyTops);
+    chapters.forEach(chapter => resizeObserver.observe(chapter));
+    desktop.addEventListener('change', updateStickyTops);
+    window.addEventListener('resize', updateStickyTops, { passive: true });
+    updateStickyTops();
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', async () => {
     initNavLogo();
     initIntroSlideshow();
     initChapterRandomizers();
     initRandomizerPlacement();
+    initChapterStacking();
     initHeroHeadline();
     initHeroVideo();
     initNavScroll();

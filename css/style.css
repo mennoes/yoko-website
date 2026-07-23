@@ -2308,7 +2308,12 @@ body.cursor-on-yellow .contact-form__btn {
 /* Uniforme witruimte: verticale gap tussen rijen = horizontale gap tussen tegels */
 .home-work-intro {
     padding: clamp(36px, 4vw, 64px) var(--pad-x) clamp(28px, 3vw, 48px);
-    background: transparent;
+    background:
+        linear-gradient(
+            rgba(176, 198, 235, var(--page-tint-opacity)),
+            rgba(176, 198, 235, var(--page-tint-opacity))
+        ),
+        var(--cream);
 }
 .home-work-intro p {
     max-width: 24ch;
@@ -2344,7 +2349,12 @@ body.cursor-on-yellow .contact-form__btn {
     }
     .ch:nth-child(1) {
         z-index: 1;
-        background: transparent;
+        background:
+            linear-gradient(
+                rgba(176, 198, 235, var(--page-tint-opacity)),
+                rgba(176, 198, 235, var(--page-tint-opacity))
+            ),
+            var(--cream);
     }
     .ch:nth-child(2) {
         z-index: 2;
@@ -2578,7 +2588,12 @@ body.cursor-on-yellow .contact-form__btn {
     }
     .ch:nth-child(1) {
         z-index: 1;
-        background: transparent;
+        background:
+            linear-gradient(
+                rgba(176, 198, 235, var(--page-tint-opacity)),
+                rgba(176, 198, 235, var(--page-tint-opacity))
+            ),
+            var(--cream);
     }
     .ch:nth-child(2) {
         z-index: 2;

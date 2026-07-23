@@ -47,8 +47,8 @@
     --page-tint-opacity: 1;
     --verhaal-tint-opacity: 0;
     --systeem-tint-opacity: 0;
-    --font:   'Hagrid', 'Aeonik', 'DM Sans', sans-serif;
-    --font-display: 'Hagrid', var(--font);
+    --font:   'Aeonik', 'DM Sans', sans-serif;
+    --font-display: 'Aeonik', var(--font);
 
     --content-max: 1920px;
     --pad-x-base: clamp(32px, 8vw, 160px);
@@ -91,6 +91,7 @@ h2,
 .ch__desc,
 .page-handoff__title {
     font-family: var(--font-display);
+    font-weight: 900;
 }
 
 /* ===== CTA LINK ===== */

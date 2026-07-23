@@ -703,6 +703,11 @@ function initChapterRandomizers() {
 
         const cards = [leadItem, ...row.querySelectorAll(':scope > .ch__item'), ...poolRow.querySelectorAll(':scope > .ch__item')]
             .map(card => card.cloneNode(true));
+        const visibleSlots = [leadItem, ...row.querySelectorAll(':scope > .ch__item')];
+        const slotAspectRatios = visibleSlots.map(card => {
+            const media = card.querySelector('.ch__media');
+            return media ? getComputedStyle(media).aspectRatio : '';
+        });
         poolRow.remove();
 
         button.addEventListener('click', () => {
@@ -721,9 +726,13 @@ function initChapterRandomizers() {
                 if (signature !== current) break;
             }
 
-            const replacements = next.map(card => {
+            const replacements = next.map((card, index) => {
                 const clone = card.cloneNode(true);
                 clone.classList.remove('js-fade');
+                const media = clone.querySelector('.ch__media');
+                if (media && slotAspectRatios[index]) {
+                    media.style.aspectRatio = slotAspectRatios[index];
+                }
                 return clone;
             });
             currentLead.replaceWith(replacements[0]);

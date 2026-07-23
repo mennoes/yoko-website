@@ -781,6 +781,40 @@ function initChapterStacking() {
     updateStickyTops();
 }
 
+// ===== DOORSCROLLEN NAAR VOLGENDE HOOFDPAGINA =====
+function initScrollHandoff() {
+    const handoff = document.querySelector('[data-scroll-next]');
+    if (!handoff) return;
+
+    let bottomSince = 0;
+    let wheelDistance = 0;
+
+    const atPageEnd = () =>
+        window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 3;
+
+    window.addEventListener('scroll', () => {
+        if (atPageEnd()) {
+            if (!bottomSince) bottomSince = Date.now();
+            handoff.classList.add('is-armed');
+        } else {
+            bottomSince = 0;
+            wheelDistance = 0;
+            handoff.classList.remove('is-armed');
+        }
+    }, { passive: true });
+
+    window.addEventListener('wheel', event => {
+        if (!atPageEnd() || event.deltaY <= 0) return;
+        if (!bottomSince) bottomSince = Date.now();
+        if (Date.now() - bottomSince < 350) return;
+
+        wheelDistance += event.deltaY;
+        if (wheelDistance >= 180) {
+            window.location.href = handoff.dataset.scrollNext;
+        }
+    }, { passive: true });
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', async () => {
     initNavLogo();
@@ -788,6 +822,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initChapterRandomizers();
     initRandomizerPlacement();
     initChapterStacking();
+    initScrollHandoff();
     initHeroHeadline();
     initHeroVideo();
     initNavScroll();

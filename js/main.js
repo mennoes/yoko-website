@@ -428,6 +428,7 @@ function initTextRepulsion() {
         '.ch__desc',
         '.studio__headline',
         '.studio__h2',
+        '.home-work-intro__title',
         '.page-header__title',
         '.footer__title',
         '.footer__team-title',

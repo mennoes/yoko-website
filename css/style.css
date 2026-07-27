@@ -304,10 +304,10 @@ h2,
     pointer-events: auto;
 }
 .nav.is-collapsed {
-    background: rgba(237, 234, 228, 0.94);
-    box-shadow: 0 1px 0 rgba(32, 32, 32, 0.12);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 /* Open menu wint altijd van de collapse-fade */
 .nav.is-open .nav__links {

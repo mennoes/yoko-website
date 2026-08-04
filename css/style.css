@@ -536,6 +536,16 @@ h2,
     padding: clamp(40px, 6vw, 80px) var(--pad-x);
     background: var(--cream);
 }
+.worked-for--logos {
+    padding-top: clamp(56px, 7vw, 112px);
+    padding-bottom: clamp(56px, 7vw, 112px);
+    background: var(--dark);
+}
+.worked-for__logos {
+    display: block;
+    width: 100%;
+    height: auto;
+}
 .worked-for .reel-sub__for-label {
     font-size: 11px;
     margin-bottom: 16px;

@@ -793,17 +793,27 @@ function initChapterStacking() {
 
 // ===== DOORSCROLLEN NAAR VOLGENDE HOOFDPAGINA =====
 function initScrollHandoff() {
-    const handoff = document.querySelector('[data-scroll-next]');
+    const handoff = document.querySelector('[data-scroll-next], .case-next');
     if (!handoff) return;
+
+    const nextUrl = () => {
+        if (handoff.dataset.scrollNext) return handoff.dataset.scrollNext;
+        return handoff.querySelector('.case-next__link')?.href || '';
+    };
 
     let bottomSince = 0;
     let wheelDistance = 0;
 
-    const atPageEnd = () =>
-        window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 3;
+    const atHandoffStop = () => {
+        if (handoff.classList.contains('case-next')) {
+            const rect = handoff.getBoundingClientRect();
+            return rect.top <= 3 && rect.top >= -80 && rect.bottom >= window.innerHeight - 3;
+        }
+        return window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 3;
+    };
 
     window.addEventListener('scroll', () => {
-        if (atPageEnd()) {
+        if (atHandoffStop()) {
             if (!bottomSince) bottomSince = Date.now();
             handoff.classList.add('is-armed');
         } else {
@@ -814,15 +824,17 @@ function initScrollHandoff() {
     }, { passive: true });
 
     window.addEventListener('wheel', event => {
-        if (!atPageEnd() || event.deltaY <= 0) return;
+        if (!atHandoffStop() || event.deltaY <= 0) return;
+        event.preventDefault();
         if (!bottomSince) bottomSince = Date.now();
         if (Date.now() - bottomSince < 350) return;
 
         wheelDistance += event.deltaY;
         if (wheelDistance >= 180) {
-            window.location.href = handoff.dataset.scrollNext;
+            const destination = nextUrl();
+            if (destination) window.location.href = destination;
         }
-    }, { passive: true });
+    }, { passive: false });
 }
 
 // ===== INIT =====

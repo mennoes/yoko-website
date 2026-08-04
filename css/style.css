@@ -15,27 +15,6 @@
     src: url('../assets/fonts/Aeonik-Bold.otf') format('opentype');
     font-weight: 700; font-style: normal; font-display: swap;
 }
-@font-face {
-    font-family: 'Aeonik';
-    src: url('../assets/fonts/Aeonik-Black.otf') format('opentype');
-    font-weight: 900; font-style: normal; font-display: swap;
-}
-@font-face {
-    font-family: 'Hagrid';
-    src: url('../assets/fonts/Hagrid-Regular.otf') format('opentype');
-    font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
-    font-family: 'Hagrid';
-    src: url('../assets/fonts/Hagrid-Medium.otf') format('opentype');
-    font-weight: 500 600; font-style: normal; font-display: swap;
-}
-@font-face {
-    font-family: 'Hagrid';
-    src: url('../assets/fonts/Hagrid-Text-Bold.otf') format('opentype');
-    font-weight: 700 900; font-style: normal; font-display: swap;
-}
-
 /* ===== TOKENS ===== */
 :root {
     --gray:   #b6b7bb;
@@ -91,7 +70,7 @@ h2,
 .ch__desc,
 .page-handoff__title {
     font-family: var(--font-display);
-    font-weight: 900;
+    font-weight: 700;
 }
 
 /* ===== CTA LINK ===== */
@@ -545,7 +524,7 @@ h2,
     margin: 0 0 clamp(32px, 5vw, 80px);
     color: #B0C6EB;
     font-size: clamp(36px, 5vw, 80px);
-    font-weight: 900;
+    font-weight: 700;
     line-height: 1;
     letter-spacing: -0.035em;
 }
@@ -2845,7 +2824,7 @@ body.cursor-on-yellow .contact-form__btn {
     max-width: 18ch;
     color: var(--dark);
     font-size: clamp(40px, 5vw, 84px);
-    font-weight: 900;
+    font-weight: 700;
     letter-spacing: -0.035em;
     line-height: 1;
 }
@@ -2891,7 +2870,7 @@ body.cursor-on-yellow .contact-form__btn {
     margin-bottom: 0;
     color: var(--dark);
     font-size: clamp(40px, 5vw, 84px);
-    font-weight: 900;
+    font-weight: 700;
     line-height: 1;
     letter-spacing: -0.035em;
 }

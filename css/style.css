@@ -2448,7 +2448,7 @@ body.cursor-on-yellow .contact-form__btn {
     padding: clamp(36px, 4vw, 64px) var(--pad-x) clamp(28px, 3vw, 48px);
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    align-items: end;
+    align-items: center;
     gap: clamp(32px, 6vw, 112px);
     background:
         linear-gradient(

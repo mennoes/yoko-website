@@ -541,6 +541,14 @@ h2,
     padding-bottom: clamp(56px, 7vw, 112px);
     background: var(--dark);
 }
+.worked-for__title {
+    margin: 0 0 clamp(32px, 5vw, 80px);
+    color: #B0C6EB;
+    font-size: clamp(36px, 5vw, 80px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.035em;
+}
 .worked-for__logos {
     display: block;
     width: 100%;

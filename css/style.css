@@ -2451,13 +2451,14 @@ body.cursor-on-yellow .contact-form__btn {
 }
 .home-work-intro__copy { min-width: 0; }
 .home-work-intro__title {
-    max-width: 18ch;
+    max-width: none;
     margin: 0;
     font-size: clamp(32px, 4.2vw, 72px);
-    font-weight: 700;
+    font-weight: 900;
     line-height: 1.05;
     letter-spacing: -0.035em;
     color: var(--dark);
+    white-space: nowrap;
 }
 .home-work-intro__body {
     max-width: 62ch;
@@ -2500,6 +2501,8 @@ body.cursor-on-yellow .contact-form__btn {
         align-items: start;
         gap: 24px;
     }
+    .home-work-intro__title { white-space: normal; }
+    .home-work-intro__break { display: none; }
 }
 #work {
     padding: 0;

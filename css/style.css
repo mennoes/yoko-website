@@ -2462,7 +2462,7 @@ body.cursor-on-yellow .contact-form__btn {
     max-width: none;
     margin: 0;
     font-size: clamp(32px, 4.2vw, 72px);
-    font-weight: 900;
+    font-weight: 700;
     line-height: 1.05;
     letter-spacing: -0.035em;
     color: var(--dark);

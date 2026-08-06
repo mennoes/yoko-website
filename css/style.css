@@ -3015,11 +3015,33 @@ body.cursor-on-yellow .contact-form__btn {
     border-top: 1px solid rgba(32,32,32,0.22);
 }
 .collab-type {
+    position: relative;
+    isolation: isolate;
     display: grid;
     grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.28fr);
     gap: clamp(32px, 8vw, 150px);
     padding: clamp(28px, 3vw, 48px) 0;
     border-bottom: 1px solid rgba(32,32,32,0.22);
+    overflow: hidden;
+}
+.collab-type::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--highlight);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.collab-type h3,
+.collab-type p {
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+    .collab-type:hover::before { transform: scaleX(1); }
+    .collab-type:hover h3 { transform: translateX(clamp(12px, 1.4vw, 24px)); }
+    .collab-type:hover p { transform: translateX(clamp(-12px, -0.7vw, -6px)); }
 }
 .collab-type h3,
 .collab-step h3 {

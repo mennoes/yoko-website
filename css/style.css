@@ -2969,24 +2969,29 @@ body.cursor-on-yellow .contact-form__btn {
 }
 .collab__hero {
     display: grid;
-    grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+    grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
     column-gap: clamp(40px, 8vw, 150px);
-    row-gap: clamp(40px, 5vw, 80px);
-    align-items: start;
+    align-items: center;
     padding-bottom: clamp(64px, 8vw, 128px);
 }
 .collab__hero h1 {
-    grid-column: 1 / -1;
     max-width: 13ch;
-    font-size: clamp(54px, 7.5vw, 124px);
+    font-size: clamp(54px, 6.4vw, 108px);
     font-weight: 700;
     line-height: 0.92;
     letter-spacing: -0.055em;
 }
 .collab__hero-copy {
-    grid-column: 2;
     max-width: 52ch;
-    padding-top: 0;
+    margin-top: clamp(28px, 3.5vw, 56px);
+}
+.collab__hero-image {
+    overflow: hidden;
+}
+.collab__hero-image img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
 }
 .collab__hero-copy p,
 .collab-type p,
@@ -3173,7 +3178,7 @@ body.cursor-on-yellow .contact-form__btn {
     .collab-more { grid-template-columns: 1fr; }
     .collab__hero,
     .collab-expect { gap: 30px; }
-    .collab__hero-copy { grid-column: 1; }
+    .collab__hero-image img { aspect-ratio: 4 / 3; }
     .collab-process { grid-template-columns: 1fr; }
     .collab-step,
     .collab-step:first-child,

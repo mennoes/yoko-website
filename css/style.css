@@ -3017,11 +3017,12 @@ body.cursor-on-yellow .contact-form__btn {
     padding-bottom: clamp(64px, 8vw, 128px);
 }
 .collab__hero h1 {
-    max-width: 13ch;
+    max-width: none;
     font-size: var(--type-section-title);
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.04em;
+    white-space: nowrap;
 }
 .collab__hero-copy {
     max-width: 52ch;

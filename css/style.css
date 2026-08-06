@@ -318,8 +318,9 @@ h2,
         width: 100vw;
         height: 100svh;
         justify-self: initial;
+        justify-content: flex-start;
         align-items: flex-start;
-        padding: clamp(120px, 28vh, 190px) var(--pad-x) 48px;
+        padding: clamp(160px, 22vh, 190px) var(--pad-x) 48px;
         gap: 18px;
         background: var(--dark);
     }

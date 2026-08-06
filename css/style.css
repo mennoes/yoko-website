@@ -2970,19 +2970,23 @@ body.cursor-on-yellow .contact-form__btn {
 .collab__hero {
     display: grid;
     grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
-    gap: clamp(40px, 8vw, 150px);
+    column-gap: clamp(40px, 8vw, 150px);
+    row-gap: clamp(40px, 5vw, 80px);
     align-items: start;
-    padding-bottom: clamp(72px, 10vw, 160px);
+    padding-bottom: clamp(64px, 8vw, 128px);
 }
 .collab__hero h1 {
-    font-size: clamp(58px, 9vw, 148px);
+    grid-column: 1 / -1;
+    max-width: 13ch;
+    font-size: clamp(54px, 7.5vw, 124px);
     font-weight: 700;
-    line-height: 0.9;
+    line-height: 0.92;
     letter-spacing: -0.055em;
 }
 .collab__hero-copy {
+    grid-column: 2;
     max-width: 52ch;
-    padding-top: clamp(4px, 1vw, 18px);
+    padding-top: 0;
 }
 .collab__hero-copy p,
 .collab-type p,
@@ -2997,6 +3001,7 @@ body.cursor-on-yellow .contact-form__btn {
     padding-top: clamp(64px, 8vw, 128px);
     padding-bottom: clamp(64px, 8vw, 128px);
 }
+.collab__hero + .collab__section { padding-top: 0; }
 .collab__section > h2,
 .collab-expect > h2 {
     max-width: 18ch;
@@ -3133,6 +3138,7 @@ body.cursor-on-yellow .contact-form__btn {
     .collab-more { grid-template-columns: 1fr; }
     .collab__hero,
     .collab-expect { gap: 30px; }
+    .collab__hero-copy { grid-column: 1; }
     .collab-process { grid-template-columns: 1fr; }
     .collab-step,
     .collab-step:first-child,

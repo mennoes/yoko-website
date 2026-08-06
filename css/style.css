@@ -3001,6 +3001,9 @@ body.cursor-on-yellow .contact-form__btn {
     line-height: 1.55;
     letter-spacing: -0.015em;
 }
+.home-work-intro__body--relation {
+    margin-top: clamp(8px, 0.8vw, 14px);
+}
 .collab__hero-copy p + p { margin-top: 1.35em; }
 .collab__section {
     padding-top: clamp(64px, 8vw, 128px);

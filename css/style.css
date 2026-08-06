@@ -28,6 +28,8 @@
     --systeem-tint-opacity: 0;
     --font:   'Aeonik', 'DM Sans', sans-serif;
     --font-display: 'Aeonik', var(--font);
+    --type-section-title: clamp(24px, 3vw, 42px);
+    --type-body: clamp(16px, 1.4vw, 21px);
 
     --content-max: 1920px;
     --pad-x-base: clamp(32px, 8vw, 160px);
@@ -104,8 +106,8 @@ h2,
     --nav-fade: 0;
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    transform: none;
     width: 100%;
     z-index: 1000;
     padding: clamp(18px, 2vw, 28px) var(--pad-x);
@@ -307,6 +309,37 @@ h2,
     .nav__toggle { opacity: 1; transform: translateY(-50%) scale(1); pointer-events: auto; }
     /* Inline links verborgen tenzij menu open */
     .nav__links { display: none; }
+    .nav.is-open .nav__links {
+        display: flex;
+        top: 0;
+        left: 0;
+        right: auto;
+        bottom: auto;
+        width: 100vw;
+        height: 100svh;
+        justify-self: initial;
+        align-items: flex-start;
+        padding: clamp(120px, 28vh, 190px) var(--pad-x) 48px;
+        gap: 18px;
+        background: var(--dark);
+    }
+    .nav.is-open .nav__links a {
+        width: 100%;
+        padding: 8px 0;
+        color: var(--cream);
+        font-size: clamp(34px, 11vw, 52px);
+        font-weight: 700;
+        line-height: 1.05;
+        letter-spacing: -0.035em;
+        opacity: 1;
+    }
+    .nav.is-open .nav__logo {
+        position: relative;
+        z-index: 1002;
+        transform: none;
+    }
+    .nav.is-open .nav__logo-ani { filter: brightness(0) invert(1); }
+    .nav.is-open .nav__toggle span { background: var(--cream); }
 }
 
 /* =====================================================
@@ -1126,8 +1159,8 @@ h2,
 }
 .studio__block--text { max-width: 820px; }
 .studio__h2 {
-    font-size: clamp(24px, 3vw, 42px);
-    font-weight: 600;
+    font-size: var(--type-section-title);
+    font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.05;
     color: var(--dark);
@@ -1135,8 +1168,8 @@ h2,
 }
 /* "Wie we zijn"-aanhef even groot als "Wat we doen" */
 .about-carousel-intro .reel-sub__body--dark {
-    font-size: clamp(24px, 3vw, 42px);
-    font-weight: 600;
+    font-size: var(--type-section-title);
+    font-weight: 700;
     line-height: 1.05;
     letter-spacing: -0.03em;
 }
@@ -2985,7 +3018,7 @@ body.cursor-on-yellow .contact-form__btn {
 }
 .collab__hero h1 {
     max-width: 13ch;
-    font-size: clamp(36px, 4.2vw, 72px);
+    font-size: var(--type-section-title);
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.04em;
@@ -3006,7 +3039,7 @@ body.cursor-on-yellow .contact-form__btn {
 .collab-type p,
 .collab-step p,
 .collab-expect__copy p {
-    font-size: clamp(16px, 1.28vw, 21px);
+    font-size: var(--type-body);
     line-height: 1.55;
     letter-spacing: -0.015em;
 }
@@ -3024,7 +3057,7 @@ body.cursor-on-yellow .contact-form__btn {
 .collab-expect > h2 {
     max-width: none;
     margin-bottom: clamp(40px, 5vw, 76px);
-    font-size: clamp(36px, 4.2vw, 72px);
+    font-size: var(--type-section-title);
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.04em;
@@ -3114,7 +3147,7 @@ body.cursor-on-yellow .contact-form__btn {
 .collab-expect > h2 {
     max-width: none;
     margin: 0;
-    font-size: clamp(36px, 4.2vw, 72px);
+    font-size: var(--type-section-title);
 }
 .collab-expect__copy {
     max-width: 62ch;
@@ -3143,7 +3176,7 @@ body.cursor-on-yellow .contact-form__btn {
 }
 .collab-more h2 {
     max-width: 24ch;
-    font-size: clamp(36px, 4.2vw, 72px);
+    font-size: var(--type-section-title);
     font-weight: 700;
     line-height: 1.05;
     letter-spacing: -0.04em;

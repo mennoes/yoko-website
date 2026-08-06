@@ -175,7 +175,7 @@ function workGroupOf(category) {
     return WORK_GROUPS[category] || 'verhaal';
 }
 const WORK_CAT_TEXT = {
-    vorm:    'We geven je merk een gezicht dat overal werkt, grafisch en in animatie.',
+    vorm:    'We geven jouw merk een gezicht dat overal werkt, grafisch en in animatie.',
     verhaal: 'Wil je iets vertellen? Ingewikkelde materie, scherpe journalistiek, groot onderzoek of een goed idee. Wij maken er beeld mee.',
     tools:   'Veel maken kost tijd. Wij bouwen tools die versnellen en maken het schaalbaar.',
 };

@@ -10,9 +10,18 @@
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="stylesheet" href="css/style.css?v=143">
     <style>
-        .home-work-intro__desktop-break { display: block; }
+        .home-work-intro__body--continuous { max-width: none; }
+        .home-work-intro__desktop-line { display: block; }
+        @media (min-width: 721px) {
+            .home-work-intro {
+                grid-template-columns: minmax(0, 1fr);
+                align-items: start;
+                gap: 0;
+            }
+            .home-work-intro__cta { margin-top: 24px; }
+        }
         @media (max-width: 720px) {
-            .home-work-intro__desktop-break { display: none; }
+            .home-work-intro__desktop-line { display: inline; }
         }
     </style>
 </head>
@@ -41,8 +50,7 @@
     <section class="home-work-intro">
         <div class="home-work-intro__copy">
             <p class="home-work-intro__title">Podium voor inhoud</p>
-            <p class="home-work-intro__body">Complexe verhalen, sterk verbeeld. Van eerste concept tot laatste frame.<span class="home-work-intro__desktop-break" aria-hidden="true"></span>Met vormgeving, animatie en software.</p>
-            <p class="home-work-intro__body home-work-intro__body--relation">Al jaren de visuele redactie voor Universiteit van Nederland, Greenpeace, Human, KRO-NCRV, Omroep Zwart en Nieuwsuur.</p>
+            <p class="home-work-intro__body home-work-intro__body--continuous"><span class="home-work-intro__desktop-line">Complexe verhalen, sterk verbeeld. Van eerste concept tot laatste frame. </span><span class="home-work-intro__desktop-line">Met vormgeving, animatie en software. Al jaren de visuele redactie voor </span><span class="home-work-intro__desktop-line">Universiteit van Nederland, Greenpeace, Human, KRO-NCRV, Omroep Zwart en Nieuwsuur.</span></p>
         </div>
         <a class="home-work-intro__cta" href="about.html">
             <span>Over ons</span>

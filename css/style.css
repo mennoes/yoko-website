@@ -2976,10 +2976,10 @@ body.cursor-on-yellow .contact-form__btn {
 }
 .collab__hero h1 {
     max-width: 13ch;
-    font-size: clamp(54px, 6.4vw, 108px);
+    font-size: clamp(36px, 4.2vw, 72px);
     font-weight: 700;
-    line-height: 0.92;
-    letter-spacing: -0.055em;
+    line-height: 1;
+    letter-spacing: -0.04em;
 }
 .collab__hero-copy {
     max-width: 52ch;
@@ -3007,11 +3007,12 @@ body.cursor-on-yellow .contact-form__btn {
     padding-bottom: clamp(64px, 8vw, 128px);
 }
 .collab__hero + .collab__section { padding-top: 0; }
+.collab__hero + .collab__section > h2 { white-space: nowrap; }
 .collab__section > h2,
 .collab-expect > h2 {
-    max-width: 18ch;
+    max-width: none;
     margin-bottom: clamp(40px, 5vw, 76px);
-    font-size: clamp(36px, 5vw, 76px);
+    font-size: clamp(36px, 4.2vw, 72px);
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.04em;
@@ -3099,9 +3100,9 @@ body.cursor-on-yellow .contact-form__btn {
     background: var(--accent);
 }
 .collab-expect > h2 {
-    max-width: 13ch;
+    max-width: none;
     margin: 0;
-    font-size: clamp(36px, 4.4vw, 68px);
+    font-size: clamp(36px, 4.2vw, 72px);
 }
 .collab-expect__copy {
     max-width: 62ch;
@@ -3130,7 +3131,7 @@ body.cursor-on-yellow .contact-form__btn {
 }
 .collab-more h2 {
     max-width: 24ch;
-    font-size: clamp(30px, 4vw, 64px);
+    font-size: clamp(36px, 4.2vw, 72px);
     font-weight: 700;
     line-height: 1.05;
     letter-spacing: -0.04em;
@@ -3179,6 +3180,7 @@ body.cursor-on-yellow .contact-form__btn {
     .collab__hero,
     .collab-expect { gap: 30px; }
     .collab__hero-image img { aspect-ratio: 4 / 3; }
+    .collab__hero + .collab__section > h2 { white-space: normal; }
     .collab-process { grid-template-columns: 1fr; }
     .collab-step,
     .collab-step:first-child,

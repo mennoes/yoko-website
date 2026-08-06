@@ -55,10 +55,11 @@
         }
 
         .heyu-story__media {
-            width: 100%;
-            margin: 0;
+            width: auto;
+            margin: 0 var(--pad-x-wide);
             background: #1b0757;
             overflow: hidden;
+            border-radius: 4px;
         }
 
         .heyu-story__media img {
@@ -87,6 +88,11 @@
             .heyu-story__text {
                 padding-left: var(--pad-x);
                 padding-right: var(--pad-x);
+            }
+
+            .heyu-story__media {
+                margin-left: var(--pad-x);
+                margin-right: var(--pad-x);
             }
 
             .heyu-story__copy {

@@ -3,27 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HEY U — Studio Yoko</title>
-    <meta name="description" content="HEY U is een YouTube-format voor de Universiteit van Nederland waarbij professoren internetvragen beantwoorden. Studio Yoko bedacht het format, de naam en de complete visuele identiteit.">
+    <title>HEY U! — Studio Yoko</title>
+    <meta name="description" content="Voor de Universiteit van Nederland ontwikkelde Studio Yoko HEY U!: een herkenbaar format waarin wetenschappers vragen van kijkers beantwoorden.">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="stylesheet" href="css/style.css?v=143">
     <style>
-        .heyu-logo-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: clamp(4px, 0.5vw, 8px);
+        .heyu-story {
+            background: var(--cream);
         }
-        .heyu-logo-grid img { width: 100%; display: block; border-radius: 4px; }
-        @media (max-width: 600px) {
-            .heyu-logo-grid { grid-template-columns: repeat(2, 1fr); }
+
+        .heyu-story__text {
+            padding: clamp(72px, 10vw, 150px) var(--pad-x-wide);
+        }
+
+        .heyu-story__text--dark {
+            background: var(--dark);
+            color: var(--cream);
+        }
+
+        .heyu-story__eyebrow {
+            margin-bottom: clamp(22px, 3vw, 42px);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            opacity: 0.45;
+        }
+
+        .heyu-story__heading,
+        .heyu-story__statement {
+            max-width: 19ch;
+            font-size: clamp(36px, 5.6vw, 88px);
+            font-weight: 700;
+            line-height: 0.98;
+            letter-spacing: -0.045em;
+        }
+
+        .heyu-story__copy {
+            max-width: 34ch;
+            margin-left: auto;
+            font-size: clamp(24px, 3vw, 48px);
+            font-weight: 500;
+            line-height: 1.12;
+            letter-spacing: -0.035em;
+        }
+
+        .heyu-story__copy p + p {
+            margin-top: 1.25em;
+        }
+
+        .heyu-story__media {
+            width: 100%;
+            margin: 0;
+            background: #1b0757;
+            overflow: hidden;
+        }
+
+        .heyu-story__media img {
+            width: 100%;
+            height: auto;
+            max-height: 92svh;
+            object-fit: cover;
+        }
+
+        .heyu-story__outro {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+            gap: clamp(40px, 8vw, 140px);
+            align-items: end;
+        }
+
+        .heyu-story__closing {
+            max-width: 18ch;
+            font-size: clamp(30px, 4.4vw, 68px);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        @media (max-width: 760px) {
+            .heyu-story__text {
+                padding-left: var(--pad-x);
+                padding-right: var(--pad-x);
+            }
+
+            .heyu-story__copy {
+                margin-left: 0;
+            }
+
+            .heyu-story__outro {
+                grid-template-columns: 1fr;
+                align-items: start;
+            }
         }
     </style>
 </head>
 <body class="page--case page--heyu">
 
-    <nav class="nav nav--dark" id="nav">
+    <nav class="nav" id="nav">
         <a href="index.html" class="nav__logo"><div class="nav__logo-ani" id="navLogoAni" role="img" aria-label="Studio Yoko"></div></a>
         <div class="nav__links">
             <a href="work.html">werk</a>
@@ -36,160 +115,69 @@
 
     <!-- HERO -->
     <section class="case-hero" id="case-hero" style="background: #1B0757;">
-        <img class="case-hero__bg-img" src="assets/cases/heyu/bts-set.jpg" alt=""
-             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.7;">
+        <img class="case-hero__bg-img" src="assets/cases/heyu/thumb-new.jpg" alt=""
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
         <div class="case-hero__overlay">
             <div class="case-hero__meta">
                 <span class="case-hero__category">Format &amp; Concept</span>
                 <span class="case-hero__year">2024</span>
             </div>
-            <h1 class="case-hero__title">HEY U</h1>
+            <h1 class="case-hero__title">HEY U!</h1>
         </div>
     </section>
 
-    <!-- CONTEXT -->
-    <section class="cs cs--cream">
-        <div class="cs__intro">
-            <div class="cs__meta">
-                <p class="cs__summary">Formatontwikkeling, naming en volledige brand identity voor de Universiteit van Nederland.</p>
+    <main class="heyu-story">
+        <section class="heyu-story__text">
+            <p class="heyu-story__eyebrow js-fade">Universiteit van Nederland · Formatontwikkeling</p>
+            <h2 class="heyu-story__heading js-fade">Hoe maak je van één goed idee een herkenbaar format?</h2>
+            <div class="heyu-story__copy js-fade" style="margin-top: clamp(48px, 8vw, 120px);">
+                <p>Voor de Universiteit van Nederland ontwikkelden we samen met de redactie HEY U!: een format waarin kijkers zelf hun vragen insturen en wetenschappers daar in korte video’s antwoord op geven.</p>
             </div>
-            <div>
-                <p class="cs__label js-fade">Context</p>
-                <h2 class="cs__headline js-fade">Professors beantwoorden jouw vragen.</h2>
-                <div class="cs__body js-fade">
-                    <p>HEY U is een YouTube-format voor de Universiteit van Nederland. Kijkers sturen vragen in via social media — een professor beantwoordt er vijf per aflevering. Geen academische drempel, gewoon het echte antwoord.</p>
+        </section>
+
+        <figure class="heyu-story__media js-fade">
+            <img src="assets/cases/heyu/heyu-format-01.gif" alt="HEY U!-presentator tussen de gekleurde decorblokken">
+        </figure>
+
+        <section class="heyu-story__text heyu-story__text--dark">
+            <div class="heyu-story__copy js-fade">
+                <p>We dachten vanaf het begin mee over hoe dat idee als format moest werken. Niet alleen over de graphics achteraf, maar over het geheel: set, kleur, camerahoeken, typografie, animatie en de manier waarop al die onderdelen samen één herkenbare wereld vormen.</p>
+            </div>
+        </section>
+
+        <figure class="heyu-story__media js-fade">
+            <img src="assets/cases/heyu/heyu-behind-the-scenes-01.png" alt="Opnames van HEY U! achter de schermen">
+        </figure>
+
+        <section class="heyu-story__text">
+            <div class="heyu-story__copy js-fade">
+                <p>Omdat we de visuele identiteit van de Universiteit van Nederland al jaren beheren, weten we precies waar de ruimte binnen het merk zit. HEY U! mocht duidelijk iets nieuws zijn, zonder ineens als een ander merk te voelen.</p>
+            </div>
+        </section>
+
+        <figure class="heyu-story__media js-fade">
+            <img src="assets/cases/heyu/heyu-format-02.gif" alt="Wetenschapper in de herkenbare blauwe HEY U!-set">
+        </figure>
+
+        <section class="heyu-story__text heyu-story__text--dark">
+            <div class="heyu-story__copy js-fade">
+                <p>Daarom vertaalden we bestaande merkprincipes naar een eigen beeldtaal voor het format. Van de opbouw van de set tot hoe een vraag in beeld verschijnt en hoe animatie het antwoord ondersteunt.</p>
+            </div>
+        </section>
+
+        <figure class="heyu-story__media js-fade">
+            <img src="assets/cases/heyu/heyu-behind-the-scenes-02.png" alt="De kleurrijke HEY U!-set met stoel en decorblokken">
+        </figure>
+
+        <section class="heyu-story__text">
+            <div class="heyu-story__outro">
+                <div class="heyu-story__copy js-fade">
+                    <p>Het resultaat is een format met genoeg vaste visuele regels om iedere aflevering herkenbaar te maken, maar genoeg vrijheid om twaalf verschillende onderwerpen niet twaalf keer hetzelfde te laten voelen.</p>
                 </div>
+                <p class="heyu-story__closing js-fade">Nieuw format.<br>Vertrouwd merk.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- CONCEPT BEELD -->
-    <section class="cs--flush">
-        <img src="assets/cases/heyu/new_08.png" alt="HEY U concept" style="width:100%; display:block;">
-    </section>
-
-    <!-- PROBLEEM -->
-    <section class="cs cs--dark">
-        <p class="cs__label js-fade">Probleem</p>
-        <h2 class="cs__headline js-fade">Er was een idee. Geen naam, geen gezicht, geen systeem.</h2>
-        <div class="cs__body js-fade">
-            <p>De UvN had een format-idee maar niets om het mee te lanceren. Geen naam die bleef hangen, geen visuele taal die kijkers herkenden, geen productiesysteem waarmee de redactie consistent kon werken.</p>
-        </div>
-    </section>
-
-    <!-- INZICHT -->
-    <section class="cs cs--cream">
-        <p class="cs__label js-fade">Inzicht</p>
-        <h2 class="cs__headline js-fade">Het format werkt pas als kijkers het in één oogopslag begrijpen.</h2>
-        <div class="cs__body js-fade">
-            <p>De naam en het beeld moeten het concept direct communiceren. 'HEY U' zegt tegelijk: dit is voor jou, en dit is van de Universiteit. Dat dubbelspel moest in elk onderdeel terugkomen — van logo tot thumbnail.</p>
-        </div>
-    </section>
-
-    <!-- OPLOSSING: NAMING -->
-    <section class="cs cs--dark">
-        <p class="cs__label js-fade">Oplossing</p>
-        <h2 class="cs__headline js-fade">Van naam tot productiesysteem.</h2>
-        <div class="cs__body js-fade">
-            <p>We begonnen met een uitgebreid namingtraject. Tientallen opties — van Brainsnacks tot ThinkTok — en uiteindelijk: HEY U. Daarna de complete brand identity: logo, kleurenpalet, thumbnailsysteem en production design.</p>
-        </div>
-        <div class="cs__story cs__story--wide js-fade" style="margin-top: clamp(32px, 4vw, 56px);">
-            <div></div>
-            <div class="cs__img">
-                <div class="heyu-naming-board">
-                    <div class="heyu-naming-list">
-                        <span class="heyu-name heyu-name--faded">Brainsnacks</span>
-                        <span class="heyu-name heyu-name--faded">Brain Snaps</span>
-                        <span class="heyu-name heyu-name--faded">Wetensnap</span>
-                        <span class="heyu-name heyu-name--faded">De Hoofdvraag</span>
-                        <span class="heyu-name heyu-name--faded">Rondje langs de velden</span>
-                        <span class="heyu-name heyu-name--faded">De Hamvraag</span>
-                        <span class="heyu-name heyu-name--faded">FAQ'd</span>
-                        <span class="heyu-name heyu-name--faded">ThinkTok</span>
-                        <span class="heyu-name heyu-name--faded">ZO?</span>
-                        <span class="heyu-name heyu-name--winner">HEY U ✓</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="js-fade" style="margin-top: clamp(32px, 4vw, 56px);">
-            <div class="heyu-logo-grid">
-                <img src="assets/cases/heyu/new_00.png" alt="HEY U logo exploratie 1">
-                <img src="assets/cases/heyu/new_01.png" alt="HEY U logo exploratie 2">
-                <img src="assets/cases/heyu/new_02.png" alt="HEY U logo exploratie 3">
-                <img src="assets/cases/heyu/new_03.png" alt="HEY U logo exploratie 4">
-                <img src="assets/cases/heyu/new_04.png" alt="HEY U logo exploratie 5">
-                <img src="assets/cases/heyu/new_05.png" alt="HEY U logo exploratie 6">
-            </div>
-        </div>
-    </section>
-
-    <!-- PATROON full bleed -->
-    <section class="cs--flush">
-        <img src="assets/cases/heyu/new_06.png" alt="HEY U U-patroon" style="width:100%; display:block;">
-    </section>
-
-    <!-- THUMBNAILS — clean, geen inline styles -->
-    <section class="cs cs--heyu cs--flush">
-        <div class="heyu-thumbs js-fade">
-            <img src="assets/cases/heyu/03-thumb-hond.png" alt="HEY U — Hond met hernia">
-            <img src="assets/cases/heyu/04-thumb-cannabis.png" alt="HEY U — Zo werkt cannabis">
-            <img src="assets/cases/heyu/05-thumb-angst.png" alt="HEY U — Angst uitschakelen">
-            <img src="assets/cases/heyu/06-thumb-anorexia.png" alt="HEY U — Hoe ontstaat anorexia">
-        </div>
-        <div class="cs cs--tight cs--heyu js-fade">
-            <p class="cs__label">Uitwerking</p>
-            <h2 class="cs__headline">De vraag is de headline.<br>De professor is het bewijs.</h2>
-        </div>
-    </section>
-
-    <!-- PROFESSOR IN BEELD -->
-    <section class="cs cs--cream">
-        <div class="cs__grid cs__grid--2 js-fade">
-            <div class="cs__img">
-                <img src="assets/cases/heyu/new_13.png" alt="HEY U professor geïntegreerd">
-            </div>
-            <div class="cs__img">
-                <img src="assets/cases/heyu/new_14.png" alt="HEY U professor kleurvariaties">
-            </div>
-        </div>
-    </section>
-
-    <!-- PROFESSOR + PATROON full bleed -->
-    <section class="cs--flush js-fade">
-        <img src="assets/cases/heyu/20-prof-pattern.png" alt="HEY U professor met patroon" style="width:100%; display:block;">
-    </section>
-
-    <!-- FORMAT IN ACTIE -->
-    <section class="cs cs--dark">
-        <div class="cs__grid cs__grid--2 js-fade">
-            <div class="cs__img">
-                <img src="assets/cases/heyu/new_09.png" alt="HEY U — 5 vragen over open relaties">
-            </div>
-            <div class="cs__img">
-                <img src="assets/cases/heyu/new_11.png" alt="HEY U — 5 vragen over monogamie">
-            </div>
-        </div>
-    </section>
-
-    <!-- BTS -->
-    <section class="cs--flush js-fade">
-        <img src="assets/cases/heyu/bts-img5138.jpg" alt="HEY U behind the scenes" style="width:100%; display:block; max-height:70vh; object-fit:cover; object-position:center top;">
-    </section>
-
-    <!-- RESULTAAT -->
-    <section class="cs cs--cream">
-        <p class="cs__label js-fade">Resultaat</p>
-        <h2 class="cs__headline js-fade">HEY U staat live op YouTube.</h2>
-        <div class="cs__body js-fade">
-            <p>Het format draait doorlopend. Elke aflevering nieuwe vragen, een andere professor, hetzelfde herkenbare systeem. De redactie werkt zelfstandig verder met de templates die we hebben opgeleverd.</p>
-        </div>
-    </section>
-
-    <!-- TAKEAWAY -->
-    <section class="cs cs--dark">
-        <h2 class="cs__headline js-fade">"Een sterk format begint met een naam die het concept direct communiceert."</h2>
-    </section>
+        </section>
+    </main>
 
     <!-- NEXT CASE -->
     <section class="case-next" id="case-next">

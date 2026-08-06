@@ -50,6 +50,45 @@ function initHeroVideo() {
     }, { once: true });
 }
 
+// Video's lager op de homepage pas laden wanneer ze bijna in beeld komen.
+// Zo krijgt de showreel bij het openen van de pagina als eerste bandbreedte.
+function initLazyAutoplayVideos() {
+    const videos = document.querySelectorAll('video[data-lazy-autoplay]');
+    if (!videos.length) return;
+
+    const loadVideo = video => {
+        if (video.dataset.loaded === 'true') return;
+        video.querySelectorAll('source[data-src]').forEach(source => {
+            source.src = source.dataset.src;
+            source.removeAttribute('data-src');
+        });
+        video.dataset.loaded = 'true';
+        video.load();
+    };
+
+    if (!('IntersectionObserver' in window)) {
+        videos.forEach(video => {
+            loadVideo(video);
+            video.play().catch(() => {});
+        });
+        return;
+    }
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+                loadVideo(video);
+                video.play().catch(() => {});
+            } else {
+                video.pause();
+            }
+        });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.01 });
+
+    videos.forEach(video => observer.observe(video));
+}
+
 // ===== CASES LADEN =====
 async function loadCases() {
     // Gebruik inline data als beschikbaar (werkt ook zonder server via file://)
@@ -848,6 +887,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initScrollHandoff();
     initHeroHeadline();
     initHeroVideo();
+    initLazyAutoplayVideos();
     initNavScroll();
     initSmoothScroll();
     initWordReveal();

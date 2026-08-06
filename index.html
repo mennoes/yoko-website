@@ -9,6 +9,11 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="stylesheet" href="css/style.css?v=143">
+    <style>
+        @media (max-width: 760px) {
+            .home-work-intro__desktop-break { display: none; }
+        }
+    </style>
 </head>
 <body class="page--home">
 
@@ -26,7 +31,7 @@
 
     <!-- ===== SHOWREEL (full-width, vast) ===== -->
     <section class="reel">
-        <video class="reel__video" id="hero-video" autoplay muted loop playsinline></video>
+        <video class="reel__video" id="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/videos/showreel-poster.jpg"></video>
     </section>
 
     <!-- Inhoud scrollt over de vaste showreel heen -->
@@ -35,7 +40,7 @@
     <section class="home-work-intro">
         <div class="home-work-intro__copy">
             <p class="home-work-intro__title">Podium voor inhoud</p>
-            <p class="home-work-intro__body">Complexe verhalen, sterk verbeeld. Van eerste concept tot laatste frame. Met vormgeving, animatie en software.</p>
+            <p class="home-work-intro__body">Complexe verhalen, sterk verbeeld. Van eerste concept tot laatste frame.<br class="home-work-intro__desktop-break"> Met vormgeving, animatie en software.</p>
             <p class="home-work-intro__body home-work-intro__body--relation">Al jaren de visuele redactie voor Universiteit van Nederland, Greenpeace, Human, KRO-NCRV, Omroep Zwart en Nieuwsuur.</p>
         </div>
         <a class="home-work-intro__cta" href="about.html">
@@ -57,8 +62,8 @@
                 </div>
                 <a class="ch__item js-fade" href="universiteit-van-nederland.html">
                     <div class="ch__media" style="aspect-ratio: 16 / 9;">
-                        <video autoplay muted loop playsinline poster="assets/cases/universiteit-van-nederland/thumb.jpg">
-                            <source src="assets/cases/universiteit-van-nederland/UvNL_Billboard%2016x9-site.mp4" type="video/mp4">
+                        <video data-lazy-autoplay muted loop playsinline preload="none" poster="assets/cases/universiteit-van-nederland/thumb.jpg">
+                            <source data-src="assets/cases/universiteit-van-nederland/UvNL_Billboard%2016x9-site.mp4" type="video/mp4">
                         </video>
                         <div class="ch__ov"><p>Vaste beeldpartner en huisstijlbewaker — elke dag inhoud naar beeld vertalen voor het grootste wetenschapsplatform van Nederland.</p></div>
                     </div>
@@ -77,8 +82,8 @@
                 </a>
                 <a class="ch__item js-fade" data-case-id="zin" href="zin-in-morgen.html">
                     <div class="ch__media">
-                        <video autoplay muted loop playsinline poster="assets/cases/zin/thumb.jpg">
-                            <source src="assets/cases/zin/Logo%20zin.mp4" type="video/mp4">
+                        <video data-lazy-autoplay muted loop playsinline preload="none" poster="assets/cases/zin/thumb.jpg">
+                            <source data-src="assets/cases/zin/Logo%20zin.mp4" type="video/mp4">
                         </video>
                         <div class="ch__ov"><p>Van workshopsessies naar een complete visuele toolkit die de redactie zelfstandig in de lucht houdt.</p></div>
                     </div>
@@ -88,8 +93,8 @@
             <div class="ch__row ch__pool-row" hidden>
                 <a class="ch__item" data-case-id="kinderen-voor-kinderen" href="case.html?slug=kinderen-voor-kinderen">
                     <div class="ch__media">
-                        <video autoplay muted loop playsinline poster="assets/cases/kinderen-voor-kinderen/thumb.jpg">
-                            <source src="assets/cases/kinderen-voor-kinderen/KvK-LogoLoops.mp4?v=3" type="video/mp4">
+                        <video data-lazy-autoplay muted loop playsinline preload="none" poster="assets/cases/kinderen-voor-kinderen/thumb.jpg">
+                            <source data-src="assets/cases/kinderen-voor-kinderen/KvK-LogoLoops.mp4?v=3" type="video/mp4">
                         </video>
                         <div class="ch__ov"><p>Een frisse, speelse visuele wereld voor het bekendste kinderkoor van Nederland.</p></div>
                     </div>
@@ -108,8 +113,8 @@
             <div class="ch__row ch__lead-row ch__lead-row--media-right" style="--cols: 40fr 60fr;">
                 <a class="ch__item js-fade" href="greenpeace.html">
                     <div class="ch__media" style="aspect-ratio: 16 / 9;">
-                        <video autoplay muted loop playsinline poster="assets/cases/greenpeace/thumb.jpg">
-                            <source src="assets/cases/greenpeace/Tippingpoint_header.mp4" type="video/mp4">
+                        <video data-lazy-autoplay muted loop playsinline preload="none" poster="assets/cases/greenpeace/thumb.jpg">
+                            <source data-src="assets/cases/greenpeace/Tippingpoint_header.mp4" type="video/mp4">
                         </video>
                         <div class="ch__ov"><p>Klimaatfeiten overtuigen niemand meer. Bewegend beeld dat de urgentie voelbaar maakt wél.</p></div>
                     </div>
@@ -245,6 +250,6 @@
     <script src="data/cases.js?v=3"></script>
     <script>window.YOKO_CONFIG = { mode: 'homepage', maxItems: 12 };</script>
     <script src="js/lottie.min.js?v=1"></script>
-    <script src="js/main.js?v=42"></script>
+    <script src="js/main.js?v=43"></script>
 </body>
 </html>

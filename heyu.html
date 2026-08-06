@@ -23,13 +23,9 @@
             color: var(--cream);
         }
 
-        .heyu-story__eyebrow {
-            margin-bottom: clamp(22px, 3vw, 42px);
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            opacity: 0.45;
+        .page--heyu .case-hero__overlay {
+            padding-left: var(--pad-x-wide);
+            padding-right: var(--pad-x-wide);
         }
 
         .heyu-story__heading,
@@ -43,7 +39,6 @@
 
         .heyu-story__copy {
             max-width: 34ch;
-            margin-left: auto;
             font-size: clamp(24px, 3vw, 48px);
             font-weight: 500;
             line-height: 1.12;
@@ -71,9 +66,9 @@
 
         .heyu-story__outro {
             display: grid;
-            grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
-            gap: clamp(40px, 8vw, 140px);
-            align-items: end;
+            grid-template-columns: 1fr;
+            gap: clamp(40px, 6vw, 90px);
+            align-items: start;
         }
 
         .heyu-story__closing {
@@ -90,13 +85,14 @@
                 padding-right: var(--pad-x);
             }
 
+            .page--heyu .case-hero__overlay {
+                padding-left: var(--pad-x);
+                padding-right: var(--pad-x);
+            }
+
             .heyu-story__media {
                 margin-left: var(--pad-x);
                 margin-right: var(--pad-x);
-            }
-
-            .heyu-story__copy {
-                margin-left: 0;
             }
 
             .heyu-story__outro {
@@ -124,17 +120,12 @@
         <img class="case-hero__bg-img" src="assets/cases/heyu/heyu-format-01.gif" alt=""
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
         <div class="case-hero__overlay">
-            <div class="case-hero__meta">
-                <span class="case-hero__category">Format &amp; Concept</span>
-                <span class="case-hero__year">2024</span>
-            </div>
             <h1 class="case-hero__title">HEY U!</h1>
         </div>
     </section>
 
     <main class="heyu-story">
         <section class="heyu-story__text">
-            <p class="heyu-story__eyebrow js-fade">Universiteit van Nederland · Formatontwikkeling</p>
             <h2 class="heyu-story__heading js-fade">Hoe maak je van één goed idee een herkenbaar format?</h2>
             <div class="heyu-story__copy js-fade" style="margin-top: clamp(48px, 8vw, 120px);">
                 <p>Voor de Universiteit van Nederland ontwikkelden we samen met de redactie HEY U!: een format waarin kijkers zelf hun vragen insturen en wetenschappers daar in korte video’s antwoord op geven.</p>

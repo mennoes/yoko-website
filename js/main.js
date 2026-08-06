@@ -752,11 +752,12 @@ function initRandomizerPlacement() {
         document.querySelectorAll('.ch').forEach(chapter => {
             const leadRow = chapter.querySelector('.ch__lead-row');
             const text = leadRow?.querySelector('.ch__text');
+            const leadItem = leadRow?.querySelector('.ch__item');
             const button = chapter.querySelector('.ch__randomize');
-            if (!leadRow || !text || !button) return;
+            if (!leadRow || !text || !leadItem || !button) return;
 
             if (mobile.matches) {
-                text.after(button);
+                leadItem.after(button);
             } else {
                 leadRow.after(button);
             }

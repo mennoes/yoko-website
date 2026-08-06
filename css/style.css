@@ -1469,6 +1469,7 @@ h2,
     min-height: 0;
     padding: 0;
     border: 0;
+    align-self: stretch;
     justify-content: flex-start;
     gap: clamp(14px, 1.6vw, 22px);
 }
@@ -1484,6 +1485,13 @@ h2,
 }
 .footer__contact--direct .footer__email {
     font-size: clamp(18px, 1.55vw, 26px);
+}
+.footer__contact-photo {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    margin-top: auto;
+    border-radius: 4px;
 }
 
 /* ===== CONTACT FORM ===== */
@@ -1627,6 +1635,7 @@ h2,
     .footer__cols { grid-template-columns: 1fr; }
     .footer__contact--direct { min-height: 0; }
     .footer__photos { gap: 10px; }
+    .footer__contact-photo { margin-top: 8px; }
     .page-handoff__title { font-size: clamp(52px, 17vw, 96px); }
 }
 

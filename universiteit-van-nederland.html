@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Universiteit van Nederland — Studio Yoko</title>
-    <meta name="description" content="Als vaste visuele partner van de Universiteit van Nederland maken we al 10 jaar animaties en vormgeving die wetenschap toegankelijk maken.">
+    <meta name="description" content="Al meer dan 10 jaar is Studio Yoko de vaste visuele partner van de Universiteit van Nederland en Vlaanderen.">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -166,6 +166,118 @@
             max-width: 24ch;
             margin: 0 auto;
         }
+
+        .uvn-story {
+            padding: clamp(72px, 10vw, 150px) var(--pad-x-wide);
+        }
+        .uvn-story--dark {
+            background: var(--dark);
+            color: var(--cream);
+        }
+        .uvn-story__inner {
+            display: grid;
+            grid-template-columns: minmax(240px, 0.75fr) minmax(0, 1.25fr);
+            gap: clamp(48px, 8vw, 140px);
+            max-width: 1500px;
+            margin: 0 auto;
+            align-items: start;
+        }
+        .uvn-story__label {
+            margin-bottom: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            opacity: 0.45;
+        }
+        .uvn-story__title {
+            max-width: 16ch;
+            font-size: clamp(36px, 4.8vw, 76px);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.045em;
+        }
+        .uvn-story__copy {
+            max-width: 39ch;
+            margin-left: auto;
+            font-size: clamp(21px, 2.25vw, 36px);
+            font-weight: 500;
+            line-height: 1.18;
+            letter-spacing: -0.03em;
+        }
+        .uvn-story__copy p + p { margin-top: 1.2em; }
+        .uvn-statement {
+            padding: clamp(80px, 12vw, 180px) var(--pad-x-wide);
+            background: var(--uvn-green);
+            color: #fff;
+        }
+        .uvn-statement p {
+            max-width: 20ch;
+            margin: 0 auto;
+            font-size: clamp(42px, 6.5vw, 108px);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.05em;
+            text-align: center;
+        }
+        .uvn-services {
+            padding: clamp(72px, 10vw, 150px) var(--pad-x-wide);
+            background: var(--uvn-green);
+            color: #fff;
+        }
+        .uvn-services__inner {
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        .uvn-services h2 {
+            margin-bottom: clamp(48px, 7vw, 100px);
+            font-size: clamp(44px, 6vw, 96px);
+            line-height: 0.95;
+            letter-spacing: -0.05em;
+        }
+        .uvn-services ul {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: clamp(32px, 6vw, 100px);
+            list-style: none;
+        }
+        .uvn-services li {
+            padding: clamp(18px, 2vw, 28px) 0;
+            border-top: 1px solid rgba(255,255,255,0.35);
+            font-size: clamp(22px, 2.4vw, 38px);
+            font-weight: 500;
+            line-height: 1.08;
+            letter-spacing: -0.035em;
+        }
+        .uvn-services li:last-child { grid-column: 1 / -1; }
+        .uvn-closing-copy {
+            padding: clamp(80px, 12vw, 180px) var(--pad-x-wide);
+        }
+        .uvn-closing-copy p {
+            max-width: 31ch;
+            margin: 0 auto;
+            font-size: clamp(30px, 4vw, 66px);
+            font-weight: 700;
+            line-height: 1.04;
+            letter-spacing: -0.045em;
+        }
+        @media (max-width: 820px) {
+            .page--uvn .uvn-hero__img {
+                object-fit: contain !important;
+                background: var(--uvn-green);
+            }
+            .uvn-story,
+            .uvn-statement,
+            .uvn-services,
+            .uvn-closing-copy {
+                padding-left: var(--pad-x);
+                padding-right: var(--pad-x);
+            }
+            .uvn-story__inner { grid-template-columns: 1fr; gap: 40px; }
+            .uvn-story__copy { margin-left: 0; }
+            .uvn-services ul { grid-template-columns: 1fr; }
+            .uvn-services li:last-child { grid-column: auto; }
+        }
     </style>
 </head>
 <body class="page--case page--uvn">
@@ -191,44 +303,76 @@
         <div class="uvn-hero__content">
             <div class="uvn-hero__meta">
                 <span>Universiteit van Nederland</span>
-                <span>Vaste beeldpartner · 10 jaar</span>
+                <span>Vaste visuele partner · 10+ jaar</span>
             </div>
             <h1 class="uvn-hero__title">Universiteit van Nederland</h1>
-            <p class="uvn-hero__lead">Hoe maak je wetenschap toegankelijk voor iedereen?</p>
+            <p class="uvn-hero__lead">Al meer dan 10 jaar de vaste visuele partner van de Universiteit van Nederland en Vlaanderen.</p>
         </div>
     </section>
 
-    <!-- INTRO -->
-    <section class="uvn-section">
-        <div class="uvn-body js-fade">
-            <div>
-                <h2>Wetenschap voor iedereen.</h2>
+    <main>
+        <section class="uvn-story">
+            <div class="uvn-story__inner js-fade">
+                <div>
+                    <p class="uvn-story__label">Onze samenwerking</p>
+                    <h2 class="uvn-story__title">Wetenschap uitleggen zonder het plat te slaan</h2>
+                </div>
+                <div class="uvn-story__copy">
+                    <p>Wetenschap toegankelijk maken is meer dan een grafiek netjes animeren. Wat moet je laten zien? Wat kan weg? Welke vergelijking helpt? En hoe zorg je dat ingewikkelde inhoud begrijpelijk wordt zonder de nuance kwijt te raken?</p>
+                    <p>Dat is precies waar we de Universiteit van Nederland al meer dan tien jaar bij helpen.</p>
+                </div>
             </div>
-            <div class="uvn-body__text">
-                <p>Al tien jaar zijn we de vaste visuele partner van de Universiteit van Nederland en Vlaanderen. We vertalen ingewikkelde wetenschap naar heldere animaties en vormgeving die uitnodigen om verder te kijken.</p>
-                <p>We ontwikkelden de huisstijl samen met het team en Ronny van Allthis en bewaken die in iedere uiting. Als onderdeel van de redactie denken we mee over formats, inhoud en beeld: van het eerste idee tot een herkenbaar verhaal dat blijft hangen.</p>
+        </section>
+
+        <section class="uvn-story uvn-story--dark">
+            <div class="uvn-story__inner js-fade">
+                <div>
+                    <p class="uvn-story__label">Inhoud eerst</p>
+                    <h2 class="uvn-story__title">De vorm volgt het verhaal.</h2>
+                </div>
+                <div class="uvn-story__copy">
+                    <p>We duiken samen met de redactie de inhoud in en bepalen waar beeld iets kan toevoegen. Soms is dat een simpele grafiek, soms een visuele metafoor, een compleet nieuw format of juist helemaal geen animatie. De vorm volgt het verhaal.</p>
+                    <p>Tegelijk moet alles onmiskenbaar Universiteit van Nederland blijven. Samen met het team en Ronny van Allthis ontwikkelden we de visuele identiteit tot een benaderbare, kleurrijke stijl met ruimte voor humor. Sindsdien bewaken én ontwikkelen we die stijl verder terwijl er ieder jaar honderden nieuwe uitingen gemaakt worden icm de redactie.</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- DIT DOEN WE -->
-    <section class="uvn-does js-fade" aria-label="Dit doen we">
-        <p class="uvn-does__label">Dit doen we</p>
-        <div class="uvn-does__track">
-            <div class="uvn-does__item"><div class="uvn-does__thumb">Format­ontwikkeling</div></div>
-            <div class="uvn-does__item"><div class="uvn-does__thumb">Live events</div></div>
-            <div class="uvn-does__item"><div class="uvn-does__thumb">Boekcover</div></div>
-            <div class="uvn-does__item"><div class="uvn-does__thumb">Grafische vormgeving</div></div>
-            <div class="uvn-does__item"><div class="uvn-does__thumb">Explainer animaties</div></div>
-            <a class="uvn-does__item" href="tools.html"><div class="uvn-does__thumb">Website en tools</div><span class="uvn-does__tag">→ Bekijk</span></a>
-            <div class="uvn-does__item"><div class="uvn-does__thumb">Bijhouden &amp; (door)­ontwikkeling van de huisstijl</div></div>
-        </div>
-    </section>
+        <section class="uvn-statement js-fade">
+            <p>Herkenbaar blijven zonder voorspelbaar te worden.</p>
+        </section>
 
-    <!-- CLOSER -->
-    <section class="uvn-closer js-fade">
-        <p>Van huisstijlpartner en formatontwikkelaar tot animaties en vormgeving: wij zorgen dat de UvNL er altijd uitziet zoals ze bedoeld is.</p>
-    </section>
+        <section class="uvn-story">
+            <div class="uvn-story__inner js-fade">
+                <div>
+                    <p class="uvn-story__label">Van maker naar partner</p>
+                    <h2 class="uvn-story__title">Steeds eerder aan tafel.</h2>
+                </div>
+                <div class="uvn-story__copy">
+                    <p>Door de jaren heen zijn we steeds eerder in het proces betrokken geraakt. We denken mee wanneer een format nog niet vaststaat, sluiten aan bij de redactie en helpen bepalen hoe een onderwerp visueel het beste verteld kan worden. Daardoor gaat onze rol inmiddels veel verder dan de vormgeving achteraf.</p>
+                    <p>En als we merken dat iets steeds opnieuw gemaakt moet worden, kijken we hoe het slimmer kan. Zo ontwikkelden we bijvoorbeeld een tool waarmee de redactie zelf titelbalken voor alle socialformaten kan maken. Eén keer invoeren, alle formaten klaar en altijd binnen de huisstijl.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="uvn-services js-fade" aria-labelledby="uvn-services-title">
+            <div class="uvn-services__inner">
+                <h2 id="uvn-services-title">Dit doen we</h2>
+                <ul>
+                    <li>Formatontwikkeling</li>
+                    <li>Explaineranimaties</li>
+                    <li>Grafische vormgeving</li>
+                    <li>Live events</li>
+                    <li>Boekcovers</li>
+                    <li>Websites en tools</li>
+                    <li>Beheer en doorontwikkeling van de visuele identiteit</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="uvn-closing-copy js-fade">
+            <p>Van een nieuw format tot de animatie voor één ingewikkelde uitleg: we kennen het merk en de inhoud inmiddels goed genoeg om niet alleen te maken wat gevraagd wordt, maar vooral mee te bepalen wat er visueel nodig is.</p>
+        </section>
+    </main>
 
     <!-- NEXT -->
     <section class="case-next" id="case-next">

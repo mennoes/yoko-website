@@ -62,8 +62,14 @@
         .af-story-grid img,
         .af-story-grid video { width:100%; aspect-ratio:1; display:block; object-fit:cover; background:var(--dark); }
         .af-process { width:calc(100% - (2 * var(--pad-x))); margin-inline:auto; padding:clamp(28px,3.5vw,58px) 0 clamp(48px,5.5vw,86px); background:var(--cream); display:grid; grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr); gap:clamp(32px,5vw,86px); align-items:center; }
-        .af-process__image { width:100%; height:auto; display:block; }
+        .af-process__trigger { display:block; width:100%; padding:0; border:0; background:none; cursor:zoom-in; }
+        .af-process__image { width:100%; height:auto; display:block; transition:transform .25s ease; }
+        .af-process__trigger:hover .af-process__image { transform:scale(.99); }
         .af-process__caption { max-width:24ch; margin:0; font-size:clamp(21px,1.75vw,31px); font-weight:700; line-height:1.25; letter-spacing:-.015em; }
+        .af-matrix-dialog { width:min(calc(100vw - 40px),1600px); max-width:none; max-height:calc(100vh - 40px); padding:0; border:0; background:transparent; overflow:visible; }
+        .af-matrix-dialog::backdrop { background:rgba(24,24,24,.92); }
+        .af-matrix-dialog img { display:block; width:100%; max-height:calc(100vh - 40px); object-fit:contain; }
+        .af-matrix-dialog__close { position:absolute; top:12px; right:12px; width:46px; height:46px; border:0; border-radius:50%; background:var(--cream); color:var(--dark); font:400 30px/1 Arial,sans-serif; cursor:pointer; }
         .af-season { padding: clamp(58px, 6.5vw, 105px) var(--pad-x); }
         .af-season--one { background: var(--af-blue); color:var(--dark); }
         .af-season--two { background: var(--af-yellow); color:var(--dark); }
@@ -160,9 +166,16 @@
         <section class="case-narrative__section"><div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">Onze keuze</h2><div class="case-narrative__copy"><p>We werken als één team met Qian. We spreken elkaar veel, denken conceptueel mee en zetten samen de lijnen uit voor hoe beeld zich binnen de serie moet gedragen. Geen dichtgetimmerde briefing, maar een intieme samenwerking waarin we steeds zoeken naar wat een scène nodig heeft.</p></div></div></section>
 
         <figure class="af-process js-fade">
-            <img class="af-process__image" src="assets/cases/afhaalchinees/behind-the-scenes-matrix.png" alt="Behind-the-scenesmatrix met vier mogelijke visuele richtingen voor De Afhaalchinees">
+            <button class="af-process__trigger" type="button" aria-label="Vergroot de matrix">
+                <img class="af-process__image" src="assets/cases/afhaalchinees/behind-the-scenes-matrix.png" alt="Behind-the-scenesmatrix met vier mogelijke visuele richtingen voor De Afhaalchinees">
+            </button>
             <figcaption class="af-process__caption">Met deze matrix maakten we vier verschillende stijlen en moods bespreekbaar. Zo konden we samen niet alleen kiezen wat mooi voelde, maar vooral welke richting het verhaal inhoudelijk het beste kon dragen.</figcaption>
         </figure>
+
+        <dialog class="af-matrix-dialog" aria-label="Vergrote behind-the-scenesmatrix">
+            <button class="af-matrix-dialog__close" type="button" aria-label="Sluiten">×</button>
+            <img src="assets/cases/afhaalchinees/behind-the-scenes-matrix.png" alt="Behind-the-scenesmatrix met vier mogelijke visuele richtingen voor De Afhaalchinees">
+        </dialog>
 
         <section class="case-narrative__section"><div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">Wat we maken</h2><div class="case-narrative__copy"><p>Voor beide seizoenen verzorgen we alle grafische onderdelen en animaties: van inhoudelijke uitleg en visuele metaforen tot titels, overgangen en grafische scènes. Iedere toepassing krijgt een eigen oplossing, maar alles voelt als onderdeel van dezelfde wereld.</p></div></div></section>
 
@@ -241,6 +254,15 @@
             window.addEventListener('resize', requestHorizontalUpdate);
             window.addEventListener('load', requestHorizontalUpdate);
             updateHorizontalGallery();
+
+            const matrixDialog = document.querySelector('.af-matrix-dialog');
+            const matrixTrigger = document.querySelector('.af-process__trigger');
+            const matrixClose = matrixDialog?.querySelector('.af-matrix-dialog__close');
+            matrixTrigger?.addEventListener('click', () => matrixDialog?.showModal());
+            matrixClose?.addEventListener('click', () => matrixDialog?.close());
+            matrixDialog?.addEventListener('click', event => {
+                if (event.target === matrixDialog) matrixDialog.close();
+            });
 
         });
     </script>

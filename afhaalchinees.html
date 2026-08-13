@@ -114,6 +114,45 @@
         .af-awards__photo figcaption { margin-top:10px; font-size:11px; font-weight:700; line-height:1.2; letter-spacing:.12em; text-transform:uppercase; color:var(--cream); opacity:.58; }
         @media(max-width:900px){.page--afhaalchinees .case-narrative__intro-inner{grid-template-columns:1fr}}
         @media(max-width:720px){.page--afhaalchinees .case-narrative__intro{padding-block:44px}.page--afhaalchinees .case-narrative__intro-inner{grid-template-columns:1fr}.page--afhaalchinees .case-narrative__title,.page--afhaalchinees .case-narrative__intro-copy{grid-column:1}.page--afhaalchinees .case-narrative__title{white-space:normal}.page--afhaalchinees .case-narrative__intro-copy{margin-top:0}.page--afhaalchinees .case-narrative__section{padding-block:42px}.page--afhaalchinees .case-narrative__inner,.af-season__inner{grid-template-columns:1fr;gap:24px}.af-overview-scroll{height:auto!important;padding-block:10px}.af-overview-sticky{position:relative;height:auto;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none}.af-overview-sticky::-webkit-scrollbar{display:none}.af-overview{transform:none!important;padding-inline:var(--pad-x)}.af-overview img,.af-overview video{height:min(72vw,420px);scroll-snap-align:start}.af-overview-insight{flex:none;opacity:1;transform:none}.af-story-grid{grid-template-columns:1fr}.af-process{grid-template-columns:1fr;gap:22px}.af-process__caption{max-width:30ch}.af-season__number{grid-column:1}.af-media--duo,.af-media--mosaic,.af-media--videos{grid-template-columns:1fr}.af-media--duo img,.af-media--duo video,.af-media--videos video,.af-media--videos video:nth-child(3){grid-column:1;height:auto;min-height:0}.af-inline-quote{padding-inline:var(--pad-x)}.af-inline-quote--right blockquote{margin-left:0}.af-media--feature{width:calc(100% - (2 * var(--pad-x)))}.af-media--feature img,.af-media--feature video{width:100%}.af-season__copy{margin-left:0}.af-awards__inner{grid-template-columns:1fr}.af-awards__photo{width:54vw;max-width:230px;margin:28px 8px 0 auto}}
+        @media(max-width:720px){
+            .page--afhaalchinees { --af-mobile-pad:20px; }
+            .page--afhaalchinees .case-narrative__intro,
+            .page--afhaalchinees .case-narrative__section,
+            .af-season,
+            .af-inline-quote,
+            .af-awards { padding-left:var(--af-mobile-pad); padding-right:var(--af-mobile-pad); }
+            .page--afhaalchinees .case-narrative__intro { padding-top:32px; padding-bottom:36px; }
+            .page--afhaalchinees .case-narrative__intro-inner { gap:28px; }
+            .page--afhaalchinees .case-narrative__title { margin-bottom:20px; font-size:clamp(38px,12vw,54px); }
+            .page--afhaalchinees .case-narrative__intro-copy,
+            .page--afhaalchinees .case-narrative__copy,
+            .af-season__copy { width:100%; max-width:none; font-size:17px; line-height:1.45; }
+            .page--afhaalchinees .case-narrative__section { padding-top:34px; padding-bottom:36px; }
+            .page--afhaalchinees .case-narrative__inner,
+            .af-season__inner { width:100%; gap:16px; }
+            .page--afhaalchinees .case-narrative__label { max-width:none; font-size:clamp(30px,9vw,42px); }
+            .page--afhaalchinees .case-narrative__section--work .case-narrative__copy { max-width:none; font-size:21px; line-height:1.3; }
+            .af-overview-scroll { padding:18px 0 0; overflow:visible; }
+            .af-overview-sticky { display:block; overflow:visible; }
+            .af-overview { width:100%; overflow-x:auto; overflow-y:hidden; gap:10px; padding:0 var(--af-mobile-pad) 12px; scroll-snap-type:x mandatory; scroll-padding-left:var(--af-mobile-pad); overscroll-behavior-inline:contain; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+            .af-overview::-webkit-scrollbar { display:none; }
+            .af-overview img,
+            .af-overview video { flex:0 0 auto; width:auto; max-width:86vw; height:min(68vw,360px); scroll-snap-align:start; }
+            .af-overview-insight { width:100%; padding:30px var(--af-mobile-pad) 34px; }
+            .af-story-grid,
+            .af-process,
+            .af-media { width:calc(100% - (2 * var(--af-mobile-pad))); }
+            .af-story-grid { gap:8px; padding:8px; }
+            .af-process { padding-top:28px; padding-bottom:36px; }
+            .af-process__caption { max-width:none; font-size:20px; }
+            .af-season { padding-top:36px; padding-bottom:38px; }
+            .af-season__title--simple { font-size:34px; }
+            .af-inline-quote { padding-top:44px; padding-bottom:46px; }
+            .af-inline-quote blockquote { max-width:none; font-size:clamp(31px,9vw,44px); line-height:1.03; }
+            .af-inline-quote cite { margin-top:18px; font-size:16px; }
+            .af-awards { padding-top:42px; padding-bottom:44px; }
+            .af-awards__title { max-width:none; font-size:clamp(38px,11vw,52px); }
+        }
     </style>
 </head>
 <body class="page--case page--afhaalchinees">

@@ -42,27 +42,19 @@
             letter-spacing: -0.03em;
         }
         .page--afhaalchinees .case-narrative__intro { padding:clamp(46px,5vw,76px) max(clamp(34px,5vw,86px),calc((100vw - var(--content-max))/2 + clamp(34px,5vw,86px))); }
-        .page--afhaalchinees .case-narrative__intro-inner { display:block; width:100%; max-width:var(--content-max); margin:0 auto; }
+        .page--afhaalchinees .case-narrative__intro-inner { display:grid; grid-template-columns:minmax(0,.86fr) minmax(420px,1.14fr); gap:clamp(42px,6vw,100px); width:100%; max-width:var(--content-max); margin:0 auto; align-items:center; }
         .page--afhaalchinees .case-narrative__title { max-width:690px; margin:0 0 clamp(24px,2.5vw,36px); font-size:clamp(40px,4.4vw,76px); line-height:.98; letter-spacing:-.025em; white-space:normal; }
         .page--afhaalchinees .case-narrative__intro-copy { max-width:690px; margin:0; gap:.8em; font-size:clamp(17px,1.3vw,22px); }
+        .af-intro__copy { min-width:0; }
+        .af-intro__video { width:100%; margin:0; overflow:hidden; background:var(--dark); }
+        .af-intro__video video { width:100%; display:block; aspect-ratio:16/9; object-fit:cover; }
         .page--afhaalchinees .case-narrative__section { padding-block:clamp(48px,5.5vw,86px); }
         .page--afhaalchinees .case-narrative__inner { display:grid; grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr); gap:clamp(36px,7vw,120px); max-width:1500px; margin-inline:auto!important; }
         .page--afhaalchinees .case-narrative__label { max-width:12ch; padding-top:0; font-size:clamp(32px,3.5vw,58px); }
         .page--afhaalchinees .case-narrative__label::before { display:none; content:none; }
         .page--afhaalchinees .case-narrative__copy { max-width:68ch; padding-top:0; font-size:clamp(16px,1.15vw,20px); }
-        .af-scroll-story { width:min(100%,var(--content-max)); margin-inline:auto; display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); background:var(--cream); }
-        .af-scroll-story__steps { min-width:0; }
-        .af-scroll-story__step { min-height:clamp(340px,46svh,500px); display:flex; align-items:center; padding:clamp(44px,5vw,76px) clamp(34px,5vw,86px); border-bottom:1px solid rgba(32,32,32,.14); }
-        .af-scroll-story__step:last-child { border-bottom:0; }
-        .af-scroll-story__inner { width:100%; max-width:690px; }
-        .af-scroll-story__step .case-narrative__label { max-width:none; }
-        .af-scroll-story__step .case-narrative__copy { padding-top:clamp(22px,2.5vw,34px); }
-        .af-scroll-story__visual { position:relative; min-width:0; background:var(--cream); }
-        .af-scroll-story__sticky { position:sticky; top:0; height:100svh; overflow:hidden; }
-        .af-scroll-story__image { position:absolute; inset:50% 0 auto; width:100%; height:auto; max-height:82svh; object-fit:contain; opacity:0; transform:translateY(-50%) scale(1.01); transition:opacity .5s ease,transform .8s ease; }
-        .af-scroll-story__image.is-active { opacity:1; transform:translateY(-50%) scale(1); }
-        .af-scroll-story__mobile-media { display:none; margin:30px 0 0; }
-        .af-scroll-story__mobile-media img { width:100%; display:block; }
+        .af-overview { width:min(100%,var(--content-max)); margin-inline:auto; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); background:var(--cream); }
+        .af-overview img { width:100%; height:clamp(250px,28vw,520px); display:block; object-fit:cover; }
         .af-season { padding: clamp(58px, 6.5vw, 105px) var(--pad-x); }
         .af-season--one { background: var(--af-blue); color:var(--dark); }
         .af-season--two { background: var(--af-yellow); color:var(--dark); }
@@ -101,8 +93,8 @@
         .af-awards__photo { position:relative; width:clamp(210px,19vw,320px); margin:0 10px 0 0; transform:rotate(2.5deg); }
         .af-awards__photo img { width:100%; display:block; box-shadow:0 18px 44px rgba(0,0,0,.3); }
         .af-awards__photo figcaption { margin-top:10px; font-size:11px; font-weight:700; line-height:1.2; letter-spacing:.12em; text-transform:uppercase; color:var(--cream); opacity:.58; }
-        @media(max-width:900px){.af-scroll-story{grid-template-columns:1fr}.af-scroll-story__visual{display:none}.af-scroll-story__step{min-height:0;display:block;padding:clamp(48px,9vw,76px) var(--pad-x)}.af-scroll-story__inner{max-width:760px;margin-inline:auto}.af-scroll-story__mobile-media{display:block}}
-        @media(max-width:720px){.page--afhaalchinees .case-narrative__intro{padding-block:44px}.page--afhaalchinees .case-narrative__intro-inner{grid-template-columns:1fr}.page--afhaalchinees .case-narrative__title,.page--afhaalchinees .case-narrative__intro-copy{grid-column:1}.page--afhaalchinees .case-narrative__title{white-space:normal}.page--afhaalchinees .case-narrative__intro-copy{margin-top:0}.page--afhaalchinees .case-narrative__section{padding-block:42px}.page--afhaalchinees .case-narrative__inner,.af-season__inner{grid-template-columns:1fr;gap:24px}.af-season__number{grid-column:1}.af-media--duo,.af-media--mosaic,.af-media--videos{grid-template-columns:1fr}.af-media--duo img,.af-media--duo video,.af-media--videos video,.af-media--videos video:nth-child(3){grid-column:1;height:auto;min-height:0}.af-inline-quote{padding-inline:var(--pad-x)}.af-inline-quote--right blockquote{margin-left:0}.af-media--feature{width:calc(100% - (2 * var(--pad-x)))}.af-media--feature img,.af-media--feature video{width:100%}.af-season__copy{margin-left:0}.af-awards__inner{grid-template-columns:1fr}.af-awards__photo{width:54vw;max-width:230px;margin:28px 8px 0 auto}}
+        @media(max-width:900px){.page--afhaalchinees .case-narrative__intro-inner{grid-template-columns:1fr}.af-overview{grid-template-columns:1fr 1fr}.af-overview img:last-child{grid-column:1/-1}}
+        @media(max-width:720px){.page--afhaalchinees .case-narrative__intro{padding-block:44px}.page--afhaalchinees .case-narrative__intro-inner{grid-template-columns:1fr}.page--afhaalchinees .case-narrative__title,.page--afhaalchinees .case-narrative__intro-copy{grid-column:1}.page--afhaalchinees .case-narrative__title{white-space:normal}.page--afhaalchinees .case-narrative__intro-copy{margin-top:0}.page--afhaalchinees .case-narrative__section{padding-block:42px}.page--afhaalchinees .case-narrative__inner,.af-season__inner{grid-template-columns:1fr;gap:24px}.af-overview{grid-template-columns:1fr}.af-overview img,.af-overview img:last-child{grid-column:1;height:auto}.af-season__number{grid-column:1}.af-media--duo,.af-media--mosaic,.af-media--videos{grid-template-columns:1fr}.af-media--duo img,.af-media--duo video,.af-media--videos video,.af-media--videos video:nth-child(3){grid-column:1;height:auto;min-height:0}.af-inline-quote{padding-inline:var(--pad-x)}.af-inline-quote--right blockquote{margin-left:0}.af-media--feature{width:calc(100% - (2 * var(--pad-x)))}.af-media--feature img,.af-media--feature video{width:100%}.af-season__copy{margin-left:0}.af-awards__inner{grid-template-columns:1fr}.af-awards__photo{width:54vw;max-width:230px;margin:28px 8px 0 auto}}
     </style>
 </head>
 <body class="page--case page--afhaalchinees">
@@ -127,23 +119,18 @@
     <main style="--case-accent:var(--accent);--case-accent-text:var(--dark)">
         <section class="case-narrative__intro">
             <div class="case-narrative__intro-inner js-fade">
-                <h2 class="case-narrative__title">De Afhaalchinees</h2>
-                <div class="case-narrative__intro-copy"><p><strong>Voor twee seizoenen van de Omroep ZWART-documentaireserie De Afhaalchinees maken we alle grafische vormgeving en animatie.</strong></p><p>We werken nauw samen met maker Qian van Binsbergen, denken conceptueel mee en bepalen samen hoe beeld zich binnen de serie gedraagt. De serie won De Tegel en de Zilveren Nipkowschijf.</p></div>
+                <div class="af-intro__copy"><h2 class="case-narrative__title">De Afhaalchinees</h2><div class="case-narrative__intro-copy"><p><strong>Voor twee seizoenen van de Omroep ZWART-documentaireserie De Afhaalchinees maken we alle grafische vormgeving en animatie.</strong></p><p>We werken nauw samen met maker Qian van Binsbergen, denken conceptueel mee en bepalen samen hoe beeld zich binnen de serie gedraagt. De serie won De Tegel en de Zilveren Nipkowschijf.</p></div></div>
+                <figure class="af-intro__video"><video autoplay muted loop playsinline preload="metadata"><source src="assets/cases/afhaalchinees/afhaalchinees-serie.mp4" type="video/mp4"></video></figure>
             </div>
         </section>
 
-        <section class="af-scroll-story" aria-label="Onze aanpak voor De Afhaalchinees">
-            <div class="af-scroll-story__steps">
-                <article class="af-scroll-story__step is-active" data-story-image="0"><div class="af-scroll-story__inner js-fade"><h2 class="case-narrative__label">De uitdaging</h2><div class="case-narrative__copy"><p>Qian breekt haar eigen adoptieverhaal open en start daarmee een groter gesprek over identiteit, systeemfouten en wat thuis betekent.</p><p>Zwaar en persoonlijk materiaal, verteld met humor en lef. De vorm moet al die kanten kunnen volgen: rauw waar het moet, helder waar iets uitleg nodig heeft en soms juist licht of onverwacht.</p></div><figure class="af-scroll-story__mobile-media"><img src="assets/cases/afhaalchinees/s01-02.png" alt="Grafische scène over adoptie in Nederland"></figure></div></article>
-                <article class="af-scroll-story__step" data-story-image="1"><div class="af-scroll-story__inner js-fade"><h2 class="case-narrative__label">Ons inzicht</h2><div class="case-narrative__copy"><p>Bij De Afhaalchinees is vorm geen laag die achteraf wordt toegevoegd. De vorm <strong>is onderdeel van het verhaal.</strong></p><p>Animatie maakt zichtbaar wat niet is vastgelegd, legt ingewikkelde systemen bloot en geeft ruimte aan herinneringen en emoties die zich niet letterlijk laten filmen.</p></div><figure class="af-scroll-story__mobile-media"><img src="assets/cases/afhaalchinees/s01-01.png" alt="Collageanimatie uit seizoen 1 van De Afhaalchinees"></figure></div></article>
-                <article class="af-scroll-story__step" data-story-image="2"><div class="af-scroll-story__inner js-fade"><h2 class="case-narrative__label">Onze keuze</h2><div class="case-narrative__copy"><p>We werken als één team met Qian. We spreken elkaar veel, denken conceptueel mee en zetten samen de lijnen uit voor hoe beeld zich binnen de serie moet gedragen.</p><p>Geen dichtgetimmerde briefing, maar een intieme samenwerking waarin we steeds zoeken naar wat een scène nodig heeft.</p></div><figure class="af-scroll-story__mobile-media"><img src="assets/cases/afhaalchinees/s01-03.png" alt="Collage met kinderen in dozen"></figure></div></article>
-            </div>
-            <div class="af-scroll-story__visual" aria-hidden="true"><div class="af-scroll-story__sticky">
-                <img class="af-scroll-story__image is-active" src="assets/cases/afhaalchinees/s01-02.png" alt="">
-                <img class="af-scroll-story__image" src="assets/cases/afhaalchinees/s01-01.png" alt="">
-                <img class="af-scroll-story__image" src="assets/cases/afhaalchinees/s01-03.png" alt="">
-            </div></div>
-        </section>
+        <section class="case-narrative__section"><div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">De uitdaging</h2><div class="case-narrative__copy"><p>Qian breekt haar eigen adoptieverhaal open en start daarmee een groter gesprek over identiteit, systeemfouten en wat thuis betekent.</p><p>Zwaar en persoonlijk materiaal, verteld met humor en lef. De vorm moet al die kanten kunnen volgen: rauw waar het moet, helder waar iets uitleg nodig heeft en soms juist licht of onverwacht.</p></div></div></section>
+
+        <div class="af-overview js-fade"><img src="assets/cases/afhaalchinees/s01-02.png" alt="Grafische scène over adoptie in Nederland"><img src="assets/cases/afhaalchinees/s01-01.png" alt="Collageanimatie uit seizoen 1 van De Afhaalchinees"><img src="assets/cases/afhaalchinees/s01-03.png" alt="Collage met kinderen in dozen"></div>
+
+        <section class="case-narrative__section"><div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">Ons inzicht</h2><div class="case-narrative__copy"><p>Bij De Afhaalchinees is vorm geen laag die achteraf wordt toegevoegd. De vorm <strong>is onderdeel van het verhaal.</strong></p><p>Animatie maakt zichtbaar wat niet is vastgelegd, legt ingewikkelde systemen bloot en geeft ruimte aan herinneringen en emoties die zich niet letterlijk laten filmen.</p></div></div></section>
+
+        <section class="case-narrative__section"><div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">Onze keuze</h2><div class="case-narrative__copy"><p>We werken als één team met Qian. We spreken elkaar veel, denken conceptueel mee en zetten samen de lijnen uit voor hoe beeld zich binnen de serie moet gedragen.</p><p>Geen dichtgetimmerde briefing, maar een intieme samenwerking waarin we steeds zoeken naar wat een scène nodig heeft.</p></div></div></section>
 
         <section class="case-narrative__section"><div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">Wat we maken</h2><div class="case-narrative__copy"><p>Voor beide seizoenen verzorgen we alle grafische onderdelen en animaties.</p><p>Van inhoudelijke uitleg en visuele metaforen tot titels, overgangen en grafische scènes. Iedere toepassing krijgt een eigen oplossing, maar alles voelt als onderdeel van dezelfde wereld.</p></div></div></section>
 
@@ -203,20 +190,6 @@
             );
             targets.forEach(el => observer.observe(el));
 
-            const storySteps = [...document.querySelectorAll('.af-scroll-story__step')];
-            const storyImages = [...document.querySelectorAll('.af-scroll-story__image')];
-            const activateStoryImage = index => {
-                storySteps.forEach((step, i) => step.classList.toggle('is-active', i === index));
-                storyImages.forEach((image, i) => image.classList.toggle('is-active', i === index));
-            };
-            if (storySteps.length && storyImages.length) {
-                const storyObserver = new IntersectionObserver(entries => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) activateStoryImage(Number(entry.target.dataset.storyImage));
-                    });
-                }, { threshold: 0, rootMargin: '-38% 0px -48% 0px' });
-                storySteps.forEach(step => storyObserver.observe(step));
-            }
         });
     </script>
 </body>

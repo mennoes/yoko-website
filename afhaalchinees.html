@@ -66,7 +66,8 @@
         .af-process__image { width:100%; height:auto; display:block; transition:transform .25s ease; }
         .af-process__trigger:hover .af-process__image { transform:scale(.99); }
         .af-process__caption { max-width:24ch; margin:0; font-size:clamp(21px,1.75vw,31px); font-weight:700; line-height:1.25; letter-spacing:-.015em; }
-        .af-matrix-dialog { width:min(calc(100vw - 40px),1600px); max-width:none; max-height:calc(100vh - 40px); padding:0; border:0; background:transparent; overflow:visible; }
+        .af-matrix-dialog { position:fixed; inset:0; width:min(calc(100vw - 40px),1600px); max-width:none; max-height:calc(100vh - 40px); margin:auto; padding:0; border:0; background:transparent; overflow:visible; }
+        .af-matrix-dialog[open] { display:flex; align-items:center; justify-content:center; }
         .af-matrix-dialog::backdrop { background:rgba(24,24,24,.92); }
         .af-matrix-dialog img { display:block; width:100%; max-height:calc(100vh - 40px); object-fit:contain; }
         .af-matrix-dialog__close { position:absolute; top:12px; right:12px; width:46px; height:46px; border:0; border-radius:50%; background:var(--cream); color:var(--dark); font:400 30px/1 Arial,sans-serif; cursor:pointer; }

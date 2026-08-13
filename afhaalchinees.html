@@ -48,7 +48,7 @@
         .af-intro__copy { min-width:0; }
         .af-intro__video { width:100%; margin:0; overflow:hidden; background:var(--dark); }
         .af-intro__video video { width:100%; height:auto; display:block; aspect-ratio:108/85; object-fit:contain; }
-        .page--afhaalchinees .case-narrative__section { padding-block:clamp(48px,5.5vw,86px); }
+        .page--afhaalchinees .case-narrative__section { padding-block:clamp(34px,3.8vw,58px); }
         .page--afhaalchinees .case-narrative__inner { display:grid; grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr); gap:clamp(36px,7vw,120px); width:100%; max-width:none; margin:0!important; }
         .page--afhaalchinees .case-narrative__label { max-width:12ch; padding-top:0; font-size:clamp(32px,3.5vw,58px); }
         .page--afhaalchinees .case-narrative__label::before { display:none; content:none; }
@@ -59,12 +59,12 @@
         .af-overview { width:max-content; display:flex; align-items:center; gap:clamp(8px,1vw,18px); padding-inline:var(--pad-x); will-change:transform; }
         .af-overview img,
         .af-overview video { flex:0 0 auto; width:auto; height:min(62vh,660px); display:block; object-fit:contain; background:var(--dark); }
-        .af-overview-insight { width:100%; flex:none; display:block; padding:clamp(32px,3.5vw,58px) var(--pad-x); border-top:1px solid rgba(32,32,32,.12); background:var(--cream); opacity:0; transform:translateY(12px); transition:opacity .22s ease,transform .22s ease; }
+        .af-overview-insight { width:100%; flex:none; display:block; padding:clamp(26px,2.8vw,44px) var(--pad-x); border-top:1px solid rgba(32,32,32,.12); background:var(--cream); opacity:0; transform:translateY(8px); transition:opacity .22s ease,transform .22s ease; }
         .af-overview-insight.is-visible { opacity:1; transform:none; }
         .af-story-grid { width:calc(100% - (2 * var(--pad-x))); margin-inline:auto; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); background:var(--af-blue); }
         .af-story-grid img,
         .af-story-grid video { width:100%; aspect-ratio:1; display:block; object-fit:cover; background:var(--dark); }
-        .af-process { width:calc(100% - (2 * var(--pad-x))); margin-inline:auto; padding:clamp(28px,3.5vw,58px) 0 clamp(48px,5.5vw,86px); background:var(--cream); display:grid; grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr); gap:clamp(32px,5vw,86px); align-items:center; }
+        .af-process { width:calc(100% - (2 * var(--pad-x))); margin-inline:auto; padding:clamp(22px,2.5vw,40px) 0 clamp(34px,3.8vw,58px); background:var(--cream); display:grid; grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr); gap:clamp(28px,4vw,64px); align-items:center; }
         .af-process__trigger { display:block; width:100%; padding:0; border:0; background:none; cursor:zoom-in; }
         .af-process__image { width:100%; height:auto; display:block; transition:transform .25s ease; }
         .af-process__trigger:hover .af-process__image { transform:scale(.99); }
@@ -74,7 +74,7 @@
         .af-matrix-dialog::backdrop { background:rgba(24,24,24,.92); }
         .af-matrix-dialog img { display:block; width:100%; max-height:calc(100vh - 40px); object-fit:contain; }
         .af-matrix-dialog__close { position:absolute; top:12px; right:12px; width:46px; height:46px; border:0; border-radius:50%; background:var(--cream); color:var(--dark); font:400 30px/1 Arial,sans-serif; cursor:pointer; }
-        .af-season { padding: clamp(58px, 6.5vw, 105px) var(--pad-x); }
+        .af-season { padding:clamp(40px,4.5vw,72px) var(--pad-x); }
         .af-season--one { background: var(--af-blue); color:var(--dark); }
         .af-season--two { background: var(--af-yellow); color:var(--dark); }
         .af-season-one { background:var(--af-blue); }
@@ -102,11 +102,11 @@
         .af-media--videos { grid-template-columns:repeat(2,1fr); gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); background:var(--dark); }
         .af-media--videos video { width:100%; height:min(44vw,680px); object-fit:cover; display:block; background:#111; }
         .af-media--videos video:nth-child(3) { grid-column:1/-1; width:100%; height:min(56vw,900px); }
-        .af-inline-quote { width:100%; margin:0; padding:clamp(64px,8vw,128px) var(--pad-x); background:var(--dark); color:var(--cream); }
+        .af-inline-quote { width:100%; margin:0; padding:clamp(44px,5.5vw,88px) var(--pad-x); background:var(--dark); color:var(--cream); }
         .af-inline-quote blockquote { max-width:22ch; margin:0; font-size:clamp(34px,4.6vw,76px); font-weight:700; line-height:1; letter-spacing:0; }
         .af-inline-quote--right blockquote { margin-left:auto; }
         .af-inline-quote cite { display:block; margin-top:24px; font-size:clamp(17px,1.25vw,22px); font-style:normal; font-weight:400; line-height:1.35; letter-spacing:0; text-transform:none; opacity:.68; }
-        .af-awards { padding:clamp(58px,7vw,110px) var(--pad-x); background:var(--dark); color:var(--cream); }
+        .af-awards { padding:clamp(42px,5vw,78px) var(--pad-x); background:var(--dark); color:var(--cream); }
         .af-awards__inner { width:100%; max-width:none; margin:0; display:grid; grid-template-columns:minmax(0,1fr) auto; column-gap:clamp(48px,8vw,130px); align-items:start; }
         .af-awards__title { max-width:16ch; margin:0; font-size:clamp(40px,5vw,84px); font-weight:700; line-height:1; letter-spacing:0; }
         .af-awards__photo { position:relative; width:clamp(210px,19vw,320px); margin:0 10px 0 0; transform:rotate(2.5deg); }
@@ -244,9 +244,10 @@
                 if (!horizontalSection || !horizontalTrack || window.innerWidth <= 720) return;
                 const travel = Math.max(0, horizontalTrack.scrollWidth - window.innerWidth);
                 const stickyHeight = horizontalSection.querySelector('.af-overview-sticky').offsetHeight;
-                horizontalSection.style.height = `${stickyHeight + travel}px`;
+                const verticalTravel = travel * 0.62;
+                horizontalSection.style.height = `${stickyHeight + verticalTravel}px`;
                 const earlyStart = window.innerHeight * 0.35;
-                const progress = Math.min(1, Math.max(0, (earlyStart - horizontalSection.getBoundingClientRect().top) / Math.max(1, horizontalSection.offsetHeight - stickyHeight + earlyStart)));
+                const progress = Math.min(1, Math.max(0, (earlyStart - horizontalSection.getBoundingClientRect().top) / Math.max(1, verticalTravel + earlyStart)));
                 horizontalTrack.style.transform = `translate3d(${-travel * progress}px,0,0)`;
                 horizontalInsight?.classList.toggle('is-visible', progress > 0.04);
             };

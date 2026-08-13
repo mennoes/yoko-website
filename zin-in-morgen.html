@@ -8,14 +8,14 @@
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-    <link rel="stylesheet" href="css/style.css?v=143">
+    <link rel="stylesheet" href="css/style.css?v=144">
     <style>
         /* ===== INTRO ===== */
         .zin-intro {
             background: var(--cream);
             padding: clamp(56px, 8vw, 120px) var(--pad-x);
         }
-        .zin-intro__inner { max-width: 760px; }
+        .zin-intro__inner { max-width: 1180px; }
         .zin-intro__label {
             font-size: 11px;
             font-weight: 600;
@@ -41,6 +41,55 @@
             color: rgba(32,32,32,0.7);
         }
         .zin-intro__body p { margin: 0; }
+        .zin-intro__question {
+            max-width: 22ch;
+            font-size: clamp(24px, 3vw, 44px);
+            font-weight: 700;
+            line-height: 1.12;
+            letter-spacing: -0.035em;
+            margin: 0 0 clamp(36px, 5vw, 72px);
+        }
+        .zin-intro__body { max-width: 760px; margin-left: auto; }
+
+        /* ===== CASEVERHAAL ===== */
+        .zin-story {
+            padding: clamp(64px, 9vw, 140px) var(--pad-x);
+            background: var(--cream);
+        }
+        .zin-story--blue { background: #1712D3; color: var(--cream); }
+        .zin-story__inner {
+            display: grid;
+            grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.28fr);
+            gap: clamp(48px, 8vw, 150px);
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        .zin-story__label {
+            margin: 0;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            opacity: 0.48;
+        }
+        .zin-story__copy {
+            display: grid;
+            gap: 1.2em;
+            max-width: 850px;
+            font-size: clamp(18px, 1.7vw, 28px);
+            line-height: 1.5;
+            letter-spacing: -0.02em;
+        }
+        .zin-story__copy p { margin: 0; }
+        .zin-story__copy strong { font-weight: 700; }
+        .zin-story__closing {
+            max-width: 1050px;
+            margin: 0 auto;
+            font-size: clamp(34px, 5vw, 82px);
+            font-weight: 700;
+            line-height: 1.02;
+            letter-spacing: -0.045em;
+        }
 
         /* ===== PROCESS SWIPE ===== */
         .zin-process {
@@ -153,6 +202,8 @@
         @media (max-width: 640px) {
             .zin-process__step { flex: 0 0 88vw; }
             .zin-gallery { column-count: 2; }
+            .zin-story__inner { grid-template-columns: 1fr; gap: 24px; }
+            .zin-intro__body { margin-left: 0; }
         }
     </style>
 </head>
@@ -182,14 +233,58 @@
     </section>
 
     <!-- ===== INTRO ===== -->
-    <section class="zin-intro">
-        <div class="zin-intro__inner">
-            <p class="zin-intro__label">Uitdaging → onze oplossing → effect</p>
-            <h2 class="zin-intro__title">Van tv-programma naar social merk</h2>
-            <div class="zin-intro__body">
-                <p><strong>Uitdaging.</strong> KRO-NCRV's Zin in Morgen veranderde van televisieprogramma in een social-only kanaal. Het merk moest een jongere doelgroep aanspreken zonder zijn identiteit te verliezen.</p>
-                <p><strong>Onze oplossing.</strong> Met stellingen, voorbeelden en moodboards brachten we samen de nieuwe positie in kaart: van zingeving naar kleine, herkenbare momenten die energie geven. Dat leidde tot de naam ZIN! en een complete visuele identiteit met kleur, typografie, vormen en redactionele templates.</p>
-                <p><strong>Effect voor de klant.</strong> De redactie heeft een herkenbaar en flexibel systeem waarmee zij zelfstandig dagelijkse content en nieuwe series kan maken, zonder dat het merk bij iedere uiting opnieuw hoeft te worden uitgevonden.</p>
+    <section class="case-narrative__intro" style="--case-accent:#1712D3">
+        <div class="case-narrative__intro-inner">
+            <p class="case-narrative__eyebrow">KRO-NCRV · Merkidentiteit</p>
+            <h2 class="case-narrative__title">Van tv-programma naar social merk</h2>
+            <p class="case-narrative__lead">Hoe verander je een bestaand tv-programma in een social merk, zonder kwijt te raken waar het oorspronkelijk voor stond?</p>
+            <div class="case-narrative__intro-copy">
+                <p>Voor KRO-NCRV’s <em>Zin in Morgen</em> ontwikkelden we de nieuwe visuele identiteit voor de overstap van televisie naar social. Niet door simpelweg de bestaande vormgeving naar een kleiner scherm te vertalen, maar door samen opnieuw te onderzoeken wat het merk moest zijn.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="case-narrative__section case-narrative__section--accent" style="--case-accent:#1712D3">
+        <div class="case-narrative__inner">
+            <h2 class="case-narrative__label">De uitdaging</h2>
+            <div class="case-narrative__copy">
+                <p><em>Zin in Morgen</em> was opgebouwd als televisieprogramma over zingeving. Maar toen de focus verschoof naar social, werkte televisie niet langer als vanzelfsprekend vertrekpunt.</p>
+                <p>Het team wilde een jonger en breder publiek bereiken en vaker onderdeel zijn van het dagelijks leven van mensen, zonder de inhoudelijke kern van het merk kwijt te raken.</p>
+                <p>Daarmee ontstond een grotere vraag dan alleen hoe <em>Zin in Morgen</em> eruit moest zien op Instagram of TikTok: <strong>wat is ZIN! eigenlijk als het geen tv-programma meer is?</strong> Welke onderdelen neem je mee en wat moet juist veranderen om als zelfstandig social merk te kunnen werken?</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="case-narrative__section">
+        <div class="case-narrative__inner">
+            <h2 class="case-narrative__label">Ons inzicht</h2>
+            <div class="case-narrative__copy">
+                <p>We zagen dat de verandering van medium ook vroeg om een verschuiving in het merk zelf.</p>
+                <p>Het bestaande <em>Zin in Morgen</em> zat sterk aan de kant van <strong>zingeving</strong>: betekenis zoeken, reflecteren en verdieping. Op social mocht daar meer lichtheid, energie en alledaagsheid tegenover staan.</p>
+                <p>Daarom onderzochten we samen met het team het speelveld tussen <strong>zingeving</strong> en <strong>zin in het leven</strong>. Niet als twee tegenpolen waarbij één kant gekozen moest worden, maar als een gebied waarbinnen ZIN! zich kon bewegen.</p>
+                <p>Dat onderscheid hielp om veel scherper te bepalen wat het nieuwe merk wel en niet moest zijn. Niet oppervlakkig of alleen maar vrolijk, maar ook niet zwaar en beschouwend. <strong>Juist de ruimte ertussen bleek interessant.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="case-narrative__section case-narrative__section--accent" style="--case-accent:#1712D3">
+        <div class="case-narrative__inner">
+            <h2 class="case-narrative__label">Onze keuze</h2>
+            <div class="case-narrative__copy">
+                <p>We begonnen daarom bewust niet met een logo of huisstijl.</p>
+                <p>Aan de hand van gesprekken, voorbeelden, moodboards en gerichte vragen maakten we verschillende posities eerst zichtbaar. Zo konden we met het team niet alleen bespreken wat ze mooi vonden, maar vooral: <strong>dit voelt als ZIN! — en dit niet.</strong></p>
+                <p>Vanuit dat onderzoek ontwikkelden we twee verschillende visuele richtingen. Die gebruikten we niet als kant-en-klare voorstellen, maar als middel om keuzes scherper te krijgen. Wat gebeurt er als ZIN! uitgesprokener en energieker wordt? En hoeveel rust en inhoudelijke gelaagdheid moet er tegelijkertijd behouden blijven?</p>
+                <p>Van daaruit brachten we de sterkste elementen samen in één duidelijke richting en bouwden we de identiteit verder uit.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="case-narrative__section">
+        <div class="case-narrative__inner">
+            <h2 class="case-narrative__label">Wat we maakten</h2>
+            <div class="case-narrative__copy">
+                <p>Binnen twee weken vertaalden we die richting naar een complete social branding: van typografie, kleur en grafische principes tot motion en toepassingen voor verschillende soorten content.</p>
+                <p>Daarbij maakten we geen televisiehuisstijl die óók op Instagram kon worden gebruikt, maar een flexibel visueel systeem dat vanaf het begin voor social was ontworpen. Een identiteit die herkenbaar genoeg is om als merk te werken, maar voldoende ruimte laat voor verschillende onderwerpen, makers en verhalen.</p>
             </div>
         </div>
     </section>
@@ -233,6 +328,20 @@
             </article>
 
         </div>
+    </section>
+
+    <section class="case-narrative__section case-narrative__section--accent" style="--case-accent:#1712D3">
+        <div class="case-narrative__inner">
+            <h2 class="case-narrative__label">Het effect</h2>
+            <div class="case-narrative__copy">
+                <p>De overstap naar social werd zo meer dan een verandering van kanaal. Het traject hielp het team om opnieuw scherp te krijgen <strong>waar ZIN! voor staat, hoe het zich onderscheidt en welke ruimte het merk heeft om verder te groeien.</strong></p>
+                <p>De nieuwe identiteit geeft de redactie een herkenbare visuele basis zonder ieder verhaal in hetzelfde format te dwingen. Daardoor kan ZIN! verschillende vormen en onderwerpen dragen, terwijl het als één merk herkenbaar blijft.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="case-narrative__closing">
+        <p>Van een televisieprogramma over zingeving naar een social merk dat zingeving én zin in het leven een plek kan geven.</p>
     </section>
 
     <!-- ===== SPEELSE GALLERY — UITINGEN ===== -->

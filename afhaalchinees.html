@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Afhaalchinees — Studio Yoko</title>
-    <meta name="description" content="Afhaalchinees — een merkidentiteit en vormgeving door Studio Yoko.">
+    <meta name="description" content="Voor twee seizoenen van De Afhaalchinees maken we alle grafische vormgeving en animatie, in nauwe samenwerking met maker Qian van Binsbergen.">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-    <link rel="stylesheet" href="css/style.css?v=151">
+    <link rel="stylesheet" href="css/style.css?v=153">
     <style>
-        :root { --af-red: #C1272D; }
+        :root { --af-red: #C1272D; --af-pink:#e5aaa8; --af-blue:#78999a; --af-s02:#ec2f17; }
         .af-hero {
             min-height: 60svh;
             position: relative;
@@ -19,10 +19,7 @@
             overflow: hidden;
             background: var(--af-red);
         }
-        .af-hero__gradient {
-            position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(193,39,45,0.95) 0%, rgba(193,39,45,0.4) 60%, rgba(193,39,45,0.1) 100%);
-        }
+        .af-hero__media { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
         .af-hero__content {
             position: relative; z-index: 2;
             padding: 0 var(--pad-x) clamp(48px, 7vw, 100px);
@@ -44,33 +41,29 @@
             color: #fff;
             letter-spacing: -0.03em;
         }
-        .af-section {
-            padding: clamp(48px, 6vw, 96px) var(--pad-x);
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .af-body {
-            display: grid;
-            grid-template-columns: 1fr 1.4fr;
-            gap: clamp(40px, 6vw, 96px);
-            align-items: start;
-        }
-        .af-body h2 {
-            font-size: clamp(32px, 4.2vw, 60px);
-            font-weight: 700;
-            line-height: 1.02;
-            letter-spacing: -0.03em;
-            color: var(--dark);
-        }
-        .af-body__text {
-            font-size: clamp(16px, 1.25vw, 20px);
-            line-height: 1.65;
-            color: rgba(32,32,32,0.75);
-        }
-        .af-body__text p + p { margin-top: 1.2em; }
-        @media (max-width: 800px) {
-            .af-body { grid-template-columns: 1fr; gap: 24px; }
-        }
+        .af-season { padding: clamp(80px, 11vw, 180px) var(--pad-x); }
+        .af-season--one { background: var(--af-pink); color:#17383a; }
+        .af-season--two { background: var(--af-s02); color:var(--cream); }
+        .af-season__inner { width:min(100%,1500px); margin:0 auto; }
+        .af-season__number { margin:0 0 18px; font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; opacity:.55; }
+        .af-season__title { max-width:14ch; margin:0; font-size:clamp(54px,8vw,138px); font-weight:700; line-height:.9; letter-spacing:-.06em; }
+        .af-season__copy { max-width:58ch; margin:clamp(42px,6vw,88px) 0 0 auto; font-size:clamp(18px,1.45vw,25px); line-height:1.5; }
+        .af-media { display:grid; overflow:hidden; background:#17383a; }
+        .af-media--wide img,.af-media--wide video { width:100%; display:block; }
+        .af-media--duo { grid-template-columns:1fr 1fr; gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); }
+        .af-media--duo img,.af-media--duo video { width:100%; height:100%; min-height:44vw; object-fit:cover; display:block; }
+        .af-media--mosaic { grid-template-columns:1.15fr .85fr; gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); background:var(--af-pink); }
+        .af-media--mosaic img { width:100%; height:100%; object-fit:cover; display:block; }
+        .af-media--videos { grid-template-columns:repeat(3,1fr); gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); background:#161616; }
+        .af-media--videos video { width:100%; height:42vw; max-height:800px; object-fit:cover; display:block; background:#111; }
+        .af-media--videos video:nth-child(4),.af-media--videos video:nth-child(5) { grid-column:span 1; }
+        .af-awards { padding:clamp(90px,13vw,210px) var(--pad-x); background:#1d1d1d; color:var(--cream); }
+        .af-awards__inner { max-width:1450px; margin:0 auto; }
+        .af-awards__title { max-width:14ch; margin:0; font-size:clamp(48px,7vw,120px); font-weight:700; line-height:.92; letter-spacing:-.055em; }
+        .af-awards__quotes { display:grid; grid-template-columns:1fr 1fr; gap:clamp(30px,7vw,110px); margin-top:clamp(60px,9vw,130px); }
+        .af-awards blockquote { margin:0; font-size:clamp(22px,2.3vw,38px); line-height:1.15; letter-spacing:-.035em; }
+        .af-awards cite { display:block; margin-top:20px; font-size:13px; font-style:normal; letter-spacing:.12em; text-transform:uppercase; opacity:.55; }
+        @media(max-width:720px){.af-media--duo,.af-media--mosaic,.af-media--videos,.af-awards__quotes{grid-template-columns:1fr}.af-media--duo img,.af-media--duo video,.af-media--videos video{height:auto;min-height:0}.af-season__copy{margin-left:0}.af-media--videos video:nth-child(4),.af-media--videos video:nth-child(5){grid-column:auto}}
     </style>
 </head>
 <body class="page--case page--afhaalchinees">
@@ -89,28 +82,47 @@
 
     <!-- HERO -->
     <section class="af-hero" id="case-hero">
-        <div class="af-hero__gradient"></div>
-        <div class="af-hero__content">
-            <div class="af-hero__meta">
-                <span>Afhaalchinees</span>
-                <span>Vorm · Identiteit</span>
-            </div>
-            <h1 class="af-hero__title">Afhaalchinees</h1>
-        </div>
+        <img class="af-hero__media" src="assets/cases/afhaalchinees/s01-01.png" alt="Collageanimatie uit het eerste seizoen van De Afhaalchinees">
     </section>
 
-    <!-- INTRO -->
-    <section class="af-section">
-        <div class="af-body js-fade">
-            <div>
-                <h2>Binnenkort meer.</h2>
+    <main style="--case-accent:#C1272D">
+        <section class="case-narrative__intro">
+            <div class="case-narrative__intro-inner js-fade">
+                <p class="case-narrative__eyebrow">Omroep ZWART · Documentaireserie</p>
+                <h2 class="case-narrative__title">Vorm als deel van het verhaal</h2>
+                <p class="case-narrative__lead">Winnaar van De Tegel en de Zilveren Nipkowschijf. Voor twee seizoenen van De Afhaalchinees maken we alle grafische vormgeving en animatie.</p>
+                <div class="case-narrative__intro-copy"><p>In nauwe samenwerking met maker Qian van Binsbergen. We denken conceptueel mee en bepalen samen hoe beeld zich binnen de serie gedraagt.</p></div>
             </div>
-            <div class="af-body__text">
-                <p>Deze case is nog in de maak. Binnenkort laten we hier zien hoe we voor Afhaalchinees een merkidentiteit bouwden die overal werkt — grafisch en in animatie.</p>
-                <p>Zin om alvast te sparren? <a href="/#contact">Neem contact op.</a></p>
-            </div>
+        </section>
+
+        <section class="case-narrative__section case-narrative__section--accent">
+            <div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">De uitdaging</h2><div class="case-narrative__copy"><p>Qian breekt haar eigen adoptieverhaal open en start daarmee een groter gesprek over identiteit, systeemfouten en wat thuis betekent.</p><p>Zwaar en persoonlijk materiaal, verteld met humor en lef. De vorm moet al die kanten kunnen volgen: rauw waar het moet, helder waar iets uitleg nodig heeft en soms juist licht of onverwacht.</p></div></div>
+        </section>
+
+        <section class="case-narrative__section"><div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">Ons inzicht</h2><div class="case-narrative__copy"><p>Bij De Afhaalchinees is vorm geen laag die achteraf wordt toegevoegd. De vorm <strong>is onderdeel van het verhaal.</strong></p><p>Animatie maakt zichtbaar wat niet is vastgelegd, legt ingewikkelde systemen bloot en geeft ruimte aan herinneringen en emoties die zich niet letterlijk laten filmen.</p></div></div></section>
+
+        <section class="case-narrative__section case-narrative__section--accent"><div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">Onze keuze</h2><div class="case-narrative__copy"><p>We werken als één team met Qian. We spreken elkaar veel, denken conceptueel mee en zetten samen de lijnen uit voor hoe beeld zich binnen de serie moet gedragen.</p><p>Geen dichtgetimmerde briefing, maar een intieme samenwerking waarin we steeds zoeken naar wat een scène nodig heeft.</p></div></div></section>
+
+        <section class="af-season af-season--one"><div class="af-season__inner js-fade"><p class="af-season__number">Seizoen 01</p><h2 class="af-season__title">Een wereld van papier en herinnering</h2><p class="af-season__copy">Voor het eerste seizoen bouwen we een tactiele collagewereld van archiefmateriaal, papier, tekeningen en zachte kleuren. Een beeldtaal die onderzoek inzichtelijk maakt en tegelijk ruimte houdt voor Qians persoonlijke verhaal, humor en woeste registerwisselingen.</p></div></section>
+        <figure class="af-media af-media--wide js-fade"><img src="assets/cases/afhaalchinees/s01-01.png" alt="Collageanimatie uit seizoen 1 van De Afhaalchinees"></figure>
+        <div class="af-media af-media--duo js-fade"><img src="assets/cases/afhaalchinees/s01-02.png" alt="Grafische scène over adoptie in Nederland"><img src="assets/cases/afhaalchinees/s01-03.png" alt="Collage met kinderen in dozen"></div>
+        <div class="af-media af-media--mosaic js-fade"><img src="assets/cases/afhaalchinees/s01-04.png" alt="Collage over een weeshuis"><img src="assets/cases/afhaalchinees/s01-06.png" alt="Collage over interlandelijke adoptie"></div>
+        <figure class="af-media af-media--wide js-fade"><img src="assets/cases/afhaalchinees/s01-05.png" alt="Twee weeshuizen in collagevorm"></figure>
+        <div class="af-media af-media--duo js-fade"><img src="assets/cases/afhaalchinees/s01-07.png" alt="Collage over een adoptievlucht"><img src="assets/cases/afhaalchinees/s01-08.png" alt="Collage met archiefbeelden"></div>
+
+        <section class="af-season af-season--two"><div class="af-season__inner js-fade"><p class="af-season__number">Seizoen 02 · Thuisbezorgd</p><h2 class="af-season__title">Rauwer. Intenser. Dichterbij.</h2><p class="af-season__copy">Voor het tweede seizoen ontwikkelt de vorm mee met het verhaal. Rauwe texturen, intense kleuren en directere beweging sluiten aan bij de onvervalste emoties van de serie. Nog steeds herkenbaar De Afhaalchinees, maar scherper en minder op afstand.</p></div></section>
+        <div class="af-media af-media--videos js-fade">
+            <video autoplay muted loop playsinline><source src="assets/cases/afhaalchinees/s02-herkenning.mp4" type="video/mp4"></video>
+            <video autoplay muted loop playsinline><source src="assets/cases/afhaalchinees/s02-selfie.mp4" type="video/mp4"></video>
+            <video autoplay muted loop playsinline><source src="assets/cases/afhaalchinees/s02-vliegen.mp4" type="video/mp4"></video>
+            <video autoplay muted loop playsinline><source src="assets/cases/afhaalchinees/s02-weeshuis.mp4" type="video/mp4"></video>
+            <video autoplay muted loop playsinline><source src="assets/cases/afhaalchinees/s02-logo.mp4" type="video/mp4"></video>
         </div>
-    </section>
+
+        <section class="case-narrative__section"><div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">Wat we maken</h2><div class="case-narrative__copy"><p>Voor beide seizoenen verzorgen we alle grafische onderdelen en animaties.</p><p>Van inhoudelijke uitleg en visuele metaforen tot titels, overgangen en grafische scènes. Iedere toepassing krijgt een eigen oplossing, maar alles voelt als onderdeel van dezelfde wereld.</p></div></div></section>
+
+        <section class="af-awards"><div class="af-awards__inner js-fade"><h2 class="af-awards__title">De Tegel én de Zilveren Nipkowschijf</h2><div class="af-awards__quotes"><blockquote>“Een enerverende achtbaanrit vol animatie, humor en woeste registerwisselingen.”<cite>Jury Zilveren Nipkowschijf over seizoen 1</cite></blockquote><blockquote>“Een ongelooflijk dapper, oprecht en intens proces, en nog wervelend vormgegeven ook.”<cite>Trouw over seizoen 2</cite></blockquote></div></div></section>
+    </main>
 
     <!-- NEXT -->
     <section class="case-next" id="case-next">

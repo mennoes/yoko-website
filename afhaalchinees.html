@@ -42,8 +42,9 @@
             letter-spacing: -0.03em;
         }
         .page--afhaalchinees .case-narrative__intro { padding-block:clamp(54px,6vw,92px); }
-        .page--afhaalchinees .case-narrative__intro-inner { column-gap:clamp(32px,5vw,82px); }
-        .page--afhaalchinees .case-narrative__title { max-width:20ch; margin-bottom:clamp(24px,2.5vw,38px); font-size:clamp(40px,4.4vw,76px); line-height:.98; letter-spacing:-.035em; }
+        .page--afhaalchinees .case-narrative__intro-inner { grid-template-columns:minmax(280px,.8fr) minmax(0,1.2fr); column-gap:clamp(48px,8vw,140px); align-items:start; }
+        .page--afhaalchinees .case-narrative__title { grid-column:1; max-width:12ch; margin:0; font-size:clamp(40px,4.4vw,76px); line-height:.98; letter-spacing:-.035em; }
+        .page--afhaalchinees .case-narrative__intro-copy { grid-column:2; align-self:start; max-width:68ch; margin:4px 0 0; gap:1em; font-size:clamp(17px,1.3vw,22px); }
         .page--afhaalchinees .case-narrative__section { padding-block:clamp(48px,5.5vw,86px); }
         .page--afhaalchinees .case-narrative__inner { display:grid; grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr); gap:clamp(36px,7vw,120px); max-width:1500px; margin-inline:auto!important; }
         .page--afhaalchinees .case-narrative__label { max-width:12ch; padding-top:0; font-size:clamp(32px,3.5vw,58px); }
@@ -79,7 +80,7 @@
         .af-awards blockquote { max-width:24ch; margin:0; font-size:clamp(24px,3vw,48px); line-height:1.12; letter-spacing:0; }
         .af-awards blockquote:nth-child(even) { margin-left:auto; text-align:left; }
         .af-awards cite { display:block; margin-top:20px; font-size:13px; font-style:normal; letter-spacing:.12em; text-transform:uppercase; opacity:.55; }
-        @media(max-width:720px){.page--afhaalchinees .case-narrative__intro{padding-block:44px}.page--afhaalchinees .case-narrative__intro-copy{margin-top:24px}.page--afhaalchinees .case-narrative__section{padding-block:42px}.page--afhaalchinees .case-narrative__inner,.af-season__inner{grid-template-columns:1fr;gap:24px}.af-season__number{grid-column:1}.af-media--duo,.af-media--mosaic,.af-media--videos,.af-awards__quotes{grid-template-columns:1fr}.af-media--duo img,.af-media--duo video,.af-media--videos video{height:auto;min-height:0}.af-media--feature{width:calc(100% - (2 * var(--pad-x)))}.af-media--feature img,.af-media--feature video{width:100%}.af-season__copy{margin-left:0}.af-awards__photo{position:relative;top:auto;right:auto;width:42vw;max-width:180px;margin:28px 8px 0 auto}.af-awards__quotes{gap:38px}.af-awards blockquote:nth-child(even){margin-left:0;text-align:left}}
+        @media(max-width:720px){.page--afhaalchinees .case-narrative__intro{padding-block:44px}.page--afhaalchinees .case-narrative__intro-inner{grid-template-columns:1fr}.page--afhaalchinees .case-narrative__title,.page--afhaalchinees .case-narrative__intro-copy{grid-column:1}.page--afhaalchinees .case-narrative__intro-copy{margin-top:24px}.page--afhaalchinees .case-narrative__section{padding-block:42px}.page--afhaalchinees .case-narrative__inner,.af-season__inner{grid-template-columns:1fr;gap:24px}.af-season__number{grid-column:1}.af-media--duo,.af-media--mosaic,.af-media--videos,.af-awards__quotes{grid-template-columns:1fr}.af-media--duo img,.af-media--duo video,.af-media--videos video{height:auto;min-height:0}.af-media--feature{width:calc(100% - (2 * var(--pad-x)))}.af-media--feature img,.af-media--feature video{width:100%}.af-season__copy{margin-left:0}.af-awards__photo{position:relative;top:auto;right:auto;width:42vw;max-width:180px;margin:28px 8px 0 auto}.af-awards__quotes{gap:38px}.af-awards blockquote:nth-child(even){margin-left:0;text-align:left}}
     </style>
 </head>
 <body class="page--case page--afhaalchinees">
@@ -105,8 +106,7 @@
         <section class="case-narrative__intro">
             <div class="case-narrative__intro-inner js-fade">
                 <h2 class="case-narrative__title">Vorm als deel van het verhaal</h2>
-                <p class="case-narrative__lead">Voor twee seizoenen van de Omroep ZWART-documentaireserie De Afhaalchinees maken we alle grafische vormgeving en animatie. Winnaar van De Tegel en de Zilveren Nipkowschijf.</p>
-                <div class="case-narrative__intro-copy"><p>In nauwe samenwerking met maker Qian van Binsbergen. We denken conceptueel mee en bepalen samen hoe beeld zich binnen de serie gedraagt.</p></div>
+                <div class="case-narrative__intro-copy"><p><strong>Voor twee seizoenen van de Omroep ZWART-documentaireserie De Afhaalchinees maken we alle grafische vormgeving en animatie.</strong></p><p>We werken nauw samen met maker Qian van Binsbergen, denken conceptueel mee en bepalen samen hoe beeld zich binnen de serie gedraagt. De serie won De Tegel en de Zilveren Nipkowschijf.</p></div>
             </div>
         </section>
 

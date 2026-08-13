@@ -41,21 +41,21 @@
             color: #fff;
             letter-spacing: -0.03em;
         }
-        .page--afhaalchinees .case-narrative__intro { padding:clamp(46px,5vw,76px) max(clamp(34px,5vw,86px),calc((100vw - var(--content-max))/2 + clamp(34px,5vw,86px))); }
-        .page--afhaalchinees .case-narrative__intro-inner { display:grid; grid-template-columns:minmax(0,.86fr) minmax(420px,1.14fr); gap:clamp(42px,6vw,100px); width:100%; max-width:var(--content-max); margin:0 auto; align-items:center; }
+        .page--afhaalchinees .case-narrative__intro { padding:clamp(46px,5vw,76px) var(--pad-x); }
+        .page--afhaalchinees .case-narrative__intro-inner { display:grid; grid-template-columns:minmax(0,.86fr) minmax(420px,1.14fr); gap:clamp(42px,6vw,100px); width:100%; max-width:none; margin:0; align-items:center; }
         .page--afhaalchinees .case-narrative__title { max-width:690px; margin:0 0 clamp(24px,2.5vw,36px); font-size:clamp(40px,4.4vw,76px); line-height:.98; letter-spacing:-.025em; white-space:normal; }
         .page--afhaalchinees .case-narrative__intro-copy { max-width:690px; margin:0; gap:.8em; font-size:clamp(17px,1.3vw,22px); }
         .af-intro__copy { min-width:0; }
         .af-intro__video { width:100%; margin:0; overflow:hidden; background:var(--dark); }
         .af-intro__video video { width:100%; height:auto; display:block; aspect-ratio:108/85; object-fit:contain; }
         .page--afhaalchinees .case-narrative__section { padding-block:clamp(48px,5.5vw,86px); }
-        .page--afhaalchinees .case-narrative__inner { display:grid; grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr); gap:clamp(36px,7vw,120px); width:min(100%,var(--content-max)); margin-inline:auto!important; }
+        .page--afhaalchinees .case-narrative__inner { display:grid; grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr); gap:clamp(36px,7vw,120px); width:100%; max-width:none; margin:0!important; }
         .page--afhaalchinees .case-narrative__label { max-width:12ch; padding-top:0; font-size:clamp(32px,3.5vw,58px); }
         .page--afhaalchinees .case-narrative__label::before { display:none; content:none; }
         .page--afhaalchinees .case-narrative__copy { max-width:68ch; padding-top:0; font-size:clamp(16px,1.15vw,20px); }
         .af-overview-scroll { position:relative; background:var(--cream); }
         .af-overview-sticky { position:sticky; top:0; height:min(68vh,720px); display:flex; align-items:flex-start; overflow:hidden; }
-        .af-overview { width:max-content; display:flex; align-items:center; gap:clamp(8px,1vw,18px); padding-inline:max(var(--pad-x),calc((100vw - var(--content-max))/2 + var(--pad-x))); will-change:transform; }
+        .af-overview { width:max-content; display:flex; align-items:center; gap:clamp(8px,1vw,18px); padding-inline:var(--pad-x); will-change:transform; }
         .af-overview img,
         .af-overview video { flex:0 0 auto; width:auto; height:min(68vh,720px); display:block; object-fit:contain; background:var(--dark); }
         .af-story-grid { width:calc(100% - (2 * var(--pad-x))); margin-inline:auto; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); background:var(--af-blue); }
@@ -79,7 +79,7 @@
         .af-season-two { background:var(--af-yellow); }
         .af-season-two .af-media { background:var(--af-yellow); }
         .af-season-two .af-inline-quote { background:var(--af-yellow); color:var(--dark); }
-        .af-season__inner { width:min(100%,var(--content-max)); margin:0 auto; }
+        .af-season__inner { width:100%; max-width:none; margin:0; }
         .af-season__number { margin:0 0 18px; font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; opacity:.55; }
         .af-season__inner { display:grid; grid-template-columns:minmax(200px,300px) minmax(0,820px); column-gap:clamp(54px,6vw,110px); justify-content:start; align-items:start; }
         .af-season__number { grid-column:1/-1; }
@@ -98,12 +98,12 @@
         .af-media--videos { grid-template-columns:repeat(2,1fr); gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); background:var(--dark); }
         .af-media--videos video { width:100%; height:min(44vw,680px); object-fit:cover; display:block; background:#111; }
         .af-media--videos video:nth-child(3) { grid-column:1/-1; width:100%; height:min(56vw,900px); }
-        .af-inline-quote { width:100%; margin:0; padding:clamp(64px,8vw,128px) max(var(--pad-x),calc((100vw - var(--content-max))/2 + var(--pad-x))); background:var(--dark); color:var(--cream); }
+        .af-inline-quote { width:100%; margin:0; padding:clamp(64px,8vw,128px) var(--pad-x); background:var(--dark); color:var(--cream); }
         .af-inline-quote blockquote { max-width:22ch; margin:0; font-size:clamp(34px,4.6vw,76px); font-weight:700; line-height:1; letter-spacing:0; }
         .af-inline-quote--right blockquote { margin-left:auto; }
         .af-inline-quote cite { display:block; margin-top:24px; font-size:clamp(17px,1.25vw,22px); font-style:normal; font-weight:400; line-height:1.35; letter-spacing:0; text-transform:none; opacity:.68; }
         .af-awards { padding:clamp(58px,7vw,110px) var(--pad-x); background:var(--dark); color:var(--cream); }
-        .af-awards__inner { width:min(100%,var(--content-max)); margin:0 auto; display:grid; grid-template-columns:minmax(0,1fr) auto; column-gap:clamp(48px,8vw,130px); align-items:start; }
+        .af-awards__inner { width:100%; max-width:none; margin:0; display:grid; grid-template-columns:minmax(0,1fr) auto; column-gap:clamp(48px,8vw,130px); align-items:start; }
         .af-awards__title { max-width:16ch; margin:0; font-size:clamp(40px,5vw,84px); font-weight:700; line-height:1; letter-spacing:0; }
         .af-awards__photo { position:relative; width:clamp(210px,19vw,320px); margin:0 10px 0 0; transform:rotate(2.5deg); }
         .af-awards__photo img { width:100%; display:block; box-shadow:0 18px 44px rgba(0,0,0,.3); }
@@ -242,7 +242,8 @@
                 const travel = Math.max(0, horizontalTrack.scrollWidth - window.innerWidth);
                 const stickyHeight = horizontalSection.querySelector('.af-overview-sticky').offsetHeight;
                 horizontalSection.style.height = `${stickyHeight + travel}px`;
-                const progress = Math.min(1, Math.max(0, -horizontalSection.getBoundingClientRect().top / Math.max(1, horizontalSection.offsetHeight - stickyHeight)));
+                const earlyStart = window.innerHeight * 0.35;
+                const progress = Math.min(1, Math.max(0, (earlyStart - horizontalSection.getBoundingClientRect().top) / Math.max(1, horizontalSection.offsetHeight - stickyHeight + earlyStart)));
                 horizontalTrack.style.transform = `translate3d(${-travel * progress}px,0,0)`;
             };
             let horizontalTicking = false;

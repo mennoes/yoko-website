@@ -3001,18 +3001,19 @@ body.cursor-on-yellow .contact-form__btn {
     border-top-color: rgba(255,255,255,0.18);
 }
 .case-narrative__closing {
-    padding: clamp(90px, 13vw, 210px) var(--pad-x);
+    padding: clamp(72px, 9vw, 140px) var(--pad-x);
     background: var(--case-accent, var(--dark));
     color: var(--case-accent-text, var(--cream));
 }
 .case-narrative__closing p {
-    max-width: 1320px;
-    margin: 0 auto;
-    font-size: clamp(46px, 7vw, 124px);
+    max-width: 19ch;
+    margin: 0;
+    font-size: clamp(34px, 4.6vw, 76px);
     font-weight: 700;
-    line-height: 0.94;
-    letter-spacing: -0.06em;
+    line-height: 1;
+    letter-spacing: 0;
 }
+.case-narrative__closing--right p { margin-left: auto; text-align: right; }
 .case-narrative__media {
     width: 100%;
     overflow: hidden;
@@ -3062,6 +3063,7 @@ body.cursor-on-yellow .contact-form__btn {
     .case-narrative__media--grid img { height: auto; }
     .case-narrative__split { grid-template-columns: 1fr; }
     .case-narrative__split .case-narrative__media img { height: auto; }
+    .case-narrative__closing--right p { margin-left: 0; text-align: left; }
 }
 
 .page--case .case-hero {

@@ -3004,6 +3004,23 @@ body.cursor-on-yellow .contact-form__btn {
     line-height: 0.94;
     letter-spacing: -0.06em;
 }
+.case-narrative__media {
+    width: 100%;
+    overflow: hidden;
+    background: var(--dark);
+}
+.case-narrative__media--grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(8px, 1vw, 18px);
+    padding: clamp(8px, 1vw, 18px);
+}
+.case-narrative__media--grid img {
+    width: 100%;
+    height: min(70vw, 850px);
+    display: block;
+    object-fit: cover;
+}
 @media (max-width: 720px) {
     .case-narrative__intro-inner,
     .case-narrative__inner { grid-template-columns: 1fr; gap: 0; }
@@ -3015,6 +3032,8 @@ body.cursor-on-yellow .contact-form__btn {
     .case-narrative__label { max-width: 12ch; }
     .case-narrative__copy { padding-top: 40px; }
     .case-narrative__title { max-width: none; }
+    .case-narrative__media--grid { grid-template-columns: 1fr; }
+    .case-narrative__media--grid img { height: auto; }
 }
 
 .page--case .case-hero {

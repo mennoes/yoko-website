@@ -76,6 +76,35 @@
       "autoplay_preview": true
     },
     {
+      "id": 22,
+      "slug": "afhaalchinees",
+      "href": "afhaalchinees.html",
+      "title": "De Afhaalchinees",
+      "client": "De Afhaalchinees",
+      "category": "Animatie & Strategie",
+      "year": "2023–2025",
+      "tags": [
+        "documentaire",
+        "animatie",
+        "vormgeving",
+        "Omroep ZWART"
+      ],
+      "summary": "Twee seizoenen lang ontwikkelen we samen met maker Qian van Binsbergen alle grafische vormgeving en animatie voor de bekroonde documentaireserie.",
+      "description": "Voor twee seizoenen van de Omroep ZWART-documentaireserie De Afhaalchinees maken we alle grafische vormgeving en animatie, in nauwe samenwerking met maker Qian van Binsbergen.",
+      "thumbnail": "assets/cases/afhaalchinees-thumb.png",
+      "video_preview": null,
+      "accent_color": "#C1272D",
+      "size": "large",
+      "featured": true,
+      "assets": [
+        {
+          "type": "image",
+          "src": "assets/cases/afhaalchinees-thumb.png",
+          "alt": "De Afhaalchinees"
+        }
+      ]
+    },
+    {
       "id": 21,
       "slug": "rewind",
       "href": "rewind.html",

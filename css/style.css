@@ -2940,7 +2940,7 @@ body.cursor-on-yellow .contact-form__btn {
     align-self: end;
     display: grid;
     gap: 1.2em;
-    max-width: 720px;
+    max-width: 860px;
     margin: 0;
     font-size: clamp(17px, 1.25vw, 22px);
     line-height: 1.52;
@@ -2948,8 +2948,8 @@ body.cursor-on-yellow .contact-form__btn {
 }
 .case-narrative__inner {
     display: grid;
-    grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
-    gap: clamp(56px, 8vw, 150px);
+    grid-template-columns: minmax(270px, 0.7fr) minmax(0, 1.3fr);
+    gap: clamp(48px, 5vw, 96px);
     align-items: start;
 }
 .case-narrative__label {
@@ -2976,7 +2976,7 @@ body.cursor-on-yellow .contact-form__btn {
 .case-narrative__copy {
     display: grid;
     gap: 1.05em;
-    max-width: 780px;
+    max-width: 960px;
     padding-top: clamp(42px, 4vw, 66px);
     font-size: clamp(17px, 1.35vw, 23px);
     line-height: 1.5;

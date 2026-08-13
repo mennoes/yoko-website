@@ -55,10 +55,12 @@
         .page--afhaalchinees .case-narrative__copy { max-width:68ch; padding-top:0; font-size:clamp(16px,1.15vw,20px); }
         .page--afhaalchinees .case-narrative__section--work .case-narrative__copy { max-width:46ch; font-size:clamp(23px,2vw,34px); font-weight:700; line-height:1.24; letter-spacing:-.02em; }
         .af-overview-scroll { position:relative; background:var(--cream); }
-        .af-overview-sticky { position:sticky; top:0; height:min(68vh,720px); display:flex; align-items:flex-start; overflow:hidden; }
+        .af-overview-sticky { position:sticky; top:0; height:100vh; display:flex; flex-direction:column; align-items:flex-start; overflow:hidden; }
         .af-overview { width:max-content; display:flex; align-items:center; gap:clamp(8px,1vw,18px); padding-inline:var(--pad-x); will-change:transform; }
         .af-overview img,
-        .af-overview video { flex:0 0 auto; width:auto; height:min(68vh,720px); display:block; object-fit:contain; background:var(--dark); }
+        .af-overview video { flex:0 0 auto; width:auto; height:min(62vh,660px); display:block; object-fit:contain; background:var(--dark); }
+        .af-overview-insight { width:100%; flex:1; display:flex; align-items:center; padding:clamp(28px,3vw,52px) var(--pad-x); border-top:1px solid rgba(32,32,32,.12); background:var(--cream); opacity:0; transform:translateY(18px); transition:opacity .28s ease,transform .28s ease; }
+        .af-overview-insight.is-visible { opacity:1; transform:none; }
         .af-story-grid { width:calc(100% - (2 * var(--pad-x))); margin-inline:auto; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); background:var(--af-blue); }
         .af-story-grid img,
         .af-story-grid video { width:100%; aspect-ratio:1; display:block; object-fit:cover; background:var(--dark); }
@@ -111,7 +113,7 @@
         .af-awards__photo img { width:100%; display:block; box-shadow:0 18px 44px rgba(0,0,0,.3); }
         .af-awards__photo figcaption { margin-top:10px; font-size:11px; font-weight:700; line-height:1.2; letter-spacing:.12em; text-transform:uppercase; color:var(--cream); opacity:.58; }
         @media(max-width:900px){.page--afhaalchinees .case-narrative__intro-inner{grid-template-columns:1fr}}
-        @media(max-width:720px){.page--afhaalchinees .case-narrative__intro{padding-block:44px}.page--afhaalchinees .case-narrative__intro-inner{grid-template-columns:1fr}.page--afhaalchinees .case-narrative__title,.page--afhaalchinees .case-narrative__intro-copy{grid-column:1}.page--afhaalchinees .case-narrative__title{white-space:normal}.page--afhaalchinees .case-narrative__intro-copy{margin-top:0}.page--afhaalchinees .case-narrative__section{padding-block:42px}.page--afhaalchinees .case-narrative__inner,.af-season__inner{grid-template-columns:1fr;gap:24px}.af-overview-scroll{height:auto!important;padding-block:10px}.af-overview-sticky{position:relative;height:auto;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none}.af-overview-sticky::-webkit-scrollbar{display:none}.af-overview{transform:none!important;padding-inline:var(--pad-x)}.af-overview img,.af-overview video{height:min(72vw,420px);scroll-snap-align:start}.af-story-grid{grid-template-columns:1fr}.af-process{grid-template-columns:1fr;gap:22px}.af-process__caption{max-width:30ch}.af-season__number{grid-column:1}.af-media--duo,.af-media--mosaic,.af-media--videos{grid-template-columns:1fr}.af-media--duo img,.af-media--duo video,.af-media--videos video,.af-media--videos video:nth-child(3){grid-column:1;height:auto;min-height:0}.af-inline-quote{padding-inline:var(--pad-x)}.af-inline-quote--right blockquote{margin-left:0}.af-media--feature{width:calc(100% - (2 * var(--pad-x)))}.af-media--feature img,.af-media--feature video{width:100%}.af-season__copy{margin-left:0}.af-awards__inner{grid-template-columns:1fr}.af-awards__photo{width:54vw;max-width:230px;margin:28px 8px 0 auto}}
+        @media(max-width:720px){.page--afhaalchinees .case-narrative__intro{padding-block:44px}.page--afhaalchinees .case-narrative__intro-inner{grid-template-columns:1fr}.page--afhaalchinees .case-narrative__title,.page--afhaalchinees .case-narrative__intro-copy{grid-column:1}.page--afhaalchinees .case-narrative__title{white-space:normal}.page--afhaalchinees .case-narrative__intro-copy{margin-top:0}.page--afhaalchinees .case-narrative__section{padding-block:42px}.page--afhaalchinees .case-narrative__inner,.af-season__inner{grid-template-columns:1fr;gap:24px}.af-overview-scroll{height:auto!important;padding-block:10px}.af-overview-sticky{position:relative;height:auto;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none}.af-overview-sticky::-webkit-scrollbar{display:none}.af-overview{transform:none!important;padding-inline:var(--pad-x)}.af-overview img,.af-overview video{height:min(72vw,420px);scroll-snap-align:start}.af-overview-insight{flex:none;opacity:1;transform:none}.af-story-grid{grid-template-columns:1fr}.af-process{grid-template-columns:1fr;gap:22px}.af-process__caption{max-width:30ch}.af-season__number{grid-column:1}.af-media--duo,.af-media--mosaic,.af-media--videos{grid-template-columns:1fr}.af-media--duo img,.af-media--duo video,.af-media--videos video,.af-media--videos video:nth-child(3){grid-column:1;height:auto;min-height:0}.af-inline-quote{padding-inline:var(--pad-x)}.af-inline-quote--right blockquote{margin-left:0}.af-media--feature{width:calc(100% - (2 * var(--pad-x)))}.af-media--feature img,.af-media--feature video{width:100%}.af-season__copy{margin-left:0}.af-awards__inner{grid-template-columns:1fr}.af-awards__photo{width:54vw;max-width:230px;margin:28px 8px 0 auto}}
     </style>
 </head>
 <body class="page--case page--afhaalchinees">
@@ -151,12 +153,11 @@
             <img class="af-overview__landscape" src="assets/cases/afhaalchinees/s01-02.png" alt="Grafische scène over adoptie in Nederland">
             <img class="af-overview__landscape" src="assets/cases/afhaalchinees/s01-01.png" alt="Collageanimatie uit seizoen 1 van De Afhaalchinees">
             <video class="af-overview__feature af-overview__feature--video" src="assets/cases/afhaalchinees/s01-highlight-02.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Animatiefragment uit aflevering 1 van De Afhaalchinees"></video>
-            <img class="af-overview__feature af-overview__feature--image" src="assets/cases/afhaalchinees/s01-03.png" alt="Collage met kinderen in dozen">
+           <img class="af-overview__feature af-overview__feature--image" src="assets/cases/afhaalchinees/s01-03.png" alt="Collage met kinderen in dozen">
            </div>
+           <section class="af-overview-insight"><div class="case-narrative__inner"><h2 class="case-narrative__label">Ons inzicht</h2><div class="case-narrative__copy"><p>Bij De Afhaalchinees is vorm geen laag die achteraf wordt toegevoegd. De vorm <strong>is onderdeel van het verhaal.</strong> Animatie maakt zichtbaar wat niet is vastgelegd, legt ingewikkelde systemen bloot en geeft ruimte aan herinneringen en emoties die zich niet letterlijk laten filmen.</p></div></div></section>
           </div>
         </div>
-
-        <section class="case-narrative__section"><div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">Ons inzicht</h2><div class="case-narrative__copy"><p>Bij De Afhaalchinees is vorm geen laag die achteraf wordt toegevoegd. De vorm <strong>is onderdeel van het verhaal.</strong> Animatie maakt zichtbaar wat niet is vastgelegd, legt ingewikkelde systemen bloot en geeft ruimte aan herinneringen en emoties die zich niet letterlijk laten filmen.</p></div></div></section>
 
         <div class="af-story-grid js-fade">
             <img src="assets/cases/afhaalchinees/s01-episode2-grid-01.jpg" alt="Collageanimatie over adoptieouders">
@@ -239,6 +240,7 @@
 
             const horizontalSection = document.querySelector('.af-overview-scroll');
             const horizontalTrack = horizontalSection?.querySelector('.af-overview');
+            const horizontalInsight = horizontalSection?.querySelector('.af-overview-insight');
             const updateHorizontalGallery = () => {
                 if (!horizontalSection || !horizontalTrack || window.innerWidth <= 720) return;
                 const travel = Math.max(0, horizontalTrack.scrollWidth - window.innerWidth);
@@ -247,6 +249,7 @@
                 const earlyStart = window.innerHeight * 0.35;
                 const progress = Math.min(1, Math.max(0, (earlyStart - horizontalSection.getBoundingClientRect().top) / Math.max(1, horizontalSection.offsetHeight - stickyHeight + earlyStart)));
                 horizontalTrack.style.transform = `translate3d(${-travel * progress}px,0,0)`;
+                horizontalInsight?.classList.toggle('is-visible', progress > 0.04);
             };
             let horizontalTicking = false;
             const requestHorizontalUpdate = () => {

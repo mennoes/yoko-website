@@ -2931,6 +2931,10 @@ body.cursor-on-yellow .contact-form__btn {
     line-height: 1.06;
     letter-spacing: -0.045em;
 }
+.case-narrative__lead:last-child {
+    grid-column: 1 / -1;
+    max-width: 31ch;
+}
 .case-narrative__intro-copy {
     grid-column: 2;
     align-self: end;

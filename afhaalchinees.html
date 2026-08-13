@@ -88,7 +88,7 @@
         .af-media--videos { grid-template-columns:repeat(2,1fr); gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); background:var(--dark); }
         .af-media--videos video { width:100%; height:min(44vw,680px); object-fit:cover; display:block; background:#111; }
         .af-media--videos video:nth-child(3) { grid-column:1/-1; width:100%; height:min(56vw,900px); }
-        .af-inline-quote { width:min(100%,var(--content-max)); margin-inline:auto; padding:clamp(64px,8vw,128px) var(--pad-x); background:var(--dark); color:var(--cream); }
+        .af-inline-quote { width:100%; margin:0; padding:clamp(64px,8vw,128px) max(var(--pad-x),calc((100vw - var(--content-max))/2 + var(--pad-x))); background:var(--dark); color:var(--cream); }
         .af-inline-quote blockquote { max-width:22ch; margin:0; font-size:clamp(34px,4.6vw,76px); font-weight:700; line-height:1; letter-spacing:0; }
         .af-inline-quote--right blockquote { margin-left:auto; }
         .af-inline-quote cite { display:block; margin-top:22px; font-size:12px; font-style:normal; font-weight:700; line-height:1.25; letter-spacing:.12em; text-transform:uppercase; opacity:.55; }

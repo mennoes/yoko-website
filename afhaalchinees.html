@@ -41,16 +41,26 @@
             color: #fff;
             letter-spacing: -0.03em;
         }
-        .af-season { padding: clamp(80px, 11vw, 180px) var(--pad-x); }
+        .page--afhaalchinees .case-narrative__intro { padding-block:clamp(54px,6vw,92px); }
+        .page--afhaalchinees .case-narrative__intro-inner { column-gap:clamp(32px,5vw,82px); }
+        .page--afhaalchinees .case-narrative__title { margin-bottom:clamp(28px,3vw,46px); font-size:clamp(48px,6.2vw,108px); }
+        .page--afhaalchinees .case-narrative__section { padding-block:clamp(48px,5.5vw,86px); }
+        .page--afhaalchinees .case-narrative__inner { display:grid; grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr); gap:clamp(36px,7vw,120px); max-width:1500px; margin-inline:auto!important; }
+        .page--afhaalchinees .case-narrative__label { max-width:12ch; padding-top:0; font-size:clamp(32px,3.5vw,58px); }
+        .page--afhaalchinees .case-narrative__label::before { display:none; content:none; }
+        .page--afhaalchinees .case-narrative__copy { max-width:68ch; padding-top:0; font-size:clamp(16px,1.15vw,20px); }
+        .af-season { padding: clamp(58px, 6.5vw, 105px) var(--pad-x); }
         .af-season--one { background: var(--af-pink); color:#17383a; }
         .af-season--two { background: var(--af-s02); color:var(--cream); }
         .af-season__inner { width:min(100%,1500px); margin:0 auto; }
         .af-season__number { margin:0 0 18px; font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; opacity:.55; }
-        .af-season__title { max-width:14ch; margin:0; font-size:clamp(54px,8vw,138px); font-weight:700; line-height:.9; letter-spacing:-.06em; }
-        .af-season__copy { max-width:58ch; margin:clamp(42px,6vw,88px) 0 0 auto; font-size:clamp(18px,1.45vw,25px); line-height:1.5; }
+        .af-season__inner { display:grid; grid-template-columns:minmax(0,.85fr) minmax(320px,1.15fr); column-gap:clamp(42px,7vw,120px); align-items:start; }
+        .af-season__number { grid-column:1/-1; }
+        .af-season__title { max-width:14ch; margin:0; font-size:clamp(42px,5.5vw,92px); font-weight:700; line-height:.94; letter-spacing:-.045em; }
+        .af-season__copy { max-width:64ch; margin:4px 0 0; font-size:clamp(16px,1.15vw,20px); line-height:1.5; }
         .af-media { width:min(100%,var(--content-max)); margin-inline:auto; display:grid; overflow:hidden; background:#17383a; }
         .af-media--wide img,.af-media--wide video { width:100%; display:block; }
-        .af-media--feature { width:min(calc(100% - (2 * var(--pad-x))),1500px); margin-block:clamp(18px,3vw,48px); background:transparent; }
+        .af-media--feature { width:min(calc(100% - (2 * var(--pad-x))),1500px); margin-block:clamp(10px,1.5vw,24px); background:transparent; }
         .af-media--feature img,.af-media--feature video { width:72%; display:block; object-fit:cover; }
         .af-media--feature-right img,.af-media--feature-right video { margin-left:auto; }
         .af-media--duo { grid-template-columns:1fr 1fr; gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); }
@@ -59,17 +69,17 @@
         .af-media--mosaic img { width:100%; height:100%; object-fit:cover; display:block; }
         .af-media--videos { grid-template-columns:repeat(2,1fr); gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); background:#161616; }
         .af-media--videos video { width:100%; height:min(52vw,780px); object-fit:cover; display:block; background:#111; }
-        .af-awards { padding:clamp(80px,10vw,150px) var(--pad-x); background:#1d1d1d; color:var(--cream); }
+        .af-awards { padding:clamp(58px,7vw,110px) var(--pad-x); background:#1d1d1d; color:var(--cream); }
         .af-awards__inner { position:relative; max-width:1450px; margin:0 auto; }
         .af-awards__title { max-width:16ch; margin:0; font-size:clamp(40px,5vw,84px); font-weight:700; line-height:1; letter-spacing:0; }
         .af-awards__photo { position:absolute; top:clamp(-30px,-2vw,-10px); right:clamp(8px,4vw,72px); width:clamp(120px,15vw,230px); margin:0; transform:rotate(3.5deg); z-index:1; }
         .af-awards__photo img { width:100%; display:block; box-shadow:0 18px 44px rgba(0,0,0,.3); }
         .af-awards__photo figcaption { margin-top:10px; font-size:11px; font-weight:700; line-height:1.2; letter-spacing:.12em; text-transform:uppercase; color:var(--cream); opacity:.58; }
-        .af-awards__quotes { display:grid; gap:clamp(65px,9vw,130px); margin-top:clamp(60px,9vw,130px); }
+        .af-awards__quotes { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(48px,8vw,130px); margin-top:clamp(48px,6vw,86px); }
         .af-awards blockquote { max-width:24ch; margin:0; font-size:clamp(24px,3vw,48px); line-height:1.12; letter-spacing:0; }
-        .af-awards blockquote:nth-child(even) { margin-left:auto; text-align:right; }
+        .af-awards blockquote:nth-child(even) { margin-left:auto; text-align:left; }
         .af-awards cite { display:block; margin-top:20px; font-size:13px; font-style:normal; letter-spacing:.12em; text-transform:uppercase; opacity:.55; }
-        @media(max-width:720px){.af-media--duo,.af-media--mosaic,.af-media--videos{grid-template-columns:1fr}.af-media--duo img,.af-media--duo video,.af-media--videos video{height:auto;min-height:0}.af-media--feature{width:calc(100% - (2 * var(--pad-x)))}.af-media--feature img,.af-media--feature video{width:100%}.af-season__copy{margin-left:0}.af-awards__photo{position:relative;top:auto;right:auto;width:42vw;max-width:180px;margin:38px 8px 0 auto}.af-awards blockquote:nth-child(even){margin-left:0;text-align:left}}
+        @media(max-width:720px){.page--afhaalchinees .case-narrative__intro{padding-block:44px}.page--afhaalchinees .case-narrative__intro-copy{margin-top:24px}.page--afhaalchinees .case-narrative__section{padding-block:42px}.page--afhaalchinees .case-narrative__inner,.af-season__inner{grid-template-columns:1fr;gap:24px}.af-season__number{grid-column:1}.af-media--duo,.af-media--mosaic,.af-media--videos,.af-awards__quotes{grid-template-columns:1fr}.af-media--duo img,.af-media--duo video,.af-media--videos video{height:auto;min-height:0}.af-media--feature{width:calc(100% - (2 * var(--pad-x)))}.af-media--feature img,.af-media--feature video{width:100%}.af-season__copy{margin-left:0}.af-awards__photo{position:relative;top:auto;right:auto;width:42vw;max-width:180px;margin:28px 8px 0 auto}.af-awards__quotes{gap:38px}.af-awards blockquote:nth-child(even){margin-left:0;text-align:left}}
     </style>
 </head>
 <body class="page--case page--afhaalchinees">

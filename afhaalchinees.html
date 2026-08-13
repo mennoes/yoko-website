@@ -48,15 +48,17 @@
         .af-season__number { margin:0 0 18px; font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; opacity:.55; }
         .af-season__title { max-width:14ch; margin:0; font-size:clamp(54px,8vw,138px); font-weight:700; line-height:.9; letter-spacing:-.06em; }
         .af-season__copy { max-width:58ch; margin:clamp(42px,6vw,88px) 0 0 auto; font-size:clamp(18px,1.45vw,25px); line-height:1.5; }
-        .af-media { display:grid; overflow:hidden; background:#17383a; }
+        .af-media { width:min(100%,var(--content-max)); margin-inline:auto; display:grid; overflow:hidden; background:#17383a; }
         .af-media--wide img,.af-media--wide video { width:100%; display:block; }
+        .af-media--feature { width:min(calc(100% - (2 * var(--pad-x))),1500px); margin-block:clamp(18px,3vw,48px); background:transparent; }
+        .af-media--feature img,.af-media--feature video { width:72%; display:block; object-fit:cover; }
+        .af-media--feature-right img,.af-media--feature-right video { margin-left:auto; }
         .af-media--duo { grid-template-columns:1fr 1fr; gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); }
         .af-media--duo img,.af-media--duo video { width:100%; height:100%; min-height:44vw; object-fit:cover; display:block; }
         .af-media--mosaic { grid-template-columns:1.15fr .85fr; gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); background:var(--af-pink); }
         .af-media--mosaic img { width:100%; height:100%; object-fit:cover; display:block; }
-        .af-media--videos { grid-template-columns:repeat(3,1fr); gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); background:#161616; }
-        .af-media--videos video { width:100%; height:42vw; max-height:800px; object-fit:cover; display:block; background:#111; }
-        .af-media--videos video:nth-child(4),.af-media--videos video:nth-child(5) { grid-column:span 1; }
+        .af-media--videos { grid-template-columns:repeat(2,1fr); gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); background:#161616; }
+        .af-media--videos video { width:100%; height:min(52vw,780px); object-fit:cover; display:block; background:#111; }
         .af-awards { padding:clamp(80px,10vw,150px) var(--pad-x); background:#1d1d1d; color:var(--cream); }
         .af-awards__inner { max-width:1450px; margin:0 auto; }
         .af-awards__title { max-width:16ch; margin:0; font-size:clamp(40px,5vw,84px); font-weight:700; line-height:1; letter-spacing:0; }
@@ -64,7 +66,7 @@
         .af-awards blockquote { max-width:24ch; margin:0; font-size:clamp(24px,3vw,48px); line-height:1.12; letter-spacing:0; }
         .af-awards blockquote:nth-child(even) { margin-left:auto; text-align:right; }
         .af-awards cite { display:block; margin-top:20px; font-size:13px; font-style:normal; letter-spacing:.12em; text-transform:uppercase; opacity:.55; }
-        @media(max-width:720px){.af-media--duo,.af-media--mosaic,.af-media--videos{grid-template-columns:1fr}.af-media--duo img,.af-media--duo video,.af-media--videos video{height:auto;min-height:0}.af-season__copy{margin-left:0}.af-media--videos video:nth-child(4),.af-media--videos video:nth-child(5){grid-column:auto}.af-awards blockquote:nth-child(even){margin-left:0;text-align:left}}
+        @media(max-width:720px){.af-media--duo,.af-media--mosaic,.af-media--videos{grid-template-columns:1fr}.af-media--duo img,.af-media--duo video,.af-media--videos video{height:auto;min-height:0}.af-media--feature{width:calc(100% - (2 * var(--pad-x)))}.af-media--feature img,.af-media--feature video{width:100%}.af-season__copy{margin-left:0}.af-awards blockquote:nth-child(even){margin-left:0;text-align:left}}
     </style>
 </head>
 <body class="page--case page--afhaalchinees">
@@ -100,27 +102,33 @@
             <div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">De uitdaging</h2><div class="case-narrative__copy"><p>Qian breekt haar eigen adoptieverhaal open en start daarmee een groter gesprek over identiteit, systeemfouten en wat thuis betekent.</p><p>Zwaar en persoonlijk materiaal, verteld met humor en lef. De vorm moet al die kanten kunnen volgen: rauw waar het moet, helder waar iets uitleg nodig heeft en soms juist licht of onverwacht.</p></div></div>
         </section>
 
+        <figure class="af-media af-media--feature af-media--feature-right js-fade"><img src="assets/cases/afhaalchinees/s01-02.png" alt="Grafische scène over adoptie in Nederland"></figure>
+
         <section class="case-narrative__section"><div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">Ons inzicht</h2><div class="case-narrative__copy"><p>Bij De Afhaalchinees is vorm geen laag die achteraf wordt toegevoegd. De vorm <strong>is onderdeel van het verhaal.</strong></p><p>Animatie maakt zichtbaar wat niet is vastgelegd, legt ingewikkelde systemen bloot en geeft ruimte aan herinneringen en emoties die zich niet letterlijk laten filmen.</p></div></div></section>
+
+        <figure class="af-media af-media--wide js-fade"><img src="assets/cases/afhaalchinees/s01-01.png" alt="Collageanimatie uit seizoen 1 van De Afhaalchinees"></figure>
 
         <section class="case-narrative__section case-narrative__section--accent"><div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">Onze keuze</h2><div class="case-narrative__copy"><p>We werken als één team met Qian. We spreken elkaar veel, denken conceptueel mee en zetten samen de lijnen uit voor hoe beeld zich binnen de serie moet gedragen.</p><p>Geen dichtgetimmerde briefing, maar een intieme samenwerking waarin we steeds zoeken naar wat een scène nodig heeft.</p></div></div></section>
 
+        <figure class="af-media af-media--feature js-fade"><img src="assets/cases/afhaalchinees/s01-03.png" alt="Collage met kinderen in dozen"></figure>
+
         <section class="af-season af-season--one"><div class="af-season__inner js-fade"><p class="af-season__number">Seizoen 01</p><h2 class="af-season__title">Een wereld van papier en herinnering</h2><p class="af-season__copy">Voor het eerste seizoen bouwen we een zachte, tactiele collagewereld van archiefmateriaal, papier, tekeningen en pastelkleuren. Die gelaagdheid past bij een onderzoek waarin dossiers, geschiedenis en persoonlijke herinneringen steeds door elkaar lopen. De vorm maakt ingewikkelde systemen inzichtelijk, maar houdt ook ruimte voor Qians humor en de woeste registerwisselingen van de serie.</p></div></section>
-        <figure class="af-media af-media--wide js-fade"><img src="assets/cases/afhaalchinees/s01-01.png" alt="Collageanimatie uit seizoen 1 van De Afhaalchinees"></figure>
-        <div class="af-media af-media--duo js-fade"><img src="assets/cases/afhaalchinees/s01-02.png" alt="Grafische scène over adoptie in Nederland"><img src="assets/cases/afhaalchinees/s01-03.png" alt="Collage met kinderen in dozen"></div>
         <div class="af-media af-media--mosaic js-fade"><img src="assets/cases/afhaalchinees/s01-04.png" alt="Collage over een weeshuis"><img src="assets/cases/afhaalchinees/s01-06.png" alt="Collage over interlandelijke adoptie"></div>
         <figure class="af-media af-media--wide js-fade"><img src="assets/cases/afhaalchinees/s01-05.png" alt="Twee weeshuizen in collagevorm"></figure>
         <div class="af-media af-media--duo js-fade"><img src="assets/cases/afhaalchinees/s01-07.png" alt="Collage over een adoptievlucht"><img src="assets/cases/afhaalchinees/s01-08.png" alt="Collage met archiefbeelden"></div>
 
         <section class="af-season af-season--two"><div class="af-season__inner js-fade"><p class="af-season__number">Seizoen 02 · Thuisbezorgd</p><h2 class="af-season__title">Rauwer. Intenser. Dichterbij.</h2><p class="af-season__copy">In het tweede seizoen verschuift de serie van het onderzoeken van het systeem naar de gevolgen die Qian en andere geadopteerden zelf dragen. De vorm beweegt inhoudelijk mee: het pastel maakt plaats voor rood, rauwe texturen en directere beweging. Nog steeds herkenbaar De Afhaalchinees, maar intenser en dichter op de onvervalste emoties van het verhaal.</p></div></section>
-        <div class="af-media af-media--videos js-fade">
-            <video autoplay muted loop playsinline><source src="assets/cases/afhaalchinees/s02-herkenning.mp4" type="video/mp4"></video>
-            <video autoplay muted loop playsinline><source src="assets/cases/afhaalchinees/s02-selfie.mp4" type="video/mp4"></video>
-            <video autoplay muted loop playsinline><source src="assets/cases/afhaalchinees/s02-vliegen.mp4" type="video/mp4"></video>
-            <video autoplay muted loop playsinline><source src="assets/cases/afhaalchinees/s02-weeshuis.mp4" type="video/mp4"></video>
-            <video autoplay muted loop playsinline><source src="assets/cases/afhaalchinees/s02-logo.mp4" type="video/mp4"></video>
-        </div>
+
+        <figure class="af-media af-media--feature af-media--feature-right js-fade"><video autoplay muted loop playsinline><source src="assets/cases/afhaalchinees/s02-herkenning.mp4" type="video/mp4"></video></figure>
 
         <section class="case-narrative__section"><div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">Wat we maken</h2><div class="case-narrative__copy"><p>Voor beide seizoenen verzorgen we alle grafische onderdelen en animaties.</p><p>Van inhoudelijke uitleg en visuele metaforen tot titels, overgangen en grafische scènes. Iedere toepassing krijgt een eigen oplossing, maar alles voelt als onderdeel van dezelfde wereld.</p></div></div></section>
+
+        <div class="af-media af-media--videos js-fade">
+            <video autoplay muted loop playsinline><source src="assets/cases/afhaalchinees/s02-selfie.mp4" type="video/mp4"></video>
+            <video autoplay muted loop playsinline><source src="assets/cases/afhaalchinees/s02-vliegen.mp4" type="video/mp4"></video>
+        </div>
+        <figure class="af-media af-media--feature js-fade"><video autoplay muted loop playsinline><source src="assets/cases/afhaalchinees/s02-weeshuis.mp4" type="video/mp4"></video></figure>
+        <figure class="af-media af-media--wide js-fade"><video autoplay muted loop playsinline><source src="assets/cases/afhaalchinees/s02-logo.mp4" type="video/mp4"></video></figure>
 
         <section class="af-awards"><div class="af-awards__inner js-fade"><h2 class="af-awards__title">De Tegel én de Zilveren Nipkowschijf</h2><div class="af-awards__quotes"><blockquote>“Een enerverende achtbaanrit vol animatie, humor en woeste registerwisselingen.”<cite>Jury Zilveren Nipkowschijf over seizoen 1</cite></blockquote><blockquote>“Een ongelooflijk dapper, oprecht en intens proces, en nog wervelend vormgegeven ook.”<cite>Trouw over seizoen 2</cite></blockquote></div></div></section>
     </main>

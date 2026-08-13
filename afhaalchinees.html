@@ -10,14 +10,14 @@
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="stylesheet" href="css/style.css?v=155">
     <style>
-        :root { --af-red: #C1272D; --af-pink:#e5aaa8; --af-blue:#78999a; --af-s02:#ec2f17; }
+        :root { --af-red:var(--dark); --af-blue:var(--accent); --af-yellow:var(--highlight); }
         .af-hero {
             min-height: 60svh;
             position: relative;
             display: flex;
             align-items: flex-end;
             overflow: hidden;
-            background: var(--af-red);
+            background: var(--dark);
         }
         .af-hero__media { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
         .af-hero__content {
@@ -54,32 +54,32 @@
         .af-story-row .case-narrative__section { min-width:0; border:0; background:var(--cream); color:var(--dark); }
         .af-story-row .case-narrative__inner { display:block; max-width:680px; }
         .af-story-row .case-narrative__copy { padding-top:clamp(22px,2.5vw,36px); }
-        .af-story-row__media { min-height:clamp(420px,45vw,760px); margin:0; overflow:hidden; background:#17383a; }
+        .af-story-row__media { min-height:clamp(420px,45vw,760px); margin:0; overflow:hidden; background:var(--dark); }
         .af-story-row__media img,.af-story-row__media video { width:100%; height:100%; display:block; object-fit:cover; }
         .af-story-row--reverse .af-story-row__media { order:1; }
         .af-story-row--reverse .case-narrative__section { order:2; }
         .af-season { padding: clamp(58px, 6.5vw, 105px) var(--pad-x); }
-        .af-season--one { background: var(--af-pink); color:#17383a; }
-        .af-season--two { background: var(--af-s02); color:var(--cream); }
+        .af-season--one { background: var(--af-blue); color:var(--dark); }
+        .af-season--two { background: var(--af-yellow); color:var(--dark); }
         .af-season__inner { width:min(100%,1500px); margin:0 auto; }
         .af-season__number { margin:0 0 18px; font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; opacity:.55; }
         .af-season__inner { display:grid; grid-template-columns:minmax(0,.85fr) minmax(320px,1.15fr); column-gap:clamp(42px,7vw,120px); align-items:start; }
         .af-season__number { grid-column:1/-1; }
         .af-season__title { max-width:14ch; margin:0; font-size:clamp(42px,5.5vw,92px); font-weight:700; line-height:.94; letter-spacing:-.045em; }
         .af-season__copy { max-width:64ch; margin:4px 0 0; font-size:clamp(16px,1.15vw,20px); line-height:1.5; }
-        .af-media { width:min(100%,var(--content-max)); margin-inline:auto; display:grid; overflow:hidden; background:#17383a; }
+        .af-media { width:min(100%,var(--content-max)); margin-inline:auto; display:grid; overflow:hidden; background:var(--dark); }
         .af-media--wide img,.af-media--wide video { width:100%; display:block; }
         .af-media--feature { width:min(calc(100% - (2 * var(--pad-x))),1500px); margin-block:clamp(10px,1.5vw,24px); background:transparent; }
         .af-media--feature img,.af-media--feature video { width:72%; display:block; object-fit:cover; }
         .af-media--feature-right img,.af-media--feature-right video { margin-left:auto; }
         .af-media--duo { grid-template-columns:1fr 1fr; gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); }
         .af-media--duo img,.af-media--duo video { width:100%; height:100%; min-height:44vw; object-fit:cover; display:block; }
-        .af-media--mosaic { grid-template-columns:1fr 1fr; gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); background:var(--af-pink); }
+        .af-media--mosaic { grid-template-columns:1fr 1fr; gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); background:var(--af-blue); }
         .af-media--mosaic img { width:100%; height:100%; object-fit:cover; display:block; }
-        .af-media--videos { grid-template-columns:repeat(2,1fr); gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); background:#161616; }
+        .af-media--videos { grid-template-columns:repeat(2,1fr); gap:clamp(8px,1vw,18px); padding:clamp(8px,1vw,18px); background:var(--dark); }
         .af-media--videos video { width:100%; height:min(44vw,680px); object-fit:cover; display:block; background:#111; }
         .af-media--videos video:nth-child(3) { grid-column:1/-1; width:100%; height:min(56vw,900px); }
-        .af-awards { padding:clamp(58px,7vw,110px) var(--pad-x); background:#1d1d1d; color:var(--cream); }
+        .af-awards { padding:clamp(58px,7vw,110px) var(--pad-x); background:var(--dark); color:var(--cream); }
         .af-awards__inner { max-width:1450px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1fr) auto; column-gap:clamp(48px,8vw,130px); align-items:start; }
         .af-awards__title { max-width:16ch; margin:0; font-size:clamp(40px,5vw,84px); font-weight:700; line-height:1; letter-spacing:0; }
         .af-awards__photo { position:relative; width:clamp(210px,19vw,320px); margin:0 10px 0 0; transform:rotate(2.5deg); }
@@ -112,7 +112,7 @@
         <img class="af-hero__media" src="assets/cases/afhaalchinees-thumb.png" alt="De Afhaalchinees: Thuisbezorgd">
     </section>
 
-    <main style="--case-accent:#C1272D">
+    <main style="--case-accent:var(--accent);--case-accent-text:var(--dark)">
         <section class="case-narrative__intro">
             <div class="case-narrative__intro-inner js-fade">
                 <h2 class="case-narrative__title">De Afhaalchinees</h2>

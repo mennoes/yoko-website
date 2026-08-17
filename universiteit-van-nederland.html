@@ -55,7 +55,6 @@
         .uvn-media--wide img { width:100%; aspect-ratio:16/9; display:block; object-fit:cover; }
         .uvn-insight-grid { width:calc(100% - (2 * var(--pad-x))); margin:clamp(8px,1vw,18px) auto; display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:clamp(8px,1vw,18px); }
         .uvn-insight-grid__item { position:relative; grid-column:span 3; aspect-ratio:1; display:block; min-width:0; padding:0; border:0; overflow:hidden; background:var(--dark); cursor:zoom-in; }
-        .uvn-insight-grid__item:nth-child(n+5) { grid-column:span 2; }
         .uvn-insight-grid__item img,
         .uvn-insight-grid__item video { width:100%; height:100%; display:block; object-fit:cover; pointer-events:none; transition:transform .45s ease; }
         .uvn-insight-grid__item:hover img,
@@ -147,8 +146,7 @@
             .uvn-overview-challenge { flex:none; opacity:1; transform:none; }
             .uvn-challenge-grid { width:calc(100% - (2 * var(--uvn-mobile-pad))); grid-template-columns:1fr; gap:10px; }
             .uvn-insight-grid { width:calc(100% - (2 * var(--uvn-mobile-pad))); grid-template-columns:1fr; gap:10px; }
-            .uvn-insight-grid__item,
-            .uvn-insight-grid__item:nth-child(n+5) { grid-column:auto; }
+            .uvn-insight-grid__item { grid-column:auto; }
             .uvn-deliverables__track { gap:18px; padding:18px 4px 30px; }
             .uvn-deliverable-card { flex-basis:min(78vw,320px); }
             .uvn-deliverable-card__title { font-size:22px; }
@@ -263,6 +261,9 @@
             </button>
             <button class="uvn-insight-grid__item" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-live-09.jpg" data-showcase-alt="Presentatie tijdens Universiteit van Nederland Live" aria-label="Bekijk de presentatie van Universiteit van Nederland Live groter">
                 <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-live-09.jpg" alt="Presentatie tijdens Universiteit van Nederland Live" loading="lazy">
+            </button>
+            <button class="uvn-insight-grid__item" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-quest-magazine.jpg" data-showcase-alt="Cover voor Quest Magazine en de podcast Rare Jongens" aria-label="Bekijk de cover voor Quest Magazine groter">
+                <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-quest-magazine.jpg" alt="Cover voor Quest Magazine en de podcast Rare Jongens" loading="lazy">
             </button>
         </div>
 

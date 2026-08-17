@@ -75,6 +75,9 @@
         .uvn-deliverable-card__media { width:100%; aspect-ratio:4/3; overflow:hidden; background:var(--dark); }
         .uvn-deliverable-card__media img,
         .uvn-deliverable-card__media video { width:100%; height:100%; display:block; object-fit:cover; pointer-events:none; }
+        .uvn-event-thumb { position:relative; display:block; }
+        .uvn-event-thumb img { position:absolute; inset:0; opacity:0; transition:opacity .65s ease; }
+        .uvn-event-thumb img.is-active { opacity:1; }
         .uvn-deliverable-card__media--book { background:#fff; }
         .uvn-deliverable-card__media--book img { object-fit:contain; }
         .uvn-software-thumb { width:100%; height:100%; display:grid; grid-template-columns:.72fr 1.28fr; gap:8px; padding:12px; background:#e7dfd5; color:#004f3b; }
@@ -99,6 +102,12 @@
         .uvn-showcase-dialog [hidden] { display:none; }
         .uvn-showcase-dialog__close { position:absolute; z-index:2; top:12px; right:12px; width:46px; height:46px; padding:0; border:0; border-radius:50%; background:var(--cream); color:var(--dark); font:400 30px/1 Arial,sans-serif; cursor:pointer; }
         .uvn-showcase-dialog__sound { position:absolute; z-index:2; top:12px; left:12px; min-height:46px; padding:0 18px; border:0; border-radius:24px; background:var(--cream); color:var(--dark); font:400 15px/1 Arial,sans-serif; cursor:pointer; }
+        .uvn-showcase-dialog.is-slideshow .uvn-showcase-dialog__frame { min-height:min(88vh,900px); padding:0 68px 64px; }
+        .uvn-showcase-dialog.is-slideshow .uvn-showcase-dialog__frame img { max-height:calc(88vh - 86px); }
+        .uvn-showcase-dialog__previous,.uvn-showcase-dialog__next { position:absolute; z-index:2; top:50%; width:46px; height:46px; padding:0; border:0; border-radius:50%; background:var(--cream); color:var(--dark); font:400 27px/1 Arial,sans-serif; cursor:pointer; transform:translateY(-50%); }
+        .uvn-showcase-dialog__previous { left:12px; }
+        .uvn-showcase-dialog__next { right:12px; }
+        .uvn-showcase-dialog__caption { position:absolute; z-index:2; right:64px; bottom:18px; left:64px; margin:0; color:var(--cream); font-size:clamp(18px,1.6vw,26px); line-height:1.15; text-align:center; }
         .page--uvn .case-next { min-height:0; background:var(--dark); }
         .page--uvn .case-next__bg,.page--uvn .case-next__label { display:none; }
         .page--uvn .case-next__link { padding:clamp(38px,4vw,62px) var(--pad-x); flex-direction:row; align-items:center; justify-content:space-between; }
@@ -130,6 +139,11 @@
             .uvn-deliverable-card { flex-basis:min(78vw,320px); }
             .uvn-deliverable-card__title { font-size:22px; }
             .uvn-showcase-dialog { width:calc(100vw - 24px); }
+            .uvn-showcase-dialog.is-slideshow .uvn-showcase-dialog__frame { min-height:min(78vh,680px); padding:0 46px 60px; }
+            .uvn-showcase-dialog.is-slideshow .uvn-showcase-dialog__frame img { max-height:calc(78vh - 76px); }
+            .uvn-showcase-dialog__previous { left:6px; }
+            .uvn-showcase-dialog__next { right:6px; }
+            .uvn-showcase-dialog__caption { right:48px; bottom:18px; left:48px; font-size:17px; }
             .uvn-services h2 { max-width:none; }
             .page--uvn .case-next__link { padding-inline:var(--uvn-mobile-pad); }
         }
@@ -250,8 +264,15 @@
                         <span class="uvn-deliverable-card__media"><img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-01.jpg" alt="Grafische uitleg over de rolroeren van een vliegtuig"></span>
                         <span class="uvn-deliverable-card__title">Huisstijl</span>
                     </a>
-                    <button class="uvn-deliverable-card" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-02.jpg" data-showcase-alt="Grafische toepassing bij een live wetenschapsevenement">
-                        <span class="uvn-deliverable-card__media"><img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-02.jpg" alt="Grafische toepassing bij een live wetenschapsevenement"></span>
+                    <button class="uvn-deliverable-card" type="button" data-showcase-type="slideshow" aria-label="Bekijk de collectie live events">
+                        <span class="uvn-deliverable-card__media uvn-event-thumb">
+                            <img class="is-active" src="assets/cases/universiteit-van-nederland/gallery/event-carre-01.jpg" alt="Live event in Carré">
+                            <img src="assets/cases/universiteit-van-nederland/gallery/event-carre-02.jpg" alt="Live event in Carré" loading="lazy">
+                            <img src="assets/cases/universiteit-van-nederland/gallery/event-artis-planetarium.jpg" alt="Live event in ARTIS — Planetarium" loading="lazy">
+                            <img src="assets/cases/universiteit-van-nederland/gallery/event-artis-02.jpg" alt="Live event in ARTIS" loading="lazy">
+                            <img src="assets/cases/universiteit-van-nederland/gallery/event-artis-01.jpg" alt="Live event in ARTIS" loading="lazy">
+                            <img src="assets/cases/universiteit-van-nederland/gallery/event-lowlands.jpg" alt="Live event op Lowlands" loading="lazy">
+                        </span>
                         <span class="uvn-deliverable-card__title">Live events</span>
                     </button>
                     <button class="uvn-deliverable-card" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/droom-boekcover.jpg" data-showcase-alt="DROOM van slaapwetenschapper Merijn van de Laar">
@@ -279,8 +300,11 @@
             <div class="uvn-showcase-dialog__frame">
                 <button class="uvn-showcase-dialog__sound" type="button" aria-label="Geluid aanzetten" hidden>Geluid aan</button>
                 <button class="uvn-showcase-dialog__close" type="button" aria-label="Sluiten">×</button>
+                <button class="uvn-showcase-dialog__previous" type="button" aria-label="Vorige foto" hidden>←</button>
+                <button class="uvn-showcase-dialog__next" type="button" aria-label="Volgende foto" hidden>→</button>
                 <video controls playsinline hidden></video>
                 <img src="" alt="" hidden>
+                <p class="uvn-showcase-dialog__caption" aria-live="polite" hidden></p>
             </div>
         </dialog>
 
@@ -369,6 +393,43 @@
             const showcaseImage = showcaseDialog?.querySelector('img');
             const showcaseClose = showcaseDialog?.querySelector('.uvn-showcase-dialog__close');
             const showcaseSound = showcaseDialog?.querySelector('.uvn-showcase-dialog__sound');
+            const showcasePrevious = showcaseDialog?.querySelector('.uvn-showcase-dialog__previous');
+            const showcaseNext = showcaseDialog?.querySelector('.uvn-showcase-dialog__next');
+            const showcaseCaption = showcaseDialog?.querySelector('.uvn-showcase-dialog__caption');
+            const eventThumb = document.querySelector('.uvn-event-thumb');
+            const eventSlides = [...(eventThumb?.querySelectorAll('img') || [])].map(image => {
+                const src = image.getAttribute('src');
+                const filename = src.split('/').pop().toLowerCase();
+                let title = 'Live event';
+                if (filename.includes('planetarium')) title = 'ARTIS — Planetarium';
+                else if (filename.includes('artis')) title = 'ARTIS';
+                else if (filename.includes('carre')) title = 'Carré';
+                else if (filename.includes('lowlands')) title = 'Lowlands';
+                return { src, title, alt:image.alt };
+            });
+            let eventThumbIndex = 0;
+            let eventSlideIndex = 0;
+            const showEventThumb = index => {
+                const images = eventThumb?.querySelectorAll('img');
+                if (!images?.length) return;
+                eventThumbIndex = (index + images.length) % images.length;
+                images.forEach((image, imageIndex) => image.classList.toggle('is-active', imageIndex === eventThumbIndex));
+            };
+            if (eventSlides.length > 1) window.setInterval(() => showEventThumb(eventThumbIndex + 1), 2800);
+            const setSlideshowMode = enabled => {
+                showcaseDialog?.classList.toggle('is-slideshow', enabled);
+                if (showcasePrevious) showcasePrevious.hidden = !enabled;
+                if (showcaseNext) showcaseNext.hidden = !enabled;
+                if (showcaseCaption) showcaseCaption.hidden = !enabled;
+            };
+            const showEventSlide = index => {
+                if (!showcaseImage || !eventSlides.length) return;
+                eventSlideIndex = (index + eventSlides.length) % eventSlides.length;
+                const slide = eventSlides[eventSlideIndex];
+                showcaseImage.src = slide.src;
+                showcaseImage.alt = slide.alt;
+                if (showcaseCaption) showcaseCaption.textContent = slide.title;
+            };
             const updateSoundControl = () => {
                 if (!showcaseVideo || !showcaseSound) return;
                 showcaseSound.textContent = showcaseVideo.muted ? 'Geluid aan' : 'Geluid uit';
@@ -378,6 +439,7 @@
                 card.addEventListener('click', () => {
                     if (!showcaseDialog || !showcaseVideo || !showcaseImage) return;
                     if (card.dataset.showcaseType === 'video') {
+                        setSlideshowMode(false);
                         showcaseImage.hidden = true;
                         showcaseVideo.hidden = false;
                         showcaseVideo.muted = true;
@@ -389,7 +451,17 @@
                             showcaseVideo.currentTime = 0;
                             showcaseVideo.play().catch(() => {});
                         }, { once:true });
+                    } else if (card.dataset.showcaseType === 'slideshow') {
+                        showcaseVideo.pause();
+                        showcaseVideo.removeAttribute('src');
+                        showcaseVideo.load();
+                        showcaseVideo.hidden = true;
+                        if (showcaseSound) showcaseSound.hidden = true;
+                        showcaseImage.hidden = false;
+                        setSlideshowMode(true);
+                        showEventSlide(eventThumbIndex);
                     } else {
+                        setSlideshowMode(false);
                         showcaseVideo.pause();
                         showcaseVideo.removeAttribute('src');
                         showcaseVideo.load();
@@ -408,6 +480,13 @@
                 updateSoundControl();
                 showcaseVideo.play().catch(() => {});
             });
+            showcasePrevious?.addEventListener('click', () => showEventSlide(eventSlideIndex - 1));
+            showcaseNext?.addEventListener('click', () => showEventSlide(eventSlideIndex + 1));
+            document.addEventListener('keydown', event => {
+                if (!showcaseDialog?.open || !showcaseDialog.classList.contains('is-slideshow')) return;
+                if (event.key === 'ArrowLeft') showEventSlide(eventSlideIndex - 1);
+                if (event.key === 'ArrowRight') showEventSlide(eventSlideIndex + 1);
+            });
             showcaseClose?.addEventListener('click', () => showcaseDialog?.close());
             showcaseDialog?.addEventListener('click', event => {
                 if (event.target === showcaseDialog) showcaseDialog.close();
@@ -418,6 +497,7 @@
                 showcaseVideo?.load();
                 if (showcaseVideo) showcaseVideo.muted = true;
                 if (showcaseSound) showcaseSound.hidden = true;
+                setSlideshowMode(false);
                 if (showcaseImage) showcaseImage.src = '';
             });
         });

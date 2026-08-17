@@ -1901,12 +1901,7 @@ h2,
 }
 .case-next__link:hover .case-next__bg { opacity: 0.28; }
 .case-next__label {
-    font-size: 11px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--cream);
-    opacity: 0.35;
+    display: none;
 }
 .case-next__title {
     font-size: clamp(36px, 6vw, 88px);
@@ -3161,20 +3156,21 @@ body.cursor-on-yellow .contact-form__btn {
 }
 .page--uvn .uvn-body__text { max-width: 62ch; }
 
-/* Schermvullende stop voor de volgende case. */
+/* Volgende case blijft een compacte tekstlink; alleen de hero mag beeldvullend zijn. */
 .case-next {
-    min-height: 100svh;
+    min-height: 0;
     scroll-snap-align: start;
 }
 .case-next__bg {
-    opacity: 0.72;
-    filter: none;
+    display: none;
 }
 .case-next__link {
-    min-height: 100svh;
-    justify-content: flex-end;
-    padding: clamp(48px, 7vw, 104px) var(--pad-x);
-    background: rgba(32, 32, 32, 0.28);
+    min-height: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(38px, 4vw, 62px) var(--pad-x);
+    background: none;
 }
 .case-next__label,
 .case-next__title,
@@ -3436,4 +3432,40 @@ body.cursor-on-yellow .contact-form__btn {
     .collab-step > span { margin-bottom: 24px; }
     .collab-step h3 { min-height: 0; }
     .collab-more { align-items: start; }
+}
+
+/* ============================================================
+   CASEPAGINA-REGELS
+   - alleen de hero mag beeldvullend zijn
+   - contentmedia blijft binnen de horizontale tekstmarges
+   - tekstsecties gebruiken steeds dezelfde kop/tekst-grid
+   - geen kleine CAPS-labels of sectienummers
+   ============================================================ */
+.page--case .case-narrative__inner {
+    display: grid;
+    grid-template-columns: minmax(220px, .7fr) minmax(0, 1.3fr);
+    gap: clamp(36px, 7vw, 120px);
+    width: 100%;
+    max-width: none;
+    margin: 0 !important;
+    text-align: left;
+}
+.page--case .case-narrative__label {
+    max-width: 12ch;
+    padding-top: 0;
+    font-size: clamp(32px, 3.5vw, 58px);
+}
+.page--case .case-narrative__label::before,
+.page--case .case-narrative__eyebrow,
+.page--case .case-next__label {
+    display: none;
+    content: none;
+}
+.page--case .case-narrative__copy {
+    max-width: 68ch;
+    padding-top: 0;
+}
+@media (max-width: 720px) {
+    .page--case .case-narrative__inner { grid-template-columns: 1fr; gap: 20px; }
+    .page--case .case-narrative__label { max-width: none; }
 }

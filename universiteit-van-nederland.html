@@ -63,6 +63,9 @@
         .uvn-insight-grid__item:focus-visible video { transform:scale(1.025); }
         .uvn-insight-grid__item:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
         .uvn-insight-grid__label { position:absolute; right:12px; bottom:12px; padding:9px 13px; background:var(--cream); color:var(--dark); font-size:13px; line-height:1; pointer-events:none; }
+        .uvn-insight-grid--secondary { grid-template-columns:repeat(3,minmax(0,1fr)); }
+        .uvn-insight-grid--secondary .uvn-insight-grid__item { grid-column:auto; }
+        .uvn-insight-grid--secondary .uvn-insight-grid__item:nth-child(4) { grid-column:2; }
         .uvn-result { background:var(--highlight); color:var(--dark); }
         .uvn-services { padding:clamp(42px,5vw,78px) var(--pad-x); background:var(--highlight); color:var(--dark); }
         .uvn-services__inner { display:grid; grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr); gap:clamp(36px,7vw,120px); }
@@ -150,6 +153,7 @@
             .uvn-challenge-grid { width:calc(100% - (2 * var(--uvn-mobile-pad))); grid-template-columns:1fr; gap:10px; }
             .uvn-insight-grid { width:calc(100% - (2 * var(--uvn-mobile-pad))); grid-template-columns:1fr; gap:10px; }
             .uvn-insight-grid__item { grid-column:auto; }
+            .uvn-insight-grid--secondary .uvn-insight-grid__item:nth-child(4) { grid-column:auto; }
             .uvn-deliverables__track { gap:18px; padding:18px 4px 30px; }
             .uvn-deliverable-card { flex-basis:min(78vw,320px); }
             .uvn-deliverable-card__title { font-size:22px; }
@@ -242,29 +246,14 @@
                 <video autoplay muted loop playsinline preload="none" data-lazy-autoplay><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-dino.mp4" type="video/mp4"></video>
                 <span class="uvn-insight-grid__label">Bekijk video</span>
             </button>
-            <button class="uvn-insight-grid__item" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-format-p1.mp4" aria-label="Bekijk een compilatie van formatontwikkeling groter en met geluid">
-                <video autoplay muted loop playsinline preload="none" data-lazy-autoplay><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-format-p1.mp4" type="video/mp4"></video>
-                <span class="uvn-insight-grid__label">Bekijk video</span>
-            </button>
-            <button class="uvn-insight-grid__item" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-format-p2.mp4" aria-label="Bekijk nog een compilatie van formatontwikkeling groter en met geluid">
-                <video autoplay muted loop playsinline preload="none" data-lazy-autoplay><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-format-p2.mp4" type="video/mp4"></video>
-                <span class="uvn-insight-grid__label">Bekijk video</span>
-            </button>
-            <button class="uvn-insight-grid__item" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-college.mp4" aria-label="Bekijk een compilatie van het collegeformat groter en met geluid">
-                <video autoplay muted loop playsinline preload="none" data-lazy-autoplay><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-college.mp4" type="video/mp4"></video>
-                <span class="uvn-insight-grid__label">Bekijk video</span>
-            </button>
             <button class="uvn-insight-grid__item" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-live-01.jpg" data-showcase-alt="Universiteit van Nederland Live met publiek" aria-label="Bekijk Universiteit van Nederland Live groter">
                 <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-live-01.jpg" alt="Universiteit van Nederland Live met publiek" loading="lazy">
             </button>
             <button class="uvn-insight-grid__item" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-live-06.jpg" data-showcase-alt="Wetenschapper op het podium bij Universiteit van Nederland Live" aria-label="Bekijk het live-eventbeeld groter">
                 <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-live-06.jpg" alt="Wetenschapper op het podium bij Universiteit van Nederland Live" loading="lazy">
             </button>
-            <button class="uvn-insight-grid__item" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-live-09.jpg" data-showcase-alt="Presentatie tijdens Universiteit van Nederland Live" aria-label="Bekijk de presentatie van Universiteit van Nederland Live groter">
-                <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-live-09.jpg" alt="Presentatie tijdens Universiteit van Nederland Live" loading="lazy">
-            </button>
-            <button class="uvn-insight-grid__item" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-compilatie-2025.mp4" aria-label="Bekijk de compilatie van Universiteit van Nederland groter en met geluid">
-                <video autoplay muted loop playsinline preload="none" data-lazy-autoplay><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-compilatie-2025.mp4" type="video/mp4"></video>
+            <button class="uvn-insight-grid__item" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-format-p1.mp4" aria-label="Bekijk een compilatie van formatontwikkeling groter en met geluid">
+                <video autoplay muted loop playsinline preload="none" data-lazy-autoplay><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-format-p1.mp4" type="video/mp4"></video>
                 <span class="uvn-insight-grid__label">Bekijk video</span>
             </button>
         </div>
@@ -283,7 +272,23 @@
             </div>
         </section>
 
-        <div class="uvn-media uvn-media--duo js-fade"><img src="assets/cases/heyu/14-concept-people.png" alt="Conceptontwikkeling binnen de visuele identiteit"><img src="assets/cases/heyu/20-prof-pattern.png" alt="Grafische toepassing binnen een Universiteit van Nederland-format"></div>
+        <div class="uvn-insight-grid uvn-insight-grid--secondary js-fade" aria-label="Meer voorbeelden van formats, animatie en live producties">
+            <button class="uvn-insight-grid__item" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-format-p2.mp4" aria-label="Bekijk nog een compilatie van formatontwikkeling groter en met geluid">
+                <video autoplay muted loop playsinline preload="none" data-lazy-autoplay><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-format-p2.mp4" type="video/mp4"></video>
+                <span class="uvn-insight-grid__label">Bekijk video</span>
+            </button>
+            <button class="uvn-insight-grid__item" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-live-09.jpg" data-showcase-alt="Presentatie tijdens Universiteit van Nederland Live" aria-label="Bekijk de presentatie van Universiteit van Nederland Live groter">
+                <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-live-09.jpg" alt="Presentatie tijdens Universiteit van Nederland Live" loading="lazy">
+            </button>
+            <button class="uvn-insight-grid__item" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-college.mp4" aria-label="Bekijk een compilatie van het collegeformat groter en met geluid">
+                <video autoplay muted loop playsinline preload="none" data-lazy-autoplay><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-college.mp4" type="video/mp4"></video>
+                <span class="uvn-insight-grid__label">Bekijk video</span>
+            </button>
+            <button class="uvn-insight-grid__item" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-compilatie-2025.mp4" aria-label="Bekijk de compilatie van Universiteit van Nederland groter en met geluid">
+                <video autoplay muted loop playsinline preload="none" data-lazy-autoplay><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-compilatie-2025.mp4" type="video/mp4"></video>
+                <span class="uvn-insight-grid__label">Bekijk video</span>
+            </button>
+        </div>
 
         <section class="case-narrative__section uvn-deliverables-section">
             <div class="case-narrative__inner js-fade">

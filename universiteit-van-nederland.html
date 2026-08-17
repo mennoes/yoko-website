@@ -62,12 +62,26 @@
         .uvn-deliverable-card:nth-child(4) { --tilt:2.3deg; }
         .uvn-deliverable-card:nth-child(5) { --tilt:-1.8deg; }
         .uvn-deliverable-card:nth-child(6) { --tilt:1.1deg; }
+        .uvn-deliverable-card:nth-child(7) { --tilt:-2.4deg; }
         .uvn-deliverable-card:hover,.uvn-deliverable-card:focus-visible { z-index:2; outline:none; transform:rotate(0deg) translateY(-10px); box-shadow:0 22px 42px rgba(32,32,32,.16); }
         .uvn-deliverable-card__media { width:100%; aspect-ratio:4/3; overflow:hidden; background:var(--dark); }
         .uvn-deliverable-card__media img,
         .uvn-deliverable-card__media video { width:100%; height:100%; display:block; object-fit:cover; pointer-events:none; }
         .uvn-deliverable-card__media--book { background:#fff; }
         .uvn-deliverable-card__media--book img { object-fit:contain; }
+        .uvn-software-thumb { width:100%; height:100%; display:grid; grid-template-columns:.72fr 1.28fr; gap:8px; padding:12px; background:#e7dfd5; color:#004f3b; }
+        .uvn-software-thumb__panel { display:flex; flex-direction:column; gap:7px; padding:10px; background:#f7f3ed; border:1px solid rgba(0,79,59,.18); }
+        .uvn-software-thumb__brand { font-size:10px; font-weight:700; line-height:1; }
+        .uvn-software-thumb__field { height:24px; padding:6px; background:#fff; border:1px solid rgba(0,79,59,.22); font-size:7px; }
+        .uvn-software-thumb__swatches { display:flex; gap:4px; }
+        .uvn-software-thumb__swatches i { width:11px; height:11px; border-radius:50%; background:#c99cf4; }
+        .uvn-software-thumb__swatches i:nth-child(2) { background:#004f3b; }
+        .uvn-software-thumb__swatches i:nth-child(3) { background:#f25d43; }
+        .uvn-software-thumb__button { margin-top:auto; padding:6px; background:#004f3b; color:#fff; font-size:7px; text-align:center; }
+        .uvn-software-thumb__outputs { display:grid; grid-template-columns:1.4fr .8fr; gap:6px; }
+        .uvn-software-thumb__output { display:flex; align-items:center; padding:8px; background:#004f3b; color:#c99cf4; font-size:clamp(12px,1.15vw,18px); font-weight:700; line-height:.95; overflow:hidden; }
+        .uvn-software-thumb__output:nth-child(2) { background:#c99cf4; color:#004f3b; }
+        .uvn-software-thumb__output:nth-child(3) { grid-column:1/-1; background:#f7f3ed; color:#004f3b; border:1px solid rgba(0,79,59,.18); }
         .uvn-deliverable-card__title { display:block; margin:14px 4px 5px; font-size:clamp(21px,1.8vw,30px); font-weight:400; line-height:1.08; letter-spacing:-.02em; }
         .uvn-showcase-dialog { width:min(92vw,1500px); max-width:none; max-height:92vh; margin:auto; padding:0; border:0; background:transparent; overflow:visible; }
         .uvn-showcase-dialog::backdrop { background:rgba(24,24,24,.92); }
@@ -230,8 +244,17 @@
                     </button>
                     <button class="uvn-deliverable-card" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-05.jpg" data-showcase-alt="Visuele toepassing binnen de Universiteit van Nederland-huisstijl">
                         <span class="uvn-deliverable-card__media"><img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-05.jpg" alt="Visuele toepassing binnen de Universiteit van Nederland-huisstijl"></span>
-                        <span class="uvn-deliverable-card__title">Websites, tools &amp; workflows</span>
+                        <span class="uvn-deliverable-card__title">Websites, templates &amp; workflows</span>
                     </button>
+                    <a class="uvn-deliverable-card" href="uvnl-titelbalk-tool.html">
+                        <span class="uvn-deliverable-card__media">
+                            <span class="uvn-software-thumb" aria-label="Interface van de UvNL Titelbalk Generator">
+                                <span class="uvn-software-thumb__panel"><span class="uvn-software-thumb__brand">UvNL Titelbalk</span><span class="uvn-software-thumb__field">Waarom dromen we?</span><span class="uvn-software-thumb__swatches"><i></i><i></i><i></i></span><span class="uvn-software-thumb__button">Genereer formaten</span></span>
+                                <span class="uvn-software-thumb__outputs"><span class="uvn-software-thumb__output">Waarom dromen we?</span><span class="uvn-software-thumb__output">Waarom dromen we?</span><span class="uvn-software-thumb__output">Waarom dromen we?</span></span>
+                            </span>
+                        </span>
+                        <span class="uvn-deliverable-card__title">Software — Titelbalk Generator</span>
+                    </a>
                 </div>
             </div>
         </section>

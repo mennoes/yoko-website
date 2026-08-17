@@ -51,6 +51,31 @@
         .uvn-services h2 { max-width:12ch; font-size:clamp(32px,3.5vw,58px); font-weight:700; line-height:.98; letter-spacing:-.025em; }
         .uvn-services ul { display:grid; grid-template-columns:1fr 1fr; gap:0 clamp(28px,4vw,62px); list-style:none; }
         .uvn-services li { padding:14px 0; border-top:1px solid rgba(32,32,32,.24); font-size:clamp(18px,1.45vw,24px); line-height:1.2; }
+        .page--uvn .uvn-deliverables-section { display:block; }
+        .uvn-deliverables { width:100%; margin-top:clamp(28px,4vw,58px); overflow-x:auto; overflow-y:visible; scroll-snap-type:x proximity; scrollbar-width:none; }
+        .uvn-deliverables::-webkit-scrollbar { display:none; }
+        .uvn-deliverables__track { display:flex; align-items:flex-start; gap:clamp(14px,1.7vw,28px); width:max-content; padding:22px 4px 34px; }
+        .uvn-deliverable-card { --tilt:0deg; position:relative; flex:0 0 clamp(250px,25vw,370px); display:block; padding:clamp(8px,1vw,13px); border:1px solid rgba(32,32,32,.14); background:#fff; color:var(--dark); font:inherit; text-align:left; text-decoration:none; cursor:pointer; box-shadow:0 12px 30px rgba(32,32,32,.1); transform:rotate(var(--tilt)); transform-origin:center; transition:transform .24s ease,box-shadow .24s ease; scroll-snap-align:start; }
+        .uvn-deliverable-card:nth-child(1) { --tilt:-2.2deg; }
+        .uvn-deliverable-card:nth-child(2) { --tilt:1.6deg; }
+        .uvn-deliverable-card:nth-child(3) { --tilt:-1deg; }
+        .uvn-deliverable-card:nth-child(4) { --tilt:2.3deg; }
+        .uvn-deliverable-card:nth-child(5) { --tilt:-1.8deg; }
+        .uvn-deliverable-card:nth-child(6) { --tilt:1.1deg; }
+        .uvn-deliverable-card:hover,.uvn-deliverable-card:focus-visible { z-index:2; outline:none; transform:rotate(0deg) translateY(-10px); box-shadow:0 22px 42px rgba(32,32,32,.16); }
+        .uvn-deliverable-card__media { width:100%; aspect-ratio:4/3; overflow:hidden; background:var(--dark); }
+        .uvn-deliverable-card__media img,
+        .uvn-deliverable-card__media video { width:100%; height:100%; display:block; object-fit:cover; pointer-events:none; }
+        .uvn-deliverable-card__media--book { background:#fff; }
+        .uvn-deliverable-card__media--book img { object-fit:contain; }
+        .uvn-deliverable-card__title { display:block; margin:14px 4px 5px; font-size:clamp(21px,1.8vw,30px); font-weight:400; line-height:1.08; letter-spacing:-.02em; }
+        .uvn-showcase-dialog { width:min(92vw,1500px); max-width:none; max-height:92vh; margin:auto; padding:0; border:0; background:transparent; overflow:visible; }
+        .uvn-showcase-dialog::backdrop { background:rgba(24,24,24,.92); }
+        .uvn-showcase-dialog__frame { position:relative; display:flex; align-items:center; justify-content:center; width:100%; max-height:92vh; background:#111; }
+        .uvn-showcase-dialog__frame img,
+        .uvn-showcase-dialog__frame video { display:block; width:auto; max-width:100%; height:auto; max-height:88vh; object-fit:contain; }
+        .uvn-showcase-dialog [hidden] { display:none; }
+        .uvn-showcase-dialog__close { position:absolute; z-index:2; top:12px; right:12px; width:46px; height:46px; padding:0; border:0; border-radius:50%; background:var(--cream); color:var(--dark); font:400 30px/1 Arial,sans-serif; cursor:pointer; }
         .page--uvn .case-next { min-height:0; background:var(--dark); }
         .page--uvn .case-next__bg,.page--uvn .case-next__label { display:none; }
         .page--uvn .case-next__link { padding:clamp(38px,4vw,62px) var(--pad-x); flex-direction:row; align-items:center; justify-content:space-between; }
@@ -76,6 +101,10 @@
             .uvn-overview { transform:none!important; padding-inline:var(--uvn-mobile-pad); }
             .uvn-overview img,
             .uvn-overview video { height:min(72vw,420px); scroll-snap-align:start; }
+            .uvn-deliverables__track { gap:18px; padding:18px 4px 30px; }
+            .uvn-deliverable-card { flex-basis:min(78vw,320px); }
+            .uvn-deliverable-card__title { font-size:22px; }
+            .uvn-showcase-dialog { width:calc(100vw - 24px); }
             .uvn-services h2 { max-width:none; }
             .page--uvn .case-next__link { padding-inline:var(--uvn-mobile-pad); }
         }
@@ -167,17 +196,53 @@
 
         <div class="uvn-media uvn-media--duo js-fade"><img src="assets/cases/heyu/14-concept-people.png" alt="Conceptontwikkeling binnen de visuele identiteit"><img src="assets/cases/heyu/20-prof-pattern.png" alt="Grafische toepassing binnen een Universiteit van Nederland-format"></div>
 
-        <section class="case-narrative__section">
+        <section class="case-narrative__section uvn-deliverables-section">
             <div class="case-narrative__inner js-fade">
                 <h2 class="case-narrative__label">Wat we maken</h2>
                 <div class="case-narrative__copy">
-                    <p>Dat loopt inmiddels behoorlijk uiteen: <strong>formats, explaineranimaties, grafische vormgeving, huisstijlontwikkeling, live events, boekcovers, websites, templates, workflows en software.</strong></p>
+                    <p>Dat loopt inmiddels behoorlijk uiteen.</p>
                     <p>Voor <strong>HEY U!</strong> dachten we bijvoorbeeld vanaf het begin mee over het format en vertaalden we dat door naar set, art direction, camerahoeken, kleur, graphics en animatie.</p>
                     <p>Voor terugkerende social content bouwden we een titelbalktool waarmee de redactie één keer een titel invoert en automatisch alle benodigde formaten krijgt, altijd binnen de huisstijl.</p>
                     <p>En ondertussen maken we iedere week gewoon de beelden die nodig zijn om ingewikkelde wetenschap helder uit te leggen.</p>
                 </div>
             </div>
+            <div class="uvn-deliverables js-fade" aria-label="Wat we maken">
+                <div class="uvn-deliverables__track">
+                    <a class="uvn-deliverable-card" href="heyu.html">
+                        <span class="uvn-deliverable-card__media"><img src="assets/cases/heyu/16-format-in-action.png" alt="Het HEY U-format in beeld"></span>
+                        <span class="uvn-deliverable-card__title">HEY U — formatontwikkeling</span>
+                    </a>
+                    <button class="uvn-deliverable-card" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-compilatie-marieke.mp4">
+                        <span class="uvn-deliverable-card__media"><video class="uvn-deliverable-card__preview-video" autoplay muted playsinline preload="none" data-lazy-autoplay aria-label="Preview van explaineranimaties"><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-compilatie-marieke.mp4" type="video/mp4"></video></span>
+                        <span class="uvn-deliverable-card__title">Explaineranimaties</span>
+                    </button>
+                    <button class="uvn-deliverable-card" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-01.jpg" data-showcase-alt="Grafische uitleg over de rolroeren van een vliegtuig">
+                        <span class="uvn-deliverable-card__media"><img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-01.jpg" alt="Grafische uitleg over de rolroeren van een vliegtuig"></span>
+                        <span class="uvn-deliverable-card__title">Grafische vormgeving &amp; huisstijl</span>
+                    </button>
+                    <button class="uvn-deliverable-card" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-02.jpg" data-showcase-alt="Grafische toepassing bij een live wetenschapsevenement">
+                        <span class="uvn-deliverable-card__media"><img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-02.jpg" alt="Grafische toepassing bij een live wetenschapsevenement"></span>
+                        <span class="uvn-deliverable-card__title">Live events</span>
+                    </button>
+                    <button class="uvn-deliverable-card" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/droom-boekcover.jpg" data-showcase-alt="DROOM van slaapwetenschapper Merijn van de Laar">
+                        <span class="uvn-deliverable-card__media uvn-deliverable-card__media--book"><img src="assets/cases/universiteit-van-nederland/droom-boekcover.jpg" alt="Boekcover DROOM van slaapwetenschapper Merijn van de Laar"></span>
+                        <span class="uvn-deliverable-card__title">Boekcovers — DROOM van Merijn van de Laar</span>
+                    </button>
+                    <button class="uvn-deliverable-card" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-05.jpg" data-showcase-alt="Visuele toepassing binnen de Universiteit van Nederland-huisstijl">
+                        <span class="uvn-deliverable-card__media"><img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-05.jpg" alt="Visuele toepassing binnen de Universiteit van Nederland-huisstijl"></span>
+                        <span class="uvn-deliverable-card__title">Websites, tools &amp; workflows</span>
+                    </button>
+                </div>
+            </div>
         </section>
+
+        <dialog class="uvn-showcase-dialog" id="uvnShowcaseDialog">
+            <div class="uvn-showcase-dialog__frame">
+                <button class="uvn-showcase-dialog__close" type="button" aria-label="Sluiten">×</button>
+                <video controls playsinline hidden></video>
+                <img src="" alt="" hidden>
+            </div>
+        </dialog>
 
         <section class="case-narrative__section uvn-result">
             <div class="case-narrative__inner js-fade">
@@ -245,6 +310,56 @@
             window.addEventListener('resize', requestHorizontalUpdate);
             window.addEventListener('load', requestHorizontalUpdate);
             updateHorizontalGallery();
+
+            const previewVideo = document.querySelector('.uvn-deliverable-card__preview-video');
+            const setPreviewToMidpoint = () => {
+                if (!previewVideo || !Number.isFinite(previewVideo.duration)) return;
+                previewVideo.currentTime = previewVideo.duration / 2;
+            };
+            previewVideo?.addEventListener('loadedmetadata', setPreviewToMidpoint);
+            previewVideo?.addEventListener('ended', () => {
+                setPreviewToMidpoint();
+                previewVideo.play().catch(() => {});
+            });
+
+            const showcaseDialog = document.querySelector('#uvnShowcaseDialog');
+            const showcaseVideo = showcaseDialog?.querySelector('video');
+            const showcaseImage = showcaseDialog?.querySelector('img');
+            const showcaseClose = showcaseDialog?.querySelector('.uvn-showcase-dialog__close');
+            document.querySelectorAll('[data-showcase-type]').forEach(card => {
+                card.addEventListener('click', () => {
+                    if (!showcaseDialog || !showcaseVideo || !showcaseImage) return;
+                    if (card.dataset.showcaseType === 'video') {
+                        showcaseImage.hidden = true;
+                        showcaseVideo.hidden = false;
+                        showcaseVideo.src = card.dataset.showcaseSrc;
+                        showcaseVideo.load();
+                        showcaseVideo.addEventListener('loadedmetadata', () => {
+                            showcaseVideo.currentTime = 0;
+                            showcaseVideo.play().catch(() => {});
+                        }, { once:true });
+                    } else {
+                        showcaseVideo.pause();
+                        showcaseVideo.removeAttribute('src');
+                        showcaseVideo.load();
+                        showcaseVideo.hidden = true;
+                        showcaseImage.hidden = false;
+                        showcaseImage.src = card.dataset.showcaseSrc;
+                        showcaseImage.alt = card.dataset.showcaseAlt || '';
+                    }
+                    showcaseDialog.showModal();
+                });
+            });
+            showcaseClose?.addEventListener('click', () => showcaseDialog?.close());
+            showcaseDialog?.addEventListener('click', event => {
+                if (event.target === showcaseDialog) showcaseDialog.close();
+            });
+            showcaseDialog?.addEventListener('close', () => {
+                showcaseVideo?.pause();
+                showcaseVideo?.removeAttribute('src');
+                showcaseVideo?.load();
+                if (showcaseImage) showcaseImage.src = '';
+            });
         });
     </script>
 </body>

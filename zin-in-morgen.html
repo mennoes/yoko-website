@@ -44,6 +44,11 @@
         .zin-statement { padding:clamp(48px,5vw,78px) var(--pad-x); background:var(--accent); color:var(--dark); }
         .zin-statement p { max-width:24ch; margin:0; font-size:clamp(34px,4.6vw,76px); font-weight:700; line-height:1; letter-spacing:0; }
         .zin-result { background:var(--highlight); color:var(--dark); }
+        .zin-deck { background:var(--dark); padding:clamp(28px,3vw,56px) 0; }
+        .zin-deck__track { display:flex; gap:clamp(16px,1.6vw,28px); overflow-x:auto; scroll-snap-type:x mandatory; padding:0 var(--pad-x); -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+        .zin-deck__track::-webkit-scrollbar { display:none; }
+        .zin-deck__slide { height:min(78vh,760px); width:auto; flex:0 0 auto; display:block; object-fit:contain; scroll-snap-align:center; border-radius:2px; }
+        @media(max-width:720px){.zin-deck__track{padding:0 var(--zin-mobile-pad)}.zin-deck__slide{height:min(62vh,540px)}}
         .page--zin .case-next__title { font-weight:400; }
         @media(max-width:820px){.page--zin .case-narrative__intro-inner{grid-template-columns:1fr}.zin-media--duo{grid-template-columns:1fr}.zin-media--duo img{min-height:0;aspect-ratio:4/3}}
         @media(max-width:720px){.page--zin{--zin-mobile-pad:20px}.page--zin .case-narrative__intro,.page--zin .case-narrative__section,.zin-statement{padding-left:var(--zin-mobile-pad);padding-right:var(--zin-mobile-pad)}.page--zin .case-narrative__intro{padding-top:32px;padding-bottom:36px}.page--zin .case-narrative__title{font-size:clamp(38px,12vw,54px)}.page--zin .case-narrative__inner{grid-template-columns:1fr;gap:16px}.page--zin .case-narrative__label{max-width:none;font-size:clamp(30px,9vw,42px)}.page--zin .case-narrative__copy,.page--zin .case-narrative__intro-copy{font-size:17px;line-height:1.45}.zin-media{width:calc(100% - (2 * var(--zin-mobile-pad)))}}
@@ -86,8 +91,6 @@
             </div>
         </section>
 
-        <figure class="zin-media zin-media--wide js-fade"><img src="assets/cases/zin/06-reels.png" alt="Reels en bewegend beeld in de nieuwe Z!N-stijl"></figure>
-
         <section class="case-narrative__section">
             <div class="case-narrative__inner js-fade">
                 <h2 class="case-narrative__label">Ons inzicht</h2>
@@ -110,8 +113,6 @@
             </div>
         </section>
 
-        <div class="zin-media zin-media--duo js-fade"><img src="assets/cases/zin/process-richtingen.webp" alt="Twee visuele richtingen naast elkaar"><img src="assets/cases/zin/process-uitwerking.jpg" alt="De gekozen richting uitgewerkt in een design system"></div>
-
         <section class="case-narrative__section">
             <div class="case-narrative__inner js-fade">
                 <h2 class="case-narrative__label">Wat we maakten</h2>
@@ -122,10 +123,6 @@
             </div>
         </section>
 
-        <figure class="zin-media zin-media--wide js-fade"><img src="assets/cases/zin/09-social-posts.png" alt="Social posts in de nieuwe Z!N-identiteit"></figure>
-
-        <div class="zin-media zin-media--duo js-fade"><img src="assets/cases/zin/07-thumbs-yt.png" alt="YouTube-thumbnails in de Z!N-stijl"><img src="assets/cases/zin/10-patterns.png" alt="Grafische patronen van Z!N"></div>
-
         <section class="case-narrative__section zin-result">
             <div class="case-narrative__inner js-fade">
                 <h2 class="case-narrative__label">Het effect</h2>
@@ -133,6 +130,16 @@
                     <p>De overstap naar social werd daarmee ook een moment om opnieuw scherp te krijgen waar ZIN! voor staat.</p>
                     <p>De nieuwe identiteit geeft de redactie een herkenbare basis, met genoeg ruimte voor verschillende onderwerpen, makers en verhalen — en de templates zorgen dat ze het zelf in de lucht houden.</p>
                 </div>
+            </div>
+        </section>
+
+        <section class="zin-deck js-fade" aria-label="Z!N presentatie">
+            <div class="zin-deck__track">
+                <img class="zin-deck__slide" src="assets/cases/zin/slide-01.png" alt="Z!N merkpresentatie, slide 1">
+                <img class="zin-deck__slide" src="assets/cases/zin/slide-02.png" alt="Z!N merkpresentatie, slide 2">
+                <img class="zin-deck__slide" src="assets/cases/zin/slide-03.png" alt="Z!N merkpresentatie, slide 3">
+                <img class="zin-deck__slide" src="assets/cases/zin/slide-04.png" alt="Z!N merkpresentatie, slide 4">
+                <img class="zin-deck__slide" src="assets/cases/zin/slide-05.png" alt="Z!N merkpresentatie, slide 5">
             </div>
         </section>
     </main>

@@ -90,6 +90,9 @@
         .uvn-event-thumb img.is-active { opacity:1; }
         .uvn-deliverable-card__media--book { background:#fff; }
         .uvn-deliverable-card__media--book img { object-fit:contain; }
+        .uvn-book-thumb { position:relative; display:block; }
+        .uvn-book-thumb img { position:absolute; inset:0; opacity:0; transition:opacity .65s ease; }
+        .uvn-book-thumb img.is-active { opacity:1; }
         .uvn-software-thumb { width:100%; height:100%; display:grid; grid-template-columns:.72fr 1.28fr; gap:8px; padding:12px; background:#e7dfd5; color:#004f3b; }
         .uvn-software-thumb__panel { display:flex; flex-direction:column; gap:7px; padding:10px; background:#f7f3ed; border:1px solid rgba(0,79,59,.18); }
         .uvn-software-thumb__brand { font-size:10px; font-weight:700; line-height:1; }
@@ -221,8 +224,6 @@
             <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-grid-huis-geld.jpg" alt="Grafische uitleg over woningkosten" loading="lazy">
         </div>
 
-        <div class="uvn-media uvn-media--duo js-fade"><img src="assets/cases/heyu/02-setting.png" alt="Visuele ontwikkeling voor een format van de Universiteit van Nederland"><img src="assets/cases/heyu/16-format-in-action.png" alt="Het HEY U-format in beeld"></div>
-
         <section class="case-narrative__section">
             <div class="case-narrative__inner js-fade">
                 <h2 class="case-narrative__label">Ons inzicht</h2>
@@ -262,8 +263,9 @@
             <button class="uvn-insight-grid__item" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-live-09.jpg" data-showcase-alt="Presentatie tijdens Universiteit van Nederland Live" aria-label="Bekijk de presentatie van Universiteit van Nederland Live groter">
                 <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-live-09.jpg" alt="Presentatie tijdens Universiteit van Nederland Live" loading="lazy">
             </button>
-            <button class="uvn-insight-grid__item" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-quest-magazine.jpg" data-showcase-alt="Cover voor Quest Magazine en de podcast Rare Jongens" aria-label="Bekijk de cover voor Quest Magazine groter">
-                <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-quest-magazine.jpg" alt="Cover voor Quest Magazine en de podcast Rare Jongens" loading="lazy">
+            <button class="uvn-insight-grid__item" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-compilatie-2025.mp4" aria-label="Bekijk de compilatie van Universiteit van Nederland groter en met geluid">
+                <video autoplay muted loop playsinline preload="none" data-lazy-autoplay><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-compilatie-2025.mp4" type="video/mp4"></video>
+                <span class="uvn-insight-grid__label">Bekijk video</span>
             </button>
         </div>
 
@@ -318,9 +320,12 @@
                         </span>
                         <span class="uvn-deliverable-card__title">Live events</span>
                     </button>
-                    <button class="uvn-deliverable-card" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/droom-boekcover.jpg" data-showcase-alt="DROOM van slaapwetenschapper Merijn van de Laar">
-                        <span class="uvn-deliverable-card__media uvn-deliverable-card__media--book"><img src="assets/cases/universiteit-van-nederland/droom-boekcover.jpg" alt="Boekcover DROOM van slaapwetenschapper Merijn van de Laar"></span>
-                        <span class="uvn-deliverable-card__title">Boekcovers — DROOM van Merijn van de Laar</span>
+                    <button class="uvn-deliverable-card" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-quest-cover.jpg" data-showcase-alt="Cover voor Quest Magazine en de podcast Rare Jongens">
+                        <span class="uvn-deliverable-card__media uvn-deliverable-card__media--book uvn-book-thumb">
+                            <img class="is-active" src="assets/cases/universiteit-van-nederland/gallery/uvnl-quest-cover.jpg" alt="Cover voor Quest Magazine en de podcast Rare Jongens">
+                            <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-quest-magazine.jpg" alt="De Quest-cover in het magazine">
+                        </span>
+                        <span class="uvn-deliverable-card__title">Boekcovers</span>
                     </button>
                     <button class="uvn-deliverable-card" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-05.jpg" data-showcase-alt="Visuele toepassing binnen de Universiteit van Nederland-huisstijl">
                         <span class="uvn-deliverable-card__media"><img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-05.jpg" alt="Visuele toepassing binnen de Universiteit van Nederland-huisstijl"></span>
@@ -459,6 +464,15 @@
                 images.forEach((image, imageIndex) => image.classList.toggle('is-active', imageIndex === eventThumbIndex));
             };
             if (eventSlides.length > 1) window.setInterval(() => showEventThumb(eventThumbIndex + 1), 2800);
+            const bookThumb = document.querySelector('.uvn-book-thumb');
+            let bookThumbIndex = 0;
+            const showBookThumb = index => {
+                const images = bookThumb?.querySelectorAll('img');
+                if (!images?.length) return;
+                bookThumbIndex = (index + images.length) % images.length;
+                images.forEach((image, imageIndex) => image.classList.toggle('is-active', imageIndex === bookThumbIndex));
+            };
+            if (bookThumb?.querySelectorAll('img').length > 1) window.setInterval(() => showBookThumb(bookThumbIndex + 1), 2800);
             const setSlideshowMode = enabled => {
                 showcaseDialog?.classList.toggle('is-slideshow', enabled);
                 if (showcasePrevious) showcasePrevious.hidden = !enabled;

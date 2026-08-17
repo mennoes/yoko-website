@@ -32,10 +32,12 @@
         .uvn-intro__media img,
         .uvn-intro__media video { width:100%; aspect-ratio:16/10; display:block; object-fit:cover; }
         .uvn-overview-scroll { position:relative; background:var(--cream); }
-        .uvn-overview-sticky { position:sticky; top:clamp(36px,5vh,72px); height:auto; overflow:hidden; }
+        .uvn-overview-sticky { position:sticky; top:clamp(36px,5vh,72px); height:auto; display:flex; flex-direction:column; align-items:flex-start; overflow:hidden; }
         .uvn-overview { width:max-content; display:flex; align-items:center; gap:clamp(8px,1vw,18px); padding-inline:var(--pad-x); will-change:transform; }
         .uvn-overview img,
         .uvn-overview video { flex:0 0 auto; width:auto; height:min(62vh,660px); display:block; object-fit:contain; background:var(--dark); }
+        .uvn-overview-challenge { width:100%; flex:none; display:block; padding:clamp(26px,2.8vw,44px) var(--pad-x); border-top:1px solid rgba(32,32,32,.12); background:var(--cream); opacity:0; transform:translateY(8px); transition:opacity .22s ease,transform .22s ease; }
+        .uvn-overview-challenge.is-visible { opacity:1; transform:none; }
         .page--uvn .case-narrative__section { padding-block:clamp(34px,3.8vw,58px); }
         .page--uvn .case-narrative__inner { display:grid; grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr); gap:clamp(36px,7vw,120px); width:100%; max-width:none; margin:0!important; }
         .page--uvn .case-narrative__label { max-width:12ch; padding-top:0; font-size:clamp(32px,3.5vw,58px); }
@@ -115,6 +117,7 @@
             .uvn-overview { transform:none!important; padding-inline:var(--uvn-mobile-pad); }
             .uvn-overview img,
             .uvn-overview video { height:min(72vw,420px); scroll-snap-align:start; }
+            .uvn-overview-challenge { flex:none; opacity:1; transform:none; }
             .uvn-deliverables__track { gap:18px; padding:18px 4px 30px; }
             .uvn-deliverable-card { flex-basis:min(78vw,320px); }
             .uvn-deliverable-card__title { font-size:22px; }
@@ -164,20 +167,19 @@
                     <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-05.jpg" alt="Grafische uitleg over werkloosheid en woonvorm">
                     <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-06.jpg" alt="Grafische uitleg over de luchtzakken en longen van een dinosaurus">
                 </div>
+                <section class="uvn-overview-challenge">
+                    <div class="case-narrative__inner">
+                        <h2 class="case-narrative__label">De uitdaging</h2>
+                        <div class="case-narrative__copy">
+                            <p>Iedere week vertelt Universiteit van Nederland nieuwe wetenschappelijke verhalen. Over totaal verschillende onderwerpen, voor een groot publiek en in steeds nieuwe vormen.</p>
+                            <p>Dat vraagt om meer dan goede vormgeving.</p>
+                            <p>Een ingewikkeld onderzoek moet begrijpelijk worden zonder de nuance kwijt te raken. Een nieuw format moet een eigen gezicht krijgen én onderdeel blijven van hetzelfde merk. En met honderden uitingen per jaar moet de visuele identiteit herkenbaar blijven zonder alles in dezelfde mal te stoppen.</p>
+                            <p>De uitdaging zit daarom niet in één productie, maar in het geheel: <strong>hoe bouw je aan een visueel merk dat iedere dag nieuwe inhoud kan blijven dragen?</strong></p>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
-
-        <section class="case-narrative__section">
-            <div class="case-narrative__inner js-fade">
-                <h2 class="case-narrative__label">De uitdaging</h2>
-                <div class="case-narrative__copy">
-                    <p>Iedere week vertelt Universiteit van Nederland nieuwe wetenschappelijke verhalen. Over totaal verschillende onderwerpen, voor een groot publiek en in steeds nieuwe vormen.</p>
-                    <p>Dat vraagt om meer dan goede vormgeving.</p>
-                    <p>Een ingewikkeld onderzoek moet begrijpelijk worden zonder de nuance kwijt te raken. Een nieuw format moet een eigen gezicht krijgen én onderdeel blijven van hetzelfde merk. En met honderden uitingen per jaar moet de visuele identiteit herkenbaar blijven zonder alles in dezelfde mal te stoppen.</p>
-                    <p>De uitdaging zit daarom niet in één productie, maar in het geheel: <strong>hoe bouw je aan een visueel merk dat iedere dag nieuwe inhoud kan blijven dragen?</strong></p>
-                </div>
-            </div>
-        </section>
 
         <div class="uvn-media uvn-media--duo js-fade"><img src="assets/cases/heyu/02-setting.png" alt="Visuele ontwikkeling voor een format van de Universiteit van Nederland"><img src="assets/cases/heyu/16-format-in-action.png" alt="Het HEY U-format in beeld"></div>
 
@@ -313,6 +315,7 @@
 
             const horizontalSection = document.querySelector('.uvn-overview-scroll');
             const horizontalTrack = horizontalSection?.querySelector('.uvn-overview');
+            const horizontalChallenge = horizontalSection?.querySelector('.uvn-overview-challenge');
             const updateHorizontalGallery = () => {
                 if (!horizontalSection || !horizontalTrack || window.innerWidth <= 720) return;
                 const travel = Math.max(0, horizontalTrack.scrollWidth - window.innerWidth);
@@ -322,6 +325,7 @@
                 const earlyStart = window.innerHeight * 0.35;
                 const progress = Math.min(1, Math.max(0, (earlyStart - horizontalSection.getBoundingClientRect().top) / Math.max(1, verticalTravel + earlyStart)));
                 horizontalTrack.style.transform = `translate3d(${-travel * progress}px,0,0)`;
+                horizontalChallenge?.classList.toggle('is-visible', progress > 0.04);
             };
             let horizontalTicking = false;
             const requestHorizontalUpdate = () => {

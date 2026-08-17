@@ -42,6 +42,8 @@
         .uvn-overview__video-label { position:absolute; right:12px; bottom:12px; padding:9px 13px; background:var(--cream); color:var(--dark); font-size:13px; line-height:1; }
         .uvn-overview-challenge { width:100%; flex:none; display:block; padding:clamp(26px,2.8vw,44px) var(--pad-x); border-top:1px solid rgba(32,32,32,.12); background:var(--cream); opacity:0; transform:translateY(8px); transition:opacity .22s ease,transform .22s ease; }
         .uvn-overview-challenge.is-visible { opacity:1; transform:none; }
+        .uvn-challenge-grid { width:calc(100% - (2 * var(--pad-x))); margin:clamp(8px,1vw,18px) auto; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(8px,1vw,18px); }
+        .uvn-challenge-grid img { width:100%; aspect-ratio:16/9; display:block; object-fit:cover; background:var(--dark); }
         .page--uvn .case-narrative__section { padding-block:clamp(34px,3.8vw,58px); }
         .page--uvn .case-narrative__inner { display:grid; grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr); gap:clamp(36px,7vw,120px); width:100%; max-width:none; margin:0!important; }
         .page--uvn .case-narrative__label { max-width:12ch; padding-top:0; font-size:clamp(32px,3.5vw,58px); }
@@ -123,6 +125,7 @@
             .uvn-overview img,
             .uvn-overview__video-trigger { height:min(72vw,420px); scroll-snap-align:start; }
             .uvn-overview-challenge { flex:none; opacity:1; transform:none; }
+            .uvn-challenge-grid { width:calc(100% - (2 * var(--uvn-mobile-pad))); grid-template-columns:1fr; gap:10px; }
             .uvn-deliverables__track { gap:18px; padding:18px 4px 30px; }
             .uvn-deliverable-card { flex-basis:min(78vw,320px); }
             .uvn-deliverable-card__title { font-size:22px; }
@@ -183,6 +186,13 @@
                     </div>
                 </section>
             </div>
+        </div>
+
+        <div class="uvn-challenge-grid js-fade">
+            <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-grid-haarzakjes.png" alt="Animatie van een haarzakje" loading="lazy">
+            <img src="assets/cases/heyu/heyu-format-01.gif" alt="HEY U-format in beweging" loading="lazy">
+            <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-grid-crater.jpg" alt="Grafische uitleg over de Bacolor Crater" loading="lazy">
+            <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-grid-huis-geld.jpg" alt="Grafische uitleg over woningkosten" loading="lazy">
         </div>
 
         <div class="uvn-media uvn-media--duo js-fade"><img src="assets/cases/heyu/02-setting.png" alt="Visuele ontwikkeling voor een format van de Universiteit van Nederland"><img src="assets/cases/heyu/16-format-in-action.png" alt="Het HEY U-format in beeld"></div>

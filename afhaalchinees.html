@@ -81,7 +81,7 @@
         .af-video-dialog::backdrop { background:rgba(24,24,24,.92); }
         .af-video-dialog video { display:block; width:100%; max-height:calc(100vh - 40px); background:#111; object-fit:contain; }
         .af-video-dialog__close { position:absolute; z-index:2; top:12px; right:12px; width:46px; height:46px; padding:0; border:0; border-radius:50%; background:var(--cream); color:var(--dark); font:400 30px/1 Arial,sans-serif; cursor:pointer; }
-        .af-work-intro { background:var(--af-blue); color:var(--dark); }
+        .af-work-intro { padding-top:clamp(68px,7vw,112px)!important; padding-bottom:clamp(62px,6.5vw,104px)!important; background:var(--af-blue); color:var(--dark); }
         .af-season { padding:clamp(40px,4.5vw,72px) var(--pad-x); }
         .af-season--one { background: var(--af-blue); color:var(--dark); }
         .af-season--two { background: var(--af-yellow); color:var(--dark); }
@@ -136,6 +136,7 @@
             .page--afhaalchinees .case-narrative__copy,
             .af-season__copy { width:100%; max-width:none; font-size:17px; line-height:1.45; }
             .page--afhaalchinees .case-narrative__section { padding-top:34px; padding-bottom:36px; }
+            .page--afhaalchinees .af-work-intro { padding-top:58px!important; padding-bottom:54px!important; }
             .page--afhaalchinees .case-narrative__inner,
             .af-season__inner { width:100%; gap:16px; }
             .page--afhaalchinees .case-narrative__label { max-width:none; font-size:clamp(30px,9vw,42px); }

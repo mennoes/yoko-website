@@ -66,7 +66,9 @@
         .uvn-insight-grid--secondary { grid-template-columns:repeat(3,minmax(0,1fr)); }
         .uvn-insight-grid--secondary .uvn-insight-grid__item { grid-column:auto; }
         .uvn-insight-grid--secondary .uvn-insight-grid__item:nth-child(4) { grid-column:2; }
-        .uvn-result { background:var(--highlight); color:var(--dark); }
+        .uvn-result { display:block; background:var(--highlight); color:var(--dark); }
+        .uvn-effect-grid { width:calc(100% - (2 * var(--pad-x))); margin:0 auto; padding:0 0 clamp(34px,3.8vw,58px); display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(8px,1vw,18px); }
+        .uvn-effect-grid img { width:100%; aspect-ratio:16/10; display:block; object-fit:cover; }
         .uvn-services { padding:clamp(42px,5vw,78px) var(--pad-x); background:var(--highlight); color:var(--dark); }
         .uvn-services__inner { display:grid; grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr); gap:clamp(36px,7vw,120px); }
         .uvn-services h2 { max-width:12ch; font-size:clamp(32px,3.5vw,58px); font-weight:700; line-height:.98; letter-spacing:-.025em; }
@@ -137,11 +139,14 @@
         .uvn-style-dialog__copy p { max-width:42ch; margin:0; font-size:clamp(16px,1.15vw,20px); line-height:1.42; }
         .uvn-style-dialog__credit { margin-top:.5em!important; padding-top:1em; border-top:1px solid rgba(32,32,32,.2); }
         .uvn-style-dialog__close { position:absolute; z-index:3; top:14px; right:14px; width:46px; height:46px; padding:0; border:0; border-radius:50%; background:var(--dark); color:var(--cream); font:400 30px/1 Arial,sans-serif; cursor:pointer; }
-        .page--uvn .case-next { min-height:0; background:var(--dark); }
-        .page--uvn .case-next__bg,.page--uvn .case-next__label { display:none; }
-        .page--uvn .case-next__link { padding:clamp(38px,4vw,62px) var(--pad-x); flex-direction:row; align-items:center; justify-content:space-between; }
-        .page--uvn .case-next__title { font-size:clamp(34px,4vw,64px); font-weight:400; letter-spacing:-.03em; }
-        .page--uvn .case-next__arrow { margin:0; }
+        .page--uvn .case-next { min-height:min(76svh,900px); background:var(--dark); }
+        .page--uvn .case-next__label { display:none; }
+        .page--uvn .case-next__link { min-height:min(76svh,900px); padding:clamp(42px,5vw,76px) var(--pad-x); flex-direction:row; align-items:flex-end; justify-content:space-between; isolation:isolate; }
+        .page--uvn .case-next__link::after { position:absolute; z-index:-1; inset:0; content:""; background:linear-gradient(180deg,rgba(20,20,20,.02) 42%,rgba(20,20,20,.7) 100%); }
+        .page--uvn .case-next__bg { z-index:-2; display:block; opacity:1; filter:none; }
+        .page--uvn .case-next__link:hover .case-next__bg { opacity:.92; }
+        .page--uvn .case-next__title { font-size:clamp(52px,8vw,136px); font-weight:400; letter-spacing:-.045em; }
+        .page--uvn .case-next__arrow { margin:0 0 .08em; font-size:clamp(32px,4vw,64px); opacity:1; }
         @media (max-width: 820px) {
             .page--uvn .case-narrative__intro-inner,.page--uvn .case-narrative__inner,.uvn-services__inner { grid-template-columns:1fr; gap:24px; }
             .uvn-media--duo { grid-template-columns:1fr; }
@@ -167,6 +172,7 @@
             .uvn-overview-challenge { flex:none; opacity:1; transform:none; }
             .uvn-challenge-grid { width:calc(100% - (2 * var(--uvn-mobile-pad))); grid-template-columns:1fr; gap:10px; }
             .uvn-insight-grid { width:calc(100% - (2 * var(--uvn-mobile-pad))); grid-template-columns:1fr; gap:10px; }
+            .uvn-effect-grid { width:calc(100% - (2 * var(--uvn-mobile-pad))); grid-template-columns:1fr; gap:10px; }
             .uvn-insight-grid__item { grid-column:auto; }
             .uvn-insight-grid--secondary .uvn-insight-grid__item:nth-child(4) { grid-column:auto; }
             .uvn-deliverables__track { grid-template-columns:1fr; gap:18px; padding:18px 4px 30px; }
@@ -184,7 +190,8 @@
             .uvn-style-dialog__copy p { font-size:17px; }
             .uvn-style-dialog__viewer { grid-row:2; min-height:58vh; }
             .uvn-services h2 { max-width:none; }
-            .page--uvn .case-next__link { padding-inline:var(--uvn-mobile-pad); }
+            .page--uvn .case-next,.page--uvn .case-next__link { min-height:64svh; }
+            .page--uvn .case-next__link { padding:32px var(--uvn-mobile-pad); }
         }
     </style>
 </head>
@@ -277,8 +284,6 @@
                 <span class="uvn-insight-grid__label">Bekijk video</span>
             </button>
         </div>
-
-        <figure class="uvn-media uvn-media--wide js-fade"><img src="assets/cases/heyu/heyu-behind-the-scenes-01.png" alt="Achter de schermen bij de ontwikkeling van HEY U"></figure>
 
         <section class="case-narrative__section">
             <div class="case-narrative__inner js-fade">
@@ -409,12 +414,17 @@
                     <p><strong>Van één ingewikkelde animatie tot de manier waarop een redactie visueel werkt: we helpen bepalen wat er nodig is.</strong></p>
                 </div>
             </div>
+            <div class="uvn-effect-grid js-fade" aria-label="Meer werk voor Universiteit van Nederland">
+                <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-04.jpg" alt="Visuele uitleg van het menselijk brein voor Universiteit van Nederland" loading="lazy">
+                <img src="assets/cases/universiteit-van-nederland/gallery/event-carre-01.jpg" alt="Universiteit van Nederland Live in Carré" loading="lazy">
+            </div>
         </section>
     </main>
 
     <!-- NEXT -->
     <section class="case-next" id="case-next">
-        <a class="case-next__link" href="heyu.html">
+        <a class="case-next__link" href="heyu.html" aria-label="Bekijk de case over formatontwikkeling voor HEY U">
+            <img class="case-next__bg" src="assets/cases/heyu/heyu-next-case.jpg" alt="" loading="lazy">
             <h2 class="case-next__title">HEY U</h2>
             <div class="case-next__arrow">→</div>
         </a>

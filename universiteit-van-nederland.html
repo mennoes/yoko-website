@@ -500,7 +500,7 @@
                 }
                 const travel = Math.max(0, horizontalTrack.scrollWidth - window.innerWidth);
                 const stickyHeight = horizontalSticky.offsetHeight;
-                const verticalTravel = travel * 0.62;
+                const verticalTravel = Math.min(travel * 0.42, window.innerHeight * 1.25);
                 horizontalSection.style.height = `${stickyHeight + verticalTravel}px`;
                 const earlyStart = window.innerHeight * 0.35;
                 const progress = Math.min(1, Math.max(0, (earlyStart - horizontalSection.getBoundingClientRect().top) / Math.max(1, verticalTravel + earlyStart)));

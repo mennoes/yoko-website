@@ -79,9 +79,10 @@
         .page--uvn .uvn-deliverables-section { display:block; }
         .uvn-deliverables-heading { width:100%; }
         .uvn-deliverables-heading h2 { max-width:none; margin:0; font-size:clamp(32px,3.5vw,58px); font-weight:700; line-height:.98; letter-spacing:-.025em; }
-        .uvn-deliverables { width:100%; margin-top:clamp(18px,2vw,32px); overflow:visible; }
-        .uvn-deliverables__track { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; gap:clamp(18px,2vw,32px); width:100%; padding:22px 4px 34px; }
-        .uvn-deliverable-card { --tilt:0deg; position:relative; width:100%; min-width:0; display:block; padding:clamp(8px,1vw,13px); border:1px solid rgba(32,32,32,.14); background:#fff; color:var(--dark); font:inherit; text-align:left; text-decoration:none; cursor:pointer; box-shadow:0 12px 30px rgba(32,32,32,.1); transform:rotate(var(--tilt)); transform-origin:center; transition:transform .24s ease,box-shadow .24s ease; }
+        .uvn-deliverables-layout { display:grid; grid-template-columns:minmax(520px,760px) minmax(340px,1fr); align-items:start; gap:clamp(44px,6vw,104px); width:100%; margin-top:clamp(22px,2.6vw,42px); }
+        .uvn-deliverables { width:100%; max-width:760px; overflow:visible; }
+        .uvn-deliverables__track { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; gap:clamp(12px,1.25vw,20px); width:100%; padding:14px 4px 24px; }
+        .uvn-deliverable-card { --tilt:0deg; position:relative; width:100%; min-width:0; display:block; padding:clamp(6px,.65vw,10px); border:1px solid rgba(32,32,32,.14); background:#fff; color:var(--dark); font:inherit; text-align:left; text-decoration:none; cursor:pointer; box-shadow:0 9px 22px rgba(32,32,32,.09); transform:rotate(var(--tilt)); transform-origin:center; transition:transform .24s ease,box-shadow .24s ease; }
         .uvn-deliverable-card:nth-child(1) { --tilt:-2.2deg; }
         .uvn-deliverable-card:nth-child(2) { --tilt:1.6deg; }
         .uvn-deliverable-card:nth-child(3) { --tilt:-1deg; }
@@ -89,8 +90,8 @@
         .uvn-deliverable-card:nth-child(5) { --tilt:-1.8deg; }
         .uvn-deliverable-card:nth-child(6) { --tilt:1.1deg; }
         .uvn-deliverable-card:nth-child(7) { --tilt:-2.4deg; }
-        .uvn-deliverable-card:hover,.uvn-deliverable-card:focus-visible { z-index:2; outline:none; transform:rotate(0deg) translateY(-10px); box-shadow:0 22px 42px rgba(32,32,32,.16); }
-        .uvn-deliverable-card__media { width:100%; aspect-ratio:16/10; overflow:hidden; background:var(--dark); }
+        .uvn-deliverable-card:hover,.uvn-deliverable-card:focus-visible { z-index:2; outline:none; transform:rotate(0deg) translateY(-7px); box-shadow:0 18px 34px rgba(32,32,32,.15); }
+        .uvn-deliverable-card__media { width:100%; aspect-ratio:16/9; overflow:hidden; background:var(--dark); }
         .uvn-deliverable-card__media img,
         .uvn-deliverable-card__media video { width:100%; height:100%; display:block; object-fit:cover; pointer-events:none; }
         .uvn-event-thumb { position:relative; display:block; }
@@ -114,9 +115,8 @@
         .uvn-software-thumb__output { display:flex; align-items:center; padding:8px; background:#004f3b; color:#c99cf4; font-size:clamp(12px,1.15vw,18px); font-weight:700; line-height:.95; overflow:hidden; }
         .uvn-software-thumb__output:nth-child(2) { background:#c99cf4; color:#004f3b; }
         .uvn-software-thumb__output:nth-child(3) { grid-column:1/-1; background:#f7f3ed; color:#004f3b; border:1px solid rgba(0,79,59,.18); }
-        .uvn-deliverable-card__title { display:block; margin:14px 4px 5px; font-size:clamp(21px,1.8vw,30px); font-weight:400; line-height:1.08; letter-spacing:-.02em; }
-        .uvn-deliverables-copy { margin-top:clamp(28px,3vw,48px)!important; }
-        .uvn-deliverables-copy .case-narrative__copy { grid-column:2; }
+        .uvn-deliverable-card__title { display:block; margin:10px 3px 4px; font-size:clamp(17px,1.25vw,22px); font-weight:400; line-height:1.08; letter-spacing:-.02em; }
+        .uvn-deliverables-copy { max-width:44ch!important; margin:14px 0 0!important; font-size:clamp(16px,1.15vw,20px)!important; }
         .uvn-showcase-dialog { width:min(92vw,1500px); max-width:none; max-height:92vh; margin:auto; padding:0; border:0; background:transparent; overflow:visible; }
         .uvn-showcase-dialog::backdrop { background:rgba(24,24,24,.92); }
         .uvn-showcase-dialog__frame { position:relative; display:flex; align-items:center; justify-content:center; width:100%; max-height:92vh; background:#111; }
@@ -154,8 +154,8 @@
             .uvn-media--duo { grid-template-columns:1fr; }
             .uvn-media--duo img { min-height:0; aspect-ratio:4/3; }
             .uvn-services ul { grid-template-columns: 1fr; }
-            .uvn-deliverables__track { grid-template-columns:repeat(2,minmax(0,1fr)); }
-            .uvn-deliverables-copy .case-narrative__copy { grid-column:1; }
+            .uvn-deliverables-layout { grid-template-columns:1fr; gap:24px; }
+            .uvn-deliverables-copy { max-width:58ch!important; margin-top:0!important; }
         }
         @media (max-width:720px) {
             .page--uvn { --uvn-mobile-pad:20px; }
@@ -326,8 +326,9 @@
             <div class="uvn-deliverables-heading js-fade">
                 <h2>Wat we maken</h2>
             </div>
-            <div class="uvn-deliverables js-fade" aria-label="Wat we maken">
-                <div class="uvn-deliverables__track">
+            <div class="uvn-deliverables-layout">
+                <div class="uvn-deliverables js-fade" aria-label="Wat we maken">
+                    <div class="uvn-deliverables__track">
                     <a class="uvn-deliverable-card" href="heyu.html">
                         <span class="uvn-deliverable-card__media"><img src="assets/cases/heyu/16-format-in-action.png" alt="Het HEY U-format in beeld"></span>
                         <span class="uvn-deliverable-card__title">Formatontwikkeling</span>
@@ -371,10 +372,9 @@
                         </span>
                         <span class="uvn-deliverable-card__title">Software — Titelbalk Generator</span>
                     </a>
+                    </div>
                 </div>
-            </div>
-            <div class="case-narrative__inner uvn-deliverables-copy js-fade">
-                <div class="case-narrative__copy">
+                <div class="case-narrative__copy uvn-deliverables-copy js-fade">
                     <p>We werken op alle plekken waar inhoud, merk en beeld samenkomen. Van het ontwikkelen en bewaken van de visuele identiteit tot formats, explaineranimaties, live events, publicaties, websites, workflows en software.</p>
                     <p>Bij formatontwikkeling denken we vanaf het eerste idee mee over set, art direction, camerahoeken, kleur, graphics en animatie, zoals bij HEY U!. Voor terugkerende social content bouwden we een titelbalktool die vanuit één invoer automatisch alle benodigde formaten maakt.</p>
                     <p>Voor live events vertaalden we het merk naar podia en schermen in onder meer Carré, ARTIS en Lowlands. Voor publicaties maakten we bijvoorbeeld de vormgeving voor DROOM en de Rare Jongens-cover voor Quest.</p>

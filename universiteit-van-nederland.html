@@ -31,6 +31,8 @@
         .uvn-intro__media { width:100%; margin:0; overflow:hidden; background:var(--dark); }
         .uvn-intro__media img,
         .uvn-intro__media video { width:100%; aspect-ratio:16/10; display:block; object-fit:cover; }
+        .uvn-intro__video-trigger { position:relative; width:100%; display:block; padding:0; border:0; background:var(--dark); cursor:zoom-in; }
+        .uvn-intro__video-trigger video { pointer-events:none; }
         .uvn-overview-scroll { position:relative; background:var(--cream); }
         .uvn-overview-sticky { position:sticky; top:clamp(36px,5vh,72px); height:auto; display:flex; flex-direction:column; align-items:flex-start; overflow:hidden; }
         .uvn-overview { width:max-content; display:flex; align-items:center; gap:clamp(8px,1vw,18px); padding-inline:var(--pad-x); will-change:transform; }
@@ -219,7 +221,12 @@
         <section class="case-narrative__intro">
             <div class="case-narrative__intro-inner js-fade">
                 <div class="uvn-intro__copy"><h1 class="case-narrative__title">Wetenschap voor iedereen</h1><div class="case-narrative__intro-copy"><p><strong>Al meer dan tien jaar zijn we de vaste visuele partner van de Universiteit van Nederland en Vlaanderen.</strong></p><p>We helpen het grootste wetenschapsplatform van Nederland met alles waar inhoud en beeld samenkomen. Van dagelijkse animaties en nieuwe formats tot de huisstijl, werkwijzes en software waarmee de redactie zelf verder kan.</p></div></div>
-                <figure class="uvn-intro__media"><video autoplay muted loop playsinline preload="metadata" poster="assets/cases/heyu/13-pattern-studio.png" aria-label="Universiteit van Nederland in beweging"><source src="assets/cases/universiteit-van-nederland/uvnl-softlaunch-web.mp4" type="video/mp4"></video></figure>
+                <figure class="uvn-intro__media">
+                    <button class="uvn-intro__video-trigger" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/uvnl-softlaunch-web.mp4" aria-label="Bekijk de Universiteit van Nederland-trailer groter en met geluid">
+                        <video autoplay muted loop playsinline preload="metadata" poster="assets/cases/heyu/13-pattern-studio.png"><source src="assets/cases/universiteit-van-nederland/uvnl-softlaunch-web.mp4" type="video/mp4"></video>
+                        <span class="uvn-overview__video-label">Bekijk video</span>
+                    </button>
+                </figure>
             </div>
         </section>
 

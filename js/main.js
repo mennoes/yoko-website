@@ -843,11 +843,21 @@ function initScrollHandoff() {
 
     let bottomSince = 0;
     let wheelDistance = 0;
+    let touchStartY = null;
+    let navigating = false;
+
+    const enterNextPage = () => {
+        const destination = nextUrl();
+        if (!destination || navigating) return;
+        navigating = true;
+        handoff.classList.add('is-entering');
+        window.location.href = destination;
+    };
 
     const atHandoffStop = () => {
         if (handoff.classList.contains('case-next')) {
             const rect = handoff.getBoundingClientRect();
-            return rect.top <= 3 && rect.top >= -80 && rect.bottom >= window.innerHeight - 3;
+            return rect.top >= -3 && rect.bottom <= window.innerHeight + 3;
         }
         return window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 3;
     };
@@ -871,10 +881,19 @@ function initScrollHandoff() {
 
         wheelDistance += event.deltaY;
         if (wheelDistance >= 180) {
-            const destination = nextUrl();
-            if (destination) window.location.href = destination;
+            enterNextPage();
         }
     }, { passive: false });
+
+    window.addEventListener('touchstart', event => {
+        touchStartY = atHandoffStop() ? event.touches[0]?.clientY ?? null : null;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', event => {
+        if (touchStartY === null || !atHandoffStop()) return;
+        const currentY = event.touches[0]?.clientY ?? touchStartY;
+        if (touchStartY - currentY >= 54) enterNextPage();
+    }, { passive: true });
 }
 
 // ===== INIT =====

@@ -35,7 +35,11 @@
         .uvn-overview-sticky { position:sticky; top:clamp(36px,5vh,72px); height:auto; display:flex; flex-direction:column; align-items:flex-start; overflow:hidden; }
         .uvn-overview { width:max-content; display:flex; align-items:center; gap:clamp(8px,1vw,18px); padding-inline:var(--pad-x); will-change:transform; }
         .uvn-overview img,
-        .uvn-overview video { flex:0 0 auto; width:auto; height:min(62vh,660px); display:block; object-fit:contain; background:var(--dark); }
+        .uvn-overview__video-trigger { flex:0 0 auto; width:auto; height:min(62vh,660px); display:block; background:var(--dark); }
+        .uvn-overview img { object-fit:contain; }
+        .uvn-overview__video-trigger { position:relative; padding:0; border:0; overflow:hidden; cursor:zoom-in; }
+        .uvn-overview__video-trigger video { width:auto; height:100%; display:block; object-fit:contain; pointer-events:none; }
+        .uvn-overview__video-label { position:absolute; right:12px; bottom:12px; padding:9px 13px; background:var(--cream); color:var(--dark); font-size:13px; line-height:1; }
         .uvn-overview-challenge { width:100%; flex:none; display:block; padding:clamp(26px,2.8vw,44px) var(--pad-x); border-top:1px solid rgba(32,32,32,.12); background:var(--cream); opacity:0; transform:translateY(8px); transition:opacity .22s ease,transform .22s ease; }
         .uvn-overview-challenge.is-visible { opacity:1; transform:none; }
         .page--uvn .case-narrative__section { padding-block:clamp(34px,3.8vw,58px); }
@@ -92,6 +96,7 @@
         .uvn-showcase-dialog__frame video { display:block; width:auto; max-width:100%; height:auto; max-height:88vh; object-fit:contain; }
         .uvn-showcase-dialog [hidden] { display:none; }
         .uvn-showcase-dialog__close { position:absolute; z-index:2; top:12px; right:12px; width:46px; height:46px; padding:0; border:0; border-radius:50%; background:var(--cream); color:var(--dark); font:400 30px/1 Arial,sans-serif; cursor:pointer; }
+        .uvn-showcase-dialog__sound { position:absolute; z-index:2; top:12px; left:12px; min-height:46px; padding:0 18px; border:0; border-radius:24px; background:var(--cream); color:var(--dark); font:400 15px/1 Arial,sans-serif; cursor:pointer; }
         .page--uvn .case-next { min-height:0; background:var(--dark); }
         .page--uvn .case-next__bg,.page--uvn .case-next__label { display:none; }
         .page--uvn .case-next__link { padding:clamp(38px,4vw,62px) var(--pad-x); flex-direction:row; align-items:center; justify-content:space-between; }
@@ -116,7 +121,7 @@
             .uvn-overview-sticky::-webkit-scrollbar { display:none; }
             .uvn-overview { transform:none!important; padding-inline:var(--uvn-mobile-pad); }
             .uvn-overview img,
-            .uvn-overview video { height:min(72vw,420px); scroll-snap-align:start; }
+            .uvn-overview__video-trigger { height:min(72vw,420px); scroll-snap-align:start; }
             .uvn-overview-challenge { flex:none; opacity:1; transform:none; }
             .uvn-deliverables__track { gap:18px; padding:18px 4px 30px; }
             .uvn-deliverable-card { flex-basis:min(78vw,320px); }
@@ -159,10 +164,10 @@
             <div class="uvn-overview-sticky">
                 <div class="uvn-overview">
                     <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-01.jpg" alt="Visuele uitleg over rolroeren van een vliegtuig">
-                    <video autoplay muted loop playsinline preload="none" data-lazy-autoplay aria-label="Compilatie van visueel werk voor Universiteit van Nederland"><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-compilatie-marieke.mp4" type="video/mp4"></video>
+                    <button class="uvn-overview__video-trigger" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-compilatie-marieke.mp4" aria-label="Bekijk de compilatie groter en met geluid"><video autoplay muted loop playsinline preload="none" data-lazy-autoplay><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-compilatie-marieke.mp4" type="video/mp4"></video><span class="uvn-overview__video-label">Bekijk video</span></button>
                     <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-02.jpg" alt="Grafische uitleg bij het skelet van een Supersaurus">
                     <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-03.jpg" alt="Grafische uitleg over CO2">
-                    <video autoplay muted loop playsinline preload="none" data-lazy-autoplay aria-label="Animatie over muggen voor Universiteit van Nederland"><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-muggen.mp4" type="video/mp4"></video>
+                    <button class="uvn-overview__video-trigger" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-muggen.mp4" aria-label="Bekijk de animatie over muggen groter en met geluid"><video autoplay muted loop playsinline preload="none" data-lazy-autoplay><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-muggen.mp4" type="video/mp4"></video><span class="uvn-overview__video-label">Bekijk video</span></button>
                     <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-04.jpg" alt="Visuele kaart van het menselijk brein">
                     <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-05.jpg" alt="Grafische uitleg over werkloosheid en woonvorm">
                     <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-06.jpg" alt="Grafische uitleg over de luchtzakken en longen van een dinosaurus">
@@ -261,8 +266,9 @@
             </div>
         </section>
 
-        <dialog class="uvn-showcase-dialog" id="uvnShowcaseDialog">
+        <dialog class="uvn-showcase-dialog" id="uvnShowcaseDialog" aria-label="Mediaplayer">
             <div class="uvn-showcase-dialog__frame">
+                <button class="uvn-showcase-dialog__sound" type="button" aria-label="Geluid aanzetten" hidden>Geluid aan</button>
                 <button class="uvn-showcase-dialog__close" type="button" aria-label="Sluiten">×</button>
                 <video controls playsinline hidden></video>
                 <img src="" alt="" hidden>
@@ -353,12 +359,21 @@
             const showcaseVideo = showcaseDialog?.querySelector('video');
             const showcaseImage = showcaseDialog?.querySelector('img');
             const showcaseClose = showcaseDialog?.querySelector('.uvn-showcase-dialog__close');
+            const showcaseSound = showcaseDialog?.querySelector('.uvn-showcase-dialog__sound');
+            const updateSoundControl = () => {
+                if (!showcaseVideo || !showcaseSound) return;
+                showcaseSound.textContent = showcaseVideo.muted ? 'Geluid aan' : 'Geluid uit';
+                showcaseSound.setAttribute('aria-label', showcaseVideo.muted ? 'Geluid aanzetten' : 'Geluid uitzetten');
+            };
             document.querySelectorAll('[data-showcase-type]').forEach(card => {
                 card.addEventListener('click', () => {
                     if (!showcaseDialog || !showcaseVideo || !showcaseImage) return;
                     if (card.dataset.showcaseType === 'video') {
                         showcaseImage.hidden = true;
                         showcaseVideo.hidden = false;
+                        showcaseVideo.muted = true;
+                        if (showcaseSound) showcaseSound.hidden = false;
+                        updateSoundControl();
                         showcaseVideo.src = card.dataset.showcaseSrc;
                         showcaseVideo.load();
                         showcaseVideo.addEventListener('loadedmetadata', () => {
@@ -370,12 +385,19 @@
                         showcaseVideo.removeAttribute('src');
                         showcaseVideo.load();
                         showcaseVideo.hidden = true;
+                        if (showcaseSound) showcaseSound.hidden = true;
                         showcaseImage.hidden = false;
                         showcaseImage.src = card.dataset.showcaseSrc;
                         showcaseImage.alt = card.dataset.showcaseAlt || '';
                     }
                     showcaseDialog.showModal();
                 });
+            });
+            showcaseSound?.addEventListener('click', () => {
+                if (!showcaseVideo) return;
+                showcaseVideo.muted = !showcaseVideo.muted;
+                updateSoundControl();
+                showcaseVideo.play().catch(() => {});
             });
             showcaseClose?.addEventListener('click', () => showcaseDialog?.close());
             showcaseDialog?.addEventListener('click', event => {
@@ -385,6 +407,8 @@
                 showcaseVideo?.pause();
                 showcaseVideo?.removeAttribute('src');
                 showcaseVideo?.load();
+                if (showcaseVideo) showcaseVideo.muted = true;
+                if (showcaseSound) showcaseSound.hidden = true;
                 if (showcaseImage) showcaseImage.src = '';
             });
         });

@@ -53,8 +53,13 @@
         .zin-choices__status { margin:0; font-size:clamp(15px,1.15vw,19px); color:rgba(32,32,32,.62); }
         .zin-choices__stage { position:relative; width:min(72vw,1120px); aspect-ratio:16/9; overflow:hidden; background:#fff; }
         .zin-choices__frame { position:absolute; inset:0; width:100%; height:100%; display:block; object-fit:contain; will-change:opacity,transform; }
-        .zin-choices__frame--all { opacity:calc(1 - (var(--choices-progress) * .82)); transform:translate3d(calc(var(--choices-progress) * -2.5%),calc(var(--choices-progress) * 1.5%),0) scale(calc(1 - (var(--choices-progress) * .035))); }
-        .zin-choices__frame--selected { opacity:var(--choices-progress); transform:translate3d(calc((1 - var(--choices-progress)) * 3%),calc((1 - var(--choices-progress)) * -2%),0) scale(calc(.92 + (var(--choices-progress) * .08))); }
+        .zin-choices__frame--selected { opacity:1; transform:scale(calc(.975 + (var(--choices-progress) * .025))); }
+        .zin-choices__layer { --layer-opacity:clamp(0,calc(1 - (var(--choices-progress) * 1.45)),1); opacity:var(--layer-opacity); transform:translate3d(calc(var(--choices-progress) * var(--move-x)),calc(var(--choices-progress) * var(--move-y)),0) scale(calc(1 - (var(--choices-progress) * var(--shrink)))); transform-origin:var(--origin); }
+        .zin-choices__layer--left-top { clip-path:polygon(0 0,44% 0,44% 50%,0 50%); --move-x:-3.5%; --move-y:-2%; --shrink:.06; --origin:22% 25%; }
+        .zin-choices__layer--right-top { clip-path:polygon(44% 0,100% 0,100% 50%,44% 50%); --move-x:3%; --move-y:-2.5%; --shrink:.045; --origin:72% 24%; --layer-opacity:clamp(0,calc(1.18 - (var(--choices-progress) * 1.55)),1); }
+        .zin-choices__layer--left-bottom { clip-path:polygon(0 50%,34% 50%,34% 100%,0 100%); --move-x:-3%; --move-y:3%; --shrink:.055; --origin:17% 75%; --layer-opacity:clamp(0,calc(1.32 - (var(--choices-progress) * 1.7)),1); }
+        .zin-choices__layer--middle-bottom { clip-path:polygon(34% 50%,68% 50%,68% 100%,34% 100%); --move-x:0%; --move-y:3.5%; --shrink:.07; --origin:51% 76%; --layer-opacity:clamp(0,calc(1.08 - (var(--choices-progress) * 1.55)),1); }
+        .zin-choices__layer--right-bottom { clip-path:polygon(68% 50%,100% 50%,100% 100%,68% 100%); --move-x:3.5%; --move-y:2.5%; --shrink:.05; --origin:84% 76%; --layer-opacity:clamp(0,calc(1.25 - (var(--choices-progress) * 1.65)),1); }
         .zin-choices__progress { width:min(72vw,1120px); height:3px; margin-top:12px; overflow:hidden; background:rgba(32,32,32,.12); }
         .zin-choices__progress::after { content:""; display:block; width:100%; height:100%; background:#1712d3; transform:scaleX(var(--choices-progress)); transform-origin:left center; }
         .zin-result { background:var(--highlight); color:var(--dark); }
@@ -76,7 +81,7 @@
         .page--zin .case-next__title { font-weight:400; }
         @media(max-width:820px){.page--zin .case-narrative__intro-inner{grid-template-columns:1fr}.zin-media--duo,.zin-section-media--duo,.zin-effect-media{grid-template-columns:1fr}.zin-media--duo img{min-height:0;aspect-ratio:4/3}}
         @media(max-width:720px){.page--zin{--zin-mobile-pad:20px}.page--zin .case-narrative__intro,.page--zin .case-narrative__section,.zin-statement{padding-left:var(--zin-mobile-pad);padding-right:var(--zin-mobile-pad)}.page--zin .case-narrative__intro{padding-top:32px;padding-bottom:36px}.page--zin .case-narrative__title{font-size:clamp(38px,12vw,54px)}.page--zin .case-narrative__inner{grid-template-columns:1fr;gap:16px}.page--zin .case-narrative__label{max-width:none;font-size:clamp(30px,9vw,42px)}.page--zin .case-narrative__copy,.page--zin .case-narrative__intro-copy{font-size:17px;line-height:1.45}.zin-media{width:calc(100% - (2 * var(--zin-mobile-pad)))}.zin-choices{height:135vh;min-height:700px}.zin-choices__sticky{min-height:100svh;padding:72px var(--zin-mobile-pad) 34px}.zin-choices__header{display:block;margin-bottom:14px}.zin-choices__header h2{font-size:clamp(28px,9vw,42px)}.zin-choices__status{margin-top:8px}.zin-style-scroll{width:calc(100% + (2 * var(--zin-mobile-pad)));margin-left:calc(-1 * var(--zin-mobile-pad));margin-right:calc(-1 * var(--zin-mobile-pad));overflow:hidden}.zin-style-scroll__sticky{position:relative;height:auto;min-height:0;padding:0}.zin-style-scroll__track{width:auto;overflow-x:auto;gap:10px;padding:0 var(--zin-mobile-pad) 8px;scroll-snap-type:x mandatory;transform:none!important;-webkit-overflow-scrolling:touch;scrollbar-width:none}.zin-style-scroll__item{width:84vw;scroll-snap-align:center}.zin-illustrations{width:100%;grid-template-columns:repeat(2,minmax(0,1fr))}.zin-followup__spacer{display:none}.page--zin .zin-followup{margin-top:22px!important}}
-        @media(prefers-reduced-motion:reduce){.zin-choices{height:auto;min-height:0}.zin-choices__sticky{position:relative;min-height:0}.zin-choices__frame--all{opacity:0}.zin-choices__frame--selected{opacity:1;transform:none}.zin-choices__progress::after{transform:scaleX(1)}}
+        @media(prefers-reduced-motion:reduce){.zin-choices{height:auto;min-height:0}.zin-choices__sticky{position:relative;min-height:0}.zin-choices__layer{display:none}.zin-choices__frame--selected{opacity:1;transform:none}.zin-choices__progress::after{transform:scaleX(1)}}
     </style>
 </head>
 <body class="page--case page--zin">
@@ -146,8 +151,12 @@
         <section class="zin-choices" id="zin-choices" aria-label="Van mogelijke visuele richtingen naar de gemaakte keuzes">
             <div class="zin-choices__sticky">
                 <div class="zin-choices__stage">
-                    <img class="zin-choices__frame zin-choices__frame--all" src="assets/cases/zin/choices-all.png" alt="Alle mogelijke visuele richtingen voor Zin in Morgen">
                     <img class="zin-choices__frame zin-choices__frame--selected" src="assets/cases/zin/choices-selected.png" alt="De gekozen visuele richting voor Zin in Morgen">
+                    <img class="zin-choices__frame zin-choices__layer zin-choices__layer--left-top" src="assets/cases/zin/choices-all.png" alt="">
+                    <img class="zin-choices__frame zin-choices__layer zin-choices__layer--right-top" src="assets/cases/zin/choices-all.png" alt="">
+                    <img class="zin-choices__frame zin-choices__layer zin-choices__layer--left-bottom" src="assets/cases/zin/choices-all.png" alt="">
+                    <img class="zin-choices__frame zin-choices__layer zin-choices__layer--middle-bottom" src="assets/cases/zin/choices-all.png" alt="">
+                    <img class="zin-choices__frame zin-choices__layer zin-choices__layer--right-bottom" src="assets/cases/zin/choices-all.png" alt="">
                 </div>
                 <div class="zin-choices__progress" aria-hidden="true"></div>
             </div>

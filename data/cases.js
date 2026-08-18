@@ -48,8 +48,8 @@ window.YOKO_CASES = {
       "id": 19,
       "slug": "zin-in-morgen",
       "href": "zin-in-morgen.html",
-      "title": "Zin in Morgen",
-      "client": "Zin in Morgen",
+      "title": "Zin",
+      "client": "Zin",
       "category": "Brand & Systeem",
       "year": "2024",
       "tags": [
@@ -70,7 +70,7 @@ window.YOKO_CASES = {
         {
           "type": "image",
           "src": "assets/cases/zin/thumb.jpg",
-          "alt": "Zin in Morgen merkidentiteit"
+          "alt": "Zin merkidentiteit"
         }
       ],
       "autoplay_preview": true

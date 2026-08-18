@@ -1,4 +1,4 @@
-@import url('nav-desktop.css?v=4');
+@import url('nav-desktop.css?v=5');
 
 /* ============================================================
    STUDIO YOKO — Stylesheet
@@ -312,37 +312,44 @@ h2,
     /* Inline links verborgen tenzij menu open */
     .nav__links { display: none; }
     .nav.is-open .nav__links {
-        display: flex;
-        top: 0;
-        left: 0;
-        right: auto;
-        bottom: auto;
-        width: 100vw;
-        height: 100svh;
-        justify-self: initial;
-        justify-content: flex-start;
-        align-items: flex-start;
-        padding: clamp(160px, 22vh, 190px) var(--pad-x) 48px;
-        gap: 18px;
-        background: var(--dark);
+        display: flex !important;
+        position: fixed !important;
+        inset: 0 !important;
+        width: 100vw !important;
+        height: 100dvh !important;
+        min-height: 100svh;
+        justify-self: stretch;
+        justify-content: center !important;
+        align-items: stretch !important;
+        padding: clamp(96px, 15vh, 128px) max(24px, var(--pad-x)) 40px !important;
+        gap: 6px !important;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        pointer-events: auto !important;
+        background: var(--cream) !important;
     }
     .nav.is-open .nav__links a {
-        width: 100%;
-        padding: 8px 0;
-        color: var(--cream);
-        font-size: clamp(34px, 11vw, 52px);
-        font-weight: 700;
-        line-height: 1.05;
+        display: flex;
+        align-items: center;
+        width: 100% !important;
+        min-height: 58px;
+        padding: 10px 0 !important;
+        color: var(--dark) !important;
+        font-size: clamp(34px, 10vw, 48px) !important;
+        font-weight: 400 !important;
+        line-height: 1 !important;
         letter-spacing: -0.035em;
         opacity: 1;
+        pointer-events: auto;
+        touch-action: manipulation;
     }
     .nav.is-open .nav__logo {
         position: relative;
         z-index: 1002;
         transform: none;
     }
-    .nav.is-open .nav__logo-ani { filter: brightness(0) invert(1); }
-    .nav.is-open .nav__toggle span { background: var(--cream); }
+    .nav.is-open .nav__logo-ani { filter: brightness(0); }
+    .nav.is-open .nav__toggle span { background: var(--dark); }
 }
 
 /* =====================================================

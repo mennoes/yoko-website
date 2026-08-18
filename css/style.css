@@ -2683,6 +2683,8 @@ body.cursor-on-yellow .contact-form__btn {
 }
 /* Vrije variant: tegels op eigen 5:4 hoogte i.p.v. vaste rijhoogte */
 .ch--free .ch__row { align-items: center; }
+.ch__row-spacer { display: block; }
+@media (max-width: 720px) { .ch__row-spacer { display: none; } }
 .ch--free .ch__media {
     height: auto;
     aspect-ratio: 5 / 4;

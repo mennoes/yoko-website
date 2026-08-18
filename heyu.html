@@ -8,7 +8,7 @@
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-    <link rel="stylesheet" href="css/style.css?v=154">
+    <link rel="stylesheet" href="css/style.css?v=159">
     <style>
         .heyu-story {
             --heyu-varsity-green: #004b36;
@@ -86,6 +86,12 @@
         .heyu-story .cs__label {
             margin-bottom: clamp(26px, 4vw, 52px);
             text-align: center;
+            text-transform: none;
+            letter-spacing: -0.01em;
+            font-size: clamp(15px, 1.15vw, 18px);
+            font-weight: 500;
+            font-style: italic;
+            opacity: 0.55;
         }
 
         .heyu-story__copy p + p {
@@ -171,15 +177,15 @@
 
     <main class="heyu-story">
         <section class="heyu-story__text heyu-story__text--purple">
-            <p class="cs__label js-fade">De uitdaging</p>
-            <h2 class="heyu-story__heading js-fade">Hoe maak je van één goed idee een herkenbaar format?</h2>
+            <p class="cs__label js-fade">Waar het begon</p>
+            <h2 class="heyu-story__heading js-fade">Een format ontwikkelen</h2>
             <div class="heyu-story__copy js-fade" style="margin-top: clamp(48px, 8vw, 120px);">
                 <p>De Universiteit van Nederland wilde vragen van kijkers in korte video’s laten beantwoorden door wetenschappers. Daarvoor was meer nodig dan een reeks losse graphics: het idee moest een herkenbaar en herhaalbaar format worden.</p>
             </div>
         </section>
 
         <section class="heyu-story__text heyu-story__text--varsity">
-            <p class="cs__label js-fade">Ons inzicht</p>
+            <p class="cs__label js-fade">Wat we wisten</p>
             <div class="heyu-story__copy js-fade">
                 <p>Omdat we de visuele identiteit van de Universiteit van Nederland al jaren beheren, weten we precies waar de ruimte binnen het merk zit. HEY U! mocht duidelijk iets nieuws zijn, zonder ineens als een ander merk te voelen.</p>
             </div>
@@ -190,7 +196,7 @@
         </figure>
 
         <section class="heyu-story__text heyu-story__text--green">
-            <p class="cs__label js-fade">Onze keuze</p>
+            <p class="cs__label js-fade">Onze aanpak</p>
             <div class="heyu-story__copy js-fade">
                 <p>We dachten vanaf het begin mee over het geheel: set, kleur, camerahoeken, typografie, animatie en de manier waarop al die onderdelen samen één herkenbare wereld vormen.</p>
             </div>
@@ -201,7 +207,7 @@
         </figure>
 
         <section class="heyu-story__text heyu-story__text--blue">
-            <p class="cs__label js-fade">Wat we maakten</p>
+            <p class="cs__label js-fade">Wat we bouwden</p>
             <div class="heyu-story__copy js-fade">
                 <p>Daarom vertaalden we bestaande merkprincipes naar een eigen beeldtaal voor het format. Van de opbouw van de set tot hoe een vraag in beeld verschijnt en hoe animatie het antwoord ondersteunt.</p>
             </div>
@@ -213,7 +219,7 @@
 
         <section class="heyu-story__text heyu-story__text--ballpoint">
             <div class="heyu-story__outro">
-                <p class="cs__label js-fade">Het effect</p>
+                <p class="cs__label js-fade">Wat het opleverde</p>
                 <div class="heyu-story__copy js-fade">
                     <p>HEY U! heeft genoeg vaste visuele regels om iedere aflevering direct herkenbaar te maken, maar genoeg vrijheid om twaalf verschillende onderwerpen niet twaalf keer hetzelfde te laten voelen.</p>
                 </div>
@@ -222,15 +228,6 @@
     </main>
 
     <!-- NEXT CASE -->
-    <section class="case-next" id="case-next">
-        <img class="case-next__bg" src="assets/cases/zin/thumb.jpg" alt="" aria-hidden="true">
-        <a class="case-next__link" href="zin-in-morgen.html">
-            <span class="case-next__label">Volgend project</span>
-            <h2 class="case-next__title">Zin in Morgen</h2>
-            <div class="case-next__arrow">→</div>
-        </a>
-    </section>
-
     <footer class="footer footer--mini">
         <div class="footer__contact">
             <div class="footer__contact-inner">
@@ -250,6 +247,15 @@
             <div class="footer__team-photos"></div>
         </div>
     </footer>
+
+    <section class="case-next" id="case-next">
+        <img class="case-next__bg" src="assets/cases/zin/thumb.jpg" alt="" aria-hidden="true">
+        <a class="case-next__link" href="zin-in-morgen.html">
+            <span class="case-next__label">Volgende case</span>
+            <h2 class="case-next__title">Zin in Morgen</h2>
+            <div class="case-next__arrow">↓</div>
+        </a>
+    </section>
 
     <script src="data/cases.js?v=3"></script>
     <script src="js/lottie.min.js?v=1"></script>

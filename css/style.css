@@ -3517,6 +3517,8 @@ body.cursor-on-yellow .contact-form__btn {
 }
 .page--case .case-next__label {
     display: block !important;
+    position: relative;
+    z-index: 2;
     margin: 0;
     color: var(--cream);
     font-size: clamp(12px, 1vw, 16px);
@@ -3528,6 +3530,8 @@ body.cursor-on-yellow .contact-form__btn {
 }
 .page--case .case-next__title {
     max-width: 12ch;
+    position: relative;
+    z-index: 2;
     margin: 0;
     color: var(--cream);
     font-size: clamp(48px, 8.2vw, 142px) !important;
@@ -3537,6 +3541,8 @@ body.cursor-on-yellow .contact-form__btn {
     text-shadow: 0 2px 28px rgba(0,0,0,.4);
 }
 .page--case .case-next__arrow {
+    position: relative;
+    z-index: 2;
     margin: clamp(4px, .8vw, 12px) 0 0 !important;
     color: var(--cream);
     font-size: clamp(34px, 4vw, 64px) !important;

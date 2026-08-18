@@ -150,7 +150,7 @@ window.YOKO_CASES = {
       "summary": "Klimaatfeiten overtuigen niemand meer. Bewegend beeld dat de urgentie voelbaar maakt, doet dat wel. Wij maakten de explainer die mensen aanzet tot actie, niet tot wanhoop.",
       "description": "Greenpeace vroeg Studio Yoko een explainer te maken die mensen aanzet tot actie. Geen saaie grafieken, maar urgente, kleurrijke animatie die de boodschap meteen raak is.\n\nWe kozen voor felle kleuren, snelle cuts en een directe tone of voice — passend bij de missie van Greenpeace.",
       "thumbnail": "assets/cases/greenpeace/thumb.jpg",
-      "video_preview": "assets/cases/greenpeace/Tippingpoint_header.mp4",
+      "video_preview": "assets/cases/greenpeace/Tippingpoint_header_lq.mp4",
       "accent_color": "#00A650",
       "size": "large",
       "featured": true,

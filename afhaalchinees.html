@@ -47,7 +47,9 @@
         .page--afhaalchinees .case-narrative__intro-copy { max-width:690px; margin:0; gap:.8em; font-size:clamp(17px,1.3vw,22px); }
         .af-intro__copy { min-width:0; }
         .af-intro__video { width:100%; margin:0; overflow:hidden; background:var(--dark); }
-        .af-intro__video video { width:100%; height:auto; display:block; aspect-ratio:108/85; object-fit:contain; }
+        .af-intro__video-trigger { position:relative; width:100%; display:block; padding:0; border:0; background:var(--dark); cursor:zoom-in; }
+        .af-intro__video-trigger video { width:100%; height:auto; display:block; aspect-ratio:108/85; object-fit:contain; pointer-events:none; }
+        .af-intro__video-label { position:absolute; right:12px; bottom:12px; padding:9px 13px; background:var(--cream); color:var(--dark); font:400 13px/1 Arial,sans-serif; }
         .page--afhaalchinees .case-narrative__section { padding-block:clamp(34px,3.8vw,58px); }
         .page--afhaalchinees .case-narrative__inner { display:grid; grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr); gap:clamp(36px,7vw,120px); width:100%; max-width:none; margin:0!important; }
         .page--afhaalchinees .case-narrative__label { max-width:12ch; padding-top:0; font-size:clamp(32px,3.5vw,58px); }
@@ -74,6 +76,12 @@
         .af-matrix-dialog::backdrop { background:rgba(24,24,24,.92); }
         .af-matrix-dialog img { display:block; width:100%; max-height:calc(100vh - 40px); object-fit:contain; }
         .af-matrix-dialog__close { position:absolute; top:12px; right:12px; width:46px; height:46px; border:0; border-radius:50%; background:var(--cream); color:var(--dark); font:400 30px/1 Arial,sans-serif; cursor:pointer; }
+        .af-video-dialog { position:fixed; inset:0; width:min(calc(100vw - 40px),1500px); max-width:none; max-height:calc(100vh - 40px); margin:auto; padding:0; border:0; background:transparent; overflow:visible; }
+        .af-video-dialog[open] { display:flex; align-items:center; justify-content:center; }
+        .af-video-dialog::backdrop { background:rgba(24,24,24,.92); }
+        .af-video-dialog video { display:block; width:100%; max-height:calc(100vh - 40px); background:#111; object-fit:contain; }
+        .af-video-dialog__close { position:absolute; z-index:2; top:12px; right:12px; width:46px; height:46px; padding:0; border:0; border-radius:50%; background:var(--cream); color:var(--dark); font:400 30px/1 Arial,sans-serif; cursor:pointer; }
+        .af-work-intro { padding-top:clamp(68px,7vw,112px)!important; padding-bottom:clamp(62px,6.5vw,104px)!important; background:var(--af-blue); color:var(--dark); }
         .af-season { padding:clamp(40px,4.5vw,72px) var(--pad-x); }
         .af-season--one { background: var(--af-blue); color:var(--dark); }
         .af-season--two { background: var(--af-yellow); color:var(--dark); }
@@ -128,6 +136,7 @@
             .page--afhaalchinees .case-narrative__copy,
             .af-season__copy { width:100%; max-width:none; font-size:17px; line-height:1.45; }
             .page--afhaalchinees .case-narrative__section { padding-top:34px; padding-bottom:36px; }
+            .page--afhaalchinees .af-work-intro { padding-top:58px!important; padding-bottom:54px!important; }
             .page--afhaalchinees .case-narrative__inner,
             .af-season__inner { width:100%; gap:16px; }
             .page--afhaalchinees .case-narrative__label { max-width:none; font-size:clamp(30px,9vw,42px); }
@@ -177,7 +186,7 @@
         <section class="case-narrative__intro">
             <div class="case-narrative__intro-inner js-fade">
                 <div class="af-intro__copy"><h2 class="case-narrative__title">De Afhaalchinees</h2><div class="case-narrative__intro-copy"><p><strong>Voor twee seizoenen van de Omroep ZWART-documentaireserie De Afhaalchinees maken we alle grafische vormgeving en animatie.</strong></p><p>We werken nauw samen met maker Qian van Binsbergen, denken conceptueel mee en bepalen samen hoe beeld zich binnen de serie gedraagt. De serie won De Tegel en de Zilveren Nipkowschijf.</p></div></div>
-                <figure class="af-intro__video"><video autoplay muted loop playsinline preload="metadata"><source src="assets/cases/afhaalchinees/afhaalchinees-serie.mp4" type="video/mp4"></video></figure>
+                <figure class="af-intro__video"><button class="af-intro__video-trigger" type="button" aria-label="Bekijk de openingsvideo groter en met geluid"><video autoplay muted loop playsinline preload="metadata"><source src="assets/cases/afhaalchinees/afhaalchinees-serie.mp4" type="video/mp4"></video><span class="af-intro__video-label">Bekijk video</span></button></figure>
             </div>
         </section>
 
@@ -218,7 +227,7 @@
             <img src="assets/cases/afhaalchinees/behind-the-scenes-matrix.png" alt="Behind-the-scenesmatrix met vier mogelijke visuele richtingen voor De Afhaalchinees">
         </dialog>
 
-        <section class="case-narrative__section case-narrative__section--work"><div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">Wat we maken</h2><div class="case-narrative__copy"><p>Voor beide seizoenen verzorgen we alle grafische onderdelen en animaties: van inhoudelijke uitleg en visuele metaforen tot titels, overgangen en grafische scènes. Iedere toepassing krijgt een eigen oplossing, maar alles voelt als onderdeel van dezelfde wereld.</p></div></div></section>
+        <section class="case-narrative__section case-narrative__section--work af-work-intro"><div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">Wat we maken</h2><div class="case-narrative__copy"><p>Voor beide seizoenen verzorgen we alle grafische onderdelen en animaties: van inhoudelijke uitleg en visuele metaforen tot titels, overgangen en grafische scènes. Iedere toepassing krijgt een eigen oplossing, maar alles voelt als onderdeel van dezelfde wereld.</p></div></div></section>
 
         <div class="af-season-one">
             <section class="af-season af-season--one"><div class="af-season__inner js-fade"><h2 class="af-season__title af-season__title--simple">Seizoen 1</h2><p class="af-season__copy">Voor het eerste seizoen bouwen we een zachte, tactiele collagewereld van archiefmateriaal, papier, tekeningen en pastelkleuren. Die gelaagdheid past bij een onderzoek waarin dossiers, geschiedenis en persoonlijke herinneringen steeds door elkaar lopen. De vorm maakt ingewikkelde systemen inzichtelijk, maar houdt ook ruimte voor Qians humor en de woeste registerwisselingen van de serie.</p></div></section>
@@ -243,6 +252,11 @@
         <section class="af-awards"><div class="af-awards__inner js-fade"><h2 class="af-awards__title">De Tegel én de Zilveren Nipkowschijf</h2><figure class="af-awards__photo"><img src="assets/cases/afhaalchinees/nipkowschijf-winnaars.png" alt="Qian van Binsbergen en het team van De Afhaalchinees vieren de Zilveren Nipkowschijf"><figcaption>Winnaars Zilveren Nipkowschijf 2025</figcaption></figure></div></section>
     </main>
 
+    <dialog class="af-video-dialog" aria-label="Openingsvideo van De Afhaalchinees">
+        <button class="af-video-dialog__close" type="button" aria-label="Video sluiten">×</button>
+        <video controls playsinline preload="metadata"><source src="assets/cases/afhaalchinees/afhaalchinees-serie.mp4" type="video/mp4"></video>
+    </dialog>
+
     <!-- NEXT -->
     <section class="case-next" id="case-next">
         <img class="case-next__bg" src="assets/cases/zin/thumb.jpg" alt="" aria-hidden="true">
@@ -264,7 +278,7 @@
 
     <script src="data/cases.js?v=3"></script>
     <script src="js/lottie.min.js?v=1"></script>
-    <script src="js/main.js?v=41"></script>
+    <script src="js/main.js?v=44"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const targets = document.querySelectorAll('.js-fade');
@@ -308,6 +322,26 @@
             matrixClose?.addEventListener('click', () => matrixDialog?.close());
             matrixDialog?.addEventListener('click', event => {
                 if (event.target === matrixDialog) matrixDialog.close();
+            });
+
+            const introVideoDialog = document.querySelector('.af-video-dialog');
+            const introVideoTrigger = document.querySelector('.af-intro__video-trigger');
+            const introVideoClose = introVideoDialog?.querySelector('.af-video-dialog__close');
+            const introVideoPlayer = introVideoDialog?.querySelector('video');
+            introVideoTrigger?.addEventListener('click', () => {
+                if (!introVideoDialog || !introVideoPlayer) return;
+                introVideoPlayer.currentTime = 0;
+                introVideoPlayer.muted = false;
+                introVideoDialog.showModal();
+                introVideoPlayer.play().catch(() => {});
+            });
+            introVideoClose?.addEventListener('click', () => introVideoDialog?.close());
+            introVideoDialog?.addEventListener('click', event => {
+                if (event.target === introVideoDialog) introVideoDialog.close();
+            });
+            introVideoDialog?.addEventListener('close', () => {
+                introVideoPlayer?.pause();
+                if (introVideoPlayer) introVideoPlayer.currentTime = 0;
             });
 
         });

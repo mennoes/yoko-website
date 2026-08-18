@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UvNL Titelbalk Generator — Studio Yoko</title>
+    <meta name="description" content="Een tool waarmee de redactie van Universiteit van Nederland vanuit één titel automatisch alle socialformaten maakt.">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <link rel="stylesheet" href="css/style.css?v=156">
+    <style>
+        .page--titlebar-tool {
+            --tool-green:#004f3b;
+            --tool-lilac:#c99cf4;
+            --tool-red:#f25d43;
+            --tool-cream:#f2eadf;
+        }
+        .software-hero { min-height:82svh; display:flex; align-items:center; padding:clamp(112px,11vw,164px) var(--pad-x) clamp(54px,6vw,88px); background:var(--cream); }
+        .titlebar-app { width:100%; display:grid; grid-template-columns:minmax(250px,.7fr) minmax(0,1.3fr); gap:clamp(12px,1.4vw,24px); padding:clamp(12px,1.4vw,24px); background:#e7dfd5; border:1px solid rgba(0,79,59,.16); box-shadow:0 24px 70px rgba(32,32,32,.12); }
+        .titlebar-app__controls { display:flex; flex-direction:column; gap:18px; padding:clamp(20px,2.5vw,38px); background:#f8f4ee; color:var(--tool-green); }
+        .titlebar-app__controls h1 { max-width:9ch; margin:0; font-size:clamp(34px,4vw,66px); font-weight:400; line-height:.94; letter-spacing:-.035em; }
+        .titlebar-app__controls p { max-width:32ch; margin:0; font-size:clamp(15px,1.15vw,18px); line-height:1.45; }
+        .titlebar-app__label { display:block; margin-bottom:7px; font-size:15px; }
+        .titlebar-app__input { width:100%; min-height:52px; padding:13px 15px; border:1px solid rgba(0,79,59,.26); border-radius:0; background:#fff; color:var(--tool-green); font:inherit; font-size:18px; line-height:1.2; }
+        .titlebar-app__input:focus { outline:2px solid var(--tool-lilac); outline-offset:2px; }
+        .titlebar-app__swatches { display:flex; gap:9px; }
+        .titlebar-app__swatch { width:34px; height:34px; padding:0; border:3px solid transparent; border-radius:50%; background:var(--swatch); cursor:pointer; }
+        .titlebar-app__swatch.is-selected { border-color:#fff; box-shadow:0 0 0 2px var(--tool-green); }
+        .titlebar-app__generate { min-height:50px; margin-top:auto; padding:12px 18px; border:0; background:var(--tool-green); color:#fff; font:inherit; font-size:17px; line-height:1; cursor:pointer; }
+        .titlebar-app__status { min-height:1.4em; margin:-8px 0 0!important; font-size:14px!important; opacity:.7; }
+        .titlebar-app__previews { min-width:0; display:grid; grid-template-columns:minmax(0,1.35fr) minmax(150px,.65fr); grid-template-rows:auto auto; gap:clamp(10px,1vw,16px); align-items:stretch; }
+        .titlebar-preview { --preview-accent:var(--tool-lilac); position:relative; min-width:0; display:flex; align-items:center; overflow:hidden; background:var(--tool-green); color:var(--preview-accent); }
+        .titlebar-preview::before { content:"u"; position:absolute; right:-.06em; bottom:-.28em; font-size:clamp(150px,23vw,380px); font-weight:700; line-height:1; color:var(--preview-accent); opacity:.2; }
+        .titlebar-preview--wide { grid-row:1/-1; }
+        .titlebar-preview--square { aspect-ratio:1; background:var(--preview-accent); color:var(--tool-green); }
+        .titlebar-preview--square::before { color:var(--tool-green); }
+        .titlebar-preview--vertical { min-height:220px; background:var(--tool-cream); color:var(--tool-green); border:1px solid rgba(0,79,59,.16); }
+        .titlebar-preview--vertical::before { color:var(--preview-accent); opacity:.55; }
+        .titlebar-preview__format { position:absolute; top:13px; left:14px; font-size:12px; opacity:.62; }
+        .titlebar-preview__title { position:relative; z-index:1; max-width:10ch; margin:0; padding:clamp(18px,3vw,44px); font-size:clamp(24px,3.1vw,54px); font-weight:700; line-height:.95; letter-spacing:-.035em; overflow-wrap:anywhere; }
+        .titlebar-preview--square .titlebar-preview__title,.titlebar-preview--vertical .titlebar-preview__title { padding:clamp(15px,2vw,28px); font-size:clamp(18px,2vw,34px); }
+        .software-intro { padding:clamp(48px,5vw,78px) var(--pad-x); }
+        .software-intro__inner { display:grid; grid-template-columns:minmax(0,.86fr) minmax(420px,1.14fr); gap:clamp(42px,6vw,100px); align-items:start; }
+        .page--titlebar-tool .case-narrative__title { max-width:690px; margin:0; font-size:clamp(40px,4.4vw,76px); line-height:.98; letter-spacing:-.025em; }
+        .software-intro__copy { max-width:690px; display:grid; gap:.8em; font-size:clamp(17px,1.3vw,22px); line-height:1.45; }
+        .software-intro__copy p { margin:0; }
+        .page--titlebar-tool .case-narrative__section { padding-block:clamp(42px,4.5vw,72px); }
+        .page--titlebar-tool .case-narrative__inner { display:grid; grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr); gap:clamp(36px,7vw,120px); width:100%; max-width:none; margin:0!important; }
+        .page--titlebar-tool .case-narrative__label { max-width:12ch; padding-top:0; font-size:clamp(32px,3.5vw,58px); }
+        .page--titlebar-tool .case-narrative__label::before { display:none; content:none; }
+        .page--titlebar-tool .case-narrative__copy { max-width:68ch; padding-top:0; font-size:clamp(16px,1.15vw,20px); }
+        .software-callout { padding:clamp(52px,6vw,92px) var(--pad-x); background:var(--tool-lilac); color:var(--tool-green); }
+        .software-callout p { max-width:22ch; margin:0; font-size:clamp(34px,4.6vw,76px); font-weight:400; line-height:1; letter-spacing:-.025em; }
+        .software-result { background:var(--tool-green); color:var(--tool-cream); }
+        .page--titlebar-tool .case-next { min-height:0; background:var(--dark); }
+        .page--titlebar-tool .case-next__link { padding:clamp(38px,4vw,62px) var(--pad-x); flex-direction:row; align-items:center; justify-content:space-between; }
+        .page--titlebar-tool .case-next__title { font-size:clamp(34px,4vw,64px); font-weight:400; letter-spacing:-.03em; }
+        .page--titlebar-tool .case-next__arrow { margin:0; }
+        .software-footer { display:flex; justify-content:space-between; gap:24px; padding:clamp(34px,4vw,58px) var(--pad-x); background:var(--cream); color:var(--dark); border-top:1px solid rgba(32,32,32,.12); }
+        .software-footer a { color:inherit; font-size:clamp(22px,2.5vw,38px); text-decoration:none; }
+        .software-footer p { margin:0; align-self:flex-end; font-size:12px; opacity:.55; }
+        @media(max-width:900px) { .titlebar-app,.software-intro__inner { grid-template-columns:1fr; } .titlebar-app__controls h1 { max-width:none; } }
+        @media(max-width:720px) {
+            .page--titlebar-tool { --tool-mobile-pad:20px; }
+            .software-hero,.software-intro,.page--titlebar-tool .case-narrative__section,.software-callout { padding-left:var(--tool-mobile-pad); padding-right:var(--tool-mobile-pad); }
+            .software-hero { min-height:auto; padding-top:100px; }
+            .titlebar-app { padding:8px; }
+            .titlebar-app__controls { padding:22px; }
+            .titlebar-app__controls h1 { font-size:42px; }
+            .titlebar-app__previews { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; }
+            .titlebar-app__previews::-webkit-scrollbar { display:none; }
+            .titlebar-preview { flex:0 0 78vw; min-height:260px; aspect-ratio:4/3; scroll-snap-align:start; }
+            .software-intro { padding-top:38px; padding-bottom:38px; }
+            .software-intro__inner,.page--titlebar-tool .case-narrative__inner { grid-template-columns:1fr; gap:24px; }
+            .page--titlebar-tool .case-narrative__title { font-size:clamp(38px,12vw,54px); }
+            .page--titlebar-tool .case-narrative__copy,.software-intro__copy { font-size:17px; line-height:1.45; }
+            .page--titlebar-tool .case-narrative__label { max-width:none; font-size:clamp(30px,9vw,42px); }
+            .software-footer { flex-direction:column; padding-inline:var(--tool-mobile-pad); }
+            .page--titlebar-tool .case-next__link { padding-inline:var(--tool-mobile-pad); }
+        }
+    </style>
+</head>
+<body class="page--case page--titlebar-tool">
+    <nav class="nav" id="nav">
+        <a href="index.html" class="nav__logo"><div class="nav__logo-ani" id="navLogoAni" role="img" aria-label="Studio Yoko"></div></a>
+        <div class="nav__links"><a href="work.html">werk</a><a href="samenwerken.html">samenwerken</a><a href="about.html">over</a><a href="/#contact">contact</a></div>
+        <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <section class="software-hero" id="case-hero">
+        <div class="titlebar-app">
+            <div class="titlebar-app__controls">
+                <h1>UvNL Titelbalk Generator</h1>
+                <p>Vul één titel in en bekijk hem direct in ieder sociaal formaat.</p>
+                <label><span class="titlebar-app__label">Titel</span><input class="titlebar-app__input" id="titlebarInput" value="Waarom dromen we?" maxlength="60"></label>
+                <div><span class="titlebar-app__label">Accentkleur</span><div class="titlebar-app__swatches"><button class="titlebar-app__swatch is-selected" type="button" style="--swatch:#c99cf4" data-accent="#c99cf4" aria-label="Lila"></button><button class="titlebar-app__swatch" type="button" style="--swatch:#f25d43" data-accent="#f25d43" aria-label="Rood"></button><button class="titlebar-app__swatch" type="button" style="--swatch:#f4df59" data-accent="#f4df59" aria-label="Geel"></button></div></div>
+                <button class="titlebar-app__generate" id="titlebarGenerate" type="button">Genereer alle formaten</button>
+                <p class="titlebar-app__status" id="titlebarStatus" aria-live="polite"></p>
+            </div>
+            <div class="titlebar-app__previews" id="titlebarPreviews">
+                <div class="titlebar-preview titlebar-preview--wide"><span class="titlebar-preview__format">16:9</span><p class="titlebar-preview__title">Waarom dromen we?</p></div>
+                <div class="titlebar-preview titlebar-preview--square"><span class="titlebar-preview__format">1:1</span><p class="titlebar-preview__title">Waarom dromen we?</p></div>
+                <div class="titlebar-preview titlebar-preview--vertical"><span class="titlebar-preview__format">9:16</span><p class="titlebar-preview__title">Waarom dromen we?</p></div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section class="software-intro"><div class="software-intro__inner js-fade"><h2 class="case-narrative__title">Eén titel. Alle formaten.</h2><div class="software-intro__copy"><p><strong>Voor Universiteit van Nederland bouwden we een tool waarmee de redactie zelf titelbalken voor alle socialformaten maakt.</strong></p><p>De redactie voert één keer een titel in. De tool vertaalt die automatisch naar de juiste verhoudingen, kleuren en veilige marges — altijd binnen de visuele identiteit.</p></div></div></section>
+
+        <section class="case-narrative__section"><div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">De uitdaging</h2><div class="case-narrative__copy"><p>Bij honderden video’s per jaar kwamen dezelfde handelingen steeds terug. Een titel werd handmatig opgemaakt, vervolgens aangepast voor verschillende socialformaten en daarna nog gecontroleerd op kleur, positie en leesbaarheid.</p><p>Dat kost niet alleen tijd. Iedere handmatige stap is ook een nieuwe kans op kleine afwijkingen binnen de huisstijl.</p></div></div></section>
+
+        <section class="software-callout js-fade"><p>Als dezelfde vormgeving iedere week terugkomt, is het niet alleen een ontwerpprobleem. Dan is het een systeemvraag.</p></section>
+
+        <section class="case-narrative__section"><div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">Onze oplossing</h2><div class="case-narrative__copy"><p>We vertaalden de visuele regels naar software. Lettergrootte, regelafbreking, kleurcombinaties, positie en veilige marges worden door de tool bewaakt.</p><p>De redactie hoeft daardoor niet na te denken over technische exports of de precieze opmaak per platform. Eén invoer levert direct 16:9, 1:1 en 9:16 op.</p><p>De demo hierboven laat in het klein zien hoe dat werkt: verander de titel of accentkleur en alle formaten bewegen mee.</p></div></div></section>
+
+        <section class="case-narrative__section software-result"><div class="case-narrative__inner js-fade"><h2 class="case-narrative__label">Het effect</h2><div class="case-narrative__copy"><p>Een terugkerende productietaak wordt een handeling van enkele seconden. De redactie kan zelfstandig verder, alle exports blijven herkenbaar Universiteit van Nederland en ontwerpers houden tijd over voor werk waar werkelijk nieuwe keuzes nodig zijn.</p><p><strong>Niet ieder ontwerp hoeft opnieuw ontworpen te worden.</strong></p></div></div></section>
+    </main>
+
+    <section class="case-next"><a class="case-next__link" href="universiteit-van-nederland.html"><h2 class="case-next__title">Universiteit van Nederland</h2><div class="case-next__arrow">→</div></a></section>
+    <footer class="software-footer" id="contact"><a href="mailto:hallo@studioyoko.nl">Samen iets slimmer maken?</a><p>©2025 Studio Yoko BV</p></footer>
+
+    <script src="data/cases.js?v=3"></script>
+    <script src="js/lottie.min.js?v=1"></script>
+    <script src="js/main.js?v=41"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.querySelector('#titlebarInput');
+            const previews = document.querySelector('#titlebarPreviews');
+            const titles = previews.querySelectorAll('.titlebar-preview__title');
+            const status = document.querySelector('#titlebarStatus');
+            const updateTitles = () => {
+                const value = input.value.trim() || 'Jouw titel hier';
+                titles.forEach(title => { title.textContent = value; });
+                status.textContent = '';
+            };
+            input.addEventListener('input', updateTitles);
+            document.querySelectorAll('.titlebar-app__swatch').forEach(swatch => {
+                swatch.addEventListener('click', () => {
+                    document.querySelectorAll('.titlebar-app__swatch').forEach(item => item.classList.remove('is-selected'));
+                    swatch.classList.add('is-selected');
+                    previews.style.setProperty('--tool-lilac', swatch.dataset.accent);
+                    previews.querySelectorAll('.titlebar-preview').forEach(preview => preview.style.setProperty('--preview-accent', swatch.dataset.accent));
+                    status.textContent = '';
+                });
+            });
+            document.querySelector('#titlebarGenerate').addEventListener('click', () => {
+                status.textContent = '16:9, 1:1 en 9:16 staan klaar.';
+            });
+            const targets = document.querySelectorAll('.js-fade');
+            const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }), { threshold:.08, rootMargin:'0px 0px -32px 0px' });
+            targets.forEach(target => observer.observe(target));
+        });
+    </script>
+</body>
+</html>

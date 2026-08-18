@@ -91,6 +91,94 @@
             letter-spacing: -0.045em;
         }
 
+        /* ===== KEUZEMATRIX — scrollgestuurde Figma-overgang ===== */
+        .zin-choices {
+            position: relative;
+            height: 175vh;
+            min-height: 980px;
+            background: var(--cream);
+        }
+        .zin-choices__sticky {
+            position: sticky;
+            top: 0;
+            min-height: 100vh;
+            display: grid;
+            align-content: center;
+            padding: clamp(72px, 8vh, 110px) var(--pad-x);
+            overflow: hidden;
+        }
+        .zin-choices__header,
+        .zin-choices__stage {
+            width: min(100%, 1600px);
+            margin-inline: auto;
+        }
+        .zin-choices__header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: clamp(18px, 2vw, 30px);
+        }
+        .zin-choices__header h2 {
+            margin: 0;
+            font-size: clamp(30px, 4vw, 62px);
+            line-height: 1;
+            letter-spacing: 0;
+        }
+        .zin-choices__status {
+            margin: 0;
+            font-size: clamp(14px, 1.15vw, 18px);
+            line-height: 1.3;
+            color: rgba(32,32,32,.62);
+        }
+        .zin-choices__stage {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background: #fff;
+            overflow: hidden;
+        }
+        .zin-choices__frame {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+        .zin-choices__frame--selected {
+            opacity: var(--choices-progress, 0);
+            will-change: opacity;
+        }
+        .zin-choices__progress {
+            width: min(100%, 1600px);
+            height: 3px;
+            margin: 14px auto 0;
+            background: rgba(32,32,32,.12);
+            overflow: hidden;
+        }
+        .zin-choices__progress::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: #1712d3;
+            transform: scaleX(var(--choices-progress, 0));
+            transform-origin: left center;
+        }
+        @media (max-width: 700px) {
+            .zin-choices { height: 135vh; min-height: 720px; }
+            .zin-choices__sticky { min-height: 100svh; padding-block: 76px 38px; }
+            .zin-choices__header { display: block; margin-bottom: 16px; }
+            .zin-choices__header h2 { font-size: clamp(28px, 10vw, 44px); }
+            .zin-choices__status { margin-top: 8px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .zin-choices { height: auto; min-height: 0; }
+            .zin-choices__sticky { position: relative; min-height: 0; }
+            .zin-choices__frame--selected { opacity: 1; }
+            .zin-choices__progress::after { transform: scaleX(1); }
+        }
+
         /* ===== PROCESS SWIPE ===== */
         .zin-process {
             background: var(--dark);
@@ -262,6 +350,20 @@
         </div>
     </section>
 
+    <section class="zin-choices" id="zin-choices" aria-labelledby="zin-choices-title">
+        <div class="zin-choices__sticky">
+            <div class="zin-choices__header">
+                <h2 id="zin-choices-title">Van mogelijkheden naar keuzes</h2>
+                <p class="zin-choices__status" id="zin-choices-status">Alle mogelijke richtingen</p>
+            </div>
+            <div class="zin-choices__stage">
+                <img class="zin-choices__frame" src="assets/cases/zin/choices-all.png" alt="Positioneringsmatrix met alle mogelijke richtingen voor Zin in Morgen">
+                <img class="zin-choices__frame zin-choices__frame--selected" src="assets/cases/zin/choices-selected.png" alt="De gekozen richtingen in de positioneringsmatrix">
+            </div>
+            <div class="zin-choices__progress" aria-hidden="true"></div>
+        </div>
+    </section>
+
     <section class="case-narrative__section case-narrative__section--accent" style="--case-accent:#1712D3">
         <div class="case-narrative__inner">
             <h2 class="case-narrative__label">Onze keuze</h2>
@@ -406,6 +508,35 @@
                 { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
             );
             targets.forEach(el => observer.observe(el));
+
+            const choices = document.getElementById('zin-choices');
+            const choicesStatus = document.getElementById('zin-choices-status');
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+            if (choices && !reduceMotion.matches) {
+                let ticking = false;
+                const updateChoices = () => {
+                    const rect = choices.getBoundingClientRect();
+                    const distance = Math.max(1, choices.offsetHeight - window.innerHeight);
+                    const progress = Math.min(1, Math.max(0, -rect.top / distance));
+                    const eased = progress * progress * (3 - 2 * progress);
+                    choices.style.setProperty('--choices-progress', eased.toFixed(4));
+                    if (choicesStatus) {
+                        choicesStatus.textContent = progress < .5
+                            ? 'Alle mogelijke richtingen'
+                            : 'De gemaakte keuzes';
+                    }
+                    ticking = false;
+                };
+                const requestChoicesUpdate = () => {
+                    if (!ticking) {
+                        ticking = true;
+                        requestAnimationFrame(updateChoices);
+                    }
+                };
+                updateChoices();
+                window.addEventListener('scroll', requestChoicesUpdate, { passive: true });
+                window.addEventListener('resize', requestChoicesUpdate);
+            }
         });
     </script>
 </body>

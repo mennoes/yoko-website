@@ -9,7 +9,12 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="stylesheet" href="css/style.css?v=151">
-    <style>.collab-type h3 { font-weight: 400; }</style>
+    <style>
+        .collab-type h3 { font-weight: 400; }
+        .collab-expect { grid-template-columns:minmax(300px,.72fr) minmax(0,1.28fr); }
+        .collab-expect__copy { max-width:70ch; }
+        @media(max-width:720px) { .collab-expect { grid-template-columns:1fr; } }
+    </style>
 </head>
 <body class="page--studio">
 
@@ -88,7 +93,7 @@
         </section>
 
         <section class="collab-expect js-fade">
-            <h2>Wat je van ons kunt verwachten</h2>
+            <h2>Wat je van ons<br>kunt verwachten</h2>
             <div class="collab-expect__copy">
                 <p>We komen het liefst binnen voordat de vorm, lengte of het format al is vastgezet. Juist daarvoor zit onze expertise.</p>
                 <p>We stellen vragen, schrappen, zoeken naar de essentie en maken snel zichtbaar waar we aan denken. Soms zit de oplossing in één sterke visuele metafoor. Soms in een compleet format. Soms in minder beeld in plaats van meer. We zijn zuinig op jouw merk, niet op onze ideeën. Herkenbaar blijven vinden we belangrijk. Voorspelbaar worden niet.</p>

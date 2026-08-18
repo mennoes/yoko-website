@@ -169,7 +169,7 @@
                 </div>
                 <div class="zin-choices__stage">
                     <video class="zin-choices__video" muted playsinline preload="auto" aria-label="Geanimeerde matrix met de visuele keuzes voor Zin in Morgen">
-                        <source src="assets/cases/zin/frame-77-scroll.webm" type="video/webm">
+                        <source src="assets/cases/zin/frame-77-scroll-v2.webm" type="video/webm">
                     </video>
                     <div class="zin-choices__words" aria-hidden="true">
                         <span class="zin-choices__word">Verdieping</span>
@@ -314,11 +314,12 @@
                     const rect = stage.getBoundingClientRect();
                     const start = window.innerHeight * .82;
                     const end = window.innerHeight * .18;
-                    const distance = Math.max(1, start + rect.height - end);
+                    const distance = Math.max(1, start - end);
                     const progress = Math.max(0, Math.min(1, (start - rect.top) / distance));
                     stage.style.setProperty('--matrix-progress', progress.toFixed(4));
                     if (Number.isFinite(video.duration) && video.duration > 0) {
-                        video.currentTime = Math.min(video.duration - .001, video.duration * progress);
+                        const targetTime = Math.min(video.duration - .001, video.duration * progress);
+                        if (Math.abs(video.currentTime - targetTime) > .01) video.currentTime = targetTime;
                     }
                 };
                 const requestScrub = () => {
@@ -326,7 +327,14 @@
                     ticking = true;
                     requestAnimationFrame(scrubMatrix);
                 };
-                video.addEventListener('loadedmetadata', scrubMatrix, { once:true });
+                video.pause();
+                video.removeAttribute('autoplay');
+                video.removeAttribute('loop');
+                video.addEventListener('loadedmetadata', () => {
+                    video.pause();
+                    scrubMatrix();
+                }, { once:true });
+                video.addEventListener('play', () => video.pause());
                 window.addEventListener('scroll', requestScrub, { passive:true });
                 window.addEventListener('resize', requestScrub);
                 scrubMatrix();

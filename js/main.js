@@ -758,9 +758,10 @@ function initChapterRandomizers() {
                 .sort()
                 .join('|');
 
-            let next = cards.slice(0, 3);
+            const slotCount = visibleSlots.length;
+            let next = cards.slice(0, slotCount);
             for (let attempt = 0; attempt < 12; attempt += 1) {
-                next = [...cards].sort(() => Math.random() - 0.5).slice(0, 3);
+                next = [...cards].sort(() => Math.random() - 0.5).slice(0, slotCount);
                 const signature = next.map(cardKey).sort().join('|');
                 if (signature !== current) break;
             }
@@ -775,7 +776,7 @@ function initChapterRandomizers() {
                 return clone;
             });
             currentLead.replaceWith(replacements[0]);
-            row.replaceChildren(replacements[1], replacements[2]);
+            row.replaceChildren(...replacements.slice(1));
 
             button.classList.remove('is-spinning');
             void button.offsetWidth;

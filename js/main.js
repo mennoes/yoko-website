@@ -831,6 +831,120 @@ function initChapterStacking() {
     updateStickyTops();
 }
 
+// ===== WERKOVERZICHT: VASTHOUDEN EN SLEPEN OM TE SCROLLEN =====
+function initWorkDragScroll() {
+    if (!document.body.classList.contains('page--work')) return;
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    let dragging = false;
+    let didDrag = false;
+    let pointerId = null;
+    let lastY = 0;
+    let lastTime = 0;
+    let velocity = 0;
+    let momentumFrame = 0;
+    let previousUserSelect = '';
+    let previousScrollBehavior = '';
+    let scrollBehaviorOverridden = false;
+
+    const maxScroll = () => Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    const setScroll = value => {
+        document.documentElement.scrollTop = Math.max(0, Math.min(maxScroll(), value));
+    };
+
+    const stopMomentum = () => {
+        cancelAnimationFrame(momentumFrame);
+        momentumFrame = 0;
+    };
+
+    const restoreScrollBehavior = () => {
+        if (!scrollBehaviorOverridden) return;
+        document.documentElement.style.scrollBehavior = previousScrollBehavior;
+        scrollBehaviorOverridden = false;
+    };
+
+    const startMomentum = () => {
+        if (Math.abs(velocity) < 0.02) {
+            restoreScrollBehavior();
+            return;
+        }
+        let previousTime = performance.now();
+
+        const glide = now => {
+            const elapsed = Math.min(32, now - previousTime);
+            previousTime = now;
+            const before = window.scrollY;
+            setScroll(before + velocity * elapsed);
+            velocity *= Math.pow(0.92, elapsed / 16.67);
+
+            if (Math.abs(velocity) >= 0.02 && window.scrollY !== before) {
+                momentumFrame = requestAnimationFrame(glide);
+            } else {
+                momentumFrame = 0;
+                restoreScrollBehavior();
+            }
+        };
+
+        momentumFrame = requestAnimationFrame(glide);
+    };
+
+    window.addEventListener('pointerdown', event => {
+        if (event.button !== 0 || event.target.closest('button, input, textarea, select, [contenteditable], .nav')) return;
+
+        stopMomentum();
+        dragging = true;
+        didDrag = false;
+        pointerId = event.pointerId;
+        lastY = event.clientY;
+        lastTime = performance.now();
+        velocity = 0;
+        previousUserSelect = document.body.style.userSelect;
+        if (!scrollBehaviorOverridden) {
+            previousScrollBehavior = document.documentElement.style.scrollBehavior;
+            scrollBehaviorOverridden = true;
+        }
+        document.body.style.userSelect = 'none';
+        document.documentElement.style.scrollBehavior = 'auto';
+        event.target.setPointerCapture?.(pointerId);
+    });
+
+    window.addEventListener('pointermove', event => {
+        if (!dragging || event.pointerId !== pointerId) return;
+
+        const now = performance.now();
+        const deltaY = event.clientY - lastY;
+        const elapsed = Math.max(1, now - lastTime);
+        const before = window.scrollY;
+        setScroll(before - deltaY);
+        const instantVelocity = Math.max(-2.4, Math.min(2.4, (window.scrollY - before) / elapsed));
+        velocity = velocity * 0.35 + instantVelocity * 0.65;
+        didDrag ||= Math.abs(deltaY) > 2 || Math.abs(window.scrollY - before) > 2;
+        lastY = event.clientY;
+        lastTime = now;
+        event.preventDefault();
+    }, { passive: false });
+
+    const finishDrag = event => {
+        if (!dragging || event.pointerId !== pointerId) return;
+        dragging = false;
+        pointerId = null;
+        document.body.style.userSelect = previousUserSelect;
+        startMomentum();
+    };
+
+    window.addEventListener('pointerup', finishDrag);
+    window.addEventListener('pointercancel', finishDrag);
+    window.addEventListener('dragstart', event => {
+        if (dragging) event.preventDefault();
+    });
+    window.addEventListener('click', event => {
+        if (!didDrag) return;
+        event.preventDefault();
+        event.stopPropagation();
+        didDrag = false;
+    }, true);
+}
+
 // ===== DOORSCROLLEN NAAR VOLGENDE HOOFDPAGINA =====
 function initScrollHandoff() {
     const handoff = document.querySelector('[data-scroll-next], .case-next');
@@ -903,6 +1017,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initChapterRandomizers();
     initRandomizerPlacement();
     initChapterStacking();
+    initWorkDragScroll();
     initScrollHandoff();
     initHeroHeadline();
     initHeroVideo();

@@ -54,6 +54,12 @@
         .zin-section-media { width:calc(100% - (2 * var(--pad-x))); margin:0 auto clamp(28px,3.5vw,58px); }
         .zin-section-media img { display:block; width:100%; height:auto; }
         .zin-section-media--duo { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(10px,1vw,18px); }
+        .zin-reels { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); align-items:start; gap:clamp(12px,1.5vw,26px); overflow:visible; }
+        .zin-reels__item { position:relative; min-width:0; transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .45s ease; will-change:transform; }
+        .zin-reels__item:nth-child(1) { --reel-x:-5px; --reel-r:-1.1deg; }
+        .zin-reels__item:nth-child(2) { --reel-x:0px; --reel-r:.8deg; }
+        .zin-reels__item:nth-child(3) { --reel-x:5px; --reel-r:1.15deg; }
+        .zin-reels__item:hover { z-index:2; transform:translate(var(--reel-x),-10px) rotate(var(--reel-r)) scale(1.018); filter:drop-shadow(0 16px 20px rgba(32,32,32,.12)); }
         .zin-statement { padding:clamp(48px,5vw,78px) var(--pad-x); background:var(--accent); color:var(--dark); }
         .zin-statement p { max-width:24ch; margin:0; font-size:clamp(34px,4.6vw,76px); font-weight:700; line-height:1; letter-spacing:0; }
         .zin-choices { background:var(--cream); padding:clamp(38px,5vw,76px) var(--pad-x); }
@@ -91,6 +97,7 @@
         .zin-effect-media video,.zin-effect-media img { width:100%; height:auto; aspect-ratio:16/9; object-fit:contain; display:block; background:var(--highlight); }
         .page--zin .case-next__title { font-weight:400; }
         @media(max-width:820px){.page--zin .case-narrative__intro-inner{grid-template-columns:1fr}.zin-media--duo,.zin-section-media--duo,.zin-effect-media{grid-template-columns:1fr}.zin-media--duo img{min-height:0;aspect-ratio:4/3}}
+        @media(max-width:720px){.zin-reels{display:flex;width:100%;overflow-x:auto;gap:12px;padding:0 18vw 16px 0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.zin-reels::-webkit-scrollbar{display:none}.zin-reels__item{flex:0 0 72vw}.zin-reels__item:hover{transform:none;filter:none}}
         @media(max-width:720px){.page--zin{--zin-mobile-pad:20px}.page--zin .case-narrative__intro,.page--zin .case-narrative__section,.zin-statement{padding-left:var(--zin-mobile-pad);padding-right:var(--zin-mobile-pad)}.page--zin .case-narrative__intro{padding-top:32px;padding-bottom:36px}.page--zin .case-narrative__title{font-size:clamp(38px,12vw,54px)}.page--zin .case-narrative__inner{grid-template-columns:1fr;gap:16px}.page--zin .case-narrative__label{max-width:none;font-size:clamp(30px,9vw,42px)}.page--zin .case-narrative__copy,.page--zin .case-narrative__intro-copy{font-size:17px;line-height:1.45}.zin-media,.zin-challenge-media{width:calc(100% - (2 * var(--zin-mobile-pad)))}.zin-challenge-media__row,.zin-challenge-media__row:nth-child(even){grid-template-columns:minmax(0,1.35fr) minmax(112px,.65fr);gap:8px}.zin-choices{padding:34px var(--zin-mobile-pad)}.zin-choices__inner{grid-template-columns:1fr;gap:24px}.zin-choices__copy h2{font-size:clamp(36px,11vw,48px);margin-bottom:16px}.zin-choices__copy p{font-size:17px}.zin-style-scroll{width:100%;margin-left:0;margin-right:0;overflow:hidden;padding:16px var(--zin-mobile-pad)}.zin-style-scroll__sticky{position:relative;height:auto;min-height:0;padding:0}.zin-style-scroll__toolbar{justify-content:space-between;margin-bottom:10px}.zin-style-scroll__hint{font-size:15px}.zin-style-scroll__next{width:44px;height:44px}.zin-style-scroll__track{width:100%;overflow-x:auto;gap:10px;padding:0 14vw 12px 0;transform:none!important;-webkit-overflow-scrolling:touch}.zin-style-scroll__item{flex-basis:82vw;width:82vw;max-width:none}.zin-illustrations{width:100%;grid-template-columns:repeat(2,minmax(0,1fr))}.zin-followup__spacer{display:none}.page--zin .zin-followup{margin-top:22px!important}}
         @media(max-width:720px){
             .zin-challenge-media__thumbs { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
@@ -159,8 +166,10 @@
             </div>
         </section>
 
-        <div class="zin-section-media js-fade">
-            <img src="assets/cases/zin/Zin%20in%20Morgen%20(16)/2%20onder%20ons%20inzicht.jpg" alt="Het visuele inzicht achter de nieuwe positionering van ZIN!">
+        <div class="zin-section-media zin-reels js-fade" aria-label="Social reels voor Zin in Morgen">
+            <img class="zin-reels__item" src="assets/cases/zin/reels/seksadvies-van-oma.jpg" alt="ZIN!-reel: Seksadvies van oma">
+            <img class="zin-reels__item" src="assets/cases/zin/reels/eigen-grenzen-bewaken.jpg" alt="ZIN!-reel: Eigen grenzen bewaken">
+            <img class="zin-reels__item" src="assets/cases/zin/reels/bijna-dood-ervaring.jpg" alt="ZIN!-reel: Bijna-doodervaring">
         </div>
 
         <section class="zin-choices" aria-label="Onze visuele keuzes voor Zin in Morgen">
@@ -311,7 +320,6 @@
                 const video = stage.querySelector('.zin-choices__video');
                 const slider = stage.querySelector('.zin-choices__progress');
                 const choices = stage.closest('.zin-choices__inner');
-                const copyTitle = choices?.querySelector('.zin-choices__copy h2');
                 const copyText = choices?.querySelector('.zin-choices__copy p');
                 if (!video) return;
                 let ticking = false;
@@ -341,7 +349,7 @@
                         return span;
                     });
                 };
-                const copyWords = [...splitIntoWords(copyTitle), ...splitIntoWords(copyText)];
+                const copyWords = splitIntoWords(copyText);
                 choices?.querySelector('.zin-choices__copy')?.classList.add('is-word-scrub');
                 const setMatrixProgress = progress => {
                     const value = Math.max(0, Math.min(1, progress));
@@ -366,8 +374,8 @@
                     ticking = false;
                     if (sliderActive) return;
                     const rect = stage.getBoundingClientRect();
-                    const start = window.innerHeight * .82;
-                    const end = window.innerHeight * .18;
+                    const start = window.innerHeight * .68;
+                    const end = window.innerHeight * -.28;
                     const distance = Math.max(1, start - end);
                     const progress = Math.max(0, Math.min(1, (start - rect.top) / distance));
                     setMatrixProgress(progress);

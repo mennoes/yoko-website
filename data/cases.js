@@ -121,7 +121,7 @@ window.YOKO_CASES = {
       ],
       "summary": "Wekelijks de meest complexe nieuwsthema's vertalen naar animaties die jongeren op TikTok en Instagram vasthoudt — als vaste visuele partner van hét journalistieke NPO-social kanaal.",
       "description": "Voor Rewind (HUMAN) vertalen we elke week ingewikkelde journalistieke thema's naar begrijpelijke animaties voor TikTok, Instagram en YouTube. Van verkiezingen tot overconsumptie.",
-      "thumbnail": "assets/cases/rewind/thumb.jpg",
+      "thumbnail": "assets/cases/rewind/rewind-hero.jpg",
       "video_preview": null,
       "accent_color": "#1244B5",
       "size": "small",

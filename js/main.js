@@ -945,6 +945,22 @@ function initWorkDragScroll() {
     }, true);
 }
 
+// Laat de vaste casehero alleen tijdens de openingszone zien. Zodra die zone
+// voorbij is, blijft het beeld verborgen zodat het later niet doorschemert.
+function initCaseHeroPin() {
+    if (!document.body.classList.contains('page--case')) return;
+    const hero = document.getElementById('case-hero');
+    if (!hero) return;
+
+    const update = () => {
+        document.body.classList.toggle('is-past-case-hero', hero.getBoundingClientRect().bottom <= 0);
+    };
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+}
+
 // ===== DOORSCROLLEN NAAR VOLGENDE HOOFDPAGINA =====
 function initScrollHandoff() {
     const handoff = document.querySelector('[data-scroll-next], .case-next');
@@ -1018,6 +1034,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initRandomizerPlacement();
     initChapterStacking();
     initWorkDragScroll();
+    initCaseHeroPin();
     initScrollHandoff();
     initHeroHeadline();
     initHeroVideo();

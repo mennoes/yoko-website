@@ -80,8 +80,6 @@
         .zin-style-scroll__track::-webkit-scrollbar-track { background:rgba(32,32,32,.14); }
         .zin-style-scroll__track::-webkit-scrollbar-thumb { background:#202020; border-radius:99px; }
         .zin-style-scroll__item { flex:0 0 min(72vw,1180px); width:min(72vw,1180px); max-width:calc(100vw - (2 * var(--pad-x))); height:auto; aspect-ratio:16/9; display:block; object-fit:cover; scroll-snap-align:start; pointer-events:none; user-select:none; -webkit-user-drag:none; }
-        .zin-style-scroll__progress { height:4px; margin-top:8px; overflow:hidden; background:rgba(32,32,32,.14); }
-        .zin-style-scroll__progress span { display:block; width:100%; height:100%; background:#202020; transform:scaleX(var(--style-scroll-progress,0)); transform-origin:left; transition:transform .08s linear; }
         .zin-illustrations { width:100%; min-width:0; margin:clamp(20px,2.4vw,38px) 0 0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(8px,.9vw,14px); }
         .zin-illustrations video { display:block; width:100%; height:auto; aspect-ratio:1/1; object-fit:contain; background:var(--dark); }
         .page--zin .zin-followup { margin-top:clamp(20px,2.4vw,38px)!important; }
@@ -207,7 +205,6 @@
                     <img class="zin-style-scroll__item" src="assets/cases/zin/Zin%20in%20Morgen%20(16)/5%20maakten%20-%20%20huisstijl/8.jpg" alt="ZIN! huisstijltoepassing 9">
                     <img class="zin-style-scroll__item" src="assets/cases/zin/Zin%20in%20Morgen%20(16)/5%20maakten%20-%20%20huisstijl/9.jpg" alt="ZIN! huisstijltoepassing 10">
                   </div>
-                  <div class="zin-style-scroll__progress" aria-hidden="true"><span></span></div>
                 </div>
             </div>
 
@@ -344,10 +341,6 @@
                 const track = scroller.querySelector('.zin-style-scroll__track');
                 const next = scroller.querySelector('.zin-style-scroll__next');
                 if (!track) return;
-                const updateProgress = () => {
-                    const distance = Math.max(1, track.scrollWidth - track.clientWidth);
-                    scroller.style.setProperty('--style-scroll-progress', Math.min(1, track.scrollLeft / distance).toFixed(4));
-                };
                 next?.addEventListener('click', () => {
                     track.scrollBy({ left: track.clientWidth * .72, behavior:'smooth' });
                 });
@@ -387,9 +380,6 @@
                 track.addEventListener('pointercancel', stopDragging);
                 track.addEventListener('lostpointercapture', stopDragging);
                 track.addEventListener('dragstart', event => event.preventDefault());
-                track.addEventListener('scroll', updateProgress, { passive:true });
-                window.addEventListener('resize', updateProgress);
-                updateProgress();
             });
 
         });

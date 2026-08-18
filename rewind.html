@@ -30,18 +30,17 @@
         .page--rewind .case-narrative__intro-copy { max-width:690px; margin:0; gap:.8em; font-size:clamp(17px,1.3vw,22px); }
         .rewind-intro__copy { min-width:0; }
         .rewind-intro__media { width:100%; margin:0; overflow:hidden; background:var(--dark); }
-        .rewind-intro__media img { width:100%; aspect-ratio:16/10; display:block; object-fit:cover; }
+        .rewind-intro__media :is(img,video) { width:100%; aspect-ratio:16/10; display:block; object-fit:cover; object-position:center 28%; }
         .page--rewind .case-narrative__section { padding-block:clamp(34px,3.8vw,58px); }
-        .rewind-media { width:calc(100% - (2 * var(--pad-x))); margin:clamp(8px,1vw,18px) auto; display:grid; gap:clamp(8px,1vw,18px); overflow:hidden; }
-        .rewind-media--wide img { width:100%; aspect-ratio:16/9; display:block; object-fit:cover; }
-        .rewind-media--duo { grid-template-columns:repeat(2,minmax(0,1fr)); padding:clamp(8px,1vw,18px); background:var(--accent); }
-        .rewind-media--duo img { width:100%; height:100%; min-height:38vw; display:block; object-fit:cover; }
+        .rewind-gallery-row { width:calc(100% - (2 * var(--pad-x))); margin:clamp(8px,1vw,18px) auto clamp(34px,4vw,64px); display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(8px,1vw,18px); }
+        .rewind-gallery-row__item { min-width:0; margin:0; overflow:hidden; background:var(--dark); }
+        .rewind-gallery-row__item :is(img,video) { width:100%; aspect-ratio:4/5; display:block; object-fit:cover; }
         .rewind-statement { padding:clamp(48px,5vw,78px) var(--pad-x); background:var(--accent); color:var(--dark); }
         .rewind-statement p { max-width:24ch; margin:0; font-size:clamp(34px,4.6vw,76px); font-weight:700; line-height:1; letter-spacing:0; }
         .rewind-result { background:var(--highlight); color:var(--dark); }
         .page--rewind .case-next__title { font-weight:400; }
-        @media(max-width:820px){.page--rewind .case-narrative__intro-inner{grid-template-columns:1fr}.rewind-media--duo{grid-template-columns:1fr}.rewind-media--duo img{min-height:0;aspect-ratio:4/3}}
-        @media(max-width:720px){.page--rewind{--rewind-mobile-pad:20px}.page--rewind .case-narrative__intro,.page--rewind .case-narrative__section,.rewind-statement{padding-left:var(--rewind-mobile-pad);padding-right:var(--rewind-mobile-pad)}.page--rewind .case-narrative__intro{padding-top:32px;padding-bottom:36px}.page--rewind .case-narrative__title{font-size:clamp(38px,12vw,54px)}.page--rewind .case-narrative__copy,.page--rewind .case-narrative__intro-copy{font-size:17px;line-height:1.45}.rewind-media{width:calc(100% - (2 * var(--rewind-mobile-pad)))}}
+        @media(max-width:820px){.page--rewind .case-narrative__intro-inner{grid-template-columns:1fr}}
+        @media(max-width:720px){.page--rewind{--rewind-mobile-pad:20px}.page--rewind .case-narrative__intro,.page--rewind .case-narrative__section,.rewind-statement{padding-left:var(--rewind-mobile-pad);padding-right:var(--rewind-mobile-pad)}.page--rewind .case-narrative__intro{padding-top:32px;padding-bottom:36px}.page--rewind .case-narrative__title{font-size:clamp(38px,12vw,54px)}.page--rewind .case-narrative__copy,.page--rewind .case-narrative__intro-copy{font-size:17px;line-height:1.45}.rewind-gallery-row{width:calc(100% - (2 * var(--rewind-mobile-pad)));grid-template-columns:1fr}.rewind-gallery-row__item :is(img,video){aspect-ratio:4/5}}
     </style>
 </head>
 <body class="page--case page--rewind">
@@ -67,7 +66,7 @@
         <section class="case-narrative__intro">
             <div class="case-narrative__intro-inner js-fade">
                 <div class="rewind-intro__copy"><h1 class="case-narrative__title">Rewind</h1><div class="case-narrative__intro-copy"><p><strong>Al drie jaar maken we voor REWIND inhoudelijke animaties die actuele journalistiek helder, aantrekkelijk en herkenbaar maken voor jongeren.</strong></p><p>Samen met de redactie vertalen we iedere week complexe nieuwsthema’s naar sterke visuele verhalen voor TikTok, Instagram en YouTube.</p></div></div>
-                <figure class="rewind-intro__media"><img src="assets/cases/rewind/rewind-compilatie01 1.jpg" alt="Compilatie van REWIND-animaties"></figure>
+                <figure class="rewind-intro__media"><video autoplay muted loop playsinline preload="metadata" aria-label="Compilatie van REWIND-animaties"><source src="assets/cases/rewind/gallery/rewind-fragment-01.mp4" type="video/mp4"></video></figure>
             </div>
         </section>
 
@@ -82,7 +81,11 @@
             </div>
         </section>
 
-        <figure class="rewind-media rewind-media--wide js-fade"><img src="assets/cases/rewind/grid van insta animaties.jpg" alt="Grid van REWIND-animaties"></figure>
+        <div class="rewind-gallery-row js-fade" aria-label="Voorbeelden van REWIND-animaties">
+            <figure class="rewind-gallery-row__item"><video autoplay muted loop playsinline preload="none" data-lazy-autoplay aria-label="REWIND-animatie, fragment één"><source data-src="assets/cases/rewind/gallery/rewind-fragment-01.mp4" type="video/mp4"></video></figure>
+            <figure class="rewind-gallery-row__item"><img src="assets/cases/rewind/gallery/rewind-still-01.jpg" alt="Still uit een REWIND-animatie" loading="lazy"></figure>
+            <figure class="rewind-gallery-row__item"><img src="assets/cases/rewind/gallery/rewind-still-02.jpg" alt="Still uit een REWIND-animatie" loading="lazy"></figure>
+        </div>
 
         <section class="case-narrative__section">
             <div class="case-narrative__inner js-fade">
@@ -95,6 +98,12 @@
             </div>
         </section>
 
+        <div class="rewind-gallery-row js-fade" aria-label="Meer voorbeelden van REWIND-animaties">
+            <figure class="rewind-gallery-row__item"><img src="assets/cases/rewind/gallery/rewind-still-03.jpg" alt="Still uit een REWIND-animatie" loading="lazy"></figure>
+            <figure class="rewind-gallery-row__item"><video autoplay muted loop playsinline preload="none" data-lazy-autoplay aria-label="REWIND-animatie, fragment twee"><source data-src="assets/cases/rewind/gallery/rewind-fragment-02.mp4" type="video/mp4"></video></figure>
+            <figure class="rewind-gallery-row__item"><img src="assets/cases/rewind/gallery/rewind-still-04.jpg" alt="Still uit een REWIND-animatie" loading="lazy"></figure>
+        </div>
+
         <section class="case-narrative__section">
             <div class="case-narrative__inner js-fade">
                 <h2 class="case-narrative__label">Onze keuze</h2>
@@ -106,7 +115,11 @@
             </div>
         </section>
 
-        <div class="rewind-media rewind-media--duo js-fade"><img src="assets/cases/rewind/Screenshot 2026-04-10 at 12.44.09 1.jpg" alt="REWIND-uiting"><img src="assets/cases/rewind/thumb.jpg" alt="REWIND-thumbnail"></div>
+        <div class="rewind-gallery-row js-fade" aria-label="Nog meer voorbeelden van REWIND-animaties">
+            <figure class="rewind-gallery-row__item"><img src="assets/cases/rewind/gallery/rewind-still-05.jpg" alt="Still uit een REWIND-animatie" loading="lazy"></figure>
+            <figure class="rewind-gallery-row__item"><img src="assets/cases/rewind/gallery/rewind-still-06.jpg" alt="Still uit een REWIND-animatie" loading="lazy"></figure>
+            <figure class="rewind-gallery-row__item"><video autoplay muted loop playsinline preload="none" data-lazy-autoplay aria-label="REWIND-animatie, fragment drie"><source data-src="assets/cases/rewind/gallery/rewind-fragment-03.mp4" type="video/mp4"></video></figure>
+        </div>
 
         <section class="case-narrative__section">
             <div class="case-narrative__inner js-fade">

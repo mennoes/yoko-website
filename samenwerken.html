@@ -14,8 +14,10 @@
         .collab-expect { grid-template-columns:minmax(300px,.72fr) minmax(0,1.28fr); }
         .collab-expect__copy { max-width:70ch; }
         .collab__hero { align-items:start; }
-        .collab__hero-image img { aspect-ratio:5/4; max-height:56vh; }
-        @media(max-width:720px) { .collab-expect { grid-template-columns:1fr; } }
+        .collab__hero-image img { aspect-ratio:3/2; max-height:44vh; }
+        .collab-more { grid-template-columns:minmax(0,0.9fr) minmax(360px,1.2fr); }
+        .collab-more__image img { aspect-ratio:4/3; }
+        @media(max-width:720px) { .collab-expect { grid-template-columns:1fr; } .collab-more { grid-template-columns:1fr; } }
     </style>
 </head>
 <body class="page--studio">

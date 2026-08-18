@@ -2591,9 +2591,8 @@ body.cursor-on-yellow .contact-form__btn {
 }
 @media (min-width: 721px) {
     .ch {
-        position: sticky;
-        top: var(--chapter-sticky-top, 0px);
-        padding-bottom: clamp(120px, 14vh, 190px);
+        position: relative;
+        padding-bottom: clamp(44px, 5.5vw, 88px);
     }
     .ch:nth-child(1) {
         z-index: 1;

@@ -3535,7 +3535,7 @@ body.cursor-on-yellow .contact-form__btn {
     margin: 0;
     color: var(--cream);
     font-size: clamp(48px, 8.2vw, 142px) !important;
-    font-weight: 500 !important;
+    font-weight: 700 !important;
     line-height: .92;
     letter-spacing: -.045em !important;
     text-shadow: 0 2px 28px rgba(0,0,0,.4);

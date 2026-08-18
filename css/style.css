@@ -3449,7 +3449,7 @@ body.cursor-on-yellow .contact-form__btn {
    - geen kleine CAPS-labels of sectienummers
    ============================================================ */
 
-/* De hero staat bovenaan in de normale documentflow en scrollt daarna uit beeld. */
+/* De hero blijft staan terwijl de eerste case-inhoud eroverheen schuift. */
 .page--case {
     --case-hero-height: clamp(420px, 72svh, 900px);
 }
@@ -3457,9 +3457,8 @@ body.cursor-on-yellow .contact-form__btn {
     position: relative;
     z-index: 0;
     box-sizing: border-box;
-    min-height: var(--case-hero-height);
-    padding-top: 0;
-    overflow: hidden;
+    min-height: 0;
+    padding-top: var(--case-hero-height);
     background: transparent !important;
 }
 .page--case #case-hero > :is(
@@ -3472,12 +3471,24 @@ body.cursor-on-yellow .contact-form__btn {
     .af-hero__media,
     .zin-hero__media
 ) {
-    position: relative !important;
+    position: fixed !important;
     z-index: 0;
-    inset: auto !important;
+    inset: 0 0 auto !important;
     width: 100% !important;
     height: var(--case-hero-height) !important;
     object-fit: cover;
+}
+.page--case.is-past-case-hero #case-hero > :is(
+    .case-hero__media,
+    .case-hero__bg-img,
+    .uvn-hero__img,
+    .ps-hero__img,
+    .gp-hero__video,
+    .rewind-hero__img,
+    .af-hero__media,
+    .zin-hero__media
+) {
+    visibility: hidden;
 }
 .page--case #case-hero > :is(
     .case-hero__overlay,

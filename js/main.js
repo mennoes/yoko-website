@@ -831,21 +831,6 @@ function initChapterStacking() {
     updateStickyTops();
 }
 
-// Verberg de vaste casehero zodra zijn oorspronkelijke plek voorbij is.
-function initCaseHeroPin() {
-    if (!document.body.classList.contains('page--case')) return;
-    const hero = document.getElementById('case-hero');
-    if (!hero) return;
-
-    const update = () => {
-        document.body.classList.toggle('is-past-case-hero', hero.getBoundingClientRect().bottom <= 0);
-    };
-
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update, { passive: true });
-    update();
-}
-
 // ===== DOORSCROLLEN NAAR VOLGENDE HOOFDPAGINA =====
 function initScrollHandoff() {
     const handoff = document.querySelector('[data-scroll-next], .case-next');
@@ -918,7 +903,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     initChapterRandomizers();
     initRandomizerPlacement();
     initChapterStacking();
-    initCaseHeroPin();
     initScrollHandoff();
     initHeroHeadline();
     initHeroVideo();

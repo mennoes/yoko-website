@@ -3441,6 +3441,67 @@ body.cursor-on-yellow .contact-form__btn {
    - tekstsecties gebruiken steeds dezelfde kop/tekst-grid
    - geen kleine CAPS-labels of sectienummers
    ============================================================ */
+
+/* De hero blijft staan terwijl de case-inhoud eroverheen schuift. */
+.page--case {
+    --case-hero-height: clamp(420px, 72svh, 900px);
+}
+.page--case #case-hero {
+    position: relative;
+    z-index: 0;
+    box-sizing: border-box;
+    min-height: 0;
+    padding-top: var(--case-hero-height);
+    background: transparent !important;
+}
+.page--case #case-hero > :is(
+    .case-hero__media,
+    .case-hero__bg-img,
+    .uvn-hero__img,
+    .ps-hero__img,
+    .gp-hero__video,
+    .rewind-hero__img,
+    .af-hero__media,
+    .zin-hero__media
+) {
+    position: fixed !important;
+    z-index: 0;
+    inset: 0 0 auto !important;
+    width: 100% !important;
+    height: var(--case-hero-height) !important;
+    object-fit: cover;
+}
+.page--case.is-past-case-hero #case-hero > :is(
+    .case-hero__media,
+    .case-hero__bg-img,
+    .uvn-hero__img,
+    .ps-hero__img,
+    .gp-hero__video,
+    .rewind-hero__img,
+    .af-hero__media,
+    .zin-hero__media
+) {
+    visibility: hidden;
+}
+.page--case #case-hero > :is(
+    .case-hero__overlay,
+    .uvn-hero__content,
+    .ps-hero__content,
+    .gp-hero__content,
+    .rewind-hero__content,
+    .af-hero__content
+) {
+    position: relative;
+    z-index: 1;
+}
+.page--case #case-hero ~ :is(main, section, footer, .case-next) {
+    position: relative;
+    z-index: 2;
+}
+.page--afhaalchinees .af-hero::before {
+    display: none;
+}
+
 .page--case .case-narrative__inner {
     display: grid;
     grid-template-columns: minmax(220px, .7fr) minmax(0, 1.3fr);
@@ -3466,6 +3527,7 @@ body.cursor-on-yellow .contact-form__btn {
     padding-top: 0;
 }
 @media (max-width: 720px) {
+    .page--case { --case-hero-height: clamp(280px, 55svh, 560px); }
     .page--case .case-narrative__inner { grid-template-columns: 1fr; gap: 20px; }
     .page--case .case-narrative__label { max-width: none; }
 }

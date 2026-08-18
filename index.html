@@ -13,15 +13,47 @@
     <style>
         .home-work-intro__body--continuous { max-width: none; }
         .home-work-intro__desktop-line { display: block; }
+        .home-top {
+            background:
+                linear-gradient(rgba(176, 198, 235, var(--page-tint-opacity)), rgba(176, 198, 235, var(--page-tint-opacity))),
+                var(--cream);
+        }
         @media (min-width: 721px) {
+            .home-top {
+                display: grid;
+                grid-template-columns: minmax(0, .9fr) minmax(440px, 1.1fr);
+                grid-template-areas: "copy reel";
+                align-items: center;
+                gap: clamp(40px, 6vw, 110px);
+                padding: clamp(100px, 9vw, 138px) var(--pad-x) clamp(34px, 4vw, 64px);
+            }
+            .home-top .reel {
+                grid-area: reel;
+                position: relative;
+                top: auto;
+                padding: 0;
+                background: transparent;
+                box-shadow: none;
+                clip-path: none;
+            }
+            .home-top .reel__video { width: 100%; max-height: none; }
             .home-work-intro {
+                grid-area: copy;
                 grid-template-columns: minmax(0, 1fr);
                 align-items: start;
                 gap: 0;
+                padding: 0;
+                background: transparent;
             }
+            .home-work-intro__title { font-size: clamp(38px, 4.1vw, 68px); }
+            .home-work-intro__body { font-size: clamp(17px, 1.45vw, 24px); line-height: 1.36; }
+            .home-work-intro__desktop-line { display: inline; }
             .home-work-intro__cta { margin-top: 24px; }
         }
         @media (max-width: 720px) {
+            .home-top { display: flex; flex-direction: column; }
+            .home-top .reel { order: 1; position: relative; top: auto; }
+            .home-top .home-work-intro { order: 2; }
             .home-work-intro__desktop-line { display: inline; }
         }
     </style>
@@ -40,24 +72,24 @@
         <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </nav>
 
-    <!-- ===== SHOWREEL (full-width, vast) ===== -->
-    <section class="reel">
-        <video class="reel__video" id="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/videos/showreel-poster.jpg"></video>
+    <section class="home-top">
+        <section class="home-work-intro">
+            <div class="home-work-intro__copy">
+                <p class="home-work-intro__title">Podium voor inhoud</p>
+                <p class="home-work-intro__body home-work-intro__body--continuous"><span class="home-work-intro__desktop-line">Complexe verhalen, sterk verbeeld. Van eerste concept tot laatste frame met </span><span class="home-work-intro__desktop-line">vormgeving, animatie en software. Al jaren de visuele redactie voor Universiteit </span><span class="home-work-intro__desktop-line">van Nederland, Greenpeace, HUMAN, KRO-NCRV, Omroep ZWART en Nieuwsuur.</span></p>
+            </div>
+            <a class="home-work-intro__cta" href="about.html">
+                <span>Over ons</span>
+                <span class="home-work-intro__cta-arrow" aria-hidden="true">↗</span>
+            </a>
+        </section>
+
+        <section class="reel">
+            <video class="reel__video" id="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/videos/showreel-poster.jpg"></video>
+        </section>
     </section>
 
-    <!-- Inhoud scrollt over de vaste showreel heen -->
     <div class="page-flow">
-
-    <section class="home-work-intro">
-        <div class="home-work-intro__copy">
-            <p class="home-work-intro__title">Podium voor inhoud</p>
-            <p class="home-work-intro__body home-work-intro__body--continuous"><span class="home-work-intro__desktop-line">Complexe verhalen, sterk verbeeld. Van eerste concept tot laatste frame met </span><span class="home-work-intro__desktop-line">vormgeving, animatie en software. Al jaren de visuele redactie voor Universiteit </span><span class="home-work-intro__desktop-line">van Nederland, Greenpeace, HUMAN, KRO-NCRV, Omroep ZWART en Nieuwsuur.</span></p>
-        </div>
-        <a class="home-work-intro__cta" href="about.html">
-            <span>Over ons</span>
-            <span class="home-work-intro__cta-arrow" aria-hidden="true">↗</span>
-        </a>
-    </section>
 
     <!-- ===== HOOFDSTUKKEN MET CASES ===== -->
     <section class="pillars" id="work">

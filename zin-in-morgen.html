@@ -58,16 +58,16 @@
         .zin-statement p { max-width:24ch; margin:0; font-size:clamp(34px,4.6vw,76px); font-weight:700; line-height:1; letter-spacing:0; }
         .zin-choices { background:var(--cream); padding:clamp(38px,5vw,76px) var(--pad-x); }
         .zin-choices__inner { width:min(100%,var(--content-max)); margin:0 auto; display:grid; grid-template-columns:minmax(280px,.72fr) minmax(0,1.28fr); align-items:center; gap:clamp(32px,5vw,88px); --matrix-progress:0; }
-        .zin-choices__copy h2 { margin:0 0 24px; font-size:clamp(42px,4.2vw,68px); line-height:1; letter-spacing:0; opacity:calc(.28 + (var(--matrix-progress) * .72)); transition:opacity .08s linear; }
-        .zin-choices__copy p { margin:0; max-width:620px; font-size:clamp(18px,1.45vw,25px); line-height:1.42; opacity:calc(.18 + (var(--matrix-progress) * .82)); transition:opacity .08s linear; }
+        .zin-choices__copy h2 { margin:0 0 24px; font-size:clamp(42px,4.2vw,68px); line-height:1; letter-spacing:0; opacity:.28; transition:opacity .08s linear; }
+        .zin-choices__copy p { margin:0; max-width:620px; font-size:clamp(18px,1.45vw,25px); line-height:1.42; opacity:.18; transition:opacity .08s linear; }
         .zin-choices__stage { width:100%; overflow:hidden; }
-        .zin-choices__stage video { width:100%; aspect-ratio:16/9; display:block; object-fit:cover; background:#fff; }
-        .zin-choices__progress { width:100%; height:28px; margin:8px 0 0; padding:0; display:block; appearance:none; -webkit-appearance:none; cursor:ew-resize; background:transparent; touch-action:none; }
-        .zin-choices__progress::-webkit-slider-runnable-track { height:6px; border-radius:99px; background:linear-gradient(to right,#202020 0%,#202020 calc(var(--matrix-progress) * 100%),rgba(32,32,32,.16) calc(var(--matrix-progress) * 100%),rgba(32,32,32,.16) 100%); }
-        .zin-choices__progress::-webkit-slider-thumb { width:22px; height:22px; margin-top:-8px; border:2px solid #202020; border-radius:50%; appearance:none; -webkit-appearance:none; background:var(--cream); box-shadow:0 1px 5px rgba(0,0,0,.18); }
-        .zin-choices__progress::-moz-range-track { height:6px; border-radius:99px; background:rgba(32,32,32,.16); }
-        .zin-choices__progress::-moz-range-progress { height:6px; border-radius:99px; background:#202020; }
-        .zin-choices__progress::-moz-range-thumb { width:18px; height:18px; border:2px solid #202020; border-radius:50%; background:var(--cream); box-shadow:0 1px 5px rgba(0,0,0,.18); }
+        .zin-choices__viewport { width:100%; aspect-ratio:16/8.25; overflow:hidden; background:#fff; }
+        .zin-choices__stage video { width:100%; aspect-ratio:16/9; display:block; object-fit:cover; object-position:top; background:#fff; }
+        .zin-choices__progress { position:relative; width:100%; height:30px; margin:8px 0 0; cursor:ew-resize; touch-action:pan-y; user-select:none; outline:none; }
+        .zin-choices__progress::before { content:""; position:absolute; inset:12px 0 auto; height:6px; border-radius:99px; background:rgba(32,32,32,.16); }
+        .zin-choices__progress-fill { position:absolute; left:0; top:12px; width:calc(var(--matrix-progress) * 100%); height:6px; border-radius:99px; background:#202020; pointer-events:none; }
+        .zin-choices__progress-thumb { position:absolute; left:calc(var(--matrix-progress) * 100%); top:4px; width:22px; height:22px; border:2px solid #202020; border-radius:50%; background:var(--cream); box-shadow:0 1px 5px rgba(0,0,0,.18); transform:translateX(-50%); pointer-events:none; }
+        .zin-choices__progress:focus-visible .zin-choices__progress-thumb { box-shadow:0 0 0 4px rgba(32,32,32,.18); }
         .zin-result { background:var(--highlight); color:var(--dark); }
         .zin-style-scroll { width:100%; min-width:0; margin:clamp(18px,2vw,30px) 0 0; overflow:hidden; padding:clamp(18px,2vw,30px); background:#f7f6f2; }
         .zin-style-scroll__sticky { position:relative; height:auto; min-height:0; }
@@ -167,10 +167,15 @@
                     <p>In een gezamenlijke sessie legden we verschillende richtingen, voorbeelden en moodboards naast elkaar. Zo maakten we samen concrete keuzes over wat bij ZIN! past en wat niet. Die keuzes gaven ons de richting om de nieuwe identiteit verder te ontwikkelen.</p>
                 </div>
                 <div class="zin-choices__stage">
-                    <video class="zin-choices__video" muted playsinline preload="auto" aria-label="Geanimeerde matrix met de visuele keuzes voor Zin in Morgen">
-                        <source src="assets/cases/zin/frame-77-scroll-v2.webm" type="video/webm">
-                    </video>
-                    <input class="zin-choices__progress" type="range" min="0" max="1000" value="0" aria-label="Sleep door de visuele keuzes">
+                    <div class="zin-choices__viewport">
+                        <video class="zin-choices__video" muted playsinline preload="auto" aria-label="Geanimeerde matrix met de visuele keuzes voor Zin in Morgen">
+                            <source src="assets/cases/zin/frame-77-scroll-v2.webm?v=20260818-2" type="video/webm">
+                        </video>
+                    </div>
+                    <div class="zin-choices__progress" role="slider" tabindex="0" aria-label="Sleep door de visuele keuzes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                        <span class="zin-choices__progress-fill"></span>
+                        <span class="zin-choices__progress-thumb"></span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -303,17 +308,26 @@
                 const video = stage.querySelector('.zin-choices__video');
                 const slider = stage.querySelector('.zin-choices__progress');
                 const choices = stage.closest('.zin-choices__inner');
+                const copyTitle = choices?.querySelector('.zin-choices__copy h2');
+                const copyText = choices?.querySelector('.zin-choices__copy p');
                 if (!video) return;
                 let ticking = false;
                 let sliderActive = false;
                 const setMatrixProgress = progress => {
                     const value = Math.max(0, Math.min(1, progress));
                     choices?.style.setProperty('--matrix-progress', value.toFixed(4));
-                    if (slider && !sliderActive) slider.value = String(Math.round(value * 1000));
+                    slider?.setAttribute('aria-valuenow', String(Math.round(value * 100)));
+                    if (copyTitle) copyTitle.style.opacity = String(.28 + (value * .72));
+                    if (copyText) copyText.style.opacity = String(.18 + (value * .82));
                     if (Number.isFinite(video.duration) && video.duration > 0) {
                         const targetTime = Math.min(video.duration - .001, video.duration * value);
                         if (Math.abs(video.currentTime - targetTime) > .01) video.currentTime = targetTime;
                     }
+                };
+                const progressFromPointer = event => {
+                    if (!slider) return;
+                    const rect = slider.getBoundingClientRect();
+                    setMatrixProgress((event.clientX - rect.left) / Math.max(1, rect.width));
                 };
                 const scrubMatrix = () => {
                     ticking = false;
@@ -338,15 +352,35 @@
                     scrubMatrix();
                 }, { once:true });
                 video.addEventListener('play', () => video.pause());
-                slider?.addEventListener('pointerdown', () => { sliderActive = true; });
-                slider?.addEventListener('input', () => {
+                slider?.addEventListener('pointerdown', event => {
                     sliderActive = true;
-                    setMatrixProgress(Number(slider.value) / 1000);
+                    slider.setPointerCapture?.(event.pointerId);
+                    progressFromPointer(event);
                 });
-                const releaseSlider = () => { sliderActive = false; };
+                slider?.addEventListener('pointermove', event => {
+                    if (sliderActive) progressFromPointer(event);
+                });
+                const releaseSlider = event => {
+                    if (!sliderActive) return;
+                    progressFromPointer(event);
+                    sliderActive = false;
+                    slider?.releasePointerCapture?.(event.pointerId);
+                };
                 slider?.addEventListener('pointerup', releaseSlider);
                 slider?.addEventListener('pointercancel', releaseSlider);
-                slider?.addEventListener('change', releaseSlider);
+                slider?.addEventListener('keydown', event => {
+                    const current = Number(slider.getAttribute('aria-valuenow') || 0) / 100;
+                    let next = current;
+                    if (event.key === 'ArrowRight' || event.key === 'ArrowUp') next += .04;
+                    else if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') next -= .04;
+                    else if (event.key === 'Home') next = 0;
+                    else if (event.key === 'End') next = 1;
+                    else return;
+                    event.preventDefault();
+                    sliderActive = true;
+                    setMatrixProgress(next);
+                    sliderActive = false;
+                });
                 window.addEventListener('scroll', requestScrub, { passive:true });
                 window.addEventListener('resize', requestScrub);
                 scrubMatrix();

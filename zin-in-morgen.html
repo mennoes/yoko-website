@@ -37,7 +37,7 @@
         .page--zin .case-narrative__inner { display:grid; grid-template-columns:minmax(220px,.52fr) minmax(0,1.48fr); gap:clamp(28px,4vw,72px); width:100%; max-width:none; margin:0!important; }
         .page--zin .case-narrative__label { max-width:12ch; padding-top:0; font-size:clamp(32px,3.5vw,58px); }
         .page--zin .case-narrative__label::before { display:none; content:none; }
-        .page--zin .case-narrative__copy { max-width:72ch; padding-top:0; font-size:clamp(16px,1.15vw,20px); }
+        .page--zin .case-narrative__copy { max-width:66ch; padding-top:0; font-size:clamp(20px,1.48vw,27px); }
         .zin-media { width:calc(100% - (2 * var(--pad-x))); margin:clamp(8px,1vw,18px) auto; display:grid; gap:clamp(8px,1vw,18px); overflow:hidden; }
         .zin-media--wide img { width:100%; aspect-ratio:16/9; display:block; object-fit:cover; }
         .zin-media--duo { grid-template-columns:repeat(2,minmax(0,1fr)); padding:clamp(8px,1vw,18px); background:var(--accent); }
@@ -68,7 +68,11 @@
         .zin-choices__copy p { margin:0; max-width:620px; font-size:clamp(18px,1.45vw,25px); line-height:1.42; }
         .zin-choices__copy.is-word-scrub .zin-choice-word { display:inline-block; opacity:.25; will-change:opacity; }
         .zin-choices__stage { width:100%; overflow:hidden; }
-        .zin-choices__viewport { width:100%; aspect-ratio:16/8.25; overflow:hidden; background:#fff; }
+        .zin-choices__viewport { position:relative; width:100%; aspect-ratio:16/8.25; overflow:hidden; background:#fff; cursor:zoom-in; }
+        .zin-choices__fullscreen { position:absolute; z-index:2; right:12px; bottom:12px; width:46px; height:46px; border:0; border-radius:50%; background:var(--cream); color:var(--dark); font:22px/1 Arial,sans-serif; cursor:pointer; }
+        .zin-choices__stage.is-matrix-fullscreen { position:fixed; z-index:6000; inset:0; display:grid; align-content:center; padding:clamp(16px,3vw,48px); background:#111; }
+        .zin-choices__stage.is-matrix-fullscreen .zin-choices__viewport { max-height:calc(100dvh - 90px); aspect-ratio:16/9; }
+        .zin-choices__stage.is-matrix-fullscreen video { width:100%; height:100%; object-fit:contain; }
         .zin-choices__stage video { width:100%; aspect-ratio:16/9; display:block; object-fit:cover; object-position:top; background:#fff; }
         .zin-choices__progress { position:relative; width:100%; height:38px; margin:8px 0 0; cursor:ew-resize; touch-action:none; user-select:none; outline:none; }
         .zin-choices__progress::before { content:""; position:absolute; inset:12px 0 auto; height:6px; border-radius:99px; background:rgba(32,32,32,.16); }
@@ -145,7 +149,7 @@
     <main>
         <section class="case-narrative__intro">
             <div class="case-narrative__intro-inner js-fade">
-                <div class="zin-intro__copy"><h1 class="case-narrative__title">Van tv-programma naar social merk</h1><div class="case-narrative__intro-copy"><p>Voor KRO-NCRV hielpen we Zin in Morgen de stap van tv naar social te maken. Daarbij onderzochten we wat die overgang precies betekent voor het merk. Dat leidde niet alleen tot een nieuwe branding die de redactie direct kan gebruiken in hun dagelijkse social content, maar uiteindelijk zelfs tot een naamswijziging.</p></div></div>
+                <div class="zin-intro__copy"><h1 class="case-narrative__title">Van tv-programma naar social merk</h1><div class="case-narrative__intro-copy"><p>Voor KRO-NCRV werd Zin in Morgen een social-first merk: een nieuwe naam, een nieuwe identiteit en een systeem waarmee de redactie dagelijks zelf content maakt.</p></div></div>
                 <figure class="zin-intro__media"><video autoplay muted loop playsinline preload="auto"><source src="assets/cases/zin/Zin%20in%20Morgen%20(16)/0%20rechtsboven.webm" type="video/webm"></video></figure>
             </div>
         </section>
@@ -154,8 +158,7 @@
             <div class="case-narrative__inner js-fade">
                 <h2 class="case-narrative__label">De uitdaging</h2>
                 <div class="case-narrative__copy">
-                    <p>Zin in Morgen was een televisieprogramma over zingeving. Met de overstap naar social wilde het team een jonger en breder publiek bereiken, zonder de inhoudelijke kern kwijt te raken.</p>
-                    <p>De vraag was dus groter dan hoe het merk eruit moest zien op Instagram of TikTok: wat is het merk wanneer televisie niet langer het vertrekpunt is?</p>
+                    <p>Zin in Morgen wilde op social een jonger en breder publiek bereiken zonder de inhoudelijke kern kwijt te raken. De echte vraag was daarom niet hoe het merk eruitziet op Instagram of TikTok, maar: <strong>wat is het merk wanneer televisie niet langer het vertrekpunt is?</strong></p>
                 </div>
             </div>
         </section>
@@ -176,7 +179,7 @@
             <div class="case-narrative__inner js-fade">
                 <h2 class="case-narrative__label">Ons inzicht</h2>
                 <div class="case-narrative__copy">
-                    <p>De overstap naar social gaf ruimte om het merk te verbreden. Het bestaande Zin in Morgen zat sterk aan de kant van zingeving: reflectie, betekenis en verdieping. Op social mocht daar meer zin in het leven tegenover staan: energie, plezier en het alledaagse. Juist die ruimte tussen die twee bleek interessant: Niet oppervlakkig, maar ook niet altijd zwaar.</p>
+                    <p>Op social mocht naast zingeving ook meer zin ín het leven staan: energie, plezier en het alledaagse. Juist de ruimte daartussen bleek interessant: inhoudelijk, maar niet altijd zwaar.</p>
                 </div>
             </div>
         </section>
@@ -191,13 +194,14 @@
             <div class="zin-choices__inner js-fade">
                 <div class="zin-choices__copy">
                     <h2>Onze keuze</h2>
-                    <p>In een gezamenlijke sessie legden we verschillende richtingen, voorbeelden en moodboards naast elkaar. Zo maakten we samen concrete keuzes over wat bij ZIN! past en wat niet. Die keuzes gaven ons de richting om de nieuwe identiteit verder te ontwikkelen.</p>
+                    <p>Met voorbeelden en moodboards kon het team niet alleen zeggen wat het mooi vond, maar vooral: dit zijn wij wel, en dit niet. Vanuit die keuzes groeiden twee richtingen uit tot één identiteit.</p>
                 </div>
                 <div class="zin-choices__stage">
                     <div class="zin-choices__viewport">
                         <video class="zin-choices__video" muted playsinline preload="auto" aria-label="Geanimeerde matrix met de visuele keuzes voor Zin in Morgen">
                             <source src="assets/cases/zin/frame-77-scroll-v2.webm?v=20260818-2" type="video/webm">
                         </video>
+                        <button class="zin-choices__fullscreen" type="button" aria-label="Open de matrix op volledig scherm" aria-pressed="false">⛶</button>
                     </div>
                     <div class="zin-choices__progress" role="slider" tabindex="0" aria-label="Sleep door de visuele keuzes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                         <span class="zin-choices__progress-fill"></span>
@@ -212,8 +216,7 @@
             <div class="case-narrative__inner js-fade">
                 <h2 class="case-narrative__label">Wat we maakten</h2>
                 <div class="case-narrative__copy">
-                    <p>Vanuit twee visuele richtingen werkten we toe naar één identiteit die inhoudelijke verdieping én lichtheid kon dragen.</p>
-                    <p>Binnen twee weken vertaalden we die richting naar een complete nieuwe huisstijl: typografie, kleur, illustratie, grafische principes en motion.</p>
+                    <p>Binnen twee weken vertaalden we de gekozen richting naar typografie, kleur, illustratie, grafische principes en motion: één identiteit die verdieping én lichtheid kan dragen.</p>
                 </div>
             </div>
 
@@ -248,8 +251,7 @@
             <div class="case-narrative__inner zin-followup js-fade">
                 <div class="zin-followup__spacer" aria-hidden="true"></div>
                 <div class="case-narrative__copy">
-                    <p>Die legden we vast in een huisstijlhandboek, met duidelijke regels en voorbeelden voor het gebruik van de identiteit. Daarnaast ontwikkelden we templates waarmee de redactie zelf nieuwe social content kan maken.</p>
-                    <p>Voor losse producties maken we binnen diezelfde stijl illustraties en visuele uitingen op maat. Zo hoeft niet alles er hetzelfde uit te zien om toch direct als ZIN! herkenbaar te zijn.</p>
+                    <p>Een huisstijlhandboek en templates geven de redactie houvast om zelf nieuwe social content te maken. Voor bijzondere producties blijft de beeldtaal flexibel genoeg voor maatwerk.</p>
                 </div>
             </div>
 
@@ -267,11 +269,9 @@
 
         <section class="case-narrative__section zin-result">
             <div class="case-narrative__inner js-fade">
-                <h2 class="case-narrative__label">Het effect</h2>
+                <h2 class="case-narrative__label">De redactie kan zelfstandig verder</h2>
                 <div class="case-narrative__copy">
-                    <p>ZIN! heeft daarmee niet alleen een nieuwe uitstraling die past bij de nieuwe doelgroep. Maar ook een visueel systeem waarmee de redactie zelf verder kan.</p>
-                    <p>Het huisstijlhandboek en de templates zorgen voor houvast in het dagelijks gebruik, terwijl de beeldtaal genoeg vrijheid geeft om voor nieuwe onderwerpen, producties en formats steeds iets eigens te maken.</p>
-                    <p>Eén herkenbaar merk, met ruimte voor verschillende verhalen.</p>
+                    <p>Templates geven snelheid en houvast in het dagelijks werk. De beeldtaal laat genoeg vrijheid voor nieuwe onderwerpen, producties en formats.</p><p><strong>Eén herkenbaar merk, met ruimte voor verschillende verhalen.</strong></p>
                 </div>
             </div>
         </section>
@@ -327,10 +327,36 @@
             document.querySelectorAll('.zin-choices__stage').forEach(stage => {
                 const video = stage.querySelector('.zin-choices__video');
                 const slider = stage.querySelector('.zin-choices__progress');
+                const viewport = stage.querySelector('.zin-choices__viewport');
+                const fullscreenButton = stage.querySelector('.zin-choices__fullscreen');
                 const choices = stage.closest('.zin-choices__inner');
                 const copyText = choices?.querySelector('.zin-choices__copy p');
                 const usesTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
                 if (!video) return;
+                const setMatrixFullscreen = active => {
+                    stage.classList.toggle('is-matrix-fullscreen', active);
+                    fullscreenButton?.setAttribute('aria-pressed', String(active));
+                    fullscreenButton?.setAttribute('aria-label', active ? 'Sluit volledig scherm' : 'Open de matrix op volledig scherm');
+                    document.body.style.overflow = active ? 'hidden' : '';
+                };
+                const toggleMatrixFullscreen = async () => {
+                    const active = document.fullscreenElement === stage || stage.classList.contains('is-matrix-fullscreen');
+                    if (active) {
+                        if (document.fullscreenElement === stage) await document.exitFullscreen?.();
+                        setMatrixFullscreen(false);
+                        return;
+                    }
+                    try { await stage.requestFullscreen(); stage.dataset.fullscreenMode = 'native'; setMatrixFullscreen(true); }
+                    catch (_) { stage.dataset.fullscreenMode = 'fallback'; setMatrixFullscreen(true); }
+                };
+                fullscreenButton?.addEventListener('click', event => { event.stopPropagation(); toggleMatrixFullscreen(); });
+                viewport?.addEventListener('click', event => { if (event.target !== fullscreenButton) toggleMatrixFullscreen(); });
+                document.addEventListener('fullscreenchange', () => {
+                    if (stage.dataset.fullscreenMode === 'native' && document.fullscreenElement !== stage) setMatrixFullscreen(false);
+                });
+                document.addEventListener('keydown', event => {
+                    if (event.key === 'Escape' && stage.dataset.fullscreenMode === 'fallback') setMatrixFullscreen(false);
+                });
                 let ticking = false;
                 let sliderActive = false;
                 let dragProgress = 0;

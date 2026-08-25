@@ -2994,6 +2994,35 @@ body.cursor-on-yellow .contact-form__btn {
     letter-spacing: -0.025em;
     text-wrap: pretty;
 }
+
+/* Case stories: larger, quicker to scan, with one strong takeaway between sections. */
+.page--case .case-narrative__copy,
+.page--case .case-narrative__intro-copy {
+    font-size: clamp(20px, 1.48vw, 27px);
+    line-height: 1.38;
+}
+.case-pullquote {
+    margin: 0;
+    padding: clamp(48px, 6vw, 96px) var(--pad-x);
+    background: var(--accent);
+    color: var(--dark);
+}
+.case-pullquote p {
+    max-width: 21ch;
+    margin: 0;
+    font-size: clamp(38px, 5.2vw, 88px);
+    font-weight: 700;
+    line-height: .98;
+    letter-spacing: -.035em;
+}
+.case-pullquote--right p { margin-left: auto; }
+@media (max-width: 720px) {
+    .page--case .case-narrative__copy,
+    .page--case .case-narrative__intro-copy { font-size: 18px !important; line-height: 1.43 !important; }
+    .case-pullquote { padding-inline: 20px; }
+    .case-pullquote p { max-width: none; font-size: clamp(34px, 11vw, 52px); }
+    .case-pullquote--right p { margin-left: 0; }
+}
 .case-narrative__copy p,
 .case-narrative__intro-copy p { margin: 0; }
 .case-narrative__copy strong,

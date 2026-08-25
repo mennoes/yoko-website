@@ -50,7 +50,7 @@
         .page--uvn .case-narrative__inner { display:grid; grid-template-columns:minmax(220px,.52fr) minmax(0,1.48fr); gap:clamp(28px,4vw,72px); width:100%; max-width:none; margin:0!important; }
         .page--uvn .case-narrative__label { max-width:12ch; padding-top:0; font-size:clamp(32px,3.5vw,58px); }
         .page--uvn .case-narrative__label::before { display:none; content:none; }
-        .page--uvn .case-narrative__copy { max-width:72ch; gap:.72em; padding-top:0; font-size:clamp(18px,1.28vw,23px); }
+        .page--uvn .case-narrative__copy { max-width:66ch; gap:.72em; padding-top:0; font-size:clamp(20px,1.48vw,27px); }
         .uvn-media { width:calc(100% - (2 * var(--pad-x))); margin:clamp(8px,1vw,18px) auto; display:grid; gap:clamp(8px,1vw,18px); overflow:hidden; }
         .uvn-media--duo { grid-template-columns:repeat(2,minmax(0,1fr)); padding:clamp(8px,1vw,18px); background:var(--accent); }
         .uvn-media--duo img { width:100%; height:100%; min-height:38vw; display:block; object-fit:cover; }
@@ -65,6 +65,9 @@
         .uvn-insight-grid__item:focus-visible video { transform:scale(1.025); }
         .uvn-insight-grid__item:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
         .uvn-insight-grid__label { position:absolute; right:12px; bottom:12px; padding:9px 13px; background:var(--cream); color:var(--dark); font-size:13px; line-height:1; pointer-events:none; }
+        .uvn-hover-preview { filter:saturate(.96); }
+        .uvn-insight-grid__item:has(.uvn-hover-preview)::after { content:"▶"; position:absolute; left:14px; bottom:14px; width:38px; height:38px; display:grid; place-items:center; border-radius:50%; background:rgba(247,246,242,.92); color:var(--dark); font-size:13px; pointer-events:none; transition:opacity .2s ease,transform .2s ease; }
+        .uvn-insight-grid__item:hover::after { opacity:0; transform:scale(.85); }
         .uvn-insight-grid--secondary { grid-template-columns:repeat(2,minmax(0,1fr)); }
         .uvn-insight-grid--secondary .uvn-insight-grid__item { grid-column:auto; }
         .uvn-result { display:block; background:var(--cream); color:var(--dark); }
@@ -163,7 +166,7 @@
             .page--uvn .case-narrative__intro,.page--uvn .case-narrative__section,.uvn-services { padding-left:var(--uvn-mobile-pad); padding-right:var(--uvn-mobile-pad); }
             .page--uvn .case-narrative__intro { padding-top:32px; padding-bottom:36px; }
             .page--uvn .case-narrative__title { font-size:clamp(38px,12vw,54px); }
-            .page--uvn .case-narrative__copy,.page--uvn .case-narrative__intro-copy { font-size:17px; line-height:1.45; }
+            .page--uvn .case-narrative__copy,.page--uvn .case-narrative__intro-copy { font-size:18px; line-height:1.43; }
             .page--uvn .case-narrative__label { max-width:none; font-size:clamp(30px,9vw,42px); }
             .uvn-media { width:calc(100% - (2 * var(--uvn-mobile-pad))); }
             .uvn-overview-scroll { height:auto!important; padding-block:10px; }
@@ -221,7 +224,7 @@
     <main>
         <section class="case-narrative__intro">
             <div class="case-narrative__intro-inner js-fade">
-                <div class="uvn-intro__copy"><h1 class="case-narrative__title">Wetenschap voor iedereen</h1><div class="case-narrative__intro-copy"><p><strong>Al meer dan tien jaar zijn we de vaste visuele partner van de Universiteit van Nederland en Vlaanderen.</strong></p><p>We helpen het grootste wetenschapsplatform van Nederland met alles waar inhoud en beeld samenkomen. Van dagelijkse animaties en nieuwe formats tot de huisstijl, werkwijzes en software waarmee de redactie zelf verder kan.</p></div></div>
+                <div class="uvn-intro__copy"><h1 class="case-narrative__title">Wetenschap voor iedereen</h1><div class="case-narrative__intro-copy"><p><strong>Al meer dan tien jaar helpen we Universiteit van Nederland en Vlaanderen om ingewikkelde wetenschap helder én herkenbaar te vertellen.</strong></p><p>Van dagelijkse animaties en nieuwe formats tot de huisstijl en software waarmee de redactie zelf verder kan.</p></div></div>
                 <figure class="uvn-intro__media">
                     <button class="uvn-intro__video-trigger" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/uvnl-softlaunch-web.mp4" aria-label="Bekijk de Universiteit van Nederland-trailer groter en met geluid">
                         <video autoplay muted loop playsinline preload="metadata" poster="assets/cases/heyu/13-pattern-studio.png"><source src="assets/cases/universiteit-van-nederland/uvnl-softlaunch-web.mp4" type="video/mp4"></video>
@@ -245,8 +248,7 @@
                     <div class="case-narrative__inner">
                         <h2 class="case-narrative__label">De uitdaging</h2>
                         <div class="case-narrative__copy">
-                            <p>Iedere week vertelt Universiteit van Nederland nieuwe wetenschappelijke verhalen. Over totaal verschillende onderwerpen, voor een groot publiek en in steeds nieuwe vormen. Dat vraagt om meer dan goede vormgeving. Een ingewikkeld onderzoek moet begrijpelijk worden zonder de nuance kwijt te raken. Een nieuw format moet een eigen gezicht krijgen én onderdeel blijven van hetzelfde merk. En met honderden uitingen per jaar moet de visuele identiteit herkenbaar blijven zonder alles in dezelfde mal te stoppen.</p>
-                            <p>De uitdaging zit daarom niet in één productie, maar in het geheel: <strong>hoe bouw je aan een visueel merk dat iedere dag nieuwe inhoud kan blijven dragen?</strong></p>
+                            <p>Iedere week verschijnen nieuwe verhalen, over totaal verschillende onderwerpen en in steeds andere vormen. Onderzoek moet begrijpelijk worden zonder nuance te verliezen; ieder format moet eigen voelen en toch binnen hetzelfde merk passen.</p><p><strong>Hoe bouw je een visueel merk dat iedere dag nieuwe inhoud kan dragen?</strong></p>
                         </div>
                     </div>
                 </section>
@@ -264,15 +266,16 @@
             <div class="case-narrative__inner js-fade">
                 <h2 class="case-narrative__label">Ons inzicht</h2>
                 <div class="case-narrative__copy">
-                    <p>Goede wetenschapscommunicatie begint voor ons niet bij animeren, maar bij begrijpen. Daarom werken we direct met de redactie. We duiken in de inhoud en bepalen wat iemand moet begrijpen en waar beeld daadwerkelijk iets toevoegt.</p>
-                    <p>Soms is dat één grafiek of visuele metafoor. Soms vraagt een verhaal om een nieuw format. En soms zit het probleem niet in de video zelf, maar in de manier waarop honderden video's worden gemaakt. Juist doordat we op al die niveaus betrokken zijn, kunnen we verder kijken dan de uiting die op dat moment voor ons ligt.</p>
+                    <p>Goede wetenschapscommunicatie begint niet bij animeren, maar bij begrijpen. Daarom werken we direct met de redactie en bepalen we samen wat iemand moet snappen en waar beeld echt iets toevoegt.</p><p>Soms is dat een grafiek, soms een nieuw format. En soms zit de winst niet in één video, maar in een slimmere manier om honderden video’s te maken.</p>
                 </div>
             </div>
         </section>
 
+        <aside class="case-pullquote case-pullquote--right js-fade"><p>Eén titel invoeren. Alle socialformaten klaar.</p></aside>
+
         <div class="uvn-insight-grid js-fade" aria-label="Voorbeelden van formats, animatie en live producties">
             <button class="uvn-insight-grid__item" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-dino.mp4" aria-label="Bekijk formatontwikkeling voor wetenschapsverhalen groter en met geluid">
-                <video autoplay muted loop playsinline preload="none" data-lazy-autoplay><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-dino.mp4" type="video/mp4"></video>
+                <video class="uvn-hover-preview" muted loop playsinline preload="none" poster="assets/cases/universiteit-van-nederland/gallery/posters/uvnl-insight-dino.jpg"><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-dino.mp4" type="video/mp4"></video>
                 <span class="uvn-insight-grid__label">Bekijk video</span>
             </button>
             <button class="uvn-insight-grid__item" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-live-01.jpg" data-showcase-alt="Universiteit van Nederland Live met publiek" aria-label="Bekijk Universiteit van Nederland Live groter">
@@ -282,7 +285,7 @@
                 <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-live-06.jpg" alt="Wetenschapper op het podium bij Universiteit van Nederland Live" loading="lazy" style="object-position:center 18%;">
             </button>
             <button class="uvn-insight-grid__item" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-format-p1.mp4" aria-label="Bekijk een compilatie van formatontwikkeling groter en met geluid">
-                <video autoplay muted loop playsinline preload="none" data-lazy-autoplay><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-format-p1.mp4" type="video/mp4"></video>
+                <video class="uvn-hover-preview" muted loop playsinline preload="none" poster="assets/cases/universiteit-van-nederland/gallery/posters/uvnl-insight-format-p1.jpg"><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-format-p1.mp4" type="video/mp4"></video>
                 <span class="uvn-insight-grid__label">Bekijk video</span>
             </button>
         </div>
@@ -291,26 +294,25 @@
             <div class="case-narrative__inner js-fade">
                 <h2 class="case-narrative__label">Onze keuze</h2>
                 <div class="case-narrative__copy">
-                    <p>Daarom behandelen we onze rol bij Universiteit van Nederland als één doorlopende samenwerking. Samen met de redactie en Ronny van Allthis ontwikkelden we de visuele identiteit. Die bewaken, gebruiken én vernieuwen we continu terwijl het merk verder groeit.</p>
-                    <p>We denken mee wanneer nieuwe formats nog op papier staan, sluiten aan bij de redactie wanneer verhalen worden ontwikkeld en maken de uiteindelijke vormgeving en animatie. En als we merken dat een handeling iedere week terugkomt, kijken we of de werkwijze slimmer kan. Dan kan de oplossing net zo goed een template, nieuwe workflow of stuk software zijn als een animatie.</p>
+                    <p>Samen met de redactie en Ronny van Allthis ontwikkelden we een visuele identiteit die herkenbaar blijft, maar niet voorspelbaar wordt. We sluiten aan zodra verhalen en formats nog op papier staan.</p><p>Komt een handeling iedere week terug, dan maken we niet nóg een losse uiting maar een template, workflow of tool waarmee de redactie zelf sneller verder kan.</p>
                 </div>
             </div>
         </section>
 
         <div class="uvn-insight-grid uvn-insight-grid--secondary js-fade" aria-label="Meer voorbeelden van formats, animatie en live producties">
             <button class="uvn-insight-grid__item" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-format-p2.mp4" aria-label="Bekijk nog een compilatie van formatontwikkeling groter en met geluid">
-                <video autoplay muted loop playsinline preload="none" data-lazy-autoplay><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-format-p2.mp4" type="video/mp4"></video>
+                <video class="uvn-hover-preview" muted loop playsinline preload="none" poster="assets/cases/universiteit-van-nederland/gallery/posters/uvnl-insight-format-p2.jpg"><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-format-p2.mp4" type="video/mp4"></video>
                 <span class="uvn-insight-grid__label">Bekijk video</span>
             </button>
             <button class="uvn-insight-grid__item" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-live-speaker.jpg" data-showcase-alt="Wetenschapper op het podium tijdens Universiteit van Nederland Live" aria-label="Bekijk de wetenschapper op het podium groter">
                 <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-live-speaker.jpg" alt="Wetenschapper op het podium tijdens Universiteit van Nederland Live" loading="lazy">
             </button>
             <button class="uvn-insight-grid__item" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-college.mp4" aria-label="Bekijk een compilatie van het collegeformat groter en met geluid">
-                <video autoplay muted loop playsinline preload="none" data-lazy-autoplay><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-college.mp4" type="video/mp4"></video>
+                <video class="uvn-hover-preview" muted loop playsinline preload="none" poster="assets/cases/universiteit-van-nederland/gallery/posters/uvnl-insight-college.jpg"><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-college.mp4" type="video/mp4"></video>
                 <span class="uvn-insight-grid__label">Bekijk video</span>
             </button>
             <button class="uvn-insight-grid__item" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-compilatie-2025.mp4" aria-label="Bekijk de compilatie van Universiteit van Nederland groter en met geluid">
-                <video autoplay muted loop playsinline preload="none" data-lazy-autoplay><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-compilatie-2025.mp4" type="video/mp4"></video>
+                <video class="uvn-hover-preview" muted loop playsinline preload="none" poster="assets/cases/universiteit-van-nederland/gallery/posters/uvnl-insight-compilatie-2025.jpg"><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-compilatie-2025.mp4" type="video/mp4"></video>
                 <span class="uvn-insight-grid__label">Bekijk video</span>
             </button>
         </div>
@@ -327,7 +329,7 @@
                         <span class="uvn-deliverable-card__title">Formatontwikkeling</span>
                     </a>
                     <button class="uvn-deliverable-card" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-compilatie-marieke.mp4">
-                        <span class="uvn-deliverable-card__media"><video class="uvn-deliverable-card__preview-video" autoplay muted playsinline preload="none" data-lazy-autoplay aria-label="Preview van explaineranimaties"><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-compilatie-marieke.mp4" type="video/mp4"></video></span>
+                        <span class="uvn-deliverable-card__media"><video class="uvn-deliverable-card__preview-video uvn-hover-preview" muted loop playsinline preload="none" poster="assets/cases/universiteit-van-nederland/gallery/posters/uvnl-compilatie-marieke.jpg" aria-label="Preview van explaineranimaties"><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-compilatie-marieke.mp4" type="video/mp4"></video></span>
                         <span class="uvn-deliverable-card__title">Explaineranimaties</span>
                     </button>
                     <button class="uvn-deliverable-card" type="button" data-style-dialog aria-label="Bekijk de Universiteit van Nederland-huisstijlpresentatie">
@@ -368,10 +370,7 @@
                     </div>
                 </div>
                 <div class="case-narrative__copy uvn-deliverables-copy js-fade">
-                    <p>We werken op alle plekken waar inhoud, merk en beeld samenkomen. Van het ontwikkelen en bewaken van de visuele identiteit tot formats, explaineranimaties, live events, publicaties, websites, workflows en software.</p>
-                    <p>Bij formatontwikkeling denken we vanaf het eerste idee mee over set, art direction, camerahoeken, kleur, graphics en animatie, zoals bij HEY U!. Voor terugkerende social content bouwden we een titelbalktool die vanuit één invoer automatisch alle benodigde formaten maakt.</p>
-                    <p>Voor live events vertalen we het merk naar een complete visuele wereld. Van aankondiging en publiekscommunicatie tot podium, schermen en alle visuals in de zaal: ieder onderdeel sluit op elkaar aan en blijft herkenbaar Universiteit van Nederland. Dat deden we onder meer in Carré, ARTIS en op Lowlands. Voor publicaties maakten we bijvoorbeeld de vormgeving voor DROOM en de Rare Jongens-cover voor Quest.</p>
-                    <p>En ondertussen maken we iedere week de beelden die nodig zijn om ingewikkelde wetenschap helder uit te leggen. Zo komen losse producties en structurele oplossingen steeds uit dezelfde inhoudelijke en visuele basis.</p>
+                    <p>Formats, explainers, huisstijl, events, publicaties, websites en software komen uit dezelfde inhoudelijke en visuele basis. Daardoor hoeft de redactie niet voor ieder nieuw onderwerp opnieuw te beginnen.</p><p>Een format krijgt vanaf het eerste idee een eigen set, camerataal en graphics. Voor terugkerende social content bouwden we een titelbalktool die uit één invoer alle formaten maakt. En bij events in onder meer Carré, ARTIS en Lowlands werkt dezelfde identiteit door van aankondiging tot podiumscherm.</p>
                 </div>
             </div>
         </section>
@@ -406,10 +405,9 @@
 
         <section class="case-narrative__section uvn-result">
             <div class="case-narrative__inner js-fade">
-                <h2 class="case-narrative__label">Het effect</h2>
+                <h2 class="case-narrative__label">De redactie publiceert sneller en blijft herkenbaar</h2>
                 <div class="case-narrative__copy">
-                    <p>Na meer dan tien jaar kennen we niet alleen de huisstijl, maar ook de inhoud, de redactie en de manier waarop er gewerkt wordt. Daardoor kunnen we op verschillende niveaus tegelijk waarde toevoegen: een verhaal beter uitleggen, een nieuw format helpen bedenken, de identiteit bewaken of een terugkerend productieprobleem structureel oplossen.</p>
-                    <p>En terwijl er jaarlijks honderden nieuwe uitingen bijkomen, blijft Universiteit van Nederland herkenbaar én in ontwikkeling. <strong>Van één ingewikkelde animatie tot de manier waarop een redactie visueel werkt: we helpen bepalen wat er nodig is.</strong></p>
+                    <p>De redactie kan terugkerende content zelf sneller maken, altijd binnen de huisstijl. Tegelijk blijft er ruimte voor maatwerk wanneer een onderzoek, format of event daarom vraagt.</p><p>Zo blijven honderden nieuwe uitingen herkenbaar, zonder dat wetenschap of vorm in één mal wordt gedrukt.</p>
                 </div>
             </div>
             <div class="uvn-effect-grid js-fade" aria-label="Meer werk voor Universiteit van Nederland">
@@ -520,15 +518,20 @@
             window.addEventListener('load', requestHorizontalUpdate);
             updateHorizontalGallery();
 
-            const previewVideo = document.querySelector('.uvn-deliverable-card__preview-video');
-            const setPreviewToMidpoint = () => {
-                if (!previewVideo || !Number.isFinite(previewVideo.duration)) return;
-                previewVideo.currentTime = previewVideo.duration / 2;
-            };
-            previewVideo?.addEventListener('loadedmetadata', setPreviewToMidpoint);
-            previewVideo?.addEventListener('ended', () => {
-                setPreviewToMidpoint();
-                previewVideo.play().catch(() => {});
+            document.querySelectorAll('.uvn-hover-preview').forEach(video => {
+                const source = video.querySelector('source[data-src]');
+                const load = () => {
+                    if (!source?.dataset.src || source.src) return;
+                    source.src = source.dataset.src;
+                    video.load();
+                };
+                const play = () => { load(); video.play().catch(() => {}); };
+                const stop = () => { video.pause(); };
+                const trigger = video.closest('button, a');
+                trigger?.addEventListener('pointerenter', play);
+                trigger?.addEventListener('pointerleave', stop);
+                trigger?.addEventListener('focus', play);
+                trigger?.addEventListener('blur', stop);
             });
 
             const styleDialog = document.querySelector('#uvnStyleDialog');

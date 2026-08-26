@@ -221,7 +221,7 @@ const WORK_CAT_TEXT = {
 const WORK_TOOLS = [
     { client: 'AI Presentaties',      color: '#2E2A3F' },
     { client: 'Planningstool',        color: '#1F3A34' },
-    { client: 'Titelbalk generator',  color: '#3A2E1F' },
+    { client: 'Titelbalk generator',  color: '#3A2E1F', href: 'https://mennoes.github.io/uvnl/uvnl-titelbalk.html', external: true },
     { client: 'KNRM Hotspot kaart',   color: '#003F8A' },
     { client: 'Editing tool',         color: '#2B2B2B' },
 ];
@@ -229,7 +229,7 @@ const WORK_TOOLS = [
 // Voegt de tool-tegels (groep 'tools') toe aan het work-grid
 function appendToolTiles(gridEl) {
     const html = WORK_TOOLS.map(t => `
-        <a class="work-item js-fade" href="tools.html" data-group="tools">
+        <a class="work-item js-fade" href="${t.href || 'tools.html'}" data-group="tools"${t.external ? ' target="_blank" rel="noopener noreferrer"' : ''}>
             <div class="work-item__media" style="background:${t.color}">
                 <div class="work-item__overlay" style="background:${t.color}"></div>
             </div>

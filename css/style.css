@@ -189,7 +189,7 @@ h2,
 .nav__links { grid-column: 3; display: flex; justify-self: end; gap: clamp(16px, 1.8vw, 28px); }
 .nav__links a {
     font-family: var(--font);
-    font-size: clamp(28px, 2.3vw, 40px);
+    font-size: clamp(24px, 2vw, 34px);
     font-weight: 500;
     letter-spacing: -0.3px;
     color: var(--dark);
@@ -3660,8 +3660,8 @@ body.cursor-on-yellow .contact-form__btn {
 
 /* Eén consequente schaal voor alle inhoudelijke leestekst. */
 :root {
-    --type-reading: clamp(22px, 1.75vw, 30px);
-    --type-reading-mobile: clamp(20px, 5.2vw, 22px);
+    --type-reading: clamp(19px, 1.5vw, 26px);
+    --type-reading-mobile: clamp(18px, 4.8vw, 21px);
 }
 
 body.page--case main :is(
@@ -3680,7 +3680,8 @@ body.page--studio .studio__do p,
 body.page--studio .collab__hero-copy p,
 body.page--studio .collab-type p,
 body.page--studio .collab-step p,
-body.page--studio .collab-expect__copy p {
+body.page--studio .collab-expect__copy p,
+body.page--home .home-work-intro__body {
     font-size: var(--type-reading) !important;
     line-height: 1.42 !important;
     letter-spacing: -0.018em !important;
@@ -3703,7 +3704,8 @@ body.page--studio .collab-expect__copy p {
     body.page--studio .collab__hero-copy p,
     body.page--studio .collab-type p,
     body.page--studio .collab-step p,
-    body.page--studio .collab-expect__copy p {
+    body.page--studio .collab-expect__copy p,
+    body.page--home .home-work-intro__body {
         font-size: var(--type-reading-mobile) !important;
         line-height: 1.45 !important;
     }

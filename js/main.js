@@ -962,9 +962,10 @@ function initCaseHeroPin() {
     update();
 }
 
-// ===== DOORSCROLLEN NAAR VOLGENDE HOOFDPAGINA =====
+// ===== DOORSCROLLEN TUSSEN HOOFDPAGINA'S =====
+// Case-footers blijven gewone links: een volgende case opent alleen na een klik.
 function initScrollHandoff() {
-    const handoff = document.querySelector('[data-scroll-next], .case-next');
+    const handoff = document.querySelector('[data-scroll-next]');
     if (!handoff) return;
 
     const nextUrl = () => {

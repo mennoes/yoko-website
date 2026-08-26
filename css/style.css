@@ -3657,3 +3657,54 @@ body.cursor-on-yellow .contact-form__btn {
     .page--case .case-next__link { padding: 34px 20px !important; }
     .page--case .case-next__title { max-width: 14ch; font-size: clamp(42px, 14vw, 72px) !important; }
 }
+
+/* Eén consequente schaal voor alle inhoudelijke leestekst. */
+:root {
+    --type-reading: clamp(22px, 1.75vw, 30px);
+    --type-reading-mobile: clamp(20px, 5.2vw, 22px);
+}
+
+body.page--case main :is(
+    .case-narrative__copy,
+    .case-narrative__intro-copy,
+    .af-season__copy,
+    .heyu-story__copy,
+    .software-intro__copy,
+    .uvn-style-dialog__copy,
+    .gp-video__body
+),
+body.page--studio .reel-sub__intro-text p,
+body.page--studio .studio__body p,
+body.page--studio .studio__lead,
+body.page--studio .studio__do p,
+body.page--studio .collab__hero-copy p,
+body.page--studio .collab-type p,
+body.page--studio .collab-step p,
+body.page--studio .collab-expect__copy p {
+    font-size: var(--type-reading) !important;
+    line-height: 1.42 !important;
+    letter-spacing: -0.018em !important;
+}
+
+@media (max-width: 720px) {
+    body.page--case main :is(
+        .case-narrative__copy,
+        .case-narrative__intro-copy,
+        .af-season__copy,
+        .heyu-story__copy,
+        .software-intro__copy,
+        .uvn-style-dialog__copy,
+        .gp-video__body
+    ),
+    body.page--studio .reel-sub__intro-text p,
+    body.page--studio .studio__body p,
+    body.page--studio .studio__lead,
+    body.page--studio .studio__do p,
+    body.page--studio .collab__hero-copy p,
+    body.page--studio .collab-type p,
+    body.page--studio .collab-step p,
+    body.page--studio .collab-expect__copy p {
+        font-size: var(--type-reading-mobile) !important;
+        line-height: 1.45 !important;
+    }
+}

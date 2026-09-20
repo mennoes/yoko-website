@@ -730,84 +730,6 @@ function initIntroSlideshow() {
     }, 3500);
 }
 
-// ===== HOMEPAGE CASE RANDOMIZERS =====
-function initChapterRandomizers() {
-    document.querySelectorAll('.ch').forEach(chapter => {
-        const button = chapter.querySelector('.ch__randomize');
-        const leadRow = chapter.querySelector('.ch__lead-row');
-        const leadItem = leadRow?.querySelector(':scope > .ch__item');
-        const row = chapter.querySelector('.ch__random-row');
-        const poolRow = chapter.querySelector('.ch__pool-row');
-        if (!button || !leadItem || !row || !poolRow) return;
-
-        const cards = [leadItem, ...row.querySelectorAll(':scope > .ch__item'), ...poolRow.querySelectorAll(':scope > .ch__item')]
-            .map(card => card.cloneNode(true));
-        const visibleSlots = [leadItem, ...row.querySelectorAll(':scope > .ch__item')];
-        const slotAspectRatios = visibleSlots.map(card => {
-            const media = card.querySelector('.ch__media');
-            return media ? getComputedStyle(media).aspectRatio : '';
-        });
-        poolRow.remove();
-
-        button.addEventListener('click', () => {
-            const currentLead = leadRow.querySelector(':scope > .ch__item');
-            const visibleCards = [currentLead, ...row.querySelectorAll(':scope > .ch__item')];
-            const cardKey = card => card.dataset.caseId || card.getAttribute('href') || card.querySelector('.ch__client')?.textContent;
-            const current = visibleCards
-                .map(cardKey)
-                .sort()
-                .join('|');
-
-            const slotCount = visibleSlots.length;
-            let next = cards.slice(0, slotCount);
-            for (let attempt = 0; attempt < 12; attempt += 1) {
-                next = [...cards].sort(() => Math.random() - 0.5).slice(0, slotCount);
-                const signature = next.map(cardKey).sort().join('|');
-                if (signature !== current) break;
-            }
-
-            const replacements = next.map((card, index) => {
-                const clone = card.cloneNode(true);
-                clone.classList.remove('js-fade');
-                const media = clone.querySelector('.ch__media');
-                if (media && slotAspectRatios[index]) {
-                    media.style.aspectRatio = slotAspectRatios[index];
-                }
-                return clone;
-            });
-            currentLead.replaceWith(replacements[0]);
-            row.replaceChildren(...replacements.slice(1));
-
-            button.classList.remove('is-spinning');
-            void button.offsetWidth;
-            button.classList.add('is-spinning');
-        });
-    });
-}
-
-function initRandomizerPlacement() {
-    const mobile = window.matchMedia('(max-width: 720px)');
-
-    function placeButtons() {
-        document.querySelectorAll('.ch').forEach(chapter => {
-            const leadRow = chapter.querySelector('.ch__lead-row');
-            const text = leadRow?.querySelector('.ch__text');
-            const leadItem = leadRow?.querySelector('.ch__item');
-            const button = chapter.querySelector('.ch__randomize');
-            if (!leadRow || !text || !leadItem || !button) return;
-
-            if (mobile.matches) {
-                leadItem.after(button);
-            } else {
-                leadRow.after(button);
-            }
-        });
-    }
-
-    mobile.addEventListener('change', placeButtons);
-    placeButtons();
-}
-
 function initChapterStacking() {
     const desktop = window.matchMedia('(min-width: 721px)');
     const chapters = Array.from(document.querySelectorAll('.page--home .pillars .ch'));
@@ -1032,8 +954,6 @@ function initScrollHandoff() {
 document.addEventListener('DOMContentLoaded', async () => {
     initNavLogo();
     initIntroSlideshow();
-    initChapterRandomizers();
-    initRandomizerPlacement();
     initChapterStacking();
     initWorkDragScroll();
     initCaseHeroPin();

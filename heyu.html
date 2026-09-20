@@ -8,7 +8,7 @@
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-    <link rel="stylesheet" href="css/style.css?v=167">
+    <link rel="stylesheet" href="css/style.css?v=169">
     <style>
         .heyu-story {
             --heyu-varsity-green: #004b36;
@@ -23,6 +23,11 @@
 
         .heyu-story__text {
             padding: clamp(72px, 10vw, 150px) var(--pad-x-wide);
+            display: grid;
+            grid-template-columns: minmax(180px, 240px) minmax(0, 760px);
+            justify-content: space-between;
+            gap: clamp(32px, 7vw, 120px);
+            align-items: start;
         }
 
         .heyu-story__text--purple {
@@ -63,19 +68,20 @@
 
         .heyu-story__heading,
         .heyu-story__statement {
-            max-width: 19ch;
-            margin-left: auto;
-            margin-right: auto;
-            font-size: clamp(36px, 5.6vw, 88px);
+            grid-column: 2;
+            max-width: 14ch;
+            margin: 0;
+            font-size: clamp(36px, 4.4vw, 72px);
             font-weight: 700;
             line-height: 0.98;
             letter-spacing: -0.045em;
         }
 
         .heyu-story__copy {
+            grid-column: 2;
             max-width: 52ch;
-            margin-left: auto;
-            margin-right: auto;
+            margin-left: 0;
+            margin-right: 0;
             font-size: clamp(17px, 1.35vw, 23px);
             font-weight: 400;
             line-height: 1.5;
@@ -84,13 +90,14 @@
         }
 
         .heyu-story .cs__label {
+            grid-column: 1;
             margin-bottom: clamp(26px, 4vw, 52px);
-            text-align: center;
-            text-transform: none;
-            letter-spacing: -0.01em;
-            font-size: clamp(15px, 1.15vw, 18px);
-            font-weight: 500;
-            font-style: italic;
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            font-size: 12px;
+            font-weight: 700;
+            font-style: normal;
             opacity: 0.55;
         }
 
@@ -113,8 +120,10 @@
         }
 
         .heyu-story__outro {
+            grid-column: 1 / -1;
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(180px, 240px) minmax(0, 760px);
+            justify-content: space-between;
             gap: clamp(40px, 6vw, 90px);
             align-items: start;
         }
@@ -134,7 +143,16 @@
             .heyu-story__text {
                 padding-left: var(--pad-x);
                 padding-right: var(--pad-x);
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
+
+            .heyu-story .cs__label,
+            .heyu-story__heading,
+            .heyu-story__statement,
+            .heyu-story__copy { grid-column: 1; }
+
+            .heyu-story__copy[style] { margin-top: 12px!important; }
 
             .page--heyu .case-hero__overlay {
                 padding-left: var(--pad-x);
@@ -149,6 +167,7 @@
             .heyu-story__outro {
                 grid-template-columns: 1fr;
                 align-items: start;
+                gap: 20px;
             }
         }
     </style>
@@ -247,7 +266,7 @@
 
     <script src="data/cases.js?v=5"></script>
     <script src="js/lottie.min.js?v=1"></script>
-    <script src="js/main.js?v=48"></script>
+    <script src="js/main.js?v=50"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const nav = document.getElementById('nav');

@@ -284,6 +284,47 @@ function initScrollFade() {
     targets.forEach(el => observer.observe(el));
 }
 
+// Media-items in casegrids komen los van elkaar binnen. Op mobiel wisselt
+// de richting links/rechts, zodat een gestapelde grid niet als één blok plopt.
+function initCaseGridStaggers() {
+    if (!document.body.classList.contains('page--case')) return;
+
+    const selectors = [
+        '.case-gallery',
+        '.cs__grid',
+        '.case-narrative__media--grid',
+        '.uvn-challenge-grid',
+        '.uvn-insight-grid',
+        '.uvn-effect-grid',
+        '.uvn-deliverables__track',
+        '.rewind-gallery-row',
+        '.af-story-grid',
+        '.af-media--duo',
+        '.af-media--mosaic',
+        '.af-media--videos',
+        '.zin-media--duo',
+        '.zin-challenge-media__thumbs',
+        '.zin-challenge-media__illustrations',
+        '.zin-section-media--duo',
+        '.zin-reels',
+        '.zin-illustrations',
+        '.zin-effect-media',
+        '.gp-video-row'
+    ];
+
+    document.querySelectorAll(selectors.join(',')).forEach(grid => {
+        const items = Array.from(grid.children);
+        if (items.length < 2) return;
+        grid.classList.remove('js-fade', 'is-visible');
+        items.forEach((item, index) => {
+            if (item.classList.contains('case-grid-stagger')) return;
+            item.classList.add('js-fade', 'case-grid-stagger');
+            item.style.setProperty('--case-grid-index', index);
+            item.style.setProperty('--case-grid-delay', `${Math.min(index, 3) * 70}ms`);
+        });
+    });
+}
+
 // ===== NAV: achtergrond + tekst faden bij scrollen =====
 function initNavScroll() {
     const nav = document.getElementById('nav');
@@ -904,7 +945,9 @@ function initScrollHandoff() {
     const atHandoffStop = () => {
         if (handoff.classList.contains('case-next')) {
             const rect = handoff.getBoundingClientRect();
-            return rect.top >= -3 && rect.bottom <= window.innerHeight + 3;
+            return rect.top <= window.innerHeight * 0.22 &&
+                rect.bottom <= window.innerHeight + 3 &&
+                rect.bottom > 0;
         }
         return window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 3;
     };
@@ -968,6 +1011,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Fade statische elementen
     document.querySelectorAll('.about__title, .about__text, .footer__title, .footer__team-title, .page-header__title')
         .forEach(el => el.classList.add('js-fade'));
+    initCaseGridStaggers();
     initScrollFade();
 
     // Work grid — homepage split: eerste 4 boven pijlers, rest eronder

@@ -171,7 +171,13 @@ async function initCasePage() {
     document.querySelectorAll('.case-meta__item, .case-description p, .gallery-item')
         .forEach((el, i) => {
             el.classList.add('js-fade');
-            el.style.transitionDelay = `${Math.min(i * 0.06, 0.35)}s`;
+            if (el.classList.contains('gallery-item')) {
+                el.classList.add('case-grid-stagger');
+                el.style.setProperty('--case-grid-index', i);
+                el.style.setProperty('--case-grid-delay', `${Math.min(i, 3) * 70}ms`);
+            } else {
+                el.style.transitionDelay = `${Math.min(i * 0.06, 0.35)}s`;
+            }
         });
 
     // Scroll fade initialiseren (main.js heeft dit ook, maar double-check)

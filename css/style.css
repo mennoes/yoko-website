@@ -575,6 +575,7 @@ h2,
     width: 100%;
     height: auto;
 }
+.worked-for__logos-mobile { display: none; }
 .worked-for .reel-sub__for-label {
     font-size: 11px;
     margin-bottom: 16px;
@@ -1681,6 +1682,12 @@ h2,
     .footer__photos { gap: 10px; }
     .footer__contact-photo { margin-top: 8px; }
     .page-handoff__title { font-size: clamp(52px, 17vw, 96px); }
+    .page--home .page-handoff {
+        min-height: 56svh;
+        justify-content: flex-start;
+        padding-top: 44px;
+        padding-bottom: 44px;
+    }
 }
 
 /* =====================================================
@@ -3692,5 +3699,64 @@ body.page--home .home-work-intro__body {
     body.page--home .home-work-intro__body {
         font-size: var(--type-reading-mobile) !important;
         line-height: 1.45 !important;
+    }
+}
+
+/* Mobiel: dezelfde opdrachtgeverlogos op een leesbaar 2-koloms ritme. */
+@media (max-width: 720px) {
+    .worked-for--logos {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+    .worked-for__title { margin-bottom: 28px; }
+    .worked-for__logos { display: none; }
+    .worked-for__logos-mobile {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px 12px;
+        width: 100%;
+    }
+    .worked-for__logos-mobile svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+}
+
+/* Casegrids: losse, rustige reveals in plaats van één gelijktijdige sprong. */
+.page--case .case-grid-stagger {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+    transition:
+        opacity .5s ease,
+        transform .7s cubic-bezier(.22, 1, .36, 1);
+    transition-delay: var(--case-grid-delay, 0ms);
+    will-change: opacity, transform;
+}
+.page--case .case-grid-stagger.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+@media (max-width: 720px) {
+    .page--case .case-grid-stagger {
+        transition-delay: 0ms;
+    }
+    .page--case .case-grid-stagger:nth-child(odd) {
+        transform: translate3d(-24px, 0, 0);
+    }
+    .page--case .case-grid-stagger:nth-child(even) {
+        transform: translate3d(24px, 0, 0);
+    }
+    .page--case .case-grid-stagger.is-visible {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page--case .case-grid-stagger {
+        opacity: 1;
+        transform: none;
+        transition: none;
     }
 }

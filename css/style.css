@@ -989,13 +989,15 @@ h2,
 .work-item__label {
     display: block;
     margin-top: 12px;
-    font-size: clamp(15px, 1.2vw, 19px);
+    font-size: clamp(15px, 1.15vw, 19px);
     font-weight: 400;
+    line-height: 1.32;
     color: var(--dark);
-    opacity: 0.7;
+    opacity: 0.76;
     letter-spacing: -0.1px;
     transition: opacity 0.2s ease;
 }
+.work-item__label strong { font-weight: 700; }
 .work-item:hover .work-item__label { opacity: 1; }
 
 /* Desktop column spans */
@@ -2672,13 +2674,15 @@ body.cursor-on-yellow .contact-form__btn {
 }
 .ch__client {
     margin-top: 12px;
-    font-size: clamp(18px, 1.5vw, 24px);
+    font-size: clamp(15px, 1.15vw, 19px);
     font-weight: 400;
+    line-height: 1.32;
     letter-spacing: -0.1px;
     color: var(--dark);
-    opacity: 0.65;
+    opacity: 0.76;
     transition: opacity 0.2s ease;
 }
+.ch__client strong { font-weight: 700; }
 .ch__item:hover .ch__client { opacity: 1; }
 /* Media-tegels — vult grid-kolom, vaste hoogte per rij */
 .ch__media {

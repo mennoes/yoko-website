@@ -944,10 +944,7 @@ function initScrollHandoff() {
 
     const atHandoffStop = () => {
         if (handoff.classList.contains('case-next')) {
-            const rect = handoff.getBoundingClientRect();
-            return rect.top <= window.innerHeight * 0.22 &&
-                rect.bottom <= window.innerHeight + 3 &&
-                rect.bottom > 0;
+            return window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 3;
         }
         return window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 3;
     };

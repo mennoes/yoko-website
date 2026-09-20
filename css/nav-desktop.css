@@ -116,6 +116,7 @@
 
 @media (max-width: 720px) {
     .nav.is-open .nav__links {
+        justify-content: flex-start !important;
         padding: clamp(96px, 15vh, 128px) max(24px, var(--pad-x)) 40px !important;
     }
 

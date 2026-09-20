@@ -319,7 +319,7 @@ h2,
         height: 100dvh !important;
         min-height: 100svh;
         justify-self: stretch;
-        justify-content: center !important;
+        justify-content: flex-start !important;
         align-items: stretch !important;
         padding: clamp(96px, 15vh, 128px) max(24px, var(--pad-x)) 40px !important;
         gap: 6px !important;

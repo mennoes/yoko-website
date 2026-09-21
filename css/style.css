@@ -2772,6 +2772,14 @@ body.cursor-on-yellow .contact-form__btn {
 .ch__item:hover .ch__ov { opacity: 1; }
 .ch__item:hover .ch__ov p { transform: translateY(0); }
 
+/* Op mobiel blijft de hele case aanklikbaar zonder het Bekijk-label op de afbeelding. */
+@media (max-width: 720px) {
+    .ch__item .ch__media::after,
+    .work-item .work-item__media::after {
+        display: none;
+    }
+}
+
 /* Touch: geen verborgen hoverstatus, maar direct context + duidelijke actie. */
 @media (hover: none), (pointer: coarse) {
     .ch__item,

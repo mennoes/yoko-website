@@ -8,7 +8,7 @@
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-    <link rel="stylesheet" href="css/style.css?v=160">
+    <link rel="stylesheet" href="css/style.css?v=161">
     <style>
         .rewind-hero {
             min-height: 60svh;
@@ -25,10 +25,10 @@
             object-position: center top;
         }
         .page--rewind .case-narrative__intro { padding:clamp(46px,5vw,76px) var(--pad-x); }
-        .page--rewind .case-narrative__intro-inner { display:grid; grid-template-columns:minmax(0,.86fr) minmax(420px,1.14fr); gap:clamp(42px,6vw,100px); width:100%; max-width:none; margin:0; align-items:center; }
+        .page--rewind .case-narrative__intro-inner { display:grid; grid-template-columns:minmax(0,.86fr) minmax(420px,1.14fr); gap:clamp(42px,6vw,100px); width:100%; max-width:none; margin:0; align-items:start; }
         .page--rewind .case-narrative__title { max-width:690px; margin:0 0 clamp(24px,2.5vw,36px); font-size:clamp(40px,4.4vw,76px); line-height:.98; letter-spacing:-.025em; }
         .page--rewind .case-narrative__intro-copy { max-width:690px; margin:0; gap:.8em; font-size:clamp(17px,1.3vw,22px); }
-        .rewind-intro__copy { min-width:0; }
+        .rewind-intro__copy { min-width:0; position:sticky; top:clamp(88px,8vw,128px); }
         .rewind-intro__media { width:100%; margin:0; overflow:hidden; background:var(--dark); }
         .rewind-intro__media img { width:100%; aspect-ratio:16/10; display:block; object-fit:cover; }
         .page--rewind .case-narrative__section { padding-block:clamp(34px,3.8vw,58px); }
@@ -40,7 +40,7 @@
         .rewind-statement p { max-width:24ch; margin:0; font-size:clamp(34px,4.6vw,76px); font-weight:700; line-height:1; letter-spacing:0; }
         .rewind-result { background:var(--highlight); color:var(--dark); }
         .page--rewind .case-next__title { font-weight:400; }
-        @media(max-width:820px){.page--rewind .case-narrative__intro-inner{grid-template-columns:1fr}.rewind-media--duo{grid-template-columns:1fr}.rewind-media--duo img{min-height:0;aspect-ratio:4/3}}
+        @media(max-width:820px){.page--rewind .case-narrative__intro-inner{grid-template-columns:1fr}.rewind-intro__copy{position:static}.rewind-media--duo{grid-template-columns:1fr}.rewind-media--duo img{min-height:0;aspect-ratio:4/3}}
         @media(max-width:720px){.page--rewind{--rewind-mobile-pad:20px}.page--rewind .case-narrative__intro,.page--rewind .case-narrative__section,.rewind-statement{padding-left:var(--rewind-mobile-pad);padding-right:var(--rewind-mobile-pad)}.page--rewind .case-narrative__intro{padding-top:32px;padding-bottom:36px}.page--rewind .case-narrative__title{font-size:clamp(38px,12vw,54px)}.page--rewind .case-narrative__copy,.page--rewind .case-narrative__intro-copy{font-size:17px;line-height:1.45}.rewind-media{width:calc(100% - (2 * var(--rewind-mobile-pad)))}}
     </style>
 </head>

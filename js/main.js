@@ -296,7 +296,6 @@ function initCaseGridStaggers() {
         '.uvn-challenge-grid',
         '.uvn-insight-grid',
         '.uvn-effect-grid',
-        '.uvn-deliverables__track',
         '.rewind-gallery-row',
         '.af-story-grid',
         '.af-media--duo',

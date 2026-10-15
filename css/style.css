@@ -1,4 +1,4 @@
-@import url('nav-desktop.css?v=6');
+@import url('nav-desktop.css?v=8');
 
 /* ============================================================
    STUDIO YOKO — Stylesheet
@@ -1310,14 +1310,14 @@ h2,
 
 /* Work page: thumbs steken over de bovenrand van het witte vlak */
 .page--work .page-header {
-    padding-bottom: clamp(120px, 13vw, 200px);
+    padding-bottom: clamp(28px, 3vw, 48px);
     border-bottom: none;
 }
 .work--page {
     background: transparent;
 }
 .work--page .work__grid {
-    margin-top: clamp(-90px, -9vw, -140px);
+    margin-top: 0;
     background: transparent;
 }
 

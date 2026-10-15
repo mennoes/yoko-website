@@ -129,7 +129,6 @@
         .uvn-software-thumb__output:nth-child(2) { background:#c99cf4; color:#004f3b; }
         .uvn-software-thumb__output:nth-child(3) { grid-column:1/-1; background:#f7f3ed; color:#004f3b; border:1px solid rgba(0,79,59,.18); }
         .uvn-deliverable-card__title { display:block; margin:10px 3px 4px; font-size:clamp(17px,1.25vw,22px); font-weight:400; line-height:1.08; letter-spacing:-.02em; }
-        .uvn-deliverables-copy { max-width:44ch!important; margin:14px 0 0!important; font-size:clamp(16px,1.15vw,20px)!important; }
         /* Tekst naast een grid: af en toe, voor ritme. */
         .uvn-split { display:grid; grid-template-columns:minmax(260px,.62fr) minmax(0,1.38fr); gap:clamp(32px,5vw,88px); align-items:start; padding:clamp(58px,6vw,92px) var(--pad-x); }
         .uvn-split--reverse { grid-template-columns:minmax(0,1.38fr) minmax(260px,.62fr); }
@@ -144,34 +143,34 @@
             .uvn-split--reverse .uvn-split__text { order:0; }
             .uvn-split__text { position:static; }
         }
-        /* Wat we maken: een waaier. Hover of focus haalt één kaart groot en scherp naar voren. */
-        .uvn-deliverables-layout { grid-template-columns:minmax(0,1fr); gap:0; }
-        .uvn-deliverables { max-width:none; min-width:0; }
-        .uvn-deliverables__track { display:flex; justify-content:center; align-items:flex-end; gap:0; padding:clamp(70px,7vw,110px) 0 clamp(56px,5vw,80px); }
-        .uvn-deliverable-card { --lift:0px; --shift:0px; flex:0 0 20.4%; width:20.4%; margin-left:-7.14%; transform:translateX(var(--shift)) translateY(var(--lift)) rotate(var(--tilt)); transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease; }
+        /* Wat we maken: twee waaiers, elk naast een stukje tekst. Hover of focus tilt één kaart subtiel naar voren. */
+        .uvn-deliverables-layout { display:grid; grid-template-columns:minmax(0,1fr); gap:clamp(8px,2vw,28px); margin-top:clamp(22px,2.6vw,42px); }
+        .uvn-deliverables-row { --card-w:clamp(170px,14vw,215px); display:grid; grid-template-columns:auto minmax(0,1fr); align-items:center; gap:clamp(32px,4vw,64px); }
+        .uvn-deliverables-row--reverse { grid-template-columns:minmax(0,1fr) auto; }
+        .uvn-deliverables-row--reverse .uvn-deliverables { order:2; }
+        .uvn-deliverables { width:auto; max-width:none; min-width:0; }
+        .uvn-deliverables__track { display:flex; align-items:flex-end; width:auto; gap:0; padding:clamp(34px,3vw,52px) clamp(18px,2vw,32px) clamp(30px,3vw,48px); }
+        .uvn-deliverable-card { --lift:0px; --shift:0px; flex:0 0 var(--card-w); width:var(--card-w); margin-left:calc(var(--card-w) * -.17); transform:translateX(var(--shift)) translateY(var(--lift)) rotate(var(--tilt)); transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s ease; }
         .uvn-deliverable-card:first-child { margin-left:0; }
-        .uvn-deliverable-card:nth-child(1) { --tilt:-9deg; --lift:30px; }
-        .uvn-deliverable-card:nth-child(2) { --tilt:-6deg; --lift:14px; }
-        .uvn-deliverable-card:nth-child(3) { --tilt:-3deg; --lift:4px; }
-        .uvn-deliverable-card:nth-child(4) { --tilt:0deg; --lift:0px; }
-        .uvn-deliverable-card:nth-child(5) { --tilt:3deg; --lift:4px; }
-        .uvn-deliverable-card:nth-child(6) { --tilt:6deg; --lift:14px; }
-        .uvn-deliverable-card:nth-child(7) { --tilt:9deg; --lift:30px; }
         .uvn-deliverable-card:has(~ .uvn-deliverable-card:hover),
-        .uvn-deliverable-card:has(~ .uvn-deliverable-card:focus-visible) { --shift:-9%; }
+        .uvn-deliverable-card:has(~ .uvn-deliverable-card:focus-visible) { --shift:-4%; }
         .uvn-deliverable-card:hover ~ .uvn-deliverable-card,
-        .uvn-deliverable-card:focus-visible ~ .uvn-deliverable-card { --shift:9%; }
-        .uvn-deliverable-card:hover,.uvn-deliverable-card:focus-visible { z-index:5; --shift:0px; transform:translateY(-34px) rotate(0deg) scale(1.42); box-shadow:0 26px 54px rgba(32,32,32,.24); }
-        .uvn-deliverable-card__title { font-size:clamp(15px,1.1vw,18px); }
-        .uvn-deliverables-copy { display:grid!important; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(24px,3vw,56px)!important; max-width:none!important; margin-top:clamp(8px,1.5vw,24px)!important; }
-        .uvn-deliverables-copy p { margin:0; padding-top:clamp(14px,1.2vw,20px); border-top:1px solid rgba(32,32,32,.18); font-size:clamp(16px,1.15vw,19px); line-height:1.45; }
+        .uvn-deliverable-card:focus-visible ~ .uvn-deliverable-card { --shift:4%; }
+        .uvn-deliverable-card:hover,.uvn-deliverable-card:focus-visible { z-index:5; --shift:0px; transform:translateY(-12px) rotate(0deg) scale(1.07); box-shadow:0 18px 36px rgba(32,32,32,.18); }
+        .uvn-deliverable-card:not(:last-child) .uvn-deliverable-card__title { padding-right:calc(var(--card-w) * .17); }
+        .uvn-deliverables-copy { max-width:40ch!important; margin:0!important; font-size:clamp(18px,1.25vw,22px)!important; }
+        @media (max-width:980px) {
+            .uvn-deliverables-row,.uvn-deliverables-row--reverse { grid-template-columns:minmax(0,1fr); gap:6px; }
+            .uvn-deliverables-row--reverse .uvn-deliverables { order:0; }
+            .uvn-deliverables-copy { max-width:58ch!important; margin-bottom:clamp(20px,4vw,36px)!important; }
+        }
         @media (max-width:820px) {
-            .uvn-deliverables__track { width:auto; justify-content:flex-start; gap:14px; padding:24px var(--uvn-mobile-pad,20px) 32px; margin-inline:calc(-1 * var(--uvn-mobile-pad,20px)); scroll-padding-inline:var(--uvn-mobile-pad,20px); overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; }
+            .uvn-deliverables { width:100%; }
+            .uvn-deliverables__track { width:auto; justify-content:flex-start; gap:14px; padding:24px var(--uvn-mobile-pad,20px) 32px; margin-inline:calc(-1 * var(--uvn-mobile-pad,20px)); overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding-inline:var(--uvn-mobile-pad,20px); scrollbar-width:none; }
             .uvn-deliverables__track::-webkit-scrollbar { display:none; }
-            .uvn-deliverable-card,.uvn-deliverable-card:nth-child(n) { flex:0 0 min(74vw,340px); width:min(74vw,340px); margin-left:0; --tilt:0deg; --lift:0px; --shift:0px; scroll-snap-align:start; }
+            .uvn-deliverable-card,.uvn-deliverable-card:nth-child(n) { flex:0 0 min(74vw,340px); width:min(74vw,340px); margin-left:0; --tilt:0deg!important; --lift:0px!important; --shift:0px; scroll-snap-align:start; }
             .uvn-deliverable-card:hover,.uvn-deliverable-card:focus-visible { transform:none; box-shadow:0 9px 22px rgba(32,32,32,.09); }
-            .uvn-deliverables-copy { grid-template-columns:1fr; gap:0!important; }
-            .uvn-deliverables-copy p { padding-bottom:16px; }
+            .uvn-deliverable-card:not(:last-child) .uvn-deliverable-card__title { padding-right:0; }
         }
         .uvn-showcase-dialog { width:min(92vw,1500px); max-width:none; max-height:92vh; margin:auto; padding:0; border:0; background:transparent; overflow:visible; }
         .uvn-showcase-dialog::backdrop { background:rgba(24,24,24,.92); }
@@ -225,7 +224,6 @@
             .uvn-media--duo img { min-height:0; aspect-ratio:4/3; }
             .uvn-services ul { grid-template-columns: 1fr; }
             .uvn-deliverables-layout { grid-template-columns:1fr; gap:24px; }
-            .uvn-deliverables-copy { position:static; max-width:58ch!important; margin-top:0!important; }
         }
         @media (max-width:720px) {
             .page--uvn { --uvn-mobile-pad:20px; }
@@ -252,7 +250,6 @@
             .uvn-effect-grid { width:calc(100% - (2 * var(--uvn-mobile-pad))); grid-template-columns:1fr; gap:10px; }
             .uvn-insight-grid__item { grid-column:auto; }
             .uvn-insight-grid--secondary .uvn-insight-grid__item:nth-child(4) { grid-column:auto; }
-            .uvn-deliverables__track { grid-template-columns:1fr; gap:18px; padding:18px 4px 30px; }
             .uvn-deliverable-card__title { font-size:22px; }
             .uvn-showcase-dialog { width:calc(100vw - 24px); }
             .uvn-showcase-dialog.is-slideshow .uvn-showcase-dialog__frame { min-height:min(78vh,680px); padding:0 46px 60px; }
@@ -403,21 +400,31 @@
                 <h2>Wat we maken</h2>
             </div>
             <div class="uvn-deliverables-layout">
-                <div class="uvn-deliverables js-fade" aria-label="Wat we maken">
-                    <div class="uvn-deliverables__track">
-                    <a class="uvn-deliverable-card" href="heyu.html">
+                <div class="uvn-deliverables-row">
+                    <div class="uvn-deliverables js-fade" aria-label="Wat we maken: formats, explainers en huisstijl">
+                        <div class="uvn-deliverables__track">
+                    <a class="uvn-deliverable-card" style="--tilt:-5deg;--lift:10px" href="heyu.html">
                         <span class="uvn-deliverable-card__media"><img src="assets/cases/heyu/16-format-in-action.png" alt="Het HEY U-format in beeld"></span>
                         <span class="uvn-deliverable-card__title">Formatontwikkeling</span>
                     </a>
-                    <button class="uvn-deliverable-card" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-compilatie-marieke.mp4">
+                    <button class="uvn-deliverable-card" style="--tilt:0deg;--lift:0px" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-compilatie-marieke.mp4">
                         <span class="uvn-deliverable-card__media"><video class="uvn-deliverable-card__preview-video uvn-hover-preview" muted loop playsinline preload="none" poster="assets/cases/universiteit-van-nederland/gallery/posters/uvnl-compilatie-marieke.jpg" aria-label="Preview van explaineranimaties"><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-compilatie-marieke.mp4" type="video/mp4"></video></span>
                         <span class="uvn-deliverable-card__title">Explaineranimaties</span>
                     </button>
-                    <button class="uvn-deliverable-card" type="button" data-style-dialog aria-label="Bekijk de Universiteit van Nederland-huisstijlpresentatie">
+                    <button class="uvn-deliverable-card" style="--tilt:5deg;--lift:10px" type="button" data-style-dialog aria-label="Bekijk de Universiteit van Nederland-huisstijlpresentatie">
                         <span class="uvn-deliverable-card__media"><img src="assets/cases/universiteit-van-nederland/gallery/uvnl-huisstijl-thumb.jpg" alt="Paars Universiteit van Nederland-beeldmerk tijdens een evenement in ARTIS"></span>
                         <span class="uvn-deliverable-card__title">Huisstijl</span>
                     </button>
-                    <button class="uvn-deliverable-card" type="button" data-showcase-type="slideshow" aria-label="Bekijk de collectie live events">
+                        </div>
+                    </div>
+                    <div class="case-narrative__copy uvn-deliverables-copy js-fade">
+                        <p>Wekelijks maken we animaties, grafieken en illustraties die wetenschap zichtbaar maken, van losse uitleg tot compleet format. Voor HEY U! ontwikkelden we de visuele vertaling, van set en camerataal tot typografie en animatie.</p>
+                    </div>
+                </div>
+                <div class="uvn-deliverables-row uvn-deliverables-row--reverse">
+                    <div class="uvn-deliverables js-fade" aria-label="Wat we maken: events, boeken en software">
+                        <div class="uvn-deliverables__track">
+                    <button class="uvn-deliverable-card" style="--tilt:-6deg;--lift:14px" type="button" data-showcase-type="slideshow" aria-label="Bekijk de collectie live events">
                         <span class="uvn-deliverable-card__media uvn-event-thumb">
                             <img class="is-active" src="assets/cases/universiteit-van-nederland/gallery/event-carre-01.jpg" alt="Live event in Carré">
                             <img src="assets/cases/universiteit-van-nederland/gallery/event-carre-02.jpg" alt="Live event in Carré" loading="lazy">
@@ -428,18 +435,18 @@
                         </span>
                         <span class="uvn-deliverable-card__title">Live events</span>
                     </button>
-                    <button class="uvn-deliverable-card" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-quest-cover.jpg" data-showcase-alt="Cover voor Quest Magazine en de podcast Rare Jongens">
+                    <button class="uvn-deliverable-card" style="--tilt:-2deg;--lift:3px" type="button" data-showcase-type="image" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-quest-cover.jpg" data-showcase-alt="Cover voor Quest Magazine en de podcast Rare Jongens">
                         <span class="uvn-deliverable-card__media uvn-deliverable-card__media--book uvn-book-thumb">
                             <img class="is-active" src="assets/cases/universiteit-van-nederland/gallery/uvnl-quest-cover.jpg" alt="Cover voor Quest Magazine en de podcast Rare Jongens">
                             <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-quest-magazine.jpg" alt="De Quest-cover in het magazine">
                         </span>
                         <span class="uvn-deliverable-card__title">Boekcovers</span>
                     </button>
-                    <a class="uvn-deliverable-card" href="https://mennoes.github.io/uvnl-brandbook/index.html" target="_blank" rel="noopener noreferrer" aria-label="Bekijk het interactieve brandbook van Universiteit van Nederland in een nieuw tabblad">
+                    <a class="uvn-deliverable-card" style="--tilt:2deg;--lift:3px" href="https://mennoes.github.io/uvnl-brandbook/index.html" target="_blank" rel="noopener noreferrer" aria-label="Bekijk het interactieve brandbook van Universiteit van Nederland in een nieuw tabblad">
                         <span class="uvn-deliverable-card__media"><img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-05.jpg" alt="Visuele toepassing binnen de Universiteit van Nederland-huisstijl"></span>
                         <span class="uvn-deliverable-card__title">Websites &amp; templates ↗</span>
                     </a>
-                    <a class="uvn-deliverable-card" href="https://mennoes.github.io/uvnl/uvnl-titelbalk.html" target="_blank" rel="noopener noreferrer" aria-label="Open de echte UvNL Titelbalk Generator in een nieuw tabblad">
+                    <a class="uvn-deliverable-card" style="--tilt:6deg;--lift:14px" href="https://mennoes.github.io/uvnl/uvnl-titelbalk.html" target="_blank" rel="noopener noreferrer" aria-label="Open de echte UvNL Titelbalk Generator in een nieuw tabblad">
                         <span class="uvn-deliverable-card__media">
                             <span class="uvn-software-thumb" aria-label="Interface van de UvNL Titelbalk Generator">
                                 <span class="uvn-software-thumb__panel"><span class="uvn-software-thumb__brand">UvNL Titelbalk</span><span class="uvn-software-thumb__field">Waarom dromen we?</span><span class="uvn-software-thumb__swatches"><i></i><i></i><i></i></span><span class="uvn-software-thumb__button">Genereer formaten</span></span>
@@ -448,10 +455,12 @@
                         </span>
                         <span class="uvn-deliverable-card__title">Software — Titelbalk Generator</span>
                     </a>
+                        </div>
                     </div>
-                </div>
-                <div class="case-narrative__copy uvn-deliverables-copy js-fade">
-                    <p>Wekelijks maken we animaties, grafieken en illustraties die wetenschap zichtbaar maken, van losse uitleg tot compleet format. Voor HEY U! ontwikkelden we de visuele vertaling, van set en camerataal tot typografie en animatie.</p><p>De identiteit leeft ook buiten video: op live events in Carré, ARTIS en op Lowlands, in het boek DROOM en op een cover voor Quest.</p><p>Met onze titelbalkgenerator maakt de redactie in één keer alle socialformaten, automatisch in de juiste stijl.</p>
+                    <div class="case-narrative__copy uvn-deliverables-copy js-fade">
+                        <p>De identiteit leeft ook buiten video: op live events in Carré, ARTIS en op Lowlands, in het boek DROOM en op een cover voor Quest.</p>
+                        <p>Met onze titelbalkgenerator maakt de redactie in één keer alle socialformaten, automatisch in de juiste stijl.</p>
+                    </div>
                 </div>
             </div>
         </section>

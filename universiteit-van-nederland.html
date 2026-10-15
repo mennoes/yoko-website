@@ -561,9 +561,12 @@
                     const vh = window.innerHeight;
                     if (rect.bottom < 0 || rect.top > vh) { overviewManual = false; return; }
                     if (overviewManual) return;
-                    const progress = Math.min(1, Math.max(0, (vh * .9 - rect.top) / (vh * .8)));
+                    // Rustig tempo: de galerij loopt mee tot hij uit beeld verdwijnt, maar slechts een deel van de weg.
+                    // De rest ontdek je zelf door te slepen of de pijlen te gebruiken.
+                    const span = vh * .8 + rect.height;
+                    const progress = Math.min(1, Math.max(0, (vh * .9 - rect.top) / span));
                     const max = Math.max(0, overviewViewport.scrollWidth - overviewViewport.clientWidth);
-                    overviewViewport.scrollTo({ left: progress * max, behavior:'instant' });
+                    overviewViewport.scrollTo({ left: progress * max * .55, behavior:'instant' });
                 };
                 const requestDrive = () => {
                     if (overviewTicking) return;

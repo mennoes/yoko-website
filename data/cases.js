@@ -13,7 +13,7 @@ window.YOKO_CASES = {
         "education",
         "animation"
       ],
-      "summary": "Branding, formats, animatie en tools. Al tien jaar.",
+      "summary": "Al tien jaar vaste visuele partner.",
       "description": "De Universiteit van Nederland brengt wetenschappelijke kennis naar een breed publiek via korte online colleges. Studio Yoko is niet alleen de animatiestudio — we zijn de vaste visuele partner van de redactie.\n\nDat betekent: branding bewaken, elke nieuwe hoogleraar hetzelfde sterke beeld geven, en dagelijks meedenken over hoe complexe inhoud er het best uitziet. We zitten aan tafel bij de redactie, denken mee over formats en houden de visuele lijn strak — ook als er honderd afleveringen voorbijkomen.\n\nVan huisstijlpolitie tot formatontwikkelaar: wij zorgen dat de UvN er altijd uitziet zoals ze bedoeld is.",
       "thumbnail": "assets/cases/universiteit-van-nederland/thumb.jpg",
       "video_preview": "assets/cases/universiteit-van-nederland/UvNL_Billboard 16x9-site.mp4",
@@ -59,7 +59,7 @@ window.YOKO_CASES = {
         "templates",
         "redactie"
       ],
-      "summary": "Van naam tot templates: rebranding en vaste partner.",
+      "summary": "Volledige rebranding, daarna vaste partner en templates voor de redactie.",
       "description": "Zin in Morgen had een nieuw verhaal nodig — van naam tot het systeem waarmee ze dat verhaal elke dag opnieuw kunnen vertellen.\n\nWe startten met workshopsessies om te ontdekken wie ze zijn en wat ze willen uitstralen. Daaruit rolde een nieuwe naam: Zin. Kleurrijk, direct en vol energie.\n\nVervolgens bouwden we de volledige visuele identiteit: huisstijl, typografie, kleur en een set templates waarmee de redactie zelfstandig content kan maken — zonder telkens bij een bureau aan te kloppen.\n\nHet resultaat: een complete overdracht naar de redactie, zodat Zin vandaag publiceert en morgen verder groeit.",
       "thumbnail": "assets/cases/zin/thumb.jpg",
       "video_preview": "assets/cases/zin/Logo zin.mp4",
@@ -89,7 +89,7 @@ window.YOKO_CASES = {
         "vormgeving",
         "Omroep ZWART"
       ],
-      "summary": "Vormgeving en animatie voor een bekroonde serie.",
+      "summary": "Bekroonde vormgeving voor Omroep ZWART.",
       "description": "Voor twee seizoenen van de Omroep ZWART-documentaireserie De Afhaalchinees maken we alle grafische vormgeving en animatie, in nauwe samenwerking met maker Qian van Binsbergen.",
       "thumbnail": "assets/cases/afhaalchinees-thumb.png",
       "video_preview": null,
@@ -119,7 +119,7 @@ window.YOKO_CASES = {
         "strategie",
         "NPO"
       ],
-      "summary": "Wekelijks nieuwsanimatie voor jongeren.",
+      "summary": "Nieuwsanimaties die jongeren vasthouden.",
       "description": "Voor Rewind (HUMAN) vertalen we elke week ingewikkelde journalistieke thema's naar begrijpelijke animaties voor TikTok, Instagram en YouTube. Van verkiezingen tot overconsumptie.",
       "thumbnail": "assets/cases/rewind/rewind-hero.jpg",
       "video_preview": null,
@@ -147,7 +147,7 @@ window.YOKO_CASES = {
         "activism",
         "environment"
       ],
-      "summary": "Research, script en beeld die urgentie voelbaar maken.",
+      "summary": "Klimaatverhalen die urgentie voelbaar maken.",
       "description": "Greenpeace vroeg Studio Yoko een explainer te maken die mensen aanzet tot actie. Geen saaie grafieken, maar urgente, kleurrijke animatie die de boodschap meteen raak is.\n\nWe kozen voor felle kleuren, snelle cuts en een directe tone of voice — passend bij de missie van Greenpeace.",
       "thumbnail": "assets/cases/greenpeace/thumb.jpg",
       "video_preview": "assets/cases/greenpeace/Tippingpoint_header_lq.mp4",
@@ -218,7 +218,7 @@ window.YOKO_CASES = {
         "motion",
         "social"
       ],
-      "summary": "Motion branding, campagnes en een toolkit voor het hele merk.",
+      "summary": "Een reisidentiteit die beweegt.",
       "description": "Polarsteps is de populairste reisapp van Nederland. Studio Yoko ontwikkelde het complete design system: een visuele taal die consistent werkt in alle uitingen — van social banners tot de brandpage en een cinematische brand ident film.",
       "thumbnail": "assets/cases/polarsteps/thumb.jpg",
       "video_preview": null,
@@ -370,7 +370,7 @@ window.YOKO_CASES = {
         "broadcast",
         "ident"
       ],
-      "summary": "Motion branding vol energie.",
+      "summary": "Een speelse visuele wereld.",
       "description": "Kinderen voor Kinderen is een van de meest geliefde kinderprogramma's van Nederland. Studio Yoko verzorgde de volledige animatie-identiteit voor het seizoen — van de intro tot de tussenstukjes.\n\nDe uitdaging was om een stijl te vinden die past bij de energie van de muziek en de beleving van kinderen: kleurrijk, snel, eerlijk. Samen met de redactie van BNNVARA ontwikkelden we een visuele taal die de show aanvult zonder te overheersen.\n\nHet resultaat is een volledig geanimeerde broadcast-identiteit die seizoen na seizoen terugkeert.",
       "thumbnail": "assets/cases/kinderen-voor-kinderen/thumb.jpg",
       "video_preview": "assets/cases/kinderen-voor-kinderen/KvK-LogoLoops.mp4?v=3",

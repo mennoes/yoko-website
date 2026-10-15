@@ -129,6 +129,10 @@
         .uvn-software-thumb__output:nth-child(2) { background:#c99cf4; color:#004f3b; }
         .uvn-software-thumb__output:nth-child(3) { grid-column:1/-1; background:#f7f3ed; color:#004f3b; border:1px solid rgba(0,79,59,.18); }
         .uvn-deliverable-card__title { display:block; margin:10px 3px 4px; font-size:clamp(17px,1.25vw,22px); font-weight:400; line-height:1.08; letter-spacing:-.02em; }
+        @media (min-width:821px) {
+            .page--uvn .uvn-result .case-narrative__inner { grid-template-columns:minmax(0,1fr) minmax(0,560px); gap:clamp(32px,5vw,72px); }
+            .page--uvn .uvn-result .case-narrative__label { max-width:none; }
+        }
         /* Tekst naast een grid: af en toe, voor ritme. */
         .uvn-split { display:grid; grid-template-columns:minmax(260px,.62fr) minmax(0,1.38fr); gap:clamp(32px,5vw,88px); align-items:start; padding:clamp(58px,6vw,92px) var(--pad-x); }
         .uvn-split--reverse { grid-template-columns:minmax(0,1.38fr) minmax(260px,.62fr); }
@@ -499,11 +503,12 @@
                     <p>Na ruim tien jaar kennen we het merk, de mensen en het werkproces van binnenuit. Daardoor schakelen we snel, denken we scherp mee en blijven we nieuwe formats, beelden en tools bedenken.</p><p>Onze templates en tools houden het dagelijkse werk snel en strak. Wij zorgen dat het blijft groeien: honderden verhalen per jaar, elk met een eigen karakter en samen één herkenbare identiteit.</p>
                 </div>
             </div>
-            <div class="uvn-effect-grid js-fade" aria-label="Meer werk voor Universiteit van Nederland">
+        </section>
+
+        <div class="uvn-effect-grid js-fade" aria-label="Meer werk voor Universiteit van Nederland">
                 <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-05.jpg" alt="Grafische uitleg over werkloosheid en woonvorm" loading="lazy">
                 <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-gallery-06.jpg" alt="Grafische uitleg over de luchtzakken en longen van een dinosaurus" loading="lazy">
             </div>
-        </section>
     </main>
 
     <!-- FOOTER -->

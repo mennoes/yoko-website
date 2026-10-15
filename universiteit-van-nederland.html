@@ -130,6 +130,20 @@
         .uvn-software-thumb__output:nth-child(3) { grid-column:1/-1; background:#f7f3ed; color:#004f3b; border:1px solid rgba(0,79,59,.18); }
         .uvn-deliverable-card__title { display:block; margin:10px 3px 4px; font-size:clamp(17px,1.25vw,22px); font-weight:400; line-height:1.08; letter-spacing:-.02em; }
         .uvn-deliverables-copy { max-width:44ch!important; margin:14px 0 0!important; font-size:clamp(16px,1.15vw,20px)!important; }
+        /* Tekst naast een grid: af en toe, voor ritme. */
+        .uvn-split { display:grid; grid-template-columns:minmax(260px,.62fr) minmax(0,1.38fr); gap:clamp(32px,5vw,88px); align-items:start; padding:clamp(58px,6vw,92px) var(--pad-x); }
+        .uvn-split--reverse { grid-template-columns:minmax(0,1.38fr) minmax(260px,.62fr); }
+        .uvn-split--reverse .uvn-split__text { order:2; }
+        .uvn-split__text { position:sticky; top:clamp(72px,8vw,112px); display:grid; gap:clamp(20px,2vw,32px); }
+        .uvn-split__text .case-narrative__label { max-width:none; margin:0; }
+        .uvn-split__text .case-narrative__copy { max-width:44ch; margin:0; }
+        .uvn-split .uvn-insight-grid { width:100%; margin:0; }
+        .uvn-split .uvn-insight-grid--secondary { grid-template-columns:repeat(2,minmax(0,1fr)); }
+        @media (max-width:820px) {
+            .uvn-split,.uvn-split--reverse { grid-template-columns:minmax(0,1fr); gap:28px; padding-inline:var(--uvn-mobile-pad,20px); }
+            .uvn-split--reverse .uvn-split__text { order:0; }
+            .uvn-split__text { position:static; }
+        }
         /* Wat we maken: een waaier. Hover of focus haalt één kaart groot en scherp naar voren. */
         .uvn-deliverables-layout { grid-template-columns:minmax(0,1fr); gap:0; }
         .uvn-deliverables { max-width:none; min-width:0; }
@@ -333,16 +347,14 @@
             <img src="assets/cases/universiteit-van-nederland/gallery/uvnl-grid-huis-geld.jpg" alt="Grafische uitleg over woningkosten" loading="lazy">
         </div>
 
-        <section class="case-narrative__section">
-            <div class="case-narrative__inner js-fade">
+        <section class="uvn-split  js-fade">
+            <div class="uvn-split__text">
                 <h2 class="case-narrative__label">Ons inzicht</h2>
                 <div class="case-narrative__copy">
                     <p>Sterke visuele uitleg begint bij de inhoud. We schuiven aan vanaf het eerste idee en bepalen samen met de redactie wat de kijker moet begrijpen.</p><p>Daar kiezen we de vorm bij: een grafiek, een metafoor, een animatie of een nieuw format. Nooit alleen voor de sier.</p>
                 </div>
             </div>
-        </section>
-
-        <div class="uvn-insight-grid js-fade" aria-label="Voorbeelden van formats, animatie en live producties">
+            <div class="uvn-insight-grid" aria-label="Voorbeelden van formats, animatie en live producties">
             <button class="uvn-insight-grid__item" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-dino.mp4" aria-label="Bekijk formatontwikkeling voor wetenschapsverhalen groter en met geluid">
                 <video class="uvn-hover-preview" muted loop playsinline preload="none" poster="assets/cases/universiteit-van-nederland/gallery/posters/uvnl-insight-dino.jpg"><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-dino.mp4" type="video/mp4"></video>
                 <span class="uvn-insight-grid__label">Bekijk video</span>
@@ -358,17 +370,16 @@
                 <span class="uvn-insight-grid__label">Bekijk video</span>
             </button>
         </div>
+        </section>
 
-        <section class="case-narrative__section">
-            <div class="case-narrative__inner js-fade">
+        <section class="uvn-split uvn-split--reverse js-fade">
+            <div class="uvn-split__text">
                 <h2 class="case-narrative__label">Onze keuze</h2>
                 <div class="case-narrative__copy">
                     <p>We werken niet van opdracht naar opdracht, maar bouwen samen met het hele team aan een visuele wereld: toegankelijk, kleurrijk en met ruimte voor humor. Een identiteit die meegroeit met het platform.</p><p>Van art direction, set en camerataal tot vormgeving en animatie. Voor terugkerende producties maken we stijlprincipes, templates en tools, zodat het merk consistent blijft en de redactie zelfstandig door kan.</p>
                 </div>
             </div>
-        </section>
-
-        <div class="uvn-insight-grid uvn-insight-grid--secondary js-fade" aria-label="Meer voorbeelden van formats, animatie en live producties">
+            <div class="uvn-insight-grid uvn-insight-grid--secondary" aria-label="Meer voorbeelden van formats, animatie en live producties">
             <button class="uvn-insight-grid__item" type="button" data-showcase-type="video" data-showcase-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-format-p2.mp4" aria-label="Bekijk nog een compilatie van formatontwikkeling groter en met geluid">
                 <video class="uvn-hover-preview" muted loop playsinline preload="none" poster="assets/cases/universiteit-van-nederland/gallery/posters/uvnl-insight-format-p2.jpg"><source data-src="assets/cases/universiteit-van-nederland/gallery/uvnl-insight-format-p2.mp4" type="video/mp4"></video>
                 <span class="uvn-insight-grid__label">Bekijk video</span>
@@ -385,6 +396,7 @@
                 <span class="uvn-insight-grid__label">Bekijk video</span>
             </button>
         </div>
+        </section>
 
         <section class="case-narrative__section uvn-deliverables-section">
             <div class="uvn-deliverables-heading js-fade">

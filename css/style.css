@@ -3800,31 +3800,22 @@ body.page--home .home-work-intro__body {
     .case-split__text { position: static; }
 }
 
-/* ===== Over ons: intro met duidelijke hiërarchie en leesbare kleuren ===== */
-.about-intro { align-items: start; }
-.about-intro .reel-sub__intro-text { display: grid; gap: clamp(16px, 1.6vw, 24px); max-width: 52ch; }
-.about-intro .reel-sub__intro-text p { margin: 0 !important; color: rgba(32, 32, 32, 0.82); }
-.about-intro .about-intro__eyebrow {
-    font-size: clamp(12px, 0.9vw, 14px);
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    line-height: 1.2;
-    text-transform: uppercase;
-    color: rgba(32, 32, 32, 0.6);
-}
-.about-intro .about-intro__lead {
-    margin: 0 !important;
+/* ===== Over ons: één kop, één tekststijl ===== */
+.about-intro { align-items: center; }
+.about-intro .reel-sub__intro-text { display: grid; gap: clamp(18px, 1.8vw, 28px); max-width: 48ch; }
+body.page--studio .about-intro .about-intro__lead {
+    margin: 0;
     color: var(--dark);
-    font-size: clamp(32px, 3.6vw, 56px);
+    font-size: clamp(34px, 3.9vw, 60px);
     font-weight: 700;
     line-height: 1.02;
     letter-spacing: -0.035em;
 }
-body.page--studio .about-intro .about-intro__proof {
-    padding-top: clamp(14px, 1.2vw, 20px);
-    border-top: 1px solid rgba(32, 32, 32, 0.18);
-    color: rgba(32, 32, 32, 0.7);
-    font-size: clamp(15px, 1.1vw, 17px) !important;
-    line-height: 1.4 !important;
+body.page--studio .about-intro .reel-sub__intro-text p,
+body.page--studio .studio__split .studio__body p {
+    margin: 0;
+    color: rgba(32, 32, 32, 0.82);
+    font-size: clamp(17px, 1.25vw, 20px) !important;
+    line-height: 1.5 !important;
+    letter-spacing: -0.01em !important;
 }
-.page--studio .studio__split .studio__body p { color: rgba(32, 32, 32, 0.82); }

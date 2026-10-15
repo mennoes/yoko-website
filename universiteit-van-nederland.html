@@ -515,6 +515,37 @@
             window.addEventListener('load', updateOverviewControls);
             updateOverviewControls();
 
+            // De galerij schuift mee met de paginascroll: zodra je erheen scrollt gaat hij vanzelf open.
+            // Pak je hem zelf vast (slepen, pijlen, toetsen), dan laten we hem met rust tot je weer weg bent.
+            const overviewSection = document.querySelector('.uvn-overview-scroll');
+            if (overviewViewport && overviewSection && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                let overviewManual = false;
+                let overviewTicking = false;
+                const takeOver = () => { overviewManual = true; };
+                ['pointerdown', 'keydown', 'touchstart'].forEach(type => overviewViewport.addEventListener(type, takeOver, { passive:true }));
+                overviewViewport.addEventListener('wheel', event => { if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) takeOver(); }, { passive:true });
+                overviewPrevious?.addEventListener('click', takeOver);
+                overviewNext?.addEventListener('click', takeOver);
+                const driveOverview = () => {
+                    overviewTicking = false;
+                    const rect = overviewSection.getBoundingClientRect();
+                    const vh = window.innerHeight;
+                    if (rect.bottom < 0 || rect.top > vh) { overviewManual = false; return; }
+                    if (overviewManual) return;
+                    const progress = Math.min(1, Math.max(0, (vh * .9 - rect.top) / (vh * .8)));
+                    const max = Math.max(0, overviewViewport.scrollWidth - overviewViewport.clientWidth);
+                    overviewViewport.scrollTo({ left: progress * max, behavior:'instant' });
+                };
+                const requestDrive = () => {
+                    if (overviewTicking) return;
+                    overviewTicking = true;
+                    window.requestAnimationFrame(driveOverview);
+                };
+                overviewViewport.style.scrollSnapType = 'none';
+                window.addEventListener('scroll', requestDrive, { passive:true });
+                window.addEventListener('resize', requestDrive);
+            }
+
             document.querySelectorAll('.uvn-hover-preview').forEach(video => {
                 const source = video.querySelector('source[data-src]');
                 const load = () => {

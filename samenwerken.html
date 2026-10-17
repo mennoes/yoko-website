@@ -15,11 +15,17 @@
         .collab-contact-intro { max-width: 42ch; font-size: var(--type-body); line-height: 1.55; margin-top: 28px; }
         .collab-expect { grid-template-columns:minmax(300px,.72fr) minmax(0,1.28fr); }
         .collab-expect__copy { max-width:70ch; }
+        .collab__hero h1 { white-space:normal; }
+        .collab__hero-text, .collab-more__copy { min-width:0; }
         .collab__hero { align-items:start; grid-template-columns:minmax(0,0.9fr) minmax(340px,1.05fr); column-gap:clamp(28px,3.5vw,72px); }
         .collab__hero-image img { aspect-ratio:3/2; }
         .collab-more { grid-template-columns:minmax(0,0.9fr) minmax(360px,1.2fr); }
         .collab-more__image img { aspect-ratio:4/3; }
-        @media(max-width:720px) { .collab-expect { grid-template-columns:1fr; } .collab-more { grid-template-columns:1fr; } }
+        @media(max-width:960px) {
+            .collab__hero, .collab-expect, .collab-more { grid-template-columns:minmax(0,1fr); gap:30px; }
+            .collab__hero-copy, .collab-expect__copy { max-width:100%; }
+            .collab__hero-image img { aspect-ratio:4/3; }
+        }
     </style>
 </head>
 <body class="page--studio">

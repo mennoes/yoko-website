@@ -3813,9 +3813,18 @@ body.page--studio .about-intro .about-intro__lead {
 }
 body.page--studio .about-intro .reel-sub__intro-text p,
 body.page--studio .studio__split .studio__body p {
-    margin: 0;
     color: rgba(32, 32, 32, 0.82);
-    font-size: clamp(17px, 1.25vw, 20px) !important;
-    line-height: 1.5 !important;
-    letter-spacing: -0.01em !important;
+}
+.about-footer__copy {
+    max-width: 36ch;
+    color: var(--cream);
+    font-size: var(--type-reading);
+    line-height: 1.42;
+    letter-spacing: -0.018em;
+}
+@media (max-width: 720px) {
+    .about-footer__copy {
+        font-size: var(--type-reading-mobile);
+        line-height: 1.45;
+    }
 }

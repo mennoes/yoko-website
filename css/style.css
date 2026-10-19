@@ -3816,7 +3816,7 @@ body.page--studio .about-intro .about-intro__lead {
     line-height: 1.02;
     letter-spacing: -0.035em;
 }
-.about-intro .reel-sub__intro-text p { max-width: 52ch; }
+.about-intro .reel-sub__intro-text p { max-width: 40ch; }
 body.page--studio .about-intro .reel-sub__intro-text p,
 body.page--studio .studio__split .studio__body p {
     color: rgba(32, 32, 32, 0.82);

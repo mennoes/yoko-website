@@ -3805,7 +3805,7 @@ body.page--home .home-work-intro__body {
 .about-intro .reel-sub__intro-text { display: grid; gap: clamp(18px, 1.8vw, 28px); max-width: none; }
 @media (min-width: 821px) {
     .reel-sub--intro.about-intro {
-        grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     }
 }
 body.page--studio .about-intro .about-intro__lead {
@@ -3816,6 +3816,7 @@ body.page--studio .about-intro .about-intro__lead {
     line-height: 1.02;
     letter-spacing: -0.035em;
 }
+.about-intro .reel-sub__intro-text p { max-width: 52ch; }
 body.page--studio .about-intro .reel-sub__intro-text p,
 body.page--studio .studio__split .studio__body p {
     color: rgba(32, 32, 32, 0.82);

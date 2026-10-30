@@ -147,7 +147,7 @@ async function initCasePage() {
     const nextBgEl = document.getElementById('case-next-bg');
 
     if (nextLinkEl && nextCase) {
-        nextLinkEl.href = `case.html?slug=${nextCase.slug}`;
+        nextLinkEl.href = nextCase.href || `case.html?slug=${nextCase.slug}`;
         setText('case-next-title', nextCase.title);
 
         // Thumbnail als achtergrond van next sectie

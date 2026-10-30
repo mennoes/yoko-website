@@ -1,6 +1,26 @@
 {
   "cases": [
     {
+      "id": 23,
+      "slug": "sas",
+      "href": "sas.html",
+      "title": "SAS-ICU",
+      "client": "SAS-ICU",
+      "category": "Explainers",
+      "year": "2026",
+      "tags": ["animatie", "wetenschap", "zorg", "explainer"],
+      "summary": "Complex wetenschappelijk onderzoek vertaald naar een helder animatieverhaal. Een brug tussen wetenschap en praktijk.",
+      "description": "Voor SAS-ICU maakten we een animatie die complexe kennis toegankelijk maakt en laat zien waarom het onderzoek ertoe doet.",
+      "thumbnail": "assets/cases/sas-default.png",
+      "video_preview": "assets/cases/sas/animation-01.mp4",
+      "accent_color": "#C7CCFF",
+      "size": "small",
+      "featured": true,
+      "assets": [
+        {"type": "image", "src": "assets/cases/sas/frame-004.webp", "alt": "SAS-ICU — van onderzoek naar praktijk"}
+      ]
+    },
+    {
       "id": 3,
       "slug": "universiteit-van-nederland",
       "href": "universiteit-van-nederland.html",

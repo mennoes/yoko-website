@@ -874,18 +874,6 @@ h2,
     background: var(--dark);
     width: 100%;
 }
-.work-item__media::before {
-    content: "🚧";
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: clamp(48px, 6vw, 96px);
-    color: var(--accent);
-    background: repeating-linear-gradient(45deg, rgba(0,0,0,0.06) 0 14px, rgba(0,0,0,0) 14px 28px);
-    z-index: 0;
-}
 
 /* Aspect ratios — uniform per rij zodat items netjes uitlijnen */
 .work-item[data-size="full"]   .work-item__media { aspect-ratio: 16/7; }

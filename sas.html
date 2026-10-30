@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="stylesheet" href="css/style.css?v=185">
-    <link rel="stylesheet" href="css/sas.css?v=1">
+    <link rel="stylesheet" href="css/sas.css?v=2">
 </head>
 <body class="page--case page--sas">
     <nav class="nav" id="nav">
@@ -24,8 +24,8 @@
     </nav>
 
     <header class="sas-hero" id="case-hero">
-        <video autoplay muted loop playsinline preload="metadata" poster="assets/cases/sas/animation-01.webp" aria-label="Fragment uit de SAS-ICU-animatie">
-            <source src="assets/cases/sas/animation-01.mp4" type="video/mp4">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/cases/sas/animation-04.webp" aria-label="Abstracte vormen uit de SAS-ICU-animatie">
+            <source src="assets/cases/sas/animation-04.mp4" type="video/mp4">
         </video>
     </header>
 
@@ -33,15 +33,22 @@
         <section class="case-narrative__intro">
             <div class="case-narrative__intro-inner">
                 <div class="sas-intro__text">
-                    <p class="sas-eyebrow">Wetenschap · Explainer · Animatie</p>
                     <h1 class="case-narrative__title">SAS-ICU</h1>
                     <div class="case-narrative__intro-copy">
                         <p>Een brug tussen wetenschappelijk onderzoek en de praktijk.</p>
-                        <p>Voor SAS-ICU maakten we een animatie die complexe kennis toegankelijk maakt en laat zien waarom het onderzoek ertoe doet.</p>
+                        <p>Voor SAS-ICU verzorgden we het hele traject: onderzoek, script, vormgeving, illustratie en animatie. Een film die complexe kennis toegankelijk maakt en laat zien waarom het onderzoek ertoe doet.</p>
                     </div>
                     <a class="sas-film-link" href="#film">Bekijk de volledige film <span aria-hidden="true">↓</span></a>
                 </div>
-                <img class="sas-intro__image" src="assets/cases/sas/frame-004.webp" width="1600" height="900" alt="Medische meetgegevens rondom een geabstraheerde patiënt" fetchpriority="high">
+                <div class="sas-intro__player">
+                    <video class="sas-intro__preview" autoplay muted loop playsinline preload="metadata" poster="assets/cases/sas/frame-004.webp" aria-label="Versnelde preview van de volledige SAS-ICU-film">
+                        <source src="assets/cases/sas/film-preview.mp4" type="video/mp4">
+                    </video>
+                    <video class="sas-intro__film" controls playsinline preload="none" hidden aria-label="Volledige SAS-ICU-film met geluid">
+                        <source src="assets/cases/sas/sas-icu-final.mp4" type="video/mp4">
+                    </video>
+                    <button class="sas-intro__play" type="button" aria-label="Speel de volledige SAS-ICU-film af met geluid"><span aria-hidden="true"></span></button>
+                </div>
             </div>
         </section>
 
@@ -55,7 +62,8 @@
             </div>
         </section>
 
-        <div class="sas-gallery sas-gallery--pair" aria-label="De visuele wereld van SAS-ICU">
+        <div class="sas-gallery sas-gallery--three" aria-label="De visuele wereld van SAS-ICU">
+            <img src="assets/cases/sas/frame-004.webp" width="1600" height="900" alt="Medische meetgegevens rondom een geabstraheerde patiënt" loading="lazy">
             <img src="assets/cases/sas/frame-001.webp" width="1600" height="900" alt="Een hand houdt een lichtgevende bol vast" loading="lazy">
             <img src="assets/cases/sas/frame-002.webp" width="1600" height="900" alt="Kleurrijke informatiestromen komen samen rondom één punt" loading="lazy">
         </div>
@@ -152,6 +160,6 @@
     </footer>
     <script src="js/lottie.min.js?v=1"></script>
     <script src="js/main.js?v=51"></script>
-    <script src="js/sas.js?v=1"></script>
+    <script src="js/sas.js?v=2"></script>
 </body>
 </html>
